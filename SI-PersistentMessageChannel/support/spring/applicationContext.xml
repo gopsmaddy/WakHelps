@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/integration
+			http://www.springframework.org/schema/integration/spring-integration-1.0.xsd">
+  
+  <!-- This is a Spring XML configuration file.  We define the parts of our 
+    application in this file. -->
+  
+  <!-- ******************************************************************** -->
+  <!-- DATABASE RELATED -->
+  
+  <!-- This is the data source that we'll use to access the database. -->
+  <bean id="dataSource"
+    class="org.hsqldb.jdbc.jdbcDataSource">
+    <property name="database" value="jdbc:hsqldb:hsql://localhost" />
+    <property name="user" value="SA" />
+    <property name="password" value="" />
+  </bean>
+  
+  <!-- The transaction manager controls transactions with the database. -->
+  <bean id="transactionManager"
+    class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource" />
+  </bean>
+  
+  <!-- jdbcOperations is a Spring utility for executing SQL statements. -->
+  <bean id="jdbcOperations"
+    class="org.springframework.jdbc.core.JdbcTemplate">
+    <property name="dataSource" ref="dataSource"/>
+  </bean>
+  
+  <!-- ******************************************************************** -->
+  <!-- APPLICATION SERVICES -->
+  
+  <!-- The product order service can be used for ordering products. -->
+  <bean id="productOrderingService" class="sitest.service.ProductOrderingServiceImpl">
+   <property name="platformTransactionManager" ref="transactionManager"/>
+   <property name="mailService" ref="mailSenderService"/>
+  </bean>
+  
+  <!-- The mail service prints emails to standard out. -->
+  <bean id="mailService" class="sitest.service.MailServiceImpl"/>
+
+  <!--  The adapter is used to have single methods for Spring Integration to execute.
+      It uses the Message DAO to save and retrieve messages.
+   -->
+  <bean id="messageAdapter" class="sitest.service.PersistentMessageAdapterImpl">
+	 <property name="messageDao" ref="messageDao"/>
+   <property name="queueName" value="emailQueue" />
+  </bean>
+
+  <!-- The data access object for storing message payloads -->
+  <bean id="messageDao" class="sitest.dao.JdbcMessageDao">
+    <property name="jdbcOperations" ref="jdbcOperations"/>
+  </bean>
+  
+  <!-- ******************************************************************** -->
+  <!-- Spring integration beans -->
+  
+  <!--  The mailSenderService is a proxy that will actually send a message on the channel. It 
+        dynamically implements the MailService interface.
+   -->
+  <int:gateway id="mailSenderService"
+         service-interface="sitest.service.MailService"
+         default-request-channel="saveMailChannel"
+         />
+
+  <!-- A direct channel that will call it's subscriber whenever a message is placed on the 
+       channel. 
+   -->
+	<int:channel id="saveMailChannel" />
+  
+  <!-- The outbound channel adapter takes messages it receives and calls a 
+       service with the object.  This saves messages using the message dao. 
+  -->
+  <int:outbound-channel-adapter 
+        channel="saveMailChannel" 
+        ref="messageAdapter" 
+        method="save"/>
+  
+  <!-- This inbound channel adapter is used to pull messages from the Message DAO Adapter.  It 
+       starts a transaction before it reads a message.  After it reads a message it places it on 
+       the sendMailChannel
+   -->
+  <int:inbound-channel-adapter 
+      ref="messageAdapter"
+      method="removeNext" 
+      channel="sendMailChannel">
+      
+    <int:poller>
+        <!-- The poller is configured to check for new messages every 5 seconds. -->
+         <int:interval-trigger interval="5000"/>
+         
+         <!-- It starts a transaction before a message is read. This means that if an error occurs
+              during processing of the message the transaction can be rolled back and the message
+              will not be removed from the table.  
+         -->
+         <int:transactional transaction-manager="transactionManager"
+                   propagation="REQUIRED" />
+     </int:poller>
+  </int:inbound-channel-adapter>
+  
+  <!-- The messages read from the dao are put on this channel. -->
+  <int:channel id="sendMailChannel" />
+
+  <!-- A chain is used to tie together message end points without defining explicit channels 
+       between them.
+   -->
+  <int:chain input-channel="sendMailChannel">
+     <!--  This header enricher adds information to the message headers.  Here it is indicating that
+           if an error occurs during message processing the message should be placed on the 
+           queueAdapterErrorMessageChannel
+     -->
+     <int:header-enricher error-channel="queueAdapterErrorMessageChannel" />
+  
+     <!-- The service activator is similar to the outbound channel adapter in that it invokes services
+          but it removes the payload from the message and uses that to call the service.
+     -->
+     <int:service-activator 
+                     ref="mailService"
+                     method="sendEmail"/>
+  </int:chain>
+  
+  <!-- ******************************************************************** -->
+  <!-- Error Handling Configuration -->
+  
+  <!-- Error handling channel that is used for messages read from the message DAO that have
+       an error.
+  -->
+  <int:channel id="queueAdapterErrorMessageChannel" />
+  
+  <!-- This service activator calls the messageDaoAdapter with the messages that had an
+       error during delivery. -->
+  <int:service-activator input-channel="queueAdapterErrorMessageChannel"
+                     ref="messageAdapter"
+                     method="handleFailedMessage"/>
+                     
+                     
+  <!--  The default error channel that errors are placed on. -->
+  <int:channel id="errorChannel" >
+    <int:queue capacity="10"/>
+  </int:channel>
+
+
+</beans>

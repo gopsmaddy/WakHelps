@@ -1,0 +1,26 @@
+{
+	"recordName" : "tokenproductgroups",
+	"records" :[{	
+			"name" : "Visa Gold",
+			"id" : 36
+		}, {
+			"name" : "Visa Silver",
+			"id" : 1
+		}, {
+			"name" : "Business Visa Debit",
+			"id" : 3
+		}, {
+			"name" : "Visa Electron",
+			"id" : 4
+		}, {
+			"name" : "MasterCard Platinum",
+			"id" : 7
+		}, {
+			"name" : "Stockmann MasterCard",
+			"id" : 8
+		}, {
+			"name" : "Visa Silver",
+			"id" : 9
+		}
+	]
+}

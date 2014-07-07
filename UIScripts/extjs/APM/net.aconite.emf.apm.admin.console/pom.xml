@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.aconite.emf</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.4-SNAPSHOT</version>
+        <relativePath>../../parent</relativePath>
+    </parent>
+
+    <groupId>net.aconite.emf</groupId>
+    <artifactId>net.aconite.emf.apm.admin.console</artifactId>
+    <packaging>bundle</packaging>
+    <name>Aconite - APM Admin Console</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>library</groupId>
+            <artifactId>spring-osgi</artifactId>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>net.aconite.emf</groupId>
+            <artifactId>net.aconite.emf.http</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.aconite.emf</groupId>
+            <artifactId>net.aconite.emf.config.properties</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.aconite.emf</groupId>
+            <artifactId>net.aconite.emf.apm.menu</artifactId>
+        </dependency>                
+    </dependencies>
+
+    <build>
+        <!-- Ensure resources don't get scrambled! -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <_plugin>aQute.lib.spring.SpringComponent</_plugin>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,16 @@
+{
+	"recordName" : "tokenStatistics",
+	"records" : [{
+			"tokenProductName" : "Visa Debit",
+			"issuerName" : "A Bank name",
+			"status" : "Active",
+			"quantity" : "100"
+		},
+		{
+            "tokenProductName" : "Visa Debit",
+            "issuerName" : "A Bank name",
+            "status" : "Inactive",
+            "quantity" : "1000"
+        }
+	]
+}

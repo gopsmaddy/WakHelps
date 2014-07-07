@@ -1,0 +1,449 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE project [
+    <!ENTITY master SYSTEM "./commonmaster.xml">
+]>
+
+
+<!-- ================================================================= -->
+<!-- affina ant (1.5) Master build file                                -->
+<!--                                                                   -->
+<!-- @author edwardsk                                                  -->
+<!-- ================================================================= -->
+
+<project name="affina" default="buildcustom" basedir="."  xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+
+    <property environment="env"/>
+
+    <!-- Current maven artifact versions -->
+    <property name="affina.pom.version" value="2.10"/>
+    <property name="sci.pom.version" value="2.10"/>
+    <property name="sem.pom.version" value="4.2"/>
+    <property name="nkam.container.version" value="2.10"/>
+    <property name="nkam.persistence.version" value="2.10"/>
+    <property name="nkam.mockncrs.version" value="2.10"/>
+	<property name="nkam.console.version" value="2.10"/>
+	<property name="nkam.ejb-client.version" value="2.10" />
+
+    <property name="affina.version" value="${env.BUILD_NUMBER}"/>
+
+    <property name="project.name" value="affina" />
+    <property name="affina.dir" value="." />
+    <property name="project.build.dir" value="build" />
+
+    <property file="./build.properties" />
+    <property file="./global.properties" />
+    
+
+
+    <!--
+        Includes everything in the commontasks file
+    -->
+
+    &master;
+
+
+
+
+
+    <!-- ================================================================= -->
+    <!-- Do a clean of all the projects                                    -->
+    <!-- ================================================================= -->
+    <target name="clean" depends="init" description="-> Cleans all projects in build.properties">
+        <foreach list="${build.project.list}" target="cleanproject" param="proj.name" inheritall="false" delimiter="," />
+        <delete dir="${dist.dir}" />
+    </target>
+
+
+    <target name="cleanproject">
+        <ant antfile="${affina.dir}/../${proj.name}/${project.build.dir}/build.xml" dir="${affina.dir}/../${proj.name}" target="clean" inheritall="false" />
+    </target>
+
+    <property name="jdoc.temp.src.dir" value="${basedir}/javadoctemp" />
+    <property name="javadoc.dir" value="${basedir}/../docs" />
+
+    <!-- ================================================================= -->
+    <!-- Set the javadoc project specific classpath here                   -->
+    <!-- ================================================================= -->
+    <path id="jdocclasspath">
+        <fileset dir="${basedir}/../common/lib/externalJars">
+            <include name="*.jar" />
+        </fileset>
+        <fileset dir="${basedir}/../common/lib/commonJars">
+            <include name="*.jar" />
+        </fileset>
+        <fileset dir="${basedir}/../pma/lib/externalJars">
+            <include name="*.jar" />
+        </fileset>
+        <fileset dir="${basedir}/../pma/lib/pmaJars">
+            <include name="*.jar" />
+        </fileset>
+        <fileset dir="${basedir}/../sds/lib/externalJars">
+            <include name="*.jar" />
+        </fileset>
+        <fileset dir="${basedir}/../sds/lib/sdsJars">
+            <include name="*.jar" />
+        </fileset>
+
+    </path>
+
+
+
+    <!-- ================================================================= -->
+    <!-- document                                                          -->
+    <!-- ================================================================= -->
+    <target name="document" description="-> Generate JavaDoc for this project" if="global.javadoc">
+        <echo>Generating documentation for ${ant.project.name}</echo>
+
+        <mkdir dir="${jdoc.temp.src.dir}" />
+        <unjar dest="${jdoc.temp.src.dir}">
+            <fileset dir="${basedir}/..">
+                <include name="**/*src.jar" />
+            </fileset>
+        </unjar>
+        <tstamp>
+            <format property="touch.time" pattern="MM/dd/yyyy hh:mm aa" />
+        </tstamp>
+
+        <mkdir dir="${javadoc.dir}" />
+        <javadoc sourcepath="${jdoc.temp.src.dir}" maxmemory="128M" packagenames="com.*" classpathref="jdocclasspath" destdir="${basedir}/../docs" public="${global.javadoc.public}" protected="${global.javadoc.protected}" package="${global.javadoc.package}" private="${global.javadoc.private}" use="${global.javadoc.use}" windowtitle="${global.javadoc.windowtitle}" doctitle="${global.javadoc.doctitle}" bottom="&lt;i&gt;Generated on ${touch.time}&lt;/i&gt; Copyright Datacard Group 2002/2003">
+            <group title="Infrastructure Packages" packages="com.*infrastructure.*" />
+            <group title="SDS Packages" packages="com.*sds*.*" />
+            <group title="PMA Packages" packages="com.*pma*.*" />
+        </javadoc>
+        <delete dir="${jdoc.temp.src.dir}" />
+        <echo>Finished generating documentation for ${ant.project.name}</echo>
+    </target>
+
+
+    <!-- Aconite chg - to use sci from maven repository - copy sci jars to common/lib/commonjars -->
+    <echo message="MAVEN_HOME = ${env.M2_HOME}"/>
+
+    <!-- Maven dependencies to be copied to common/lib/commonJars -->
+    <artifact:dependencies pathId="dependency.common"  versionsId="dependency.common.versions">
+        <dependency groupId="net.aconite.sci" artifactId="Sci" version="${sci.pom.version}"/>
+        <dependency groupId="net.aconite.sci" artifactId="GenericKeyValues" version="${sci.pom.version}"/>
+        <dependency groupId="net.aconite.sci" artifactId="SCIConcentrator" version="${sci.pom.version}"/>
+        <dependency groupId="net.aconite.sci" artifactId="Sci_JMSConcentratorClient" version="${sci.pom.version}"/>
+        <dependency groupId="net.aconite.sci" artifactId="HSM" version="${sci.pom.version}"/>
+        <dependency groupId="net.aconite.sci" artifactId="Sci_RG7000" version="${sci.pom.version}"/>		
+        <dependency groupId="net.aconite.sci" artifactId="Sci_NCipher" version="${sci.pom.version}"/>
+        <dependency groupId="net.aconite.common" artifactId="affina-common-util" version="${sci.pom.version}"/>
+        <dependency groupId="net.aconite.common" artifactId="affina-common-message" version="${sci.pom.version}"/>
+        <dependency groupId="net.aconite.affina" artifactId="Infrastructure" version="${affina.pom.version}"/>
+        <dependency groupId="net.aconite.affina" artifactId="AffinaInterface" version="${affina.pom.version}"/>
+        <dependency groupId="net.aconite.affina" artifactId="sdsclient" version="${affina.pom.version}"/>
+        <dependency groupId="net.aconite.affina" artifactId="aps-contract" version="${affina.pom.version}"/>
+        <dependency groupId="net.aconite.affina" artifactId="ejbca-api" version="${affina.pom.version}"/>
+        <dependency groupId="net.aconite.affina" artifactId="bc_asn1" version="${affina.pom.version}"/>
+		
+		<dependency groupId="net.aconite.sci" artifactId="sci-hsm-ps9000" version="${sci.pom.version}"/>
+		<dependency groupId="net.aconite.affina" artifactId="sds" version="${affina.pom.version}"/>
+    </artifact:dependencies>
+    <property name="common.lib.dir" value="${basedir}/../common/lib/commonJars"/>
+    <property name="common.lib.temp" value="${common.lib.dir}/temp"/>
+    
+    <!-- Maven dependencies to be copied to  pma/lib/pmaJars -->
+    <artifact:dependencies pathId="dependency.pma"  versionsId="dependency.pma.versions">
+        <dependency groupId="net.aconite.affina" artifactId="PMAextension" version="${affina.pom.version}"/>
+        <dependency groupId="net.aconite.affina" artifactId="PMAframework" version="${affina.pom.version}"/>
+        <dependency groupId="net.aconite.affina" artifactId="PMAstandard" version="${affina.pom.version}"/>
+        <dependency groupId="net.aconite.affina" artifactId="PMACustom" version="${affina.pom.version}"/>
+        <dependency groupId="net.aconite" artifactId="NkamPersistence" version="${nkam.persistence.version}"/>
+		<dependency groupId="net.aconite" artifactId="NKAMConsole" version="${nkam.console.version}"/>
+		<dependency groupId="net.aconite" artifactId="NKAM-ejb" version="${nkam.ejb-client.version}"/>
+    </artifact:dependencies>
+    <property name="pma.lib.dir" value="${basedir}/../pma/lib/pmaJars"/>
+    <property name="pma.lib.temp" value="${pma.lib.dir}/temp"/>
+    
+    <!-- Maven dependencies to be copied to  sds/lib/sdsJars -->
+    <artifact:dependencies pathId="dependency.sds"  versionsId="dependency.sds.versions">
+        <dependency groupId="net.aconite.affina" artifactId="sds" version="${affina.pom.version}"/>
+        <dependency groupId="net.aconite.affina" artifactId="SDSstandard" version="${affina.pom.version}"/>
+    </artifact:dependencies>
+    <property name="sds.lib.dir" value="${basedir}/../sds/lib/sdsJars"/>
+    <property name="sds.lib.temp" value="${sds.lib.dir}/temp"/>
+    
+     <!-- Maven dependencies to be copied to NKAM Container -->
+    <artifact:dependencies pathId="dependency.nkam.container"  versionsId="dependency.nkam.versions">
+        <dependency groupId="net.aconite" artifactId="MockNCRS-war" type="war"  version="${nkam.mockncrs.version}"/>
+        <dependency groupId="net.aconite" artifactId="NKAMContainer" type="ear" version="${nkam.container.version}"/>
+    </artifact:dependencies>
+    <property name="nkam.container.lib.dir" value="${basedir}/../nkamContainer/ejb"/>
+    <property name="nkam.mockncrs.lib.dir" value="${basedir}/../nkamContainer/mockncrs"/>
+    <property name="nkam.container.lib.temp" value="${nkam.container.lib.dir}/temp"/>  
+    
+    <!-- Maven dependencies to be copied to  sds/ejb -->
+    <artifact:dependencies pathId="dependency.sds.ejb"  versionsId="dependency.sds.ejb.versions">
+        <dependency groupId="net.aconite.affina" artifactId="DestinationEJB" version="${affina.pom.version}"/>
+        <dependency groupId="net.aconite.affina" artifactId="DestinationClient" version="${affina.pom.version}"/>
+    </artifact:dependencies>
+    <property name="sds.ejb.dir" value="${basedir}/../sds/ejb"/>
+    <property name="sds.ejb.temp" value="${sds.ejb.dir}/temp"/>
+
+    <!-- Maven dependencies to be copied to gui/ejb -->
+    <artifact:dependencies pathId="dependency.gui"  versionsId="dependency.gui.versions">
+        <dependency groupId="net.aconite.affina" artifactId="OperationsWeb" type="war" version="${affina.pom.version}"/>
+        <dependency groupId="net.aconite.affina" artifactId="Operations" type="ear" version="${affina.pom.version}"/>
+        <dependency groupId="net.aconite" artifactId="NkamPersistence" version="${nkam.persistence.version}"/>
+    </artifact:dependencies>
+    <property name="gui.lib.dir" value="${basedir}/../gui/ejb"/>
+    <property name="gui.lib.temp" value="${gui.lib.dir}/temp"/>
+	
+	 <!-- Maven dependencies to be copied to nsam/ejb -->
+    <artifact:dependencies pathId="dependency.nsam"  versionsId="dependency.nsam.versions">
+        <dependency groupId="com.aconitesolutions" artifactId="NKAMConsoleWeb" type="war" version="${sem.pom.version}"/>
+        <dependency groupId="com.aconitesolutions" artifactId="NKAMConsole" type="ear" version="${sem.pom.version}"/>
+    </artifact:dependencies>
+    <property name="nsam.lib.dir" value="${basedir}/../nsam/ejb"/>
+    <property name="nsam.lib.temp" value="${nsam.lib.dir}/temp"/>
+	
+    <target name="copymavendependencies" description="copies maven-built jar files from maven repository">
+
+        <!-- Copy the common dependencies -->
+        <mkdir dir="${common.lib.temp}"/>
+        <copy todir="${common.lib.temp}">
+                <path refid="dependency.common"/>
+                <mapper classname="org.apache.maven.artifact.ant.VersionMapper"  from="${dependency.common.versions}" to="flatten" />
+        </copy>
+        <copy todir="${common.lib.dir}">
+              <path>
+                <fileset dir="${common.lib.temp}">
+                    <include name="GenericKeyValues.jar"/>
+                    <include name="Sci.jar"/>
+                    <include name="Sci_JMSConcentratorClient.jar"/>
+                    <include name="SCIConcentrator.jar"/>
+                    <include name="HSM.jar"/>
+                    <include name="Sci_RG7000.jar"/>
+					<include name="sci-hsm-ps9000.jar"/>
+					<include name="sds.jar"/>
+                    <include name="Sci_NCipher.jar"/>
+                    <include name="affina-common-util.jar"/>
+                    <include name="affina-common-message.jar"/>
+                    <include name="Infrastructure.jar"/>
+                    <include name="AffinaInterface.jar"/>
+                    <include name="sdsclient.jar"/>
+                    <include name="aps-contract.jar"/>
+                    <include name="ejbca-api.jar"/>
+                    <include name="bc_asn1.jar"/>
+                </fileset>
+              </path>
+        </copy>
+        <delete dir="${common.lib.temp}"/>
+            
+        <!-- Copy the pma dependencies -->
+        <mkdir dir="${pma.lib.temp}"/>
+        <copy todir="${pma.lib.temp}">
+                <path refid="dependency.pma"/>
+                <mapper classname="org.apache.maven.artifact.ant.VersionMapper"  from="${dependency.pma.versions}" to="flatten" />
+        </copy>
+        <copy todir="${pma.lib.dir}">
+              <path>
+                <fileset dir="${pma.lib.temp}">
+                    <include name="PMAextension.jar"/>
+                    <include name="PMAframework.jar"/>
+                    <include name="PMAstandard.jar"/>
+                    <include name="PMACustom.jar"/>
+                    <include name="NkamPersistence.jar"/>
+					<include name="NKAMConsole.jar"/>
+					<include name="NKAM-ejb.jar"/>
+                </fileset>
+              </path>
+        </copy>
+        <delete dir="${pma.lib.temp}"/>
+
+        <!-- Copy the sds dependencies -->
+        <mkdir dir="${sds.lib.temp}"/>
+        <copy todir="${sds.lib.temp}">
+                <path refid="dependency.sds"/>
+                <mapper classname="org.apache.maven.artifact.ant.VersionMapper"   from="${dependency.sds.versions}" to="flatten" />
+        </copy>
+        <copy todir="${sds.lib.dir}">
+              <path>
+                <fileset dir="${sds.lib.temp}">
+                    <include name="sds.jar"/>
+                    <include name="SDSstandard.jar"/>
+                </fileset>
+              </path>
+        </copy>
+        <delete dir="${sds.lib.temp}"/>
+
+        <!-- Copy the sds/ejb dependencies -->
+        <mkdir dir="${sds.ejb.temp}"/>
+        <copy todir="${sds.ejb.temp}">
+                <path refid="dependency.sds.ejb"/>
+                <mapper classname="org.apache.maven.artifact.ant.VersionMapper"   from="${dependency.sds.ejb.versions}" to="flatten" />
+        </copy>
+        <copy todir="${sds.ejb.dir}">
+              <path>
+                <fileset dir="${sds.ejb.temp}">
+                    <include name="DestinationEJB.jar"/>
+                    <include name="DestinationClient.jar"/>
+                </fileset>
+              </path>
+        </copy>
+        <delete dir="${sds.ejb.temp}"/>
+
+        <!-- Copy the gui dependencies -->
+        <mkdir dir="${gui.lib.temp}"/>
+        <copy todir="${gui.lib.temp}">
+                <path refid="dependency.gui"/>
+                <mapper classname="org.apache.maven.artifact.ant.VersionMapper"   from="${dependency.gui.versions}" to="flatten" />
+        </copy>
+        <copy todir="${gui.lib.dir}">
+              <path>
+                <fileset dir="${gui.lib.temp}">
+                    <!--include name="OperationsWeb.war"/-->
+                    <include name="Operations.ear"/>
+                    <include name="NkamPersistence.jar"/>
+                </fileset>
+              </path>
+        </copy>
+        <delete dir="${gui.lib.temp}"/>
+		
+		<!-- Copy the nsam dependencies -->
+        <mkdir dir="${nsam.lib.temp}"/>
+        <copy todir="${nsam.lib.temp}">
+                <path refid="dependency.nsam"/>
+                <mapper classname="org.apache.maven.artifact.ant.VersionMapper"  from="${dependency.nsam.versions}" to="flatten" />
+        </copy>
+        <copy todir="${nsam.lib.dir}">
+              <path>
+                <fileset dir="${nsam.lib.temp}">
+                    <!--include name="NKAMConsoleWeb.war"/-->
+                    <include name="NKAMConsole.ear"/>
+                </fileset>
+              </path>
+        </copy>
+        <delete dir="${nsam.lib.temp}"/>
+        
+        <!-- Copy the nkam container dependencies -->
+        <mkdir dir="${nkam.container.lib.temp}"/>
+        <copy todir="${nkam.container.lib.temp}">
+            <path refid="dependency.nkam.container"/>
+            <mapper classname="org.apache.maven.artifact.ant.VersionMapper" from="${dependency.nkam.versions}" to="flatten" />
+        </copy>
+        <copy todir="${nkam.container.lib.dir}">
+            <path>
+                <fileset dir="${nkam.container.lib.temp}">
+                    <include name="NKAMContainer.ear"/>                    
+                </fileset>
+            </path>
+        </copy>
+        <!--move file="${nkam.container.lib.temp}/MockNCRS-war.war" tofile="${nkam.mockncrs.lib.dir}/mock-ncrs.war"/-->
+        <delete dir="${nkam.container.lib.temp}"/>		
+    </target>
+
+
+
+
+    <!-- ================================================================= -->
+    <!-- Do a build of all the projects                                    -->
+    <!-- ================================================================= -->
+    <target name="buildcustom" depends="init,copymavendependencies" description="-> Builds all projects in build.properties">
+        <condition property="isadeveloper">
+            <equals arg1="${build.type}" arg2="affinadev" />
+        </condition>
+        <echo>Is this a developer build -> ${isadeveloper}</echo>
+        <echo> calling - buildproject - </echo>
+        <foreach list="${build.project.list}" target="buildproject" param="proj.name" inheritall="false" delimiter="," />
+        <echo> buildproject target in build.xml is finished </echo>
+        <echo> calling target generateZip </echo>
+        <antcall target="generateZip"/>
+        <echo> generateZip target finished</echo>
+        <antcall target="document" />
+		<echo> generate build check sum signature : started</echo>
+		<antcall target="generateCheckSumSignature"/>
+        <echo> generate build check sum signature data : started</echo>
+		<antcall target="generateCheckSumSignatureData"/> 
+    </target>
+
+    <!-- ================================================================= -->
+    <!-- Do a clean and build of all the projects                          -->
+    <!-- ================================================================= -->
+    <target name="cleanandbuild" depends="clean, buildcustom" description="-> Cleans and builds all projects in build.properties">
+    </target>
+	
+	<target name="generateCheckSumSignature">
+		<echo> generating check sum signature for : ${basedir}/../../R${affina.version}${was.version}.zip</echo>
+		<exec dir="${basedir}" executable="cmd.exe">
+			<arg value="/c" />
+			<arg value="generateCheckSumSignature.bat" />
+			<arg value="R${affina.version}${was.version}.zip" />	
+			<arg value="../../" />
+			<arg value="../../" />
+		</exec>		
+		<echo> generated check sum  signature for : ${basedir}/../../R${affina.version}${was.version}.zip</echo>
+    </target>
+	
+	<target name="generateCheckSumSignatureData">
+		<concat destfile="${basedir}/../../CheckSumData.signatures" force="no">
+			<fileset dir="${basedir}/../../" includes="*.signature" />
+		</concat>
+		<delete>								
+			<fileset dir="${basedir}/../../" includes="*.signature"/>			
+		</delete>
+	</target>
+    <!--  Aconite - to generate zip files through ant script - to get rid of 'prebuildmkdeployment.bat' -->
+
+    <target name="generateZip">
+
+        <delete includeemptydirs="true">
+            <fileset dir="${basedir}/../../" includes="*.zip" excludes="**/*Adapter*.zip,**/affina-config-editor*.zip,**/FilehandlerTemplates.zip,**/TemplateEditor*.zip" defaultexcludes="false"/>
+        </delete>
+        <echo> in generateZip</echo>
+		<delete>								
+			<fileset dir="${basedir}/../gui/ejb" includes="*Web.war"/>
+			<fileset dir="${basedir}/../pma/ejb" includes="*Web.war"/>
+			<fileset dir="${basedir}/../pma/ejb" includes="*EJB.jar"/>
+			<fileset dir="${basedir}/../sds/ejb" includes="*Web.war"/>
+			<fileset dir="${basedir}/../sds/ejb" includes="*EJB*.jar"/>
+		</delete>							
+        <echo message="Websphere version :${was.version}"/>
+        <zip destfile="${basedir}/../../R${affina.version}${was.version}.zip"
+             basedir="${basedir}/../.." includes="affina/**/*"
+             excludes="**/.svn"/>
+            
+        <echo>Generating Configuration zip files</echo>
+        <foreach list="${build.config.zip.list}" target="zipConfigFile" param="configToZip" inheritall="false" delimiter=";"/>
+
+    </target>
+
+    <!-- Zip up a single Config file -->
+    <target name="zipConfigFile">
+        
+        <propertyregex property="zip.file.name.stem" input="${configToZip}" regexp="([^\,]*),([^\,]*)" select="\1" />
+        <propertyregex property="source.folder.name" input="${configToZip}" regexp="([^\,]*),([^\,]*)" select="\2" />
+        
+        <property name="zip.file.name" value="${zip.file.name.stem}_R${affina.version}.zip" />
+        <property name="source.dir" value="${basedir}/../../AffinaTestHarness/Configuration/${source.folder.name}" />
+        
+        <echo>Generating ${zip.file.name}</echo>
+        <echo>Source folder: ${source.dir}</echo>
+
+        <zip destfile="${basedir}/../../${zip.file.name}" basedir="${source.dir}" includes="**/*" excludes="**/.svn"/>
+		<!-- 
+		<echo> generating check sum signature for : ${basedir}/../../${zip.file.name}</echo>
+		<exec dir="${basedir}" executable="cmd.exe">
+			<arg value="/c" />
+			<arg value="generateCheckSumSignature.bat" />
+			<arg value="${zip.file.name}" />	
+			<arg value="../../" />
+			<arg value="../../" />
+		</exec>		
+		<echo> generated check sum  signature for : ${basedir}/../../${zip.file.name}</echo>
+		-->
+    </target>
+
+
+
+
+    <!-- Ant Contrib related tasks - useful for doing loop processing -->
+
+    <!-- Setup antcontrib taskdef -->
+    <taskdef name="if" classname="net.sf.antcontrib.logic.IfTask" />
+    <taskdef name="foreach" classname="net.sf.antcontrib.logic.ForEach" />
+    <taskdef name="propertycopy" classname="net.sf.antcontrib.property.PropertyCopy" />
+
+</project>

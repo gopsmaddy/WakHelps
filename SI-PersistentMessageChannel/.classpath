@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="support/spring"/>
+	<classpathentry kind="var" path="LIBRARIES/spring-integration-1.0.1.RELEASE/dist/org.springframework.integration-1.0.1.RELEASE.jar" sourcepath="/LIBRARIES/spring-integration-1.0.1.RELEASE/src/org.springframework.integration-sources-1.0.1.RELEASE.jar"/>
+	<classpathentry kind="var" path="LIBRARIES/spring-framework-2.5.6/lib/jakarta-commons/commons-logging.jar"/>
+	<classpathentry kind="lib" path="support/database/hsqldb.jar"/>
+	<classpathentry kind="var" path="LIBRARIES/spring-framework-2.5.6/dist/spring.jar" sourcepath="/ECHO_LIBRARIES/spring-framework-2.5.6/tiger/src"/>
+	<classpathentry kind="var" path="LIBRARIES/spring-framework-2.5.6/lib/log4j/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="support/properties"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

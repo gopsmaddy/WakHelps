@@ -1,0 +1,62 @@
+{
+	"totalCount" : 7,
+	"recordName" : "schedulers",
+	"records" : [{
+			"id" : 32,
+			"name" : "tokenimportfeedback",
+			"status" : false,
+			"exeCommand" : "0 30 02 18 07 ? 2012",
+			"cronParameters" : "{sod:-2,eod:0}",
+			"lastRunTime" : null,
+			"nextRunTime" : null
+		}, {
+			"id" : 29,
+			"name" : "tokenorderfeedback",
+			"status" : false,
+			"exeCommand" : "0 09 13 ? * *",
+			"cronParameters" : "{startoffsetdays:0,endoffsetdays:0}",
+			"lastRunTime" : null,
+			"nextRunTime" : null
+		}, {
+			"id" : 28,
+			"name" : "tokenimportfeedback",
+			"status" : false,
+			"exeCommand" : "0 46 12 ? * *",
+			"cronParameters" : "{startoffsetdays:0,endoffsetdays:0}",
+			"lastRunTime" : null,
+			"nextRunTime" : null
+		}, {
+			"id" : 22,
+			"name" : "pinmailer",
+			"status" : false,
+			"exeCommand" : "0 54 13 0-31/1 * *",
+			"cronParameters" : "{startoffsetdays:0,endoffsetdays:0}",
+			"lastRunTime" : null,
+			"nextRunTime" : null
+		}, {
+			"id" : 4,
+			"name" : "tokenorderfeedback",
+			"status" : false,
+			"exeCommand" : "567567",
+			"cronParameters" : "-1,1",
+			"lastRunTime" : 1343304825122,
+			"nextRunTime" : 3455536825122
+		}, {
+			"id" : 7,
+			"name" : "tokenimportfeedback",
+			"status" : false,
+			"exeCommand" : "tyi",
+			"cronParameters" : "-1,1",
+			"lastRunTime" : 1343304825122,
+			"nextRunTime" : 2343999825122
+		}, {
+			"id" : 14,
+			"name" : "tokenorderfeeedback",
+			"status" : false,
+			"exeCommand" : "878",
+			"cronParameters" : "-1,1",
+			"lastRunTime" : 1567804825122,
+			"nextRunTime" : 1399936825122
+		}
+	]
+}

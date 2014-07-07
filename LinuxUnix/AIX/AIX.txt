@@ -1,0 +1,148 @@
+http://search400.techtarget.com/definition/AIX
+
+AIX (Advanced Interactive eXecutive)
+
+AIX is an open operating system from IBM that is based on a version of UNIX. 
+AIX/ESA was designed for IBM's System/390 or large server hardware platform. 
+AIX/6000 is an operating system that runs on IBM's workstation platform, 
+the RISC System/6000.
+
+Related glossary terms: 
+authorized program analysis report (APAR), OS/400, 
+AS/400 (IBM iSeries, AS/400e, eServer iSeries/400), 
+EBCDIC (Extended Binary Coded Decimal Interchange Code) , 
+RISC (reduced instruction set computer), seize, minicomputer, 
+network PC (appliance), CPW (Commercial Processing Workload), lock
+
+=============================================
+
+AIX: Commands > http://www.unixguide.net/ibm/aixcommands.shtml
+
+==============================================
+
+Starting Tomcat as a Service on Linux  > http://www.spaceprogram.com/knowledge/tomcat_init_d.html
+
+Starting Tomcat as a Service on Linux
+Introduction
+
+This document will teach you how to setup Tomcat to run as a service (startup when booted) on Linux.
+Intended Audience
+
+System admins.
+Instructions
+
+This is actually pretty easy and will be presented step by step.
+
+1. Save tomcat start / stop script
+
+Copy and paste the following script into your text editor:
+
+#	This is the init script for starting up the 
+#		Jakarta Tomcat server
+#
+# chkconfig: 345 91 10 
+# description: Starts and stops the Tomcat daemon.
+#
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Get config.
+. /etc/sysconfig/network
+
+# Check that networking is up.
+[ "${NETWORKING}" = "no" ] && exit 0
+
+tomcat=/usr/local/jakarta-tomcat
+startup=$tomcat/bin/startup.sh
+shutdown=$tomcat/bin/shutdown.sh
+export JAVA_HOME=/usr/local/jdk
+
+start(){
+	echo -n $"Starting Tomcat service: " 
+	#daemon -c 
+	$startup
+	RETVAL=$?
+	echo
+}
+
+stop(){
+	action $"Stopping Tomcat service: " $shutdown	
+	RETVAL=$?
+	echo
+}
+
+restart(){
+    stop
+    start
+}
+
+
+# See how we were called.
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  status)
+        # This doesn't work ;)
+	status tomcat
+	;;
+  restart)
+	restart
+	;;
+  *)
+	echo $"Usage: $0 {start|stop|status|restart}"
+	exit 1
+esac
+
+exit 0
+
+Edit the lines that start with tomcat and export to match where you installed tomcat and your jdk.
+
+Note: I can't remember where I first got the original version of this script so if you deserve credit for this, let us know.
+
+2. Save to /etc/init.d and chmod
+
+Save the edited file above to /etc/init.d directory as "tomcat" (at least on most newer releases since /etc/init.d is a standard now). Then you have to allow execute access to the script, so run:
+
+chmod a+x tomcat
+
+3. Add to appropriate run level directories
+
+The easy way to do this is to just simply run:
+
+chkconfig --add tomcat
+
+And that's all she wrote.
+
+======================================
+
+http://blog.firetree.net/2008/09/03/services-on-aix/
+
+Services on AIX
+
+3 September, 2008 @ 16:45 · Filed under Linux
+
+I’ve just spent a rather dry afternoon working out how to create a service on AIX. In brief, AIX doesn’t provide any real support for SysV style Unix services, instead it has its own scheme, which does not use the familiar start/stop wrapper scripts.
+To make a new service:
+mkssys -s NAME -p PATH -u UID -S -n15 -f9 -a 'COMMAND ARGS'
+
+This makes a new signal-controlled (-S) service, named NAME. The executable to run is PATH, and it is passed COMMAND ARGS at start-up. Signal 15 (TERM) is used for normal shut-down and 9 (KILL) for forced shutdown – I’m not sure why these aren’t the default.
+To start the service:
+startsrc -s NAME
+To stop the service:
+stopsrc -s NAME
+To delete the service:
+rmssys -s NAME
+
+All in all, it’s quite nice and simple.
+To automatically start the service at boot-time
+
+Add a line like this to /etc/inittab:
+
+NAME:23456789:respawn:/usr/bin/startsrc -s NAME
+
+Make sure that the first NAME is unique in the file – it doesn’t actually need to be the same as your service name. ‘respawn’ means that init will try to restart your service if it fails. You can use ‘once’ instead of ‘respawn’, if you don’t want init to keep starting it up after it’s failed.

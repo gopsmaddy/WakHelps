@@ -1,0 +1,45 @@
+{
+	metaData : {
+		"totalProperty" : "total",
+		"root" : "root",
+		"id" : "id",
+		"fields" : [{
+				"name" : "statusid",
+				"type" : "int"
+			}, {
+				"name" : "statusname",
+				"type" : "string"
+			}, {
+				"name" : "statusdesc",
+				"type" : "string"
+			}
+		]
+	},
+	"success" : "true",
+	"totals" : 3,
+	"records" : [{
+			"statusid" : "1",
+			"statusname" : "New",
+			"statusdesc" : "new description"
+		}, {
+			"statusid" : "2",
+			"statusname" : "Open",
+			"statusdesc" : "Open description"
+		}, {
+			"statusid" : "3",
+			"statusname" : "Closed",
+			"statusdesc" : "Closed description"
+		}
+	],
+	columns : [{
+			"header" : "STATUSID",
+			"dataIndex" : "statusid"
+		}, {
+			"header" : "STATUSNAME",
+			"dataIndex" : "statusname"
+		}, {
+			"header" : "STATUSDESC",
+			"dataIndex" : "statusdesc"
+		}
+	]
+}

@@ -1,0 +1,17 @@
+/*
+SQL to create the table to hold messages.  The table holds the message id, the
+ message as a serialized java object, the date the message was created,
+ and a queue name to associate the message with.  The queue name allows a single
+ table to be used for message that are bound for different locations.  For example
+ one table could hold messages that are emails and messages to process the order. 
+*/
+CREATE TABLE MESSAGES 
+( 
+  MESSAGE_ID VARCHAR(50) NOT NULL PRIMARY KEY,
+   
+  MESSAGE OBJECT NOT NULL, 
+  
+  CREATION_DATE TIMESTAMP NOT NULL, 
+  
+  QUEUE_NAME VARCHAR(50) NOT NULL
+);

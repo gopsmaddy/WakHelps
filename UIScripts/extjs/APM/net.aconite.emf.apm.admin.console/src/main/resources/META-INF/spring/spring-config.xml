@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreUnresolvablePlaceholders" value="false"/>
+        <property name="propertiesArray">
+            <list>
+                <bean factory-bean="configProperties" factory-method="getProperties"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Bean used to publish static resources into OSGI service registry -->
+    <bean id="consoleStaticContent" class="net.aconite.emf.http.StaticResourceService"/>
+
+</beans>

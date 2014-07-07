@@ -1,0 +1,54 @@
+{
+	"totalCount" : "24",
+	"recordName" : "managetokens",
+	"records" : [{
+			"id" : "1",
+			"status" : "A",
+			"tokenProductId" : "1",
+			"defaultTokenAppId" : "1",
+			"customerCode" : "cc1234rt",
+			"appSequenceNumber" : "3",
+			"statusId" : "4",
+			"panEncrypted" : "r45Ty^8q?pt",
+			"panDisplay" : "12345987XXXX",
+			"panAlias" : "YES YES",
+			"panSeqNumber" : "1",
+			"expiryDate" : "31052019",
+			"pinId" : "3",
+			"pinTriesRemaining" : "3",
+			"pukId" : "1"
+		},{
+          			"id" : "3",
+          			"status" : "A",
+          			"tokenProductId" : "1",
+          			"defaultTokenAppId" : "1",
+          			"customerCode" : "cc1234rt",
+          			"appSequenceNumber" : "3",
+          			"statusId" : "4",
+          			"panEncrypted" : "r45Ty^8q?pt",
+          			"panDisplay" : "12345987XXXX",
+          			"panAlias" : "NO YES",
+          			"panSeqNumber" : "1",
+          			"expiryDate" : "31052019",
+          			"pinId" : "3",
+          			"pinTriesRemaining" : "3",
+          			"pukId" : "1"
+          		}, {
+                   			"id" : "4",
+                   			"status" : "A",
+                   			"tokenProductId" : "12",
+                   			"defaultTokenAppId" : "3",
+                   			"customerCode" : "cc1234rt",
+                   			"appSequenceNumber" : "3",
+                   			"statusId" : "4",
+                   			"panEncrypted" : "r45Ty^8q?pt",
+                   			"panDisplay" : "12345987XXXX",
+                   			"panAlias" : "YES NO",
+                   			"panSeqNumber" : "4",
+                   			"expiryDate" : "31052019",
+                   			"pinId" : "3",
+                   			"pinTriesRemaining" : "5",
+                   			"pukId" : "1"
+                   		}
+	]
+}

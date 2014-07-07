@@ -1,0 +1,11 @@
+{
+	"recordName" : "extractLogDataType",
+	"records" : [
+	        {"id" : "1",
+            "name": "pinmailer extract"
+            },
+            {"id" : "2",
+            "name" : "Data export task"
+            }
+	]
+}

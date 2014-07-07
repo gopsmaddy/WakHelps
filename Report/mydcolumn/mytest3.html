@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+	<title>Dynamic Columns2 - MyTest</title>
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--////////// start: stylesheets ///////////////// -->
+		<!-- define stylesheets here-->
+		<link rel="stylesheet" type="text/css" href="../../lib/jquery/css/redmond/jquery-ui-1.8.21.custom.css" />	
+		<link rel="stylesheet" type="text/css" href="../../lib/extjs/ux/css/CheckHeader.css"/>	
+		<link rel="stylesheet" type="text/css" href="../../lib/extjs/ux/statusbar/css/statusbar.css" />
+		<link rel="stylesheet" type="text/css" href="../../lib/extjs/shared/example.css" />
+		
+		<link rel="stylesheet" type="text/css" href="../../lib/extjs/resources/css/ext-all-gray.css">
+		
+		<link rel="stylesheet" type="text/css" href="../../lib/etc/restful.css"/>	
+		<link rel="stylesheet" type="text/css" href="../../lib/etc/writer.css" />
+
+		
+		<!--////////// start: javascripts ///////////////// -->
+		<!-- define jquery related javascripts here-->
+		<script type="text/javascript" src="../../lib/jquery/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../../lib/jquery/jquery.validate.min.js"></script>
+		<script type="text/javascript" src="../../lib/jquery/jquery-ui-1.8.21.custom.min.js"></script>
+		<script type="text/javascript" src="../../lib/jquery/jquery.i18n.properties-min-1.0.9.js"></script>	
+		
+		<!-- define extjs related javascripts here-->
+		<script type="text/javascript" src="../../lib/extjs/ext.js"></script>
+		<script type="text/javascript" src="../../lib/extjs/all-classes.js"></script>
+		<script type="text/javascript" src="../../lib/extjs/shared/examples.js"></script>
+		<script type="text/javascript" src="../../lib/myjs/ux/grid/DynamicGridPanel.js"></script>
+				
+		<!-- define config javascripts here-->
+		<script type="text/javascript" src="../../config/apmProperty.js"></script>
+		<script type="text/javascript" src="../../config/apmExternalURL.js"></script>
+		
+		<!-- define common javascripts here-->
+		<script type="text/javascript" src="../../lib/common/utils.js"></script>
+		<script type="text/javascript" src="../../lib/common/date.js"></script>
+		
+		<script type="text/javascript" src="../../apm/view/Pagingbar.js"></script>
+		<script type="text/javascript" src="../../apm/view/Toolbar.js"></script>
+		
+
+
+		
+<script type="text/javascript">
+//http://elvishsu66.blogspot.co.uk/2011/05/dynamic-gridpanel-for-extjs-4.html
+
+		var varGridDefaultPageSize	= 10;
+		var varCountryCellEditing = Ext.create('Ext.grid.plugin.CellEditing', {clicksToEdit: 2});
+		
+		Ext.require([
+			'Ext.grid.*',
+			'Ext.data.*',
+			'Ext.util.*',
+			'Ext.state.*'
+			]);
+		
+		Ext.define('MyModel', 
+		{
+			extend: 'Ext.data.Model',
+			proxy: 
+			{
+				type: 'ajax',
+				url : 'datax.json',
+				simpleSortMode: true,
+			}
+		});
+		
+		/**
+		 * Custom function used for column renderer
+		 * @param {Object} val
+		 */
+		function change(val) 
+		{
+			if (val > 0) {
+				return '<span style="color:green;">' + val + '</span>';
+			} else if (val < 0) {
+				return '<span style="color:red;">' + val + '</span>';
+			}
+			return val;
+		}
+
+		/**
+		 * Custom function used for column renderer
+		 * @param {Object} val
+		 */
+		function pctChange(val) 
+		{
+			if (val >= 50) {
+				return '<span style="color:green;">' + val + '%</span>';
+			} else if (val < 50) {
+				return '<span style="color:red;">' + val + '%</span>';
+			}
+			return val;
+		}
+		
+		
+
+		Ext.onReady(function()
+		{
+			var MyStore = Ext.create('Ext.data.Store', 
+			{
+				model: 'MyModel',
+				remoteSort	: true,
+				pageSize	: varGridDefaultPageSize,
+			});
+			
+			
+			
+
+			Ext.create('Ext.ux.grid.DynamicGridPanel', 
+			{
+				id: 'my-grid',
+				title: 'url grid',
+				renderTo: Ext.getBody(),
+				
+				store: MyStore,				
+				//rowNumberer: true,
+				
+				height: 320,
+				width: 960,
+				//autoWidth: true,
+				
+				columnLines: true,
+				
+				viewConfig: {emptyText: 'No records to display.'},		
+				collapsible: true,
+				loadMask: true,
+				
+				//selModel: {pruneRemoved: false},
+				selModel: Ext.create('Ext.selection.CheckboxModel'),
+				//selModel: {selType: 'rowmodel'},
+				//selModel: { selType: 'cellmodel'},
+				
+				multiSelect: true,	
+				//stripeRows: true,
+				
+				plugins: [varCountryCellEditing],
+				//plugins: [rowEditing],
+				
+				dockedItems: 
+				[
+					{
+						id 		: 'idCountryTBar',
+						xtype	: 'apptoolbar',
+						dock	: 'top',
+						hidden	: false,
+					},		
+					{
+						id 		: 'idCountryBBar',
+						xtype	: 'apppagingbar',
+						store	: MyStore,
+						dock	: 'bottom',
+						hidden	: false,
+					},
+					
+				]
+			});
+
+			//uses the Proxy we set up on Model to load the Store data
+			MyStore.load();
+			
+		});
+		
+
+
+		</script>
+
+	</head>
+	<body>
+		
+		
+		
+		<!-- id="btnGetData" type="button">Click Me!</button--> 
+
+	</body>
+</html>
+

@@ -1,0 +1,164 @@
+hi
+[10:17:53] Robiul Hussain: hello
+[10:18:19] WMuzammil: select a,b,c from mytable where id ????
+[10:18:30] WMuzammil: if Id has more than one values
+[10:18:44] WMuzammil: how did you get it from hibernation?
+[10:19:01] Robiul Hussain: hmm
+[10:19:16] WMuzammil: this is in ManageToken with mutliple selections..
+[10:19:22] Robiul Hussain: yep
+[10:19:24] Robiul Hussain: let me check
+[10:19:27] WMuzammil: you did something..
+[10:19:33] Robiul Hussain: yeah i did
+[10:19:38] Robiul Hussain: but forgotten let me check
+[10:19:44] WMuzammil: ok..thank
+[10:20:40] Robiul Hussain:  query.setParameterList("tokenProductId", filter.getTokenProductIds());
+[10:21:04] WMuzammil: what is come in filter.getTokenProductIds() ?
+[10:21:30] WMuzammil: is that string or list?
+[10:21:41] Robiul Hussain: list
+[10:21:48] Robiul Hussain: of long in this case
+[10:21:52] WMuzammil: java.util.list?
+[10:21:58] Robiul Hussain: yeah
+[10:22:10] Robiul Hussain: i think hibernate handles the conversion within the sql
+[10:22:39] WMuzammil: can you see in log the HSQL for this scenario?
+[10:22:50] Robiul Hussain: i have seen
+[10:22:53] Robiul Hussain: let me check
+[10:23:03] WMuzammil: how does it look like?
+[10:23:09] Robiul Hussain: just going to send it to uyou
+[10:23:16] WMuzammil: thanks
+[10:24:25] Robiul Hussain: tokenProductIds....28,29,26,27
+limit....10
+issuerIds....1,2,3
+responseCodes....
+transactionTypes....
+dateFrom....01/02/2013 00:15
+dateTo....13/02/2013 00:00
+transactionStatus....
+tokenProductGroupIds...28,29,26,27
+IssuerIds...1,2,3
+2013-02-13 10:23:39,860 DEBUG org.hibernate.SQL: select * from ( SELECT
+  LOG.id,LOG.TRX_STATUS as trxStatus,
+  LOG.SYSTEM_DATETIME as systemDateTime,
+  LOG.REQ_DATETIME as requestDateTime,
+  LOG.RSP_DATETIME as responseDateTime,
+  LOG.RSP_ERROR_DESCR as errorDescription,
+  LOG.RSP_RESPONSE_CODE as responseCode,
+  LOG.REQ_PAN_ID as requestPanId,
+  LOG.RSP_PAN_ID as responsePanId,
+  LOG.REQ_PIN_EXPIRY_DATE as requestPinExpiryDate,
+  LOG.REQ_PAN_EXPIRY_DATE as requestPanExpiryDate,
+ -- LOG.REQ_TH_FIRST_NAME as requestFirstName,
+  LOG.REQ_PIN_DELIVERY_METHOD as requestPinDeliveryMethod,
+ -- LOG.REQ_TH_MIDDLE_NAME as requestMiddleName,
+ -- LOG.REQ_TH_LAST_NAME as requestLastName,
+ -- LOG.REQ_TH_ADDRESS1 as requestAddress1,
+ -- LOG.REQ_TH_ADDRESS2 as requestAddress2,
+ -- LOG.REQ_TH_ADDRESS3 as requestAddress3,
+ -- LOG.REQ_TH_ADDRESS4 as requestAddress4,
+ -- LOG.REQ_TH_ADDRESS5 as requestAddress5,
+ -- LOG.REQ_TH_ADDRESS6 as requestAddress6,
+--  LOG.REQ_TH_TOWN as requestTown,
+ -- LOG.REQ_TH_POST_CODE as requestPostCode,
+  LOG.REQ_TH_COUNTRY_CODE as requestCountryCode,
+  LOG.REQ_COMPANY_NAME as requestCompanyName,
+  LOG.REQ_COMPANY_CONTACT as requestCompanyContact,
+  LOG.REQ_NUMBER_OF_TOKENS as requestNumberOfTokens,
+  LOG.REQ_GENERATE_PIN_FLAG as requestGeneratePinFlag,
+  LOG.REQ_GENERATE_PUK_FLAG as requestGeneratePukFlag,
+  LOG.REQ_ISSUER_TOKEN_PRODUCT_CODE as requestIssuerTokenProductCode,
+  LOG.RSP_ISSUER_TOKEN_PRODUCT_CODE as responseIssuerTokenProductCode,
+  LOG.REQ_TOKEN_APP_SEQ_NUM as requestTokenAppSeqNum,
+  LOG.RSP_TOKEN_APP_SEQ_NUM as responseTokenAppSeqNum,
+  TT.NAME as transactionType,
+  TA.PAN_DISPLAY as requestPanDisplay,
+  NULL as responsePanDisplay
+  FROM
+  PM_D_TRX_LOG LOG
+  LEFT OUTER JOIN C_D_TOKEN_APPLICATION TA on (log.REQ_PAN_ID = ta.ID )
+  LEFT OUTER JOIN C_D_TOKEN_PRODUCT TP on tp.id=ta.token_product_id
+  LEFT OUTER JOIN C_D_TOKEN T on ta.token_ID = TP.id
+  LEFT OUTER JOIN PM_S_TRX_TYPE TT  on TT.ID=LOG.TRX_TYPE_ID
+  WHERE (LOG.SYSTEM_DATETIME>=? AND LOG.SYSTEM_DATETIME<=?)
+  AND (TP.ISSUER_ID IN (?, ?, ?) OR (? = 1))
+  AND (TA.token_product_id in (?, ?, ?, ?) OR (? = 1))
+  AND (LOG.TRX_TYPE_ID in (?) OR (? = 1) )
+  AND (LOG.RSP_RESPONSE_CODE in (?) OR (? = 1) )
+  AND (TA.PAN_ENCRYPTED = ? OR (? = 1) )
+  AND (T.CUSTOMER_CODE = ? OR (? = 1))
+  AND ( TA.ID=? OR (? = 1) )
+  AND (LOG.TRX_STATUS in (?) OR (? = 1))
+
+UNION  ALL
+
+SELECT
+  LOG.id,LOG.TRX_STATUS as trxStatus,
+  LOG.SYSTEM_DATETIME as systemDateTime,
+  LOG.REQ_DATETIME as requestDateTime,
+  LOG.RSP_DATETIME as responseDateTime,
+  LOG.RSP_ERROR_DESCR as errorDescription,
+  LOG.RSP_RESPONSE_CODE as responseCode,
+  LOG.REQ_PAN_ID as requestPanId,
+  LOG.RSP_PAN_ID as responsePanId,
+  LOG.REQ_PIN_EXPIRY_DATE as requestPinExpiryDate,
+  LOG.REQ_PAN_EXPIRY_DATE as requestPanExpiryDate,
+ -- LOG.REQ_TH_FIRST_NAME as requestFirstName,
+  LOG.REQ_PIN_DELIVERY_METHOD as requestPinDeliveryMethod,
+--  LOG.REQ_TH_MIDDLE_NAME as requestMiddleName,
+--  LOG.REQ_TH_LAST_NAME as requestLastName,
+--  LOG.REQ_TH_ADDRESS1 as requestAddress1,
+--  LOG.REQ_TH_ADDRESS2 as requestAddress2,
+--  LOG.REQ_TH_ADDRESS3 as requestAddress3,
+--  LOG.REQ_TH_ADDRESS4 as requestAddress4,
+--  LOG.REQ_TH_ADDRESS5 as requestAddress5,
+--  LOG.REQ_TH_ADDRESS6 as requestAddress6,
+--  LOG.REQ_TH_TOWN as requestTown,
+--  LOG.REQ_TH_POST_CODE as requestPostCode,
+  LOG.REQ_TH_COUNTRY_CODE as requestCountryCode,
+  LOG.REQ_COMPANY_NAME as requestCompanyName,
+  LOG.REQ_COMPANY_CONTACT as requestCompanyContact,
+  LOG.REQ_NUMBER_OF_TOKENS as requestNumberOfTokens,
+  LOG.REQ_GENERATE_PIN_FLAG as requestGeneratePinFlag,
+  LOG.REQ_GENERATE_PUK_FLAG as requestGeneratePukFlag,
+  LOG.REQ_ISSUER_TOKEN_PRODUCT_CODE as requestIssuerTokenProductCode,
+  LOG.RSP_ISSUER_TOKEN_PRODUCT_CODE as responseIssuerTokenProductCode,
+  LOG.REQ_TOKEN_APP_SEQ_NUM as requestTokenAppSeqNum,
+  LOG.RSP_TOKEN_APP_SEQ_NUM as responseTokenAppSeqNum,
+  TT.NAME as transactionType,
+  NULL as requestPanDisplay,
+  TA.PAN_DISPLAY  as responsePanDisplay
+  FROM
+  PM_D_TRX_LOG LOG
+  LEFT OUTER JOIN C_D_TOKEN_APPLICATION TA on (log.RSP_PAN_ID = ta.ID )
+  LEFT OUTER JOIN C_D_TOKEN_PRODUCT TP on tp.id=ta.token_product_id
+  LEFT OUTER JOIN C_D_TOKEN T on ta.token_ID = TP.id
+  LEFT OUTER JOIN PM_S_TRX_TYPE TT  on TT.ID=LOG.TRX_TYPE_ID
+  WHERE (LOG.SYSTEM_DATETIME>=? AND LOG.SYSTEM_DATETIME<=?)
+  AND (TP.ISSUER_ID IN (?, ?, ?) OR (? = 1))
+  AND (TA.token_product_id in (?, ?, ?, ?) OR (? = 1))
+  AND (LOG.TRX_TYPE_ID in (?) OR (? = 1) )
+  AND (LOG.RSP_RESPONSE_CODE in (?) OR (? = 1) )
+  AND (TA.PAN_ENCRYPTED = ? OR (? = 1) )
+  AND (T.CUSTOMER_CODE = ? OR (? = 1))
+  AND ( TA.ID=? OR (? = 1) )
+  AND (LOG.TRX_STATUS in (?) OR (? = 1)) ) where rownum <= ?
+[10:25:29] WMuzammil: [10:24] Robiul Hussain: 
+
+<<<  AND (TA.token_product_id in (?, ?, ?, ?) OR (? = 1))
+[10:25:31] WMuzammil: ?
+[10:25:42] Robiul Hussain: aaah
+[10:25:50] Robiul Hussain: that was the magic you did
+[10:25:57] Robiul Hussain: if it isnt passed through
+[10:26:02] Robiul Hussain: we say 1=1
+[10:26:04] Robiul Hussain: os 0=1
+[10:26:26] Robiul Hussain: as non mandatory fields
+[10:26:45] WMuzammil: [10:21] WMuzammil: 
+
+<<< filter.getTokenProductIds() is represent as TA.token_product_id in (?, ?, ?, ?)
+[10:27:07] Robiul Hussain: yes, if we say query.setParameterlist
+[10:27:15] WMuzammil: Ok...thanks
+[10:27:38] Robiul Hussain: well the query was written beforehande
+[10:27:41] WMuzammil: im trying to do samething with eclipselink ORM
+[10:27:42] Robiul Hussain: we just pass in parameters
+[10:27:51] Robiul Hussain: ok
+[10:28:02] WMuzammil: i will it has same features
+[10:28:07] Robiul Hussain: ok
+[10:28:29] WMuzammil: sorry i will see is there any similarities in eclipselink oRM

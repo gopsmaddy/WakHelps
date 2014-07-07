@@ -1,0 +1,17 @@
+public static ReadObjectQuery createLocateByIdClassificationAndScopeQuery()
+{
+	Expression e1, e2, e3;
+	ReadObjectQuery query = new ReadObjectQuery(VersionTrail.class);
+	ExpressionBuilder builder = query.getExpressionBuilder();
+	e1 = builder.get("id").equal(builder.getParameter("id"));
+	e2 = builder.get("area").get("scope").get("name").equal(builder.getParameter("name"));
+	e3 = builder.get("classification").equal(builder.getParameter("classification"));
+	query.setSelectionCriteria(e1.and(e2).and(e3));
+	query.addArgument("id");
+	query.addArgument("name");
+	query.addArgument("classification");
+	query.checkCacheThenDatabase();
+	query.cacheQueryResults();
+
+	return query;
+}

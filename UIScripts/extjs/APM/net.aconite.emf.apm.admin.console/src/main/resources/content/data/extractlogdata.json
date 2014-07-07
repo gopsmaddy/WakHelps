@@ -1,0 +1,29 @@
+{
+	"recordName" : "extractLogData",
+	"records" : [
+	        {"id" : "1",
+            "originator": "originator Detail",
+            "extractTypeID": "5",
+            "startDateTime": "10-Jun-2012 00:00:00",
+            "finishDateTime":"11-Jun-2012 00:00:00" ,
+            "idFrom": "1000",
+            "idTo": "1500",
+            "dateTimeFrom": "10-Jun-2012 00:00:00",
+            "dateTimeTo":"dateTimeTo",
+            "status": "DONE" ,
+            "files": "C:\windows\system32\random.dll"
+            },
+            {"id" : "2",
+            "originator": "originator Detail2",
+            "extractTypeID": "6",
+            "startDateTime": "10-Jun-2012 00:00:00",
+            "finishDateTime":"11-Jun-2012 00:00:00" ,
+            "idFrom": "1000",
+            "idTo": "1500",
+            "dateTimeFrom": "10-Jun-2012 00:00:00",
+            "dateTimeTo":"dateTimeTo",
+            "status": "Not done" ,
+            "files": "C:\windows\system32\random321.dll"
+            }
+	]
+}

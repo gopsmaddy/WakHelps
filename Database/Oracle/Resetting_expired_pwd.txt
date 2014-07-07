@@ -1,0 +1,139 @@
+Microsoft Windows [Version 6.1.7600]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+P:\>sqplus sys/password as sysdba
+'sqplus' is not recognized as an internal or external command,
+operable program or batch file.
+
+P:\>sqllus sys/password as sysdba
+'sqllus' is not recognized as an internal or external command,
+operable program or batch file.
+
+P:\>sqlplus sys/password as sysdba
+
+SQL*Plus: Release 11.2.0.1.0 Production on Mon Dec 9 14:20:50 2013
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> alter user pma identified by affina;
+
+User altered.
+
+SQL> alter user sdsentified by affina;
+alter user sdsentified by affina
+                       *
+ERROR at line 1:
+ORA-00922: missing or invalid option
+
+
+SQL> alter user sds identified by affina;
+
+User altered.
+
+SQL> desc dba_users
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ USERNAME                                  NOT NULL VARCHAR2(30)
+ USER_ID                                   NOT NULL NUMBER
+ PASSWORD                                           VARCHAR2(30)
+ ACCOUNT_STATUS                            NOT NULL VARCHAR2(32)
+ LOCK_DATE                                          DATE
+ EXPIRY_DATE                                        DATE
+ DEFAULT_TABLESPACE                        NOT NULL VARCHAR2(30)
+ TEMPORARY_TABLESPACE                      NOT NULL VARCHAR2(30)
+ CREATED                                   NOT NULL DATE
+ PROFILE                                   NOT NULL VARCHAR2(30)
+ INITIAL_RSRC_CONSUMER_GROUP                        VARCHAR2(30)
+ EXTERNAL_NAME                                      VARCHAR2(4000)
+ PASSWORD_VERSIONS                                  VARCHAR2(8)
+ EDITIONS_ENABLED                                   VARCHAR2(1)
+ AUTHENTICATION_TYPE                                VARCHAR2(8)
+
+SQL> select username,expiry_date from dba_users;
+
+USERNAME                       EXPIRY_DA
+------------------------------ ---------
+MGMT_VIEW
+SYS
+SYSTEM
+PMA_TAB01
+SDS
+DBSNMP                         17-MAR-13
+SYSMAN                         17-MAR-13
+PMA
+OUTLN                          11-SEP-12
+MDSYS                          11-SEP-12
+ORDDATA                        11-SEP-12
+
+USERNAME                       EXPIRY_DA
+------------------------------ ---------
+ORDSYS                         11-SEP-12
+CTXSYS                         11-SEP-12
+ANONYMOUS                      11-SEP-12
+EXFSYS                         11-SEP-12
+WMSYS                          11-SEP-12
+XDB                            11-SEP-12
+APPQOSSYS                      11-SEP-12
+ORDPLUGINS                     11-SEP-12
+SI_INFORMTN_SCHEMA             11-SEP-12
+OLAPSYS                        11-SEP-12
+DIP                            11-SEP-12
+
+USERNAME                       EXPIRY_DA
+------------------------------ ---------
+ORACLE_OCM                     11-SEP-12
+XS$NULL                        11-SEP-12
+
+24 rows selected.
+
+SQL> quit
+Disconnected from Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+P:\>sqlplus sys/password as sysdba
+
+SQL*Plus: Release 11.2.0.1.0 Production on Mon Dec 9 14:25:36 2013
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> alter user pma account unlock;
+
+User altered.
+
+SQL> alter user sdscount unlock;
+alter user sdscount unlock
+                    *
+ERROR at line 1:
+ORA-00922: missing or invalid option
+
+
+SQL> alter user sds acount unlock;
+alter user sds acount unlock
+               *
+ERROR at line 1:
+ORA-00922: missing or invalid option
+
+
+SQL> alter user sds acount unlock;
+alter user sds acount unlock
+               *
+ERROR at line 1:
+ORA-00922: missing or invalid option
+
+
+SQL> alter user sds account unlock;
+
+User altered.
+
+SQL>
+

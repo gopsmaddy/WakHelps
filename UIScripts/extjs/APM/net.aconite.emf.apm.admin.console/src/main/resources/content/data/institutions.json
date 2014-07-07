@@ -1,0 +1,11 @@
+{
+	"recordName" : "institutions",
+	"records" :[{		
+			"institutionname" : "Nordea",
+			"id" : 36
+		}, {
+			"institutionname" : "NordeaHJK",
+			"id" : 59
+		}
+	]
+}

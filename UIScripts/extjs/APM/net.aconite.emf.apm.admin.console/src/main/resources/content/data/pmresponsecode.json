@@ -1,0 +1,60 @@
+{
+	"totalCount" : "17",
+	"recordName" : "pmresponsecodes",
+	"records" :[{			
+			id : "1",
+			name : "Operation completed successfully"
+		}, {
+			id : "2",
+			name : "PIN not found"
+		}, {
+			id : "3",
+			name : "PAN not found"
+		}, {
+			id : "4",
+			name : "PIN delivery failed"
+		}, {
+			id : "5",
+			name : "Operation failed"
+		}, {
+			id : "6",
+			name : "Encryption error"
+		}, {
+			id : "7",
+			name : "Token not found"
+		}, {
+			id : "8",
+			name : "Token application not found"
+		}, {
+			id : "9",
+			name : "Incorrect PAN"
+		}, {
+			id : "10",
+			name : "Unexpected value in a data element"
+		}, {
+			id : "11",
+			name : "Message format error"
+		}, {
+			id : "12",
+			name : "Token product not found"
+		}, {
+			id : "13",
+			name : "Not a default token application"
+		}, {
+			id : "14",
+			name : "Incorrect PVV"
+		}, {
+			id : "15",
+			name : "PIN expected"
+		}, {
+			id : "16",
+			name : "No PIN expected"
+		}, {
+			id : "17",
+			name : "PUK expected"
+		}, {
+			id : "18",
+			name : "No PUK expected"
+		}
+	]
+}

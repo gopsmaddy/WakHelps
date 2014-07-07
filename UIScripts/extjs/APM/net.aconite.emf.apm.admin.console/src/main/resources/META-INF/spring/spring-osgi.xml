@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:osgi="http://www.springframework.org/schema/osgi"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+    <!-- Register the static resource as a service for an HTTP Service whiteboard to pick up and deploy -->
+    <osgi:service ref="consoleStaticContent" interface="net.aconite.emf.http.HttpStaticResource"
+                  context-class-loader="service-provider">
+        <osgi:service-properties>
+            <!-- The alias will become the mapping for the static resource when it is deployed into the OSGI HttpService -->
+            <entry key="alias" value="/admin/console/*"/>
+            <entry key="prefix" value="content"/>
+            <entry key="interface-type" value="admin"/>
+        </osgi:service-properties>
+    </osgi:service>
+
+    <osgi:reference cardinality="1..1" id="configProperties" interface="net.aconite.emf.config.properties.IConfigurationProperties"/>
+
+</beans>
+

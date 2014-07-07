@@ -1,0 +1,64 @@
+#!/bin/sh
+# Start/stop script for running the Aconite ICS Converter daemon
+# 
+# chkconfig: - 85 15
+# description: Runs Aconite AWSC 
+
+export AWSC_OWNR=awsc
+
+export AWSC_CONFIG=/etc/opt/awsc2
+export AWSC_LIB=/opt/awsc2/lib
+export AWSC_LOG=/var/awsc2/log
+
+export PID_LOG=$AWSC_LOG/awsc*.pid
+export START_LOG=$AWSC_LOG/awsc-start.log
+export STOP_LOG=$AWSC_LOG/awsc-stop.log
+
+export MQ_JAR_LIB=/opt/mqm/java/lib
+export MQ_USER=awsc
+
+export MQ_JARS=$MQ_JAR_LIB/com.ibm.mq.headers.jar:$MQ_JAR_LIB/com.ibm.mq.jmqi.jar:$MQ_JAR_LIB/com.ibm.mqjms.jar:$MQ_JAR_LIB/dhbcore.jar:$MQ_JAR_LIB/jms.jar
+export AWSC_JARS=$AWSC_LIB/aconite-ics-wrapper-app.jar:$AWSC_LIB/aconite-ics-converter-app.jar
+
+
+start() 
+{
+    su $AWSC_OWNR -c 'cd $AWSC_LOG;java -Duser.name=$MQ_USER -Dcom.ibm.msg.client.commonservices.log.status=OFF -Dcom.ibm.msg.client.commonservices.ffst.suppress=1 -Dlog4j.configuration=file:$AWSC_CONFIG/log4j.properties -Dmq-converter-config-dir=$AWSC_CONFIG -Dmq-converter-log-dir=$AWSC_LOG -cp $AWSC_JARS:$MQ_JARS net.aconite.wrapper.service.WrapperServerMain &' >> $START_LOG 2>&1
+    return 0
+}
+
+stop() 
+{
+    su $AWSC_OWNR -c 'cd $AWSC_LOG; java -Dlog4j.configuration=file:$AWSC_CONFIG/log4j.properties -Dmq-converter-config-dir=$AWSC_CONFIG -Dmq-converter-log-dir=$AWSC_LOG -cp $AWSC_JARS net.aconite.wrapper.client.WrapperClientMain stop' >> $STOP_LOG 2>&1
+    while : ; do
+        [[ ! -f $PID_LOG ]] && break
+        sleep 2
+    done
+    return 0
+}
+
+restart()
+{
+    stop
+    start
+	return 0
+}
+
+
+
+case "$1" in
+    start)
+        start 
+        ;;
+    stop)
+        stop
+        ;;	
+	restart)
+		restart
+		;;
+    *)
+        echo "Usage: $(basename $0) start|stop|restart"
+        exit 1
+esac
+
+exit $?

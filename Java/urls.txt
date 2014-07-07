@@ -1,0 +1,5 @@
+>http://www.wilsonmar.com/sql_coding.htm
+//MSSQL and Oracle comparison
+
+>hibernate
+//http://docs.jboss.org/hibernate/orm/3.3/reference/en/html/bi01.html

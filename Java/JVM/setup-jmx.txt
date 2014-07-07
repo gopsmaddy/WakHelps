@@ -1,0 +1,18 @@
+http://stackoverflow.com/questions/2253339/connect-visualvm-to-websphere-7
+
+I got it to work with the help of the VisualVM team in Praha (Thanks Tomas!):
+
+1) On the admin console (Click on Servers->Server types->WebSphere application servers->server1->Process definition->Java Virtual Machine), add the following line into the field of
+Generic JVM Argument (note that the first system property is equal to
+nothing and no equal sign for the second system property):
+
+-Djavax.management.builder.initial= -Dcom.sun.management.jmxremote
+
+2) Add or uncomment the following three lines in file /opt/IBM/ WebSphere/AppServer/java/jre/lib/management/management.properties (or / lib/management/management.properties):
+
+com.sun.management.jmxremote.port=3333
+com.sun.management.jmxremote.authenticate=false
+com.sun.management.jmxremote.ssl=false
+com.sun.management.jmxremote.local.only=false
+
+3) Connect VisualVM!

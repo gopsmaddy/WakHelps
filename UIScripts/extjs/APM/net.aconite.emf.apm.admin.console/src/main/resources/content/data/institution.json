@@ -1,0 +1,26 @@
+{
+	"totalCount" : 1,
+	"recordName" : "institutions",
+	"records" : [{
+			"id" : 1,
+			"name" : "Nordea",
+			"authMethod" : "L",
+			"localEncryptionZoneId" : 1,
+			"institutionEncryptionZoneId" : 5
+		},
+		{
+			"id" : 2,
+			"name" : "Nordea2",
+			"authMethod" : "L",
+			"localEncryptionZoneId" : 4,
+			"institutionEncryptionZoneId" : 6
+		},
+		{
+			"id" : 3,
+			"name" : "Nordea3",
+			"authMethod" : "N",
+			"localEncryptionZoneId" : 2,
+			"institutionEncryptionZoneId" : 3
+		}
+	]
+}

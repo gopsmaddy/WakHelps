@@ -1,0 +1,115 @@
+<!--
+  Target:   sci.jar
+ -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>net.aconite.sci</groupId>
+        <artifactId>sci-parent</artifactId>
+        <version>2.10</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>SCIConcentrator-build</artifactId>    
+    <packaging>jar</packaging>
+    <name>SCI Concentrator - build</name>
+    <dependencies>
+        <dependency>
+            <groupId>net.aconite.common</groupId>
+            <artifactId>affina-common-util</artifactId>
+        </dependency> 
+        <dependency>
+            <groupId>net.aconite.common</groupId>
+            <artifactId>affina-common-message</artifactId>
+        </dependency>   		
+        <dependency>
+            <groupId>net.aconite.sci</groupId>
+            <artifactId>GenericKeyValues</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.aconite.sci</groupId>
+            <artifactId>gKMS</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.aconite.sci</groupId>
+            <artifactId>SCIConcentrator</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.14</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+    
+        <build>
+            <finalName>${artifactId}-${build.number}</finalName>
+            <plugins>
+                <!-- Configure jar plugin to add classpath and make jar executable -->
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <mainClass>com.platform7.scijmsconcui.SCIJMSConcUI</mainClass>
+                                <addClasspath>true</addClasspath>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <!-- Configure assembly plugin to create an assembly after the package phase -->
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <version>2.1</version>
+                    <configuration>
+                        <descriptors>
+                            <!-- The assembly is defined in this file -->
+                            <descriptor>src/assemble/zip-file.xml</descriptor>
+                        </descriptors>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>make-assembly</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>attached</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+				
+				<plugin>                
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>checksum-zip</id>
+                        <phase>install</phase>
+                        <configuration>
+                            <target>
+                                <property name="sourceDir" value="${project.build.directory}/"/>
+                                <property name="destDir" value="${sourceDir}"/>
+                                <echo>generating checksum</echo>
+							   <echo>Base dir : ${basedir}</echo>
+							   <echo>Source dir : ${sourceDir}</echo>
+							   <echo>Dest dir : ${destDir}</echo>
+							   <exec dir="${basedir}/../checksum" executable="cmd.exe">
+									<arg value="/c" />
+									<arg value="generateCheckSumSignature.bat" />
+									<arg value="${artifactId}-${build.number}-bin.zip" />	
+									<arg value="${sourceDir}" />
+									<arg value="${destDir}" />
+								</exec>	
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+				
+            </plugins>
+        </build>
+
+</project>

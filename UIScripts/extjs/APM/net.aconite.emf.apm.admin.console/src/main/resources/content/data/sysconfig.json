@@ -1,0 +1,22 @@
+{
+	"totalCount" : "3",
+	"recordName" : "sysconfigs",
+	"records" :[{			
+			name : "Zeerrooo",
+			value : "Lfsdf",
+			descr : " APM local zone  - Nordea institution",
+			status : true
+		},{
+			
+			name : "uifnoo",
+			value : "rtuhebfrh",
+			descr : " thnthntninstitution",
+			status : false
+		},{
+			name : "aaaaa",
+			value : "hhhhhhhhhh",
+			descr : " xxxxxxxxxxxxx",
+			status : false
+		}
+	]
+}

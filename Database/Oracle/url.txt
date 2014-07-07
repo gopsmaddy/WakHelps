@@ -1,0 +1,3 @@
+http://stackoverflow.com/questions/1018822/inner-join-on-vs-where-clause
+
+http://www.techonthenet.com/oracle/functions/nvl.php

@@ -1,0 +1,63 @@
+{
+	"metaData" : 
+	{
+		"idProperty" : "id",
+		"totalProperty" : "total",		
+		"successProperty" : "success",
+		"root" : "data",
+		"fields" : 
+		[
+			{
+				"allowBlank" : false,
+				"defaultValue" : "",
+				"mapping" : "data1",
+				"name" : "Name0",
+				"type" : "string"
+			}, 
+			{
+				"allowBlank" : false,
+				"defaultValue" : "",
+				"mapping" : "data2",
+				"name" : "Name1",
+				"type" : "string"
+			}
+		],
+		
+	},
+	"message" : "Load data",	
+	"success" : true,
+	"total" : 2,
+	"data" : 
+	[
+		{
+			"data1" : "xx0",
+			"data2" : "aa0",
+			"data3" : "cc0",
+			"data4" : "ee0",			
+		}, 
+		{
+			"data1" : "xx1",
+			"data2" : "aa1",
+			"data3" : "cc1",
+			"data4" : "ee1",			
+		}
+	],
+	"columns" : 
+	[
+		{
+			"align" : "left",
+			"dataIndex" : "Name0",
+			"flex" : 0,
+			"header" : "H0",
+			"sortable" : true,			
+		}, 
+		{
+			"align" : "left",
+			"dataIndex" : "Name1",
+			"flex" : 0,
+			"header" : "H1",
+			"sortable" : true,			
+		}
+	],	
+	
+}

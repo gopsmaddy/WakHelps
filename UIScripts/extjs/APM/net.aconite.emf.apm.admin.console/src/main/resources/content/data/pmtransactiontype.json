@@ -1,0 +1,36 @@
+{
+	"totalCount" : "10",
+	"recordName" : "pmtransactiontypes",
+	"records" :[{		
+			id : "1",
+			name : "PIN Import"
+		}, {
+			id : "2",
+			name : "PIN Verify"
+		}, {
+			id : "3",
+			name : "PIN Delete"
+		}, {
+			id : "4",
+			name : "PUK Verify"
+		}, {
+			id : "5",
+			name : "PIN Advice"
+		}, {
+			id : "6",
+			name : "PIN Advice with SMS Password Confirmation"
+		}, {
+			id : "7",
+			name : "Token Import"
+		}, {
+			id : "8",
+			name : "Token Order"
+		}, {
+			id : "9",
+			name : "Token Order with PIN Delivery"
+		}, {
+			id : "10",
+			name : "Token Delete"
+		}
+	]
+}

@@ -1,0 +1,148 @@
+CERATE TABLE
+============
+CREATE TABLE PMA.ESP_BUSINESS_PARAMETERS 
+(
+  OID                       NUMBER(13,0) NOT NULL ENABLE,
+  BUSINESS_FUNCTION_OID     NUMBER NOT NULL ENABLE,
+  NAME                      VARCHAR2(100 BYTE)  NOT NULL ENABLE, 
+  NAME_ALIAS                VARCHAR2(100 BYTE)  DEFAULT ('Not Yet Defined') NOT NULL ENABLE, 
+  VALUE_DEFAULT             VARCHAR2(100 BYTE),  
+  DATE_CREATED              DATE DEFAULT (sysdate) NOT NULL ENABLE,
+  DATE_MODIFIED             DATE,
+  STATUS                    VARCHAR2(10 BYTE) DEFAULT ('Active') NOT NULL ENABLE, 
+  VERSION_LOCK              NUMBER
+);
+
+CREATE INDEXES
+==============
+CREATE UNIQUE INDEX PMA.ESP_BUSINESS_PARAMETERS_INDEX1 ON PMA.ESP_BUSINESS_PARAMETERS
+(
+  BUSINESS_FUNCTION_OID, NAME, NAME_ALIAS
+);
+
+CREATE INDEX PMA.ESP_BUSINESS_PARAMETERS_INDEX2 ON PMA.ESP_BUSINESS_PARAMETERS
+(
+  OID,BUSINESS_FUNCTION_OID, NAME, NAME_ALIAS 
+);
+
+ALTER TABLE
+============
+ALTER TABLE PMA.ESP_BUSINESS_PARAMETERS ADD CONSTRAINT ESP_BUSINESS_PARAMETERS_PK PRIMARY KEY (OID);
+
+ALTER TABLE PMA.ESP_BUSINESS_PARAMETERS DROP CONSTRAINT ESP_BUSINESS_PARAMETERS_FK01;
+
+ALTER TABLE PMA.ESP_BUSINESS_PARAMETERS ADD CONSTRAINT ESP_BUSINESS_PARAMETERS_FK01 Foreign Key (BUSINESS_FUNCTION_OID) REFERENCES ESP_BUSINESS_FUNCTIONS (OID);
+
+--ALTER TABLE PMA.ESP_BUSINESS_PARAMETERS  DROP COLUMN  EXPIRY_DATE; 
+
+--ALTER TABLE PMA.ESP_BUSINESS_PARAMETERS  ADD EXPIRY_DATE DATE   DEFAULT (sysdate) NOT NULL;
+
+DROP TABLE
+==========
+--DROP TABLE PMA.ESP_BUSINESS_PARAMETERS; 
+
+
+SEQUENCE
+=========
+CREATE SEQUENCE PMA.ESP_BUSINESS_PARAMETERS_ INCREMENT BY 50 START WITH 50;
+--DROP SEQUENCE PMA.ESP_BUSINESS_PARAMETERS_;
+
+ADDING CONSTRAINS
+=================
+CREATE TABLE PMA.ESP_BUSINESS_FUNCTIONS
+(
+    OID              NUMBER(13,0)  CONSTRAINT EBSF_PK PRIMARY KEY USING INDEX (CREATE UNIQUE INDEX PMA.EBSF_I00 ON PMA.ESP_BUSINESS_FUNCTIONS(OID) TABLESPACE PMA_IND01),
+    APPLICATION_OID  NUMBER(13,0)  NOT NULL CONSTRAINT EBSF_TO_APP_FK REFERENCES PMA.APPLICATIONS(OID),
+    NAME             VARCHAR2(100) NOT NULL, 
+    ALIAS            VARCHAR2(50), -- Added 
+    PARAMETER_BOUND  CHAR(1) NOT NULL CONSTRAINT EBSF_C01 CHECK (PARAMETER_BOUND IN ('Y','N')),  -- Added  -- values will be Y/N  
+    DATE_CREATED     DATE NOT NULL, 
+    STATUS           VARCHAR2(10),-- NOT NULL,  -- Added 
+    VERSION_LOCK     NUMBER(13,0)   
+)TABLESPACE PMA_TAB01;
+CREATE INDEX PMA.EBSF_I01 ON PMA.ESP_BUSINESS_FUNCTIONS(APPLICATION_OID) TABLESPACE PMA_IND01;
+CREATE UNIQUE INDEX PMA.EBSF_I02 ON PMA.ESP_BUSINESS_FUNCTIONS(APPLICATION_OID, NAME) TABLESPACE PMA_IND01;
+CREATE UNIQUE INDEX PMA.EBSF_I03 ON PMA.ESP_BUSINESS_FUNCTIONS(APPLICATION_OID, ALIAS) TABLESPACE PMA_IND01;
+CREATE SEQUENCE PMA.ESP_BUSINESS_FUNCTIONS_ INCREMENT BY 50 START WITH 50; 
+
+
+///////////////////////////////////////////////////////////////////
+
+--http://stackoverflow.com/questions/798766/how-to-create-an-oracle-sequence-starting-with-max-value-from-a-table
+SQL> create table my_numbers(my_number number not null primary key);
+
+Table created.
+
+SQL> insert into my_numbers(select rownum from user_objects);
+
+260 rows created.
+
+SQL> select max(my_number) from my_numbers;
+
+MAX(MY_NUMBER)
+--------------
+           260
+		   
+SQL> drop sequence my_number_sn;
+
+Sequence dropped.
+
+SQL> create sequence my_number_sn start with 261;
+
+Sequence created.
+
+SQL>  insert into my_numbers(my_number) values (my_number_sn.NEXTVAL);
+
+
+//////////////////////////////////////////////
+//Adding date and extract year & month from date
+
+Select 
+eapd.plastic_number,
+eapd.Pan_Sequence_number,
+eapd.expiration_date,
+EXTRACT(YEAR FROM eapd.expiration_date) ,
+EXTRACT(MONTH FROM eapd.expiration_date) ,
+apps.application_type,
+apps.application_version,
+apps.scriptable,
+ebfn.alias,
+1
+from 
+MANIFEST_APPLICATIONS mnap inner join
+SOFTCARDS sofc on sofc.oid=mnap.Softcard_oid and (sofc.status=1 or  sysdate<sofc.valid_from) and sysdate<sofc.valid_to + interval '1' day  inner join
+APPLICATIONS apps on apps.oid=mnap.application_oid  and apps.scriptable='true'  inner join
+ESP_APPLICATION_DETAILS eapd on eapd.Manifest_Application_oid=mnap.oid inner join 
+ESP_BUSINESS_FUNCTIONS ebfn on ebfn.Application_oid=apps.oid and ebfn.name <> 'xParameter Script'
+
+///////////////////////////////////////
+
+-- Migrating table schema with data
+-- Back up table created --
+CREATE TABLE &pmaUsername..esp_application_details_temp AS 
+SELECT * FROM &pmaUsername..esp_application_details;
+
+RENAME esp_application_details TO scriptable_manifest_apps;
+
+RENAME esp_application_details_ TO scriptable_manifest_apps_;
+
+
+ALTER TABLE &pmaUsername..scriptable_manifest_apps ADD (date_created DATE NULL);
+
+UPDATE &pmaUsername..scriptable_manifest_apps sma
+   SET sma.DATE_CREATED = 
+     ( SELECT manapp.date_created 
+          FROM &pmaUsername..manifest_applications manapp 
+          WHERE manapp.oid=sma.manifest_application_oid
+     );
+
+ALTER TABLE &pmaUsername..scriptable_manifest_apps MODIFY (date_created DATE NOT NULL);
+ 
+ALTER TABLE &pmaUsername..esp_card_setup_details RENAME COLUMN application_detail_oid TO scriptable_manifest_apps_oid;
+
+ALTER TABLE &pmaUsername..esp_script_status RENAME COLUMN application_detail_oid TO scriptable_manifest_apps_oid;
+
+-- Back up table dropped --
+DROP TABLE &pmaUsername..esp_application_details_temp;
+
+//////////////////////////////////////////////////

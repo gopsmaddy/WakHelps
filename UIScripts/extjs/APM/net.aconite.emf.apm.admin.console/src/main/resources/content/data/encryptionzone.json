@@ -1,0 +1,24 @@
+{
+	"totalCount" : "6",
+	"recordName" : "encryptionzones",
+	"records" :[{	
+			id : "1",
+			name : "APM local zone - Nordea institution"
+		}, {
+			id : "2",
+			name : "APM-Export zone - test"
+		}, {
+			id : "3",
+			name : "APM-Interface zone - test"
+		}, {
+			id : "4",
+			name : "APM-Institution zone - test"
+		}, {
+			id : "5",
+			name : "APM-Import zone - test"
+		}, {
+			id : "6",
+			name : "APM - PersoBureau zone - test"
+		}
+	]
+}

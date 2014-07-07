@@ -1,0 +1,106 @@
+{
+	"totalCount" : 20,
+	"recordName" : "interfaces",
+	"records" : [{
+			"id" : 1,
+			"name" : "Luottokunta Integration Layer",
+			"interfaceTypeId" : 1,
+			"institutionId" : 1,
+			"encryptionZoneId" : 4,
+			"ipAddress" : "127.0.0.1",
+			"ipPort" : 5000,
+			"timeout" : 2000,
+			"keepAlive" : true
+		}, {
+			"id" : 21,
+			"name" : "a name",
+			"interfaceTypeId" : 2,
+			"institutionId" : 1,
+			"encryptionZoneId" : 1,
+			"ipAddress" : "127.0.0.1",
+			"ipPort" : 5000,
+			"timeout" : 2000,
+			"keepAlive" : true
+		}, {
+			"id" : 20,
+			"name" : "a name",
+			"interfaceTypeId" : 2,
+			"institutionId" : 1,
+			"encryptionZoneId" : 1,
+			"ipAddress" : "127.0.0.1",
+			"ipPort" : 5000,
+			"timeout" : 2000,
+			"keepAlive" : true
+		}, {
+			"id" : 19,
+			"name" : "a name",
+			"interfaceTypeId" : 2,
+			"institutionId" : 1,
+			"encryptionZoneId" : 1,
+			"ipAddress" : "127.0.0.1",
+			"ipPort" : 5000,
+			"timeout" : 20,
+			"keepAlive" : true
+		}, {
+			"id" : 18,
+			"name" : "a name",
+			"interfaceTypeId" : 2,
+			"institutionId" : 1,
+			"encryptionZoneId" : 1,
+			"ipAddress" : "127.0.0.1",
+			"ipPort" : 5000,
+			"timeout" : 2000,
+			"keepAlive" : true
+		}, {
+			"id" : 17,
+			"name" : "a name",
+			"interfaceTypeId" : 2,
+			"institutionId" : 1,
+			"encryptionZoneId" : 1,
+			"ipAddress" : "127.0.0.1",
+			"ipPort" : 5000,
+			"timeout" : 2000,
+			"keepAlive" : true
+		}, {
+			"id" : 16,
+			"name" : "a name",
+			"interfaceTypeId" : 2,
+			"institutionId" : 1,
+			"encryptionZoneId" : 1,
+			"ipAddress" : "127.0.0.1",
+			"ipPort" : 50,
+			"timeout" : 200,
+			"keepAlive" : true
+		}, {
+			"id" : 15,
+			"name" : "a name",
+			"interfaceTypeId" : 2,
+			"institutionId" : 1,
+			"encryptionZoneId" : 1,
+			"ipAddress" : "127.0.0.1",
+			"ipPort" : 5000,
+			"timeout" : 2000,
+			"keepAlive" : true
+		}, {
+			"id" : 14,
+			"name" : "a name",
+			"interfaceTypeId" : 2,
+			"institutionId" : 1,
+			"encryptionZoneId" : 1,
+			"ipAddress" : "127.0.0.1",
+			"ipPort" : 5000,
+			"timeout" : 2000,
+			"keepAlive" : true
+		}, {
+			"id" : 13,
+			"name" : "a name",
+			"interfaceTypeId" : 2,
+			"institutionId" : 1,
+			"encryptionZoneId" : 1,
+			"ipAddress" : "127.0.0.1",
+			"ipPort" : 5000,
+			"timeout" : 2000,
+			"keepAlive" : true
+		}
+	]
+}

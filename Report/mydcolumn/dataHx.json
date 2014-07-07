@@ -1,0 +1,145 @@
+{
+	"metaData" : {
+		"idProperty" : "id",
+		"totalProperty" : "total",
+		"successProperty" : "success",
+		"root" : "data",
+		"fields" : [{
+				"name" : "Name0",
+				"mapping" : "data0",
+				"type" : "string",
+				"allowBlank" : false,
+				"defaultValue" : ""
+			}, {
+				"name" : "Name1",
+				"mapping" : "data1",
+				"type" : "int",
+				"allowBlank" : false,
+				"defaultValue" : "0.00"
+			}, {
+				"name" : "Name2",
+				"mapping" : "data2",
+				"type" : "float",
+				"allowBlank" : false,
+				"defaultValue" : "0.00"
+			}, {
+				"name" : "Name3",
+				"mapping" : "data3",
+				"type" : "int",
+				"allowBlank" : false,
+				"defaultValue" : ""
+			}, {
+				"name" : "Name4",
+				"mapping" : "data4",
+				"type" : "int",
+				"allowBlank" : false,
+				"defaultValue" : ""
+			}, {
+				"name" : "Name5",
+				"mapping" : "data5",
+				"type" : "string",
+				"allowBlank" : false,
+				"defaultValue" : ""
+			}
+		]
+	},
+	"success" : true,
+	"total" : 5,
+	"message" : "Load data",
+	"data" : [{
+			"data0" : "0name name name0",
+			"data1" : "-2.0",
+			"data4" : "1356304333062",
+			"data5" : "5XX0",
+			"data2" : "75.0",
+			"data3" : "3"
+		}, {
+			"data0" : "0name name name1",
+			"data1" : "-1.0",
+			"data4" : "1356304333062",
+			"data5" : "5XX1",
+			"data2" : "60.0",
+			"data3" : "4"
+		}, {
+			"data0" : "0name name name2",
+			"data1" : "0.0",
+			"data4" : "1356304333062",
+			"data5" : "5XX2",
+			"data2" : "50.0",
+			"data3" : "5"
+		}, {
+			"data0" : "0name name name3",
+			"data1" : "1.0",
+			"data4" : "1356304333062",
+			"data5" : "5XX3",
+			"data2" : "42.857142857142854",
+			"data3" : "6"
+		}, {
+			"data0" : "0name name name4",
+			"data1" : "2.0",
+			"data4" : "1356304333062",
+			"data5" : "5XX4",
+			"data2" : "37.5",
+			"data3" : "7"
+		}
+	],
+	columns : 
+	[
+		{
+			"text" : "H0",
+			"dataIndex" : "Name0",
+			"align" : "left",
+			"sortable" : true,
+			locked  : true,
+		}, 
+		{
+            text: 'Stock Price',
+            columns: 
+			[
+				
+				{
+					"text" : "H1",
+					"dataIndex" : "Name1",
+					"align" : "right",
+					"sortable" : true,			
+					"xtype" : "numbercolumn",
+					"format" : "0.00",
+					"renderer" : change,
+				}, 
+				{
+					text: 'Stock Price2',
+					columns: 
+					[
+						{
+							"text" : "H2",
+							"dataIndex" : "Name2",
+							"align" : "right",
+							"sortable" : true,			
+							"xtype" : "numbercolumn",
+							"format" : "0.000"
+						},
+						{
+							"text" : "H3",
+							"dataIndex" : "Name3",
+							"align" : "right",
+							"sortable" : true
+						},
+					]
+				}, 
+				 {
+					"text" : "H4",
+					"dataIndex" : "Name4",
+					"align" : "center",
+					"sortable" : true,
+					"renderer" : render2APMDate
+				},
+			]
+        }, 
+		{
+			"text" : "H5",
+			"dataIndex" : "Name5",
+			"align" : "left",
+			"sortable" : true
+		}
+	]
+}

@@ -1,0 +1,120 @@
+<project name="SI-PersistentMessageChannel" default="dist">
+
+	<!-- Defines a directory where dependent libraries are located. -->
+	<property name="library.home" value="${basedir}/../libraries" />
+	
+	<property name="module.name" value="${ant.project.name}" />
+  
+  <!--Lists the dependencies for this application. -->
+	<fileset id="libraries.1" dir="${library.home}">
+	  <!--The Spring Integration jar. -->
+		<include name="spring-integration-1.0.1.RELEASE/dist/org.springframework.integration-1.0.1.RELEASE.jar" />
+		<!-- The Spring jars -->
+		<include name="spring-framework-2.5.6/dist/spring.jar" />
+		<include name="spring-framework-2.5.6/lib/jakarta-commons/commons-logging.jar" />
+		<include name="spring-framework-2.5.6/lib/log4j/log4j-1.2.15.jar" />
+	</fileset>
+	
+	<fileset id="libraries.2" dir="support/database">
+	  <!--The HSQL Database jar -->
+		<include name="hsqldb.jar" />
+	</fileset>
+    
+	<!--
+		The classpath
+	-->
+	<path id="classpath">
+		<pathelement location="bin" />
+		<pathelement location="src" />
+		<pathelement location="${basedir}/support/spring" />
+		<pathelement location="${basedir}/support/properties" />
+		<fileset refid="libraries.1" />
+		<fileset refid="libraries.2" />
+	</path>
+ 
+	<target name="dist" description="Compile source and create final packages"
+		depends="-init,compile,createJar,docs" />
+
+	<target name="-init">
+		<mkdir dir="bin" />
+		<mkdir dir="dist" />
+		<mkdir dir="docs" />
+	</target>
+
+	<target name="clean"
+		description="Clean the project and remove all generated files.">
+		<delete dir="bin" />
+		<delete dir="dist" />
+		<delete dir="docs" />
+	</target>
+
+	<target name="compile" description="Compiles the source files."
+		depends="-init">
+		<javac destdir="bin" 
+			debug="true"
+			debuglevel="lines,vars,source">
+			<classpath refid="classpath" />
+			<src location="src" />
+		</javac>
+	</target>
+
+	<target name="createJar" depends="compile"
+		description="Creates a jar file of the application">
+		<jar destfile="dist/${module.name}.jar">
+			<fileset dir="bin">
+				<include name="**" />
+			</fileset>
+			<fileset dir="support/spring/">
+				<include name="*.xml" />
+			</fileset>
+			<fileset dir="support/properties/">
+				<include name="*" />
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="docs"
+		description="Generate documentation for all java souce files."
+		depends="-init">
+		<javadoc sourcepath="src" destdir="docs"
+			windowtitle="${module.name}">
+			<classpath refid="classpath" />
+		</javadoc>
+	</target>
+
+	<target name="run"
+	    description="Runs the example program">
+		
+		<!-- Check that the database is running -->
+		<waitfor maxwait="5" maxwaitunit="second"
+		      checkevery="1" checkeveryunit="second" timeoutproperty="database.available">
+      <socket server="localhost" port="9001"/>
+    </waitfor>
+		
+		<fail message="The database has not been started.  Start it using one of the scripts in support/database." 
+		           if="database.available"/>
+		
+    <java classname="sitest.Main" fork="true">
+      <classpath refid="classpath" />
+    </java>
+	</target>
+
+	<target name="run-fail"
+	    description="Runs the example program and causes the transaction to rollback">
+		
+		<!-- Check that the database is running -->
+		<waitfor maxwait="5" maxwaitunit="second"
+		      checkevery="1" checkeveryunit="second" timeoutproperty="database.available">
+      <socket server="localhost" port="9001"/>
+    </waitfor>
+		
+		<fail message="The database has not been started.  Start it using one of the scripts in support/database." 
+		           if="database.available"/>
+		
+    <java classname="sitest.Main" fork="true">
+      <classpath refid="classpath" />
+    	<arg value="doFail"/>
+    </java>
+	</target>
+	
+</project>

@@ -1,0 +1,38 @@
+http://www-03.ibm.com/software/products/us/en/appserv-wasnd/
+
+IBM® WebSphere® Application Server Network Deployment provides an advanced, flexible runtime environment for large-scale application deployments. 
+It offers near-continuous availability with advanced performance and management capabilities for mission-critical applications.
+
+WebSphere Application Server Network Deployment provides:
+
+    Support for open standards and broad programming models including lightweight options for web application deployments.
+    Intelligent management and routing to help deliver reliability and better business results.
+    Improved operations and resiliency through advanced application availability, elasticity and quality of service.
+    Enhanced security and control using integrated management and administrative tools.
+	
+	Continuous availability, advanced management and performance optimization for large-scale deployments
+		IBM Software Subscription and Support is included in the product price for the first year.
+		Download software online after purchase - no shipping costs! 
+		
+	Typical Suggested Retail Price*:
+		Processor Value Unit (PVU) license:  USD 19,600.00
+		100 PVUs x 196.00
+
+		http://www.youtube.com/watch?v=7VwkuizbLDg&feature=youtu.be
+
+		
+		
+=================================================================
+
+Hosting MG as remote service:
+
+1. go to "ACO212"
+	MQ_HOSTNAME=ACO212
+	MQ_JMS_PORT=1414
+	MQ_QUEUE_MANAGER=QM_ACO212
+	MQ_CHANNEL=JAVA.CHANNEL
+	MQ_LOGGING_CHANNEL=$MQ_CHANNEL
+	# ******* MQ TRANSPORT CHANNEL: MQBINDING/MQTCPIP, BYDefault:MQTCPIP *********
+	MQBINDING_OR_MQTCPIP=MQTCPIP
+2. Copy "mqCommands.qsc" file into ACO212 folder
+3. Run command "C:\WebSphere>runmqsc < mqCommands.qsc"
