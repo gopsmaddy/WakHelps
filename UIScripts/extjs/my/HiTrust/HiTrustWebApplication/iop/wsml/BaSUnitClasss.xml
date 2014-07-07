@@ -1,0 +1,22 @@
+<DST>
+	<HiTrust>
+		<businessObject>BaSUnitClasss</businessObject>
+		<operation>SEARCH</operation>
+		<user>@@user@</user>
+		<password>@@pass@</password>
+		<request>
+			<data>
+				<MaxRows>@@maxRecords@</MaxRows>
+				<Fund>
+					<Key>@@fundKey@</Key>
+				</Fund>
+				<ExcludeExtView>False</ExcludeExtView>
+			</data>
+		</request>
+		<response>
+			<Key/>
+			<Code/>
+			<Desc/>
+		</response>
+	</HiTrust>
+</DST>

@@ -1,0 +1,19 @@
+
+<DST>
+ <HiTrust>
+	<businessObject>BaExtUserValidation</businessObject>
+  <user>@@nonSecureAdminUsername@</user>
+  <password>@@nonSecureAdminPassword@</password>
+  <request>
+	  <data>
+			<LoginID>@@loginID@</LoginID>						
+			<EmailAddress>@@emailAddress@</EmailAddress>		
+			<SignificantDate>@@significantDate@</SignificantDate>				
+			<SecretIDWord>@@secretIdWord@</SecretIDWord>						
+			<PwdResetHyperLink>@@completeForgottonPasswordURL@</PwdResetHyperLink>
+		</data>
+		<SAVE/>
+	</request>
+  <response></response>
+</HiTrust>
+</DST>	

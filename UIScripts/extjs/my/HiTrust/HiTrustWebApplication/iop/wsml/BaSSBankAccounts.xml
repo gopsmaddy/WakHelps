@@ -1,0 +1,23 @@
+<DST>
+	<HiTrust>
+		<businessObject>BaSSBankAccounts</businessObject>
+		<operation>SEARCH</operation>
+		<user>@@user@</user>
+		<password>@@pass@</password>
+		<request>
+			<data>
+				<Client.RelNo>@@profileRelNo@</Client.RelNo>					
+				<Deleted>false</Deleted>
+			</data>
+		</request>
+		<response>
+			<Client.RelNo/>
+			<Client.Key/>
+			<Name />
+			<Number />
+			<SortCode.BSBCode />
+			<SortCode.Bankname />
+			<Deleted />
+		</response>
+	</HiTrust>
+</DST>

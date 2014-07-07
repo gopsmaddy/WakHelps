@@ -1,0 +1,15 @@
+  <?xml version="1.0" ?> 
+- <DST>
+  <user>AG000001</user> 
+  <password>Passw0rd</password> 
+- <response>
+- <List>
+  <SLoginType>5</SLoginType> 
+- <User>
+- <AssociatedClient>
+  <Key>0000000001</Key> 
+  </AssociatedClient>
+  </User>
+  </List>
+  </response>
+  </DST>

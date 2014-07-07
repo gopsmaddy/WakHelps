@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+		<groupId>com.aconitesolutions</groupId>
+		<artifactId>aconite</artifactId>
+		<version>4.1.0</version>
+	    <relativePath>../../aconite/pom.xml</relativePath>
+	</parent>
+	
+	<!--
+	<parent>
+		<groupId>net.aconite.affina</groupId>
+		<artifactId>affina-parent</artifactId>
+		<version>2.6.2</version>
+		<relativePath>../../Affina/affina-parent/pom.xml</relativePath>
+    </parent>
+	-->
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.aconitesolutions</groupId>
+    <artifactId>nsam-plugin</artifactId>
+	<version>4.1.0</version>
+    <packaging>pom</packaging>
+    <name>NSAM Plugin</name>
+	       
+	<build>
+		<plugins>       
+			<plugin>
+				<groupId>com.atlassian.maven.plugins</groupId>
+				<artifactId>maven-clover2-plugin</artifactId>
+				<version>3.1.4</version>
+			</plugin>        
+		</plugins>
+	</build>
+	
+    <modules>
+        <module>aconite-nsam-ear</module>
+        <module>aconite-nsam-core</module>
+		<module>aconite-nsam-web</module>
+		
+		<module>../AconiteJSFComponents/aconite-common-jsf</module>		
+		<module>../AconiteDAOCommon</module>
+		<module>../AconiteServerUtils</module>
+		<module>../AconiteUtils</module>
+		<module>../AconiteTestCommon</module>
+		<module>../AconiteDataDictionary</module>
+		
+    </modules>
+</project>

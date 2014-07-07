@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom" >
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.appmgmt_Title}
+    </ui:define>
+    <ui:define name="workArea">
+        <p>#{msg.appmgmt_delStage_title}</p>
+        <h:form  onsubmit="document.body.style.cursor='wait';">
+
+            <ui:fragment rendered="true">
+                <table class="acTable">
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.chipId}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:inputText id="cardId" value="#{DeleteStageUpdateBean.piUpdateData.cardId}"
+                                         minimum="16"
+                                         maxlength="16"
+                                         styleClass="form-input-text"
+                                         required="true"
+                                         label="Chip ID"
+                                         onblur="this.value=this.value.toUpperCase();"
+                                         autocomplete="off">
+                                <f:validator validatorId="hexValueValidator" />
+                                <f:validateLength minimum="16" maximum="16" />
+                            </h:inputText>
+                            <br/> <h:message for="cardId" styleClass="warn"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <h:outputText value=" "/>
+                            <h:commandButton id="idGetDeleteStageUpdates" action="#{DeleteStageUpdateBean.getDeliveryStageUpdates}"
+                                             value="#{msg.appmgmt_delStage_vieweSubmit}" />
+                            <h:outputText value=" "/>
+                        </td>
+                    </tr>
+
+                    <ui:fragment id="deleteFlag" rendered="#{DeleteStageUpdateBean.deleteStagedUpdate}">
+                        <tr>
+                            <td colspan="2">
+                                <ac:pkDataTable rendered="#{DeleteStageUpdateBean.optionsAvailable}" id="allDSU" binding="#{DeleteStageUpdateBean.dsuData}"
+                                                primaryKey="id"
+                                                var="dsu"
+                                                value="#{DeleteStageUpdateBean.allDSU}"
+                                                headerClass="table-header"
+                                                footerClass="table-footer"
+                                                styleClass="acTable"
+                                                cellpadding="0" cellspacing="0">
+
+
+
+                                    <h:column id="businessApplicationNameColumn1" >
+                                        <f:facet name="header">
+                                            <h:outputText value="Name"/>
+                                        </f:facet>
+                                        <ui:fragment rendered="#{dsu.canBeDeleted}">
+                                            <h:outputText id="idBusinessApplicationName1" value="#{dsu.businessApplicationName}" styleClass="text-table-header"/>
+                                        </ui:fragment>
+                                        <ui:fragment rendered="#{!dsu.canBeDeleted}">
+                                            <h:outputText id="idBusinessApplicationName2" value="#{dsu.businessApplicationName}"/>
+                                        </ui:fragment>
+                                    </h:column>
+
+                                    <h:column id="businessApplicationActionColumn1" >
+                                        <f:facet name="header">
+                                            <h:outputText value="Action"/>
+                                        </f:facet>
+                                        <ui:fragment rendered="#{dsu.canBeDeleted}">
+                                            <h:outputText id="idBusinessApplicationAction1" value="#{dsu.businessApplicationAction}" styleClass="text-table-header"/>
+                                        </ui:fragment>
+                                        <ui:fragment rendered="#{!dsu.canBeDeleted}">
+                                            <h:outputText id="idBusinessApplicationAction2" value="#{dsu.businessApplicationAction}"/>
+                                        </ui:fragment>
+                                    </h:column>
+
+                                    <h:column id="startValidityColumn1" >
+                                        <f:facet name="header">
+                                            <h:outputText value="Date Created"/>
+                                        </f:facet>
+                                        <ui:fragment rendered="#{dsu.canBeDeleted}">
+                                            <h:outputText id="idStartValidity1" value="#{dsu.dateCreated}" styleClass="text-table-header"/>
+                                        </ui:fragment>
+                                        <ui:fragment rendered="#{!dsu.canBeDeleted}">
+                                            <h:outputText id="idStartValidity2" value="#{dsu.dateCreated}"/>
+                                        </ui:fragment>
+                                    </h:column>
+
+                                    <h:column id="canBeDeletedColumn1">
+                                        <f:facet name="header">
+                                            <h:outputText value="Can be Deleted?" />
+                                        </f:facet>
+                                        <ui:fragment rendered="#{dsu.canBeDeleted}">
+                                            <h:outputText id="idCanBeDeleted1" value="#{dsu.canBeDeleted}" styleClass="text-table-header"/>
+                                        </ui:fragment>
+                                        <ui:fragment rendered="#{!dsu.canBeDeleted}">
+                                            <h:outputText id="idCanBeDeleted2" value="#{dsu.canBeDeleted}"/>
+                                        </ui:fragment>
+                                    </h:column>
+
+
+                                </ac:pkDataTable>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+
+                                <ui:fragment id="displayDeleteButtonFlag" rendered="#{DeleteStageUpdateBean.displayDeleteButton}">
+                                    <h:commandButton  id="idDeleteDeliveryStageUpdate"
+                                                      action="#{DeleteStageUpdateBean.deleteDeliveryStageUpdate}"
+                                                      value="#{msg.deleteLink}" />
+                                </ui:fragment>
+
+                            </td>
+                        </tr>
+                    </ui:fragment>
+                </table>
+            </ui:fragment>
+            &#160;
+        </h:form>
+        <h:messages globalOnly="true" layout="table" styleClass="warn"
+                    infoClass="info" warnClass="warn"
+                    errorClass="warn"
+                    fatalClass="warn"/>
+
+        <br/>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom">
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.crlProcess_Result}
+    </ui:define>
+    <ui:define name="workArea">
+        <h:form onsubmit="document.body.style.cursor='wait';">
+
+           <!--<ui:fragment rendered="#{(CRLProcess.deviceListUI.processingRequest)}">-->
+                    <p> #{msg.crlProcess_Result_Title1}</p>
+                    <!--p> #{msg.crlProcess_Result_Title2}</p-->
+                    <br/>
+                    <ui:fragment >
+            <table>
+                <tr>
+                    <td>
+                        <ac:pkDataTable id="responseDevices"
+                                        primaryKey="id" 
+                                        var="devices" 
+                                        value="#{CRLProcess.opResponse}"
+                                        headerClass="table-header"
+                                        footerClass="table-footer"
+                                        styleClass="acTable"
+                                        cellpadding="0" cellspacing="0">
+                           
+                                    <h:column id="Imported" >
+                                        <f:facet name="header">
+                                            <h:outputText value="Total SAMs"/>
+                                        </f:facet>
+                                        <h:outputText id="actionTaken" value="#{devices.noOfSamsImported}"/>
+                                    </h:column>
+                            
+                                     <h:column id="Suspended" >
+                                        <f:facet name="header">
+                                            <h:outputText value="New SAM Added To S9 CRL"/>
+                                        </f:facet>
+                                        <h:outputText id="samsCreated" value="#{devices.doesNotexist_SoCreatedCount}"/>
+                                    </h:column>
+
+                                    <h:column id="Removed" >
+                                        <f:facet name="header">
+                                            <h:outputText value="Existing SAM Added To S9 CRL"/>
+                                        </f:facet>
+                                        <h:outputText id="samsCancelled" value="#{devices.existsCancelledOrValid_SoRemovedCount}"/>
+                                    </h:column>
+
+                                    <h:column id="NoAction" >
+                                        <f:facet name="header">
+                                            <h:outputText value="No Change"/>
+                                        </f:facet>
+                                        <h:outputText id="samsNoAction" value="#{devices.existsSupended_SoNoActionCount}"/>
+                                    </h:column>
+                             
+                      </ac:pkDataTable>
+             
+                    </td></tr>
+                            </table></ui:fragment >
+
+
+
+        </h:form>
+            <h:messages globalOnly="true" layout="table" styleClass="warn"
+            infoClass="info" warnClass="warn"
+            errorClass="warn"
+            fatalClass="warn"/>
+
+            <br/>        
+    </ui:define>
+</ui:composition>
+</body>
+</html>

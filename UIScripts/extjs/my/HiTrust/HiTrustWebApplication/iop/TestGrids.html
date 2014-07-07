@@ -1,0 +1,167 @@
+<html>
+	<head>
+			 <link href="http://modules.eurouwins.com/iop/styles/jquery-ui-1.8.4.custom.css" type="text/css" rel="stylesheet" media="screen">			
+			
+      <script src="http://modules.eurouwins.com/iop/scripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/jquery.uniform.min.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/jquery-ui-1.8.4.custom.min.js" type="text/javascript"></script>
+			
+      <link href="http://modules.eurouwins.com/iop/styles/flexigrid.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/iop_screen.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/uniform.default.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/web_fonts.css" type="text/css" rel="stylesheet" media="screen">
+			
+			<script src="http://modules.eurouwins.com/iop/scripts/flexigrid.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/iop_functions.js" type="text/javascript"></script>
+		
+		  <link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+            <!--<script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base.js" type="text/javascript"></script>
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all.js" type="text/javascript"></script>-->
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all-debug.js" type="text/javascript"></script>
+      
+     
+			
+			<script src="js/pagesizeplugin.js" type="text/javascript"></script>
+			
+	   <body>
+	   	
+<script type="text/javascript">
+	   		
+	////////////////////////jquery calls/////////////////////////////////////   		
+
+Ext.Ajax.timeout = 60000;
+Ext.onReady
+(
+	function()
+	{
+	
+		////////////////////////InvestorSummary///////////////////////////////////////////
+	
+		// create the Data Store
+		 myInvestorSummaryStore = new Ext.data.Store
+		 (
+		 	{
+			// load using HTTP
+				proxy : new Ext.data.HttpProxy
+				(
+					{																
+						method: 'GET',
+						prettyUrls: false,
+						url: 'http://localhost:9080/HiTrustWebApplication/iop/jsp/BaPortSummaryDatas.jsp'
+						//url: 'http://localhost/test-extjs/iop/xml/BaPortSummaryDatas.xml'
+						//url: '/XMLDataLoader.aspx?action=BaPortSummaryDatas'
+					}
+				),
+				remoteSort:true,
+				// the return will be XML, so lets set up a reader
+				reader: new Ext.data.XmlReader
+				(
+					{
+					   // records will have an "Item" tag
+					   record: 'List',
+					   //id: 'Portfolio>Key',
+					   id: '>Account>Number',
+					   totalProperty: 'totalRecords'
+				   },
+				   fields: 
+				   [
+					   // set up the fields mapping into the xml doc
+					   // The first needs mapping, the others are very basic
+									{name:  'Fund_Desc'					, mapping: '>Fund>Desc'},
+									{name : 'Fund_Code'					, mapping: '>Fund>Code'},
+									{name : 'BalanceInCurrency'	, mapping: '>BalanceInCurrency'},
+									{name : 'BalanceInUnits'		, mapping: '>BalanceInUnits'},
+									{name : 'UnitClass_Desc'		, mapping: '>UnitClass>Desc'}
+				   ]
+			   ),
+			   listeners: 
+			   {
+			   	load: function()
+			   	{
+			   		this.loaded = true;
+			   	}
+			  }
+			   
+			}
+		);
+	
+		// create the grid
+		var myInvestorSummaryGrid = new Ext.grid.GridPanel
+		(
+			{
+				//title: 'Search Results',
+				store: myInvestorSummaryStore,
+				columns: 
+				[
+					{id: 'Fund_Desc'				,header: 'Fund Name'		      , dataIndex : 'Fund_Desc'			    , width : 250, sortable : true, align: 'left'},
+					{id: 'Fund_Code'				,header: 'Fund Code'	        , dataIndex : 'Fund_Code'			    , width : 150, sortable : true, align: 'left'},
+					{id: 'UnitClass_Desc'		,header: 'Unit Class'			    , dataIndex : 'UnitClass_Desc'		, width : 100, sortable : true, align: 'left'},
+					{id: 'BalanceInUnits'	  ,header: 'Balance in Units'		, dataIndex : 'BalanceInUnits'		, width : 100, sortable : true, align: 'right'},
+					{id: 'BalanceInCurrency',header: 'Balance in Dollars'	, dataIndex : 'BalanceInCurrency'	, width : 100, sortable : true, align: 'right'}
+					
+					
+				],
+				
+			  
+		    renderTo:'investorSummary',
+		    autoExpandColumn: 'Fund_Desc',
+		   	autoWidth: true,
+		   	autoHeight:true,
+		   	stripeRows: true,
+		    sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
+				viewConfig: {emptyText: 'No records to display.'},
+				bbar: new Ext.PagingToolbar
+					(
+						{
+							id : 'pInvestorSummaryBar',								
+							displayInfo: true,
+							pageSize:10,	
+							displayMsg: 'Displaying {0} - {1} of {2}',
+							emptyMsg: "No items to display",
+							store: myInvestorSummaryStore,
+							plugins: [new Ext.ux.PageSizePlugin()]
+						}
+					)			
+						
+			}
+		);
+	
+	
+	///////////////////////masking///////////////////////////////////////
+		
+	
+	myInvestorSummaryMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Please wait...",	
+				removeMask:true,			
+				store:myInvestorSummaryStore
+		}
+	);	
+	
+	/////////////////////default setup/////////////////////////////////////////
+	
+		myInvestorSummaryGrid.getBottomToolbar().refresh.hide();			
+		
+		if(!myInvestorSummaryStore.loaded)	
+    {
+    	myInvestorSummaryMask.show();			
+			myInvestorSummaryStore.load({params:{start:0, limit:Ext.getCmp('pInvestorSummaryBar').pageSize}});
+		} 
+		
+	}
+);
+
+
+</script>
+
+
+<div id="investorSummary"></div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<DST>  
+ <HiTrust>    
+  <businessObject>BaAgentPays</businessObject>             
+  <operation>SEARCH</operation>    
+  <user>@@user@</user>
+   <password>@@pass@</password>
+ <request>  
+  <data>
+  	<Agent.Key>@@profileAgentKey@</Agent.Key>
+   <MaxRows>@@maxRecords@</MaxRows>  
+   <Payment.Key>@@PaymentKey@</Payment.Key> 
+  </data>
+ </request>  
+ <response> 
+ 	 <Payment.Key/> 
+  <AgentPayKey/>
+  <PaidDate/>
+  <FeeType/>
+  <AgentAmtPaid/>
+  <Agent.Key/>
+ </response>
+</HiTrust>
+</DST>

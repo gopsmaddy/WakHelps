@@ -1,0 +1,122 @@
+<!-- -This was translated from the DC-India build.  There may be stuff that is not needed in this EJB jar -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>net.aconite.affina</groupId>
+        <artifactId>affina-parent</artifactId>
+        <version>2.7</version>
+        <relativePath>../affina-parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>DestinationEJB</artifactId>
+    <packaging>ejb</packaging>
+    <name>Destination EJB</name>
+    <dependencies>
+	    <dependency>
+            <groupId>net.aconite.affina</groupId>
+            <artifactId>SDSstandard</artifactId>
+        </dependency>
+    </dependencies>
+    <build>	
+        <finalName>DestinationEJB</finalName>		
+        <plugins>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+						<id>copy-classes</id>
+                        <phase>initialize</phase>
+                        <configuration>
+						    <tasks>
+							    <echo>Copying classes from SDSstandard</echo>
+								<mkdir dir="target/classes"/>
+								<copy todir="target/classes">
+                                    <fileset dir="../SDSserver/sds/target/classes" includes="
+										**/bureaudestination/PackageSender.class
+										**/bureaudestination/PackageSenderBusiness.class
+										**/bureaudestination/PackageSenderHome.class
+								    "/>
+                                </copy>
+								<copy todir="target/classes">
+                                    <fileset dir="../SDSstandard/target/classes" includes="
+										**/destinationdelivery/DestinationDelivery.class 
+										**/destinationdelivery/DestinationDeliveryBusiness.class 
+										**/destinationdelivery/DestinationDeliveryHome.class
+										**/destinationquery/DestinationQuery.class 
+										**/destinationquery/DestinationQueryBusiness.class 
+										**/destinationquery/DestinationQueryHome.class
+								    "/>
+                                </copy>
+								<copy todir="target/classes">
+                                    <fileset dir="../Infrastructure/target/classes" includes="
+										**/datastorage/DataStoreElementReferenceable.class
+										**/messagebeans/DefaultMessageSend.class
+										**/messagebeans/DefaultMessageSendHome.class
+										**/messagebeans/MessageDriven.class
+										**/messagebeans/MessageDrivenHome.class
+										**/messagebeans/MessageDrivenLocator.class
+										**/messagebeans/MessageDrivenCoordinator.class
+										**/messagebeans/MessageDrivenCoordinatorHome.class
+								    "/>
+                                </copy>
+								<copy todir="target/classes">
+									<fileset dir="ejbModule"/>
+								</copy>
+								<copy todir="target/classes/META-INF">
+									<fileset dir="descriptors"/>
+								</copy>
+								
+								<jar destfile="target/temp.jar" basedir="target/classes"/>
+							</tasks>
+                        </configuration>
+				        <goals>
+					        <goal>run</goal>
+				        </goals>
+                    </execution>
+                    <execution>
+						<id>ejbdeploy</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <tasks>
+                                <property name="temp.jar" value="temp.jar"/>
+                                <property environment="env"/>
+								<echo>Websphere home: WAS_HOME = ${env.WAS_HOME}</echo>
+                                <pathconvert pathsep=";" property="runtime.classpath" refid="maven.runtime.classpath"/>
+                                <property name="ejbdeploy.classpath" value="${runtime.classpath}"/>
+                                <echo>Generating ejb stubs...</echo>
+                                <exec executable="${env.WAS_HOME}\bin\ejbdeploy.bat" failonerror="true" failifexecutionfails="true">
+                                    <arg value="${project.build.directory}/${temp.jar}"/>
+                                    <arg value="${project.build.directory}"/>
+                                    <arg value="${project.build.directory}/temp2.jar"/>
+                                    <arg value="-quiet"/>
+                                    <arg value="-cp"/>
+                                    <arg value="&quot;${ejbdeploy.classpath}&quot;"/> 
+                                </exec>
+							   	<unjar src="${project.build.directory}/temp2.jar" dest="${project.build.directory}/classes">
+							        <patternset>
+							            <include name="**/*.class"/>
+							        </patternset>
+								</unjar>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <archive>
+                        <manifestFile>ejbModule/META-INF/MANIFEST.MF</manifestFile>
+                        <manifest>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>		
+    </build>
+</project>

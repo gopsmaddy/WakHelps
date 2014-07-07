@@ -1,0 +1,26 @@
+<DST>
+ <HiTrust>
+<businessObject>BaAgentSummaryByUCs</businessObject>
+  <operation>SEARCH</operation>
+    <user>@@user@</user>
+    <password>@@pass@</password>
+  <request>
+	  <data>
+			<Agent.Key>@@profileAgentKey@</Agent.Key>
+                        <Currency.ISOCode></Currency.ISOCode>			
+			<MaxRows>@@maxRecords@</MaxRows>
+		</data>
+	</request>
+  <response>
+		<UnitClass.Fund.Key/>
+		<UnitClass.Fund.Desc/>
+		<UnitClass.Fund.Code/>
+		<UnitClass.Desc/>
+		<UnitClass.Key/>
+     <UnitClass.Fund.Ccy.ISOCode/>
+		<TotalInUnits/>
+		<TotalInCurrency/>
+		<Currency.Desc/>
+	</response>
+</HiTrust>
+</DST>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom">
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.nsamUpdateResult_Title}
+    </ui:define>
+    <ui:define name="workArea">
+
+        <h:form onsubmit="document.body.style.cursor='wait';">
+            <ui:fragment rendered="#{!UpdateNSAMSearch.showDetails}">
+                <table class="acTable">
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name"></td><td class="panel-feature-form-enhanced-field-name"></td>
+                    </tr>
+                    <tr>
+                        <ui:fragment rendered="#{UpdateNSAMSearch.totalCount >= UpdateNSAMSearch.limit}">
+                            <td class="panel-feature-form-enhanced-field-name">Number of NSAMs</td><td>#{UpdateNSAMSearch.limit} of #{UpdateNSAMSearch.totalCount}</td>
+                        </ui:fragment>
+                        <ui:fragment rendered="#{UpdateNSAMSearch.limit > UpdateNSAMSearch.totalCount }">
+                            <td class="panel-feature-form-enhanced-field-name">Number of NSAMs</td><td>#{UpdateNSAMSearch.totalCount} of #{UpdateNSAMSearch.totalCount}</td>
+                        </ui:fragment>
+                    </tr>
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">S9 Action</td><td>#{UpdateNSAMSearch.uiFilterData.s9AppAction}</td>
+                    </tr>
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">MSA Action</td><td>#{UpdateNSAMSearch.uiFilterData.msaAppAction}</td>
+                    </tr>
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name"></td><td class="panel-feature-form-enhanced-field-name"></td>
+                    </tr>
+                </table>
+            </ui:fragment>
+            <ui:fragment rendered="#{UpdateNSAMSearch.showDetails}">
+                #{UpdateNSAMSearch.totalCount}  NSAMs can be updated to  S9 '#{UpdateNSAMSearch.uiFilterData.s9AppAction}' and MSA '#{UpdateNSAMSearch.uiFilterData.msaAppAction}'
+                <table class="acTable">
+                   <tr valign="top">
+                      <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <ac:pkDataTable id="allTableData" binding="#{UpdateNSAMSearch.uiBindingData}"
+                                                    primaryKey="id"
+                                                    var="myRowData"
+                                                    value="#{UpdateNSAMSearch.uiTableData}"
+                                                    headerClass="table-header"
+                                                    footerClass="table-footer"
+                                                    styleClass="acTable"
+                                                    cellpadding="0" cellspacing="0">
+
+                                        <h:column id="IdCheckColumn">
+                                            <f:facet name="header">
+                                                <h:commandLink action="#{UpdateNSAMSearch.checkAll}">
+                                                    <h:outputText value="#{msg.nsamUpdateSearch_Check}"/>
+                                                </h:commandLink>
+                                            </f:facet>
+                                            <h:selectBooleanCheckbox id="idCheckValue" value="#{myRowData.canBeRequested}" />
+                                        </h:column>
+
+                                        <h:column id="IdDeviceIdColumn">
+                                            <f:facet name="header">
+                                                <h:outputText value="#{msg.nsamUpdateSearch_Device}"/>
+                                            </f:facet>
+                                            <h:outputText id="idDeviceValue" value="#{myRowData.deviceId}"/>
+                                        </h:column>
+
+                                        <h:column id="IdBeTlaColumn" >
+                                            <f:facet name="header">
+                                                <h:outputText value="#{msg.nsamUpdateSearch_BE}"/>
+                                            </f:facet>
+                                            <h:outputText id="idBeTla" value="#{myRowData.beTla}"/>
+                                        </h:column>
+
+                                        <h:column id="IdNcrsIdColumn">
+                                            <f:facet name="header">
+                                                <h:outputText value="#{msg.nsamUpdateSearch_NCRS}"/>
+                                            </f:facet>
+                                            <h:outputText id="IdNcrsId" value="#{myRowData.ncrsId}"/>
+                                        </h:column>
+
+                                        <h:column id="IdChipIdColumn">
+                                            <f:facet name="header">
+                                                <h:outputText value="#{msg.nsamUpdateSearch_NSAM}"/>
+                                            </f:facet>
+                                            <h:outputText id="IdChipId" value="#{myRowData.chipId}"/>
+                                        </h:column>
+
+                                        <h:column id="IdMSAAppExistColumn">
+                                            <f:facet name="header">
+                                                <h:outputText value="MSA Exist"/>
+                                            </f:facet>
+                                            <h:outputText id="IdMSAAppExistId" value="#{myRowData.isMSAAppExist}"/>
+                                        </h:column>
+
+                                        <h:column id="IdS9AppExistColumn">
+                                            <f:facet name="header">
+                                                <h:outputText value="S9 Exist"/>
+                                            </f:facet>
+                                            <h:outputText id="IdS9AppExistId" value="#{myRowData.isS9AppExist}"/>
+                                        </h:column>
+                                        <!--
+                                        <h:column id="IdMSAAppVersionColumn">
+                                            <f:facet name="header">
+                                                <h:outputText value="MSA Version"/>
+                                            </f:facet>
+                                            <h:outputText id="IdMSAAppVersionId" value="#{myRowData.msaAppVersion}"/>
+                                        </h:column>
+
+                                        <h:column id="IdS9AppVersionColumn">
+                                            <f:facet name="header">
+                                                <h:outputText value="S9 Version"/>
+                                            </f:facet>
+                                            <h:outputText id="IdS9AppVersionId" value="#{myRowData.s9AppVersion}"/>
+                                        </h:column>
+                                        -->
+                                        <h:column id="IdISINColumn">
+                                            <f:facet name="header">
+                                                <h:outputText value="ISIN"/>
+                                            </f:facet>
+                                            <h:outputText id="IdISINId" value="#{myRowData.isinId}"/>
+                                        </h:column>
+
+                                    </ac:pkDataTable>
+                                </td>
+                            </tr>
+                        </table>
+                        <h:commandButton value="&lt;" action="#{UpdateNSAMSearch.prev}"/>
+                        <h:outputText value="#{UpdateNSAMSearch.pageInfo}"/>
+                        <!--h:outputText value=" page #{UpdateNSAMSearch.pageIndex}  of  #{UpdateNSAMSearch.pages} "/-->
+                        <h:commandButton value="&gt;" action="#{UpdateNSAMSearch.next}"/>
+                        &#160;&#160;&#160;&#160;&#160;&#160;
+                        <h:outputText value="#{UpdateNSAMSearch.recordInfo}"/>
+                        <!--h:outputText value=" Displaying topics #{UpdateNSAMSearch.fromIndex} - #{UpdateNSAMSearch.toIndex} of #{UpdateNSAMSearch.totalCount}"/>
+                       <h:inputHidden value="#{UpdateNSAMSearch.pageIndex}"/-->
+                        <br/><br/>
+                        <!--h:commandButton value="Submit Changes" action="#{UpdateNSAMSearch.submitAction}" /-->
+
+                      </td>
+                   </tr>
+                </table>
+            </ui:fragment>
+            <h:inputHidden value="#{UpdateNSAMSearch.start}"/>
+            <h:inputHidden value="#{UpdateNSAMSearch.limit}"/>
+            <h:inputHidden value="#{UpdateNSAMSearch.totalCount}"/>
+            <h:inputHidden value="#{UpdateNSAMSearch.checkAllIndex}"/>
+            <h:inputHidden value="#{UpdateNSAMSearch.uiFilterData.s9AppAction}"/>
+            <h:inputHidden value="#{UpdateNSAMSearch.uiFilterData.msaAppAction}"/>
+
+
+            <h:commandButton action="#{UpdateNSAMSearch.executeUpdateNSAMs}" value="#{msg.confirm}"/>
+            &#160;
+            <h:commandButton action="#{Menus.nsamUpdateNSAMSearchPanel}" immediate="true" value="#{msg.cancelLink}"/>
+            <!--</ui:fragment>-->
+        </h:form>
+        <h:messages globalOnly="true" layout="table" styleClass="warn"
+                    infoClass="info" warnClass="warn"
+                    errorClass="warn"
+                    fatalClass="warn"/>
+
+        <br/>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

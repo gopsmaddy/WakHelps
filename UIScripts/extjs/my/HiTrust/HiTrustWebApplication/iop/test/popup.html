@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+		<link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+            <!--<script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base.js" type="text/javascript"></script>
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all.js" type="text/javascript"></script>-->
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all-debug.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+    Ext.onReady
+    (
+    	function()
+    
+	    {
+	    	
+	    	
+	    	
+	    	
+	      var win = new Array();
+	      var button = Ext.get('show-windows');
+	      var counter = 0;
+	
+	      button.on('click', function()
+	      {
+	        win[counter] = new Ext.Window
+	        (
+		        {
+		          id: 'win' + counter,
+		          title: 'windows ' + counter,
+		          pageX: 100 + (counter * 20),
+		          pageY: 100 + (counter * 20),
+		          width: 500,
+		          height: 200,
+		          plain: true,
+		          items:
+		          [
+		          	{							      	
+					        xtype: 'textfield',
+					        id: 'portfolioname',
+					        fieldLabel: "Portfolio Name",							        
+					        name: 'Portfolio.Name',			        
+									width:150,
+									readOnly: true					        
+				      	},
+				      	{							      	
+					        xtype: 'textfield',
+					        id: 'portfoliokey',
+					        fieldLabel: "Portfolio Key",							        
+					        name: 'Portfolio.Key',			        
+									width:150,
+									value:'0000000008',
+									readOnly: true					        
+				      	}
+		          ],
+		          buttons: 
+		          [
+			          {
+			            id: 'btn' + counter,
+			            text: 'Close',
+			            handler: function() 
+			            {
+			              var index = this.id.replace('btn', '');
+			              win[index].hide();
+			            }
+			          }
+		          ]
+		          }
+	          ).show();
+	        counter = counter + 1;
+	      });
+	    }
+  	);
+    </script>
+    <title>Extjs Dynamic Windows</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <br/><br/>
+    <p align="center">
+      <input type="button" id="show-windows" value="Show Windows" />
+    </p>
+    <div id="container"></div>
+  </body>
+</html>

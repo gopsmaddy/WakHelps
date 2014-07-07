@@ -1,0 +1,78 @@
+{
+	"totalCount" : "88",
+	"recordName" : "myticker",
+	"records" : [{
+			"id" : "111",
+			"type" : "CRL",
+			"text" : "dfghkfjghkdfhgalkjhg saddfg asddf asd f",
+			"time" : "1299543213445",
+			"status" : "1",
+		}, {
+			"id" : "112",
+			"type" : "DL",
+			"text" : "Grege saddfg asddf asd f",
+			"time" : "1299593213445",
+			"status" : "1",
+		}, {
+			"id" : "113",
+			"type" : "WW",
+			"text" : "Wakkir",
+			"time" : "1299543213445",
+			"status" : "1",
+		}, {
+			"id" : "114",
+			"type" : "WW",
+			"text" : "Wakkir",
+			"time" : "1399543213445",
+			"status" : "0",
+		}, {
+			"id" : "115",
+			"type" : "WW",
+			"text" : "Wakkir",
+			"time" : "1599543213445",
+			"status" : "0",
+		}, {
+			"id" : "116",
+			"type" : "WW",
+			"text" : "Wakkir",
+			"time" : "1299549913445",
+			"status" : "0",
+		}, {
+			"id" : "117",
+			"type" : "WW",
+			"text" : "Wakkir",
+			"time" : "1299993213445",
+			"status" : "0",
+		}, {
+			"id" : "213",
+			"type" : "WW",
+			"text" : "Wakkir",
+			"time" : "1449543213445",
+			"status" : "0",
+		}, {
+			"id" : "128",
+			"type" : "WW",
+			"text" : "Wakkir",
+			"time" : "1299588813445",
+			"status" : "0",
+		}, {
+			"id" : "133",
+			"type" : "WW",
+			"text" : "Wakkir",
+			"time" : "1288543213445",
+			"status" : "0",
+		}, {
+			"id" : "134",
+			"type" : "WW",
+			"text" : "Wakkir",
+			"time" : "1299544444445",
+			"status" : "0",
+		}, {
+			"id" : "153",
+			"type" : "WW",
+			"text" : "Wakkir",
+			"time" : "1284665436",
+			"status" : "0",
+		},
+	]
+}

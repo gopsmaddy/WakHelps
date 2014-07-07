@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom">
+<body>
+    <ui:composition template="../content/main.xhtml">
+        <ui:define name="workAreaTitle">#{msg.confirm}</ui:define>
+        <ui:define name="workArea">
+            <h:outputText value="#{ActionRequest.message}" escape="false"/>
+            <br/>
+            <br/>
+            <h:form onsubmit="document.body.style.cursor='wait';">
+                <h:commandButton id="submit"
+                                 action="#{ActionConfirm.invokeAction}"
+                                 actionListener="#{ActionConfirm.invokeActionListen}"
+                                 value="#{ActionRequest.confirmString}"
+                                 styleClass="form-button text-form-button"/>
+
+                <h:commandButton action="#{ActionConfirm.cancelAction}"
+                                 actionListener="#{ActionConfirm.cancelActionListen}"
+                                 value="#{ActionRequest.cancelString}"
+                                 styleClass="form-button text-form-button"/>
+
+                <h:inputHidden id="actionId" value="#{ActionRequest.id}"/>
+
+            </h:form>
+            <h:messages globalOnly="true" layout="table" styleClass="warn"
+            infoClass="info" warnClass="warn"
+            errorClass="warn"
+            fatalClass="warn"/>
+
+            <br/>
+        </ui:define>
+    </ui:composition>
+</body>
+</html>

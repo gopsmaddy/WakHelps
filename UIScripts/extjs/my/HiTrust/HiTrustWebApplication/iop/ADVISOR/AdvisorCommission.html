@@ -1,0 +1,120 @@
+<script type="text/javascript">
+	// To play in Firebug uncomment next line
+// Ext.get(document.body).update('<div id="ext-test"></div>');
+ 
+// reference local blank image
+Ext.BLANK_IMAGE_URL = 'http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/resources/images/default/s.gif';
+ 
+ 
+	Ext.onReady(function(){
+	
+		//---------Search------
+		myBaCommissionSummarysSearch.show();
+		myBaCommissionSummarysSearch.render('myCommissionSummarySearch');
+		
+		myBaCommissionSummarysStore.on
+	 ('beforeload', function(store)
+		 	{
+				store.baseParams = 
+				{												
+						sEffDateFrom: Ext.getCmp('datefrom').getValue(),
+            sEffDateTo: Ext.getCmp('dateto').getValue()	,
+						paymentKey: Ext.getCmp('paymentnumber').getValue()
+				};
+	    }
+   );
+		//-------------Grid----        	
+    myBaCommissionSummarysGrid.show();			
+		myBaCommissionSummarysGrid.render('myCommissionSummaryGrid');
+					
+					
+		myBaCommissionSummarysGrid.getSelectionModel().on
+			(	
+				'rowselect', function(sm, rowIdx, r) 
+				{	
+					Ext.fly('payNum').update('Payment Number: '+r.data.Payment_Key); 
+					  			
+        	
+          myBaAgentPaysStore.load({params:{start:0, limit:Ext.getCmp('pBaAgentPaysBar').pageSize,paymentKey:r.data.Payment_Key}});
+          myBaAgentPaysMask.show();	
+          
+          $('#transaction').dialog('close');
+                   	
+          myBaAgentPaysGrid.show();			
+					myBaAgentPaysGrid.render('myAgentPaysGrid');
+					
+					myBaCommissionSummarysGrid.getSelectionModel().clearSelections();
+					
+				}
+		  );
+		//----------------default setup --------------------------------------	
+	
+	if(!myBaCommissionSummarysStore.loaded)
+  	{
+      myBaCommissionSummarysStore.load({params:{start:0, limit:Ext.getCmp('pBaCommissionSummarysBar').pageSize}});
+      myBaCommissionSummarysMask.show();	
+    } 
+    
+//################# Consolidation ######################################
+
+		myBaAgentPaysGrid.getSelectionModel().on
+			(
+				'rowselect', function(sm, rowIdx, r) 
+				{
+					//alert(r.data.FeeType);
+					if(r.data.FeeType==varFeeType)
+					{
+						Ext.fly('consNum').update('Consolidation Number: '+r.data.AgentPayKey); 
+		        myBaSCommSplitsStore.load({params:{start:0, limit:Ext.getCmp('pBaSCommSplitsBar').pageSize,AgentPayKey:r.data.AgentPayKey}});
+		        myBaSCommSplitsMask.show();	
+	             
+					
+						$('#transaction').dialog('open');
+						myBaSCommSplitsGrid.show();		
+						myBaSCommSplitsGrid.render('mySCommSplitsGrid');
+						
+						myBaAgentPaysGrid.getSelectionModel().clearSelections();
+					}
+					
+
+				}
+		  );	
+		//----------------default setup --------------------------------------	
+		
+	//################# Transactions ######################################
+			  
+	//----------------default setup --------------------------------------	
+	
+	 
+	
+ 
+});
+
+</script> 
+
+      
+  
+  
+  
+<div id="tabs">
+<ul>
+  <li><a href="#BaCommission-search"><strong>My Commission Search</strong></a></li>
+</ul>
+
+<div id="myCommissionSummarySearch"></div>
+
+<br>
+<div id="myCommissionSummaryGrid"> </div>
+<br>
+<div>
+	<h3 id="payNum"></h3>
+	<div id="myAgentPaysGrid"> </div>
+</div>
+<br>
+<div id="transaction" title="Transaction Details" class="transaction"> 
+<h3 id="consNum"></h3>
+<div id="mySCommSplitsGrid"> </div>
+</div>
+
+
+</div>  

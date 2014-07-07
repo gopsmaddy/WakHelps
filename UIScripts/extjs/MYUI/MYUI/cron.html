@@ -1,0 +1,539 @@
+<html>
+<head>
+<title>Robert Plank's Crontab Builder</title>
+
+<style type="text/css">
+.header { font-weight:bold; }
+.titlebar { font-family: Tahoma, Verdana; font-size:24px; font-weight: bold; }
+.subtitlebar { font-family: Tahoma, Verdana; font-size:48px; }
+td, body, input, textarea, select {
+   font-family: Tahoma, Verdana;
+   font-size: 13px;
+   vertical-align: middle;
+}
+td, body {
+   color: #FFFFFF;
+}
+select, input {
+   color:#000000;
+}
+a { color:#CCCCFF; }
+
+</style>
+</head>
+
+<body background="bg.gif" marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bgcolor="#343E71" text="#FFFFFF" link="#CCCCFF" vlink="#CCCCFF">
+
+<script language="JavaScript" src="doomsday.js"></script>
+
+<script langauge="JavaScript">
+<!--
+
+window.onload = init;
+
+var d = new Date();
+
+hours = d.getHours();
+minutes = d.getMinutes();
+
+if (hours > 12) {
+   meridian = "PM";
+   hours -= 12;
+}
+else {
+   if (hours <= 0) hours += 12;
+   meridian = "AM";
+}
+
+minutes += "";
+if (minutes.length < 2) minutes = "0"+minutes;
+
+var now = hours+":"+minutes+" "+meridian;
+var today = (d.getMonth()+1)+"/"+d.getDate()+"/"+d.getFullYear();
+
+var options = new Array();
+
+options.once = new Array();
+   options.once[0] = new Array();
+   options.once[0].title = "Specify a date";
+   options.once[0].name = "date";
+   options.once[0].type = "textbox"; 
+   options.once[0].value = today;
+
+options.daily = new Array();
+
+   options.daily[0] = new Array();
+   options.daily[0].title = "Perform this Task:";
+   options.daily[0].name = "howOften";
+   options.daily[0].type = "radio";
+   options.daily[0].cols = "2";
+
+   options.daily[0][0] = new Array();
+   options.daily[0][0].value = "all";
+   options.daily[0][0].text = "Every Day";
+
+   options.daily[0][1] = new Array();
+   options.daily[0][1].value = "weekdays";
+   options.daily[0][1].text = "Weekdays";
+
+   options.daily[0][2] = new Array();
+   options.daily[0][2].value = "custom";
+   options.daily[0][2].text = "Every text=1,size=1 Days";
+
+   options.daily[0][3] = new Array();
+   options.daily[0][3].value = "customHour";
+   options.daily[0][3].text = "Every text=1,size=1 Hours";
+
+   options.daily[0][4] = new Array();
+   options.daily[0][4].value = "customMinute";
+   options.daily[0][4].text = "Every text=1,size=1 Minutes";
+
+   options.weekly = new Array();
+
+   options.weekly[0] = new Array();
+   options.weekly[0].title = "On Days:";
+   options.weekly[0].name = "whichDays";
+   options.weekly[0].type = "checkarray";
+   options.weekly[0].cols = "4";
+
+   days = new Array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+
+   for (var i=0;i<days.length;i++) {
+      options.weekly[0][i] = new Array();
+      options.weekly[0][i].value = i;
+      options.weekly[0][i].text = days[i];
+      options.weekly[0][i].checked = true;
+   }
+
+options.monthly = new Array();
+
+   options.monthly[0] = new Array();
+   options.monthly[0].title = "Perform this Task:";
+   options.monthly[0].name = "howOften";
+   options.monthly[0].type = "radio";
+
+   options.monthly[0][0] = new Array();
+   options.monthly[0][0].value = "custom";
+   options.monthly[0][0].text = "Day text=1,size=2 of every month";
+
+   options.monthly[1] = new Array();
+   options.monthly[1].title = "For the Months Of:";
+   options.monthly[1].name = "howOften";
+   options.monthly[1].type = "checkarray";
+   options.monthly[1].cols = "4";
+
+   months = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+
+   for (var i=0;i<months.length;i++) {
+      options.monthly[1][i] = new Array();
+      options.monthly[1][i].value = i;
+      options.monthly[1][i].text = months[i];
+     options.monthly[1][i].checked = true;
+   }
+
+var form;
+var settings;
+var cron;
+
+function init() {
+
+/*
+mar. 17 03: monday
+feb 28 98: sat
+april 1 96: mon
+*/
+
+form = document.getElementById("builder");
+settings = document.getElementById("customSettings");
+settings.innerHTML = "&nbsp;";
+
+form.startTime.value = now;
+build();
+form.onclick = build;
+buildCustom(form.category.value)
+}
+
+function reset() {
+   cron = new Array();
+   cron.minute = "*";
+   cron.hour = "*";
+   cron.date = "*";
+   cron.month = "*";
+   cron.day = "*"; 
+}
+
+function selectCopy() {
+   form.result.focus();
+   form.result.select();
+   text=form.result.createTextRange();
+   text.execCommand("Copy");
+}
+
+function getFormLength(name) {
+   var i=0;
+   while (getFormElement(name, i)) i++;
+   return i;
+}
+
+function getFormElement(name, i) {
+   return document.getElementById(name+'['+i+']');
+}
+
+function buildCustom(input) {
+   var temp;
+   var output;
+   var current;
+   var counter = 0;
+   var fieldCounter = 0;
+   var cols;
+
+   temp = null;
+   current = null;
+
+   //if (input == "once") form.notime.checked = false;
+
+   var text = null;
+   var field = eval("options."+input);
+
+   output = '<div align="center">\n';
+   output += '<table border="0" cellspacing="0" cellpadding="3" width="100%">\n';
+
+   for (var i=0;i<field.length;i++) {
+      temp = field[i];
+      var j = 0;
+
+      type = temp.type;
+      name = temp.name;
+      title = temp.title;
+      var counter = 0;
+
+      if (type != null) {
+         counter = 0;
+         if (temp.length > 0) {
+            current = temp[counter];
+            value = current.value;
+         }
+         else {
+            current = temp;
+            value = temp;
+         }
+
+         if (current.text) text = current.text;
+         else text = null;
+
+         if (temp.cols) cols = parseInt(temp.cols);
+
+         if (type != "textbox")
+            output += '<tr><td class="header">'+title+'</td></tr>\n';
+
+         while (current != undefined) {
+
+            if (text == null) break;
+
+            matches = new Array();
+            textcopy = text;
+
+            while (textcopy.match("select=")) {
+               textcopy = textcopy.replace(/^(.*?)select=/,"");
+
+               newChunk = textcopy.replace(/ (.*)$/,"");
+               splitCopy = newChunk.split(",");
+
+               newText = '<select name="'+name+(counter++)+'">\n';
+               for (var i=0;i<splitCopy.length;i++) {
+                  tmp = splitCopy[i].replace(/\+/gi," ");
+                  newText += '<option value="'+i+'">'+tmp+'</option>\n';
+               }
+               newText += '</select>\n';
+               newChunk = "select="+newChunk;
+               text = text.replace(newChunk, newText);
+               textcopy = textcopy.replace(/^(.*?) /,"");
+            }
+
+
+            text = text.replace(/text=(.*?),size=(.*?)( |$)/,'<input type="text" name="'+value+'Text" value="$1" size="$2"></input> ');
+
+            if (type == "checkarray" || type == "radio") {
+               if (j == 0) { output += "<tr>"; }
+               j++;
+               output += "<td>";
+            }
+            else output += '<tr><td>';
+            
+            switch (type) {
+               case "checkarray":
+               output += '<input type="checkbox" name="'+name+'['+(counter)+']" value="'+value+'"';
+               if (current.checked == true) output += ' checked';
+                
+               output += '> ';
+               break;
+
+               case "radio":
+               output += '<input type="radio" name="'+name+'" value="'+value+'"> ';
+               break;
+            }
+
+            output += text;
+
+            if (type == "checkarray" || type == "radio") {
+               output += "</td>";
+               if (j == cols) { j = 0; output += "</tr>"; }
+            }
+            else output += "</td></tr>";
+            current = temp[++counter];
+
+            if (current != undefined) {
+               text = current.text;
+               value = current.value;
+            }
+         }
+      }
+
+      if (type == "textbox") {
+         output += '<tr><td class="header">'+title+': </td>';
+         output += '<td><input type="text" name="'+name+'" value="'+temp.value+'" size="'+temp.size+'"></td>';
+         output += '</tr>\n';
+      }
+
+      if (j > 0 && j < cols) {
+         while (j < cols) {
+            output += '<td>&nbsp;</td>\n';
+            j++;
+         }
+         output += '</tr>\n';
+      }
+      output += '<tr><td colspan="2">&nbsp;</td></tr>\n';
+
+      //alert(options.daily[i]);
+   }
+
+   output += "</table>\n";
+   output += '</div>';
+
+   settings.innerHTML = output;
+}
+
+function toggle(obj) {
+   if (obj.checked) obj.checked = false;
+   else obj.checked = true;
+}
+
+function build() {
+var category = form.category.value;
+var command = form.path.value;
+var re = new RegExp ("/s(.*)$/", 'gi');
+command.replace(re,"");
+
+reset();
+cron.minute = "0";
+cron.hour = "0";
+
+howOften = null;
+
+if (form.howOften) {
+
+   for (var i=0;i<form.howOften.length;i++)
+      if (form.howOften[i].checked) {
+         howOften = form.howOften[i].value;
+         break;
+      }
+}
+
+switch (category) {
+
+   case "once":
+      customDate = form.date.value.split("/");
+      customDay = doomsday(customDate[0], customDate[1], customDate[2]);
+      cron.day = customDay;
+      cron.month = customDate[0];
+      cron.date = customDate[1];
+   break;
+
+   case "daily":
+   switch (howOften) {
+      case "all":
+      break;
+
+      case "weekdays":
+      cron.day = "1-5";
+      break;
+
+      case "custom":
+      customDay = form.customText.value;
+      cron.date = (customDay > 1) ? "0-31/"+customDay : "*";
+      break;
+
+      case "customMinute":
+      customMinute = form.customMinuteText.value;
+      cron.minute = (customMinute > 1) ? "0-59/"+customMinute : "*";
+      cron.hour = "*";
+      break;
+
+      case "customHour":
+      customHour = form.customHourText.value;
+      cron.hour = (customHour > 1) ? "0-23/"+customHour : "*";
+      cron.minute = "0";
+      break;
+         
+   }
+   break;
+
+   case "weekly":
+      daylist = "";
+      limit = getFormLength("whichDays");
+      for (var i=0;i<limit;i++) {
+         current = getFormElement("whichDays",i)
+         start = current.value;
+         if (!current.checked) continue;
+
+         for (j=i;j<limit;j++) {
+            if (!getFormElement("whichDays",j).checked) break;
+            end = j;
+            i++;
+         }
+         daylist += start;
+         if (start < end) daylist += "-"+end;
+         daylist += ",";
+      }
+      daylist = daylist.replace(/,$/,"");
+      if (daylist != "0-6") cron.day = daylist;
+   break;
+
+   case "monthly":
+      customDay = form.customText.value;
+      if (customDay >= 1 && customDay <= 31) cron.date = customDay;
+
+      monthlist = "";
+      limit = getFormLength("howOften");
+      for (var i=0;i<limit;i++) {
+         current = getFormElement("howOften",i)
+         start = current.value;
+         if (!current.checked) continue;
+
+         for (j=i;j<limit;j++) {
+            if (!getFormElement("howOften",j).checked) break;
+            end = j;
+            i++;
+         }
+         monthlist += start;
+         if (start < end) monthlist += "-"+end;
+         monthlist += ",";
+      } //howOften
+      monthlist = monthlist.replace(/,$/,"");
+      if (monthlist != "0-11") cron.month = monthlist;
+   break;
+      
+}
+
+if (form.nolog.checked) {
+   form.log.disabled = true;
+   log = "/dev/null";
+}
+else {
+   form.log.disabled = false;
+   log = form.log.value;
+}
+
+if (form.notime.checked) {
+   form.startTime.disabled = true;
+}
+else {
+   form.startTime.disabled = false;
+}
+
+startTime = (form.startTime.disabled) ? undefined : form.startTime.value;
+if (startTime != "" && startTime != undefined) {
+   startTime = startTime.split(" ");
+   meridian = startTime[1];
+   startTime = startTime[0];
+
+   startTime = startTime.split(":");
+   for (var i=0;i<startTime.length;i++) {
+      startTime[i] = parseInt(startTime[i]);
+   }
+
+   if (meridian == "PM" && startTime[0] < 12) startTime[0] += 12;
+   if (meridian == "AM" && startTime[0] >= 12) startTime[0] -= 12;
+
+   cron.hour = startTime[0];
+   cron.minute = startTime[1];
+}
+
+form.result.value = cron.minute+" "+cron.hour+" "+cron.date+" "+cron.month+" "+cron.day+" "+command+" > "+log;
+}
+// -->
+</script>
+
+<form action="#" id="builder" method="post">
+
+<div align="center">
+
+<p><img src="cron1.gif"></p>
+
+<table border="0" cellpadding="5" cellspacing="0">
+<tr>
+<td class="header">The command you want to run:</td>
+<td colspan="2"><input name="path" type="text" size="30" value="/path/to/your/program"></input></td>
+</tr>
+
+<tr>
+<td class="header">File to log the results to (optional):</td>
+<td colspan="2"><input name="log" type="text" size="20" value="log.txt"></input></td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+<td colspan="2"><input type="checkbox" name="nolog" checked> <span style="cursor: hand;" onclick="toggle(form.nolog);">Don't log the results</span></input></td>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="header">Run this job:</td>
+<td colspan="2">
+<select name="category" onChange="buildCustom(this.value)">
+<option value="daily" selected>Daily</option>
+<option value="weekly">Weekly</option>
+<option value="monthly">Monthly</option>
+<option value="once">One time only</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td class="header">Start time:</td>
+<td><input type="text" name="startTime" size="15"></input></td>
+<td><input type="checkbox" name="notime" checked> <span style="cursor: hand;" onclick="toggle(form.notime);">No start time</span></input></td>
+</tr>
+
+<tr>
+<td colspan="3">
+<div id="customSettings"></div>
+</td>
+</tr>
+
+
+<tr>
+<td colspan="3" align="center"><textarea name="result" cols="50" rows="5" readonly>result</textarea></td>
+</tr>
+
+<tr>
+<td colspan="3" align="center">
+<input type="submit" name="generate" value="Generate" onclick="build(); return false;"><input type="button" name="copy" value="Select &amp; Copy" onclick="selectCopy()"></td>
+</tr>
+
+</table>
+
+<small>Written by <a target="_blank" href="http://www.simplephp.com">Robert Plank</a><br>
+<a href="http://www.robertplank.com/cron/rebrand.zip">Rebrand this site!</a>
+</small>
+
+</div>
+
+
+</form>
+
+</body>
+</html>

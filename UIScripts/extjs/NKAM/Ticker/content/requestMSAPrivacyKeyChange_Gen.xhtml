@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom"
+      xmlns:t="http://myfaces.apache.org/tomahawk" >
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.reqKeychange_MSAPrivacyKey}
+    </ui:define>
+    <ui:define name="workArea">
+        <f:view>
+            <h:form id="msaPrivacyKeys" enctype="multipart/form-data" onsubmit="document.body.style.cursor='wait';">
+
+                <h:outputLabel  value="#{msg.msaPrivacyKey_Generation} "/>
+                <h:inputText id="generation" value="#{PrivacyKeyPane.currentGeneration}"
+                             maxlength="02"
+                             size="2"
+                             required="true"
+                             validator="#{Validators.validateHexadecimalLimit}"
+                             onblur="this.value=this.value.toUpperCase();"  
+                             autocomplete="off" label="#{msg.msaPrivacyKey_Generation}" >
+                    <f:validateLength maximum="02" minimum="02"/>
+                </h:inputText>
+                <br/><h:message for="generation" styleClass="warn"/>
+                <br/>
+                <br/>
+                <h:commandButton value="Next" action="#{PrivacyKeyPane.processGeneration}" />
+                    <h:outputText value=" "/>
+                <br/><br/>
+                <h:commandLink id="backLink"  action="requestMSAPrivacyKeyChangeHome"  immediate="true">
+                    #{msg.backLink}
+                </h:commandLink>
+                <br/>
+            </h:form>
+            <span id="idUIErrorLogger" style="color: red;"></span>
+		<span id="idGlobalMessage">
+        <h:messages globalOnly="true" layout="table" styleClass="warn"
+                    infoClass="info" warnClass="warn"
+                    errorClass="warn"
+                    fatalClass="warn"/>
+	    </span>
+
+            <br/>
+        </f:view>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

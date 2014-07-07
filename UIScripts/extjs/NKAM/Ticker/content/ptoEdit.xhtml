@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom">
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.pto_EditTitle}
+    </ui:define>
+    <ui:define name="workArea">
+        <h:form onsubmit="document.body.style.cursor='wait';">
+            <table class="acTable">
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.pto_Name}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:inputText id="nameColumn" value="#{PTO.pto.name}"
+                                     maxlength="40"
+                                     styleClass="form-input-text"
+                                    required="true"/>
+                        <br/> <h:message for="nameColumn" styleClass="warn"/>
+                        <h:inputHidden id="IdColumn" value="#{PTO.pto.id}"/>
+						<h:inputHidden id="VersionColumn" value="#{PTO.pto.version}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.pto_TLA}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:inputText id="tlaColumn" value="#{PTO.pto.abbreviation}"
+                                     maxlength="3"
+                                     styleClass="form-input-text"
+                                     required="true"/>
+                       <br/> <h:message for="tlaColumn" styleClass="warn"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.pto_CVMK}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:selectOneMenu  value="#{PTO.pto.cvmkPreference}">
+                            <f:selectItems value="#{PTO.allCVMKs}"/>
+                        </h:selectOneMenu>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.pto_ID}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:outputText id="ptoIDColumn" value="#{PTO.pto.operatorId}"/>
+                        <h:inputHidden id="ptoIDColumn2" value="#{PTO.pto.operatorId}"/>
+                        <br/> <h:message for="ptoIDColumn" styleClass="warn"/>
+                    </td>
+                </tr>
+                <!--<tr>-->
+                    <!--<td class="panel-feature-form-enhanced-field-name">#{msg.pto_Comment}</td>-->
+                    <!--<td class="panel-feature-form-enhanced-field-value">-->
+                        <!--<h:inputText id="commentColumn" value="#{PTO.pto.comments}"-->
+                                     <!--maxlength="200"-->
+                                     <!--styleClass="form-input-text"-->
+                                      <!--required="true"/>-->
+                         <!--<br/> <h:message for="commentColumn" styleClass="warn"/>-->
+                    <!--</td>-->
+                <!--</tr>-->
+            </table>
+            <h:commandLink action="#{PTO.updateAction}"
+                    onclick="return confirmUpdate()">
+                #{msg.saveLink}</h:commandLink>
+             &#160;
+            <h:commandLink action="#{Menus.selectPTO}" immediate="true">#{msg.cancelLink}</h:commandLink>
+        </h:form>
+            <h:messages globalOnly="true" layout="table" styleClass="warn"
+            infoClass="info" warnClass="warn"
+            errorClass="warn"
+            fatalClass="warn"/>
+            <br/>
+            
+        <SCRIPT LANGUAGE="JavaScript" src="../../js/validations.js"></SCRIPT>
+        <SCRIPT LANGUAGE="JavaScript">
+
+            function confirmUpdate()
+            {
+                if (!confirm('Are you sure you want to update this BE?'))
+                {
+                    return false;
+                }
+                else
+                {
+                    cursorChange();
+                    return true;
+                }
+            }
+
+            function cursorChange() 
+            {
+                document.body.style.cursor="wait";
+            }
+
+        </SCRIPT>
+        
+        
+    </ui:define>
+</ui:composition>
+</body>
+</html>

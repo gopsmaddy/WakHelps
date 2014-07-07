@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk">
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.reqKeychange_MSACeilingValueMasterKey}
+    </ui:define>
+    <ui:define name="workArea">
+        <f:view>
+            <h:form id="msaCVMKey" onsubmit="document.body.style.cursor='wait';">
+
+                <br/>
+                <table  border="0">
+                    <tr>
+                        <td>#{msg.msaCVMK_BE}</td>
+                        <td>
+                            <h:selectOneMenu  value="#{CVMKChange.beID}">
+                                <f:selectItems value="#{CVMKChange.allPTO}" />
+                            </h:selectOneMenu>
+                            <br/>
+                        </td>
+                    </tr>
+
+                </table>
+                <br/><br/>
+                <h:commandButton value="Next"
+                                 action="#{CVMKChange.selectBusinessEntity}" />
+                <h:outputText value=" "/>
+                <br/><br/>
+                <!--<a href="javascript:history.back();"><font face="Arial" color="#000080">Back</font></a>-->
+                <h:commandLink id="backLink"  action="requestKeyChange" immediate="true">
+                    #{msg.backLink}
+                </h:commandLink>
+
+            </h:form>
+            <br/>
+            <span id="idUIErrorLogger" style="color: red;"></span>
+            <span id="idGlobalMessage">
+                <h:messages globalOnly="true" layout="table" styleClass="warn"
+                            infoClass="info" warnClass="warn"
+                            errorClass="warn"
+                            fatalClass="warn"/>
+	        </span>
+
+            <br/>
+        </f:view>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

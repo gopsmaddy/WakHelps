@@ -1,0 +1,114 @@
+/* Default data table surround */
+.table-surround {
+    padding: 0px;
+    border: solid;
+    border-width: 0px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-color: #aaaaaa;
+    empty-cells: show;
+    border-collapse: collapse;
+}
+
+/* Data table surround that extends the full width of its enclosing element */
+.table-surround-justified {
+    padding: 0px;
+    width: 97%;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+    empty-cells: show;
+    border-collapse: collapse;
+    background-image: url( '../common/img/table/dimensionDropShadow.gif' );
+    background-repeat: repeat-x;
+}
+
+/* Data table column header surround that extends the full width of its enclosing element*/
+.table-header-fullwidth {
+    padding: 10px;
+    width: 100%;
+    border: solid;
+    border-width: 0px;
+    border-color: #aaaaaa;
+    text-align: center;
+}
+
+/* Default data table cell */
+.table-column {
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+    text-align: center;
+    background: white;
+}
+
+/* Data table cell with a 0% width */
+.table-column-justified-0pc {
+    width: 0%;
+}
+
+/* Data table cell with a 10% width */
+.table-column-justified-10pc {
+    width: 10%;
+}
+
+/* Data table cell with a 20% width */
+.table-column-justified-20pc {
+    width: 20%;
+}
+
+/* Data table cell with a 50% width */
+.table-column-justified-50pc {
+    width: 50%;
+}
+
+/* Data table cell with a 60% width */
+.table-column-justified-60pc {
+    width: 60%;
+}
+
+/* Data table cell with a 90% width */
+.table-column-justified-90pc {
+    width: 90%;
+}
+
+/* Data table cell with a 100% width */
+.table-column-justified-100pc {
+    width: 100%;
+}
+
+/* Data table cell that aligns its content to the far left */
+.table-column-aligned-left {
+    text-align: left;
+}
+
+/* Data table cell that aligns its content to the top */
+.table-column-aligned-top {
+    vertical-align: top;
+}
+
+/* Default data table header cell */
+.table-header {
+    padding: 0px;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+    text-align: center;
+    background-image: url( '../common/img/table/dimensionDropShadow.gif' );
+    background-repeat: repeat-x;
+
+}
+
+/* Data table column footer */
+.table-footer {
+    padding: 5px;
+    border: solid;
+    border-width: 0px;
+    border-bottom-width: 1px;
+    border-color: #aaaaaa;
+    vertical-align: top;
+}
+

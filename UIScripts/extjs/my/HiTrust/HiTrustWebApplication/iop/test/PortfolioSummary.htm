@@ -1,0 +1,325 @@
+<html>
+	<head>
+		<link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+            <!--<script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base.js" type="text/javascript"></script>
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all.js" type="text/javascript"></script>-->
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/ext-all-debug.js" type="text/javascript"></script>
+	   <body>
+	   	
+	   	<!-- http://extjs.wima.co.uk/ -->
+<script type="text/javascript">
+	Ext.onReady
+	(
+		function()
+		{
+					
+		    // create the Data Store
+		    var portfolioStore = new Ext.data.Store
+		    (
+		    	{
+		    		// load using HTTP
+				    // load using HTTP
+						proxy : new Ext.data.HttpProxy
+						(
+							{																
+								method: 'GET',
+								prettyUrls: false,
+								// load using HTTP
+				        url: 'http://localhost:8080/HiTrustWebApplication/iop/xml/BaPortSummaryDatas.xml'
+				        //url: '/XMLDataLoader.aspx?action=BaPortSummaryDatas&user=001IN000001&pass=Passw0rd'
+				        //url:'http://iop.kurtosys.com/XMLDataLoader.aspx?action=BaPortSummaryDatas&user=001IN000001&pass=Passw0rd'
+							}
+						),				
+		        // the return will be XML, so lets set up a reader
+		        reader: new Ext.data.XmlReader
+		        (
+		        	{
+		               // records will have an "Item" tag
+		               record: 'List'
+		               //id: 'Portfolio > Key',
+		               //totalRecords: '@total'
+		           }, 
+		           [
+		               // set up the fields mapping into the xml doc
+		               // The first needs mapping, the others are very basic
+		              {name: 'portfolioNumber', mapping: 'Portfolio > Number'},
+		              {name:'portfolioName', mapping: 'Portfolio > Name' },
+	                {name:'financialPlanner', mapping: 'Portfolio > Key' },
+	                {name:'status', mapping: 'Portfolio > Status >Desc' },
+	                {name:'unitPrice', mapping: 'UnitPrice' },
+	                {name:'fundCode', mapping: 'Fund > Code' },
+	                {name:'fundName', mapping: 'Fund > Desc' },
+	                {name:'balanceInUnits', mapping: 'BalanceInUnits' },
+	                {name:'balanceInDollars', mapping: 'BalanceInCurrency' },
+	                {name:'accountNumber', mapping: 'Account > Number' },
+					   			// Detail URL is not part of the column model of the grid 	'DetailPageURL'
+		           ]
+		         )
+				   }
+				  );
+						
+				    
+				    // create the grid				
+				    var portfolioGrid = new Ext.grid.GridPanel({
+				        store: portfolioStore,
+				        columns: [
+				            {header: "Portfolio Number", width: 120, dataIndex: 'portfolioNumber', sortable: true},
+				            {header: "Portfolio Name", width: 180, dataIndex: 'portfolioName', sortable: true},
+				            {header: "Financial Planner", width: 115, dataIndex: 'financialPlanner', sortable: true},
+				            {header: "Status", width: 100, dataIndex: 'status', sortable: true}
+				        ],
+						sm: new Ext.grid.RowSelectionModel({singleSelect: true}),
+						renderTo: 'portfolioTop',
+				    height:200
+				    });
+				    stripeRows: true,
+				    portfolioStore.load();
+				
+
+				var holdingsData = [		];
+					var holdingsDataReader = new Ext.data.ArrayReader({}, [	
+							{name: 'fundCode'},						
+							{name: 'balanceInUnits'},
+							{name: 'balanceInDollars'},
+							{name: 'status'}
+						]);
+
+
+				var portfolioFurtherGrid = new Ext.grid.GridPanel
+				(
+					{
+							 	renderTo: 'furtherPortfolioDetails',
+				        store: new Ext.data.Store
+				        (
+					        {
+										data: holdingsData,
+										reader: holdingsDataReader
+									}
+								),
+
+				        columns: 
+				        [
+				           {
+											header: 'Fund Code / Fund Name', 
+											id: 'FundCode/FundName', 
+											width : 110, 
+											sortable : true, 
+											align: 'left'
+											
+										},
+										
+										{
+											header: 'Balance in Units', 
+											id: 'balanceInUnits', 
+											width : 110, 
+											sortable : true, 
+											align: 'left'
+										},
+												
+										{
+											header: 'Balance in Dollars', 
+											id: 'balanceInDollars', 
+											width : 110, 
+											sortable :true, 
+											align: 'left'
+										},
+										
+										{
+											header: 'Status', 
+											id: 'status', 
+											width : 110, 
+											sortable : true, 
+											align: 'left'
+										}
+				        ],		
+				    autoExpandColumn: 'FundCode/FundName',
+			   		height: 50,
+						id: 'portfolioFurtherGrid'						
+				    });
+				    
+				    
+				    
+			    	var contactDetailsForm = new Ext.FormPanel
+						({ 			
+					    	reader: new Ext.data.XmlReader
+						(
+							{
+									record: 'List',
+									id: 'Key',
+							}, 
+								[
+									{name: 'Type', mapping: 'AddrType>Desc'},									
+									{name: 'AddressLine1', mapping: 'Address>Address1'},
+									{name: 'AddressLine2', mapping: 'Address>Address2'},
+									{name: 'Suburb', mapping: 'Address>Address3'},
+									{name: 'State', mapping: 'Address>State'},
+									{name: 'ZipCode', mapping: 'Address>ZipCode'},
+									{name: 'Country', mapping: 'Address>Country>Desc'},
+									{name: 'HomTel', mapping: 'Address>TelNo'},
+									{name: 'WorkTel', mapping: 'Address>Telno2'},
+									{name: 'Mobile', mapping: 'Address>MobileNo'},
+									{name: 'Fax', mapping: 'Address>FaxNo'},
+									{name: 'Email',mapping: 'Address>EMail'}
+								]
+						),
+								renderTo: 'contactDetailsForm',
+								labelWidth: 220, // label settings here cascade unless overridden
+								border: false,
+								defaults: {width: 150},
+								defaultType: 'textfield',
+								
+								items: [
+								{fieldLabel: 'Address Type',name: 'Type',readOnly: true},
+								{fieldLabel: 'Address Line 1',name: 'AddressLine1',readOnly: true},
+								{fieldLabel: 'Address Line 2',name: 'AddressLine2',readOnly: true},
+								{fieldLabel: 'Suburb',name: 'Suburb',readOnly: true},
+								{fieldLabel: 'State',name: 'State',readOnly: true},
+								{fieldLabel: 'ZipCode',name: 'ZipCode',readOnly: true},
+								{fieldLabel: 'Country',name: 'Country',readOnly: true},
+								{fieldLabel: 'Home Tel',name: 'HomTel',readOnly: true},
+								{fieldLabel: 'Work Tel',name: 'WorkTel',readOnly: true},
+								{fieldLabel: 'Mobile',name: 'Mobile',readOnly: true},
+								{fieldLabel: 'Fax',name: 'Fax',readOnly: true},
+								{fieldLabel: 'Email',name: 'Email',readOnly: true}
+								]
+					    });	
+					contactDetailsForm.load();
+
+
+					var ownersStore = new Ext.data.Store
+					(
+						{
+						url: '/XMLDataLoader.aspx?action=BaSOwners&user=001IN000001&pass=Passw0rd&key=5', method: 'GET',
+							reader: new Ext.data.XmlReader
+							(
+								{				         
+				               record: 'List'
+								},								
+						    	[
+									{name: 'title', mapping: 'Profile>Salutation'},
+									{name : 'firstName', mapping: 'Profile>GivenName'},
+									{name : 'lastName', mapping: 'Profile>Name'},
+									{name: 'tfnExemption',mapping: 'Profile>TFN'}
+								]
+						   )
+						}
+					);
+					
+					  // create the grid
+				    var ownersGrid = new Ext.grid.GridPanel
+					(
+						{
+							store: ownersStore,
+							columns: 
+							[
+								{
+									header: 'Title', 
+									id: 'title', 
+									width : 110, 
+									sortable : true, 
+									align: 'left'
+								},
+								
+								{
+									header: 'First Name', 
+									id: 'firstName', 
+									width : 110, 
+									sortable : true, 
+									align: 'left'
+								},
+										
+								{
+									header: 'Last/Entity Name', 
+									id: 'lastName', 
+									width : 110, 
+									sortable :true, 
+									align: 'left'
+								},
+								
+								{
+									header: 'TFN/Exemption Quoted', 
+									id: 'tfnExemption', 
+									width : 110, 
+									sortable : true, 
+									align: 'left'
+								}
+							],
+						   renderTo:'owners',
+						}
+					);
+				ownersStore.load();
+		
+				var otherDetailsForm = new Ext.FormPanel
+					({
+										
+							renderTo: 'otherDetailsForms',
+							labelWidth: 220, // label settings here cascade unless overridden
+							border: false,
+							defaults: {width: 200},
+							defaultType: 'textfield',
+							items: [
+							{
+								fieldLabel: 'Advisor Number',
+								name: 'advisorNumber',
+								id: 'advisorNumber',
+								readOnly: true
+							},
+							{
+								fieldLabel: 'Advisor Name',
+								name: 'advisorName',
+								id: 'advisorName',
+								readOnly: true
+							},
+							{
+								fieldLabel: 'Portfolio Type',
+								name: 'portfolioType',
+								id: 'portfolioType',
+								readOnly: true
+							},
+							{
+								fieldLabel: 'Unit Holder Number',
+								name: 'unitHolderNumber',
+								id: 'unitHolderNumber',
+								readOnly: true
+							},
+							{
+								fieldLabel: 'Super Fund/Trust TFN',
+								name: 'superFund',
+								id: 'superFund',
+								readOnly: true
+							}
+							]
+				    });	
+					
+
+
+				    
+					portfolioGrid.getSelectionModel().on('rowselect', function(sm, rowIdx, r) 
+					{
+						Ext.fly('portfolioName').update(r.data.portfolioName); 
+						var holdingsData = [		[ r.data.fundCode ,r.data.balanceInUnits, r.data.balanceInDollars,r.data.status]];					
+						
+						Ext.getCmp('portfolioFurtherGrid').getStore().loadData(holdingsData);
+						
+					//	var vOtherDetailsData = [		[ r.data.portfolioNumber ,r.data.portfolioName, r.data.status,r.data.accountNumber, r.data.financialPlanner]];
+						otherDetailsForm.getForm().items.get('advisorNumber').setValue(r.data.portfolioNumber);
+						otherDetailsForm.getForm().items.get('advisorName').setValue(r.data.portfolioName);
+						otherDetailsForm.getForm().items.get('portfolioType').setValue(r.data.status);
+						otherDetailsForm.getForm().items.get('unitHolderNumber').setValue(r.data.accountNumber);
+						otherDetailsForm.getForm().items.get('superFund').setValue(r.data.financialPlanner);
+						contactDetailsForm.load({url:'/XMLDataLoader.aspx?action=BaSPortfolioAddrs&user=001IN000001&pass=Passw0rd&portfolioNumber='+r.data.portfolioNumber, method: 'GET'});						
+					});
+						
+				});
+
+
+
+</script>
+<div id="portfolioTop"></div><br>
+<div id="furtherPortfolioDetails"></div><br>
+<div id="contactDetailsForm"></div><br>
+<div id="owners"></div>
+
+</body>
+</html>

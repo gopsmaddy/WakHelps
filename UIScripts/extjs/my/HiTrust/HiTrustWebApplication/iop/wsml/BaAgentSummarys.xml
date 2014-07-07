@@ -1,0 +1,29 @@
+<DST>
+ <HiTrust>
+<businessObject>BaAgentSummarys</businessObject>
+  <operation>SEARCH</operation>
+    <user>@@user@</user>
+    <password>@@pass@</password>
+  <request>
+  <data>
+   <Agent.Key>@@profileAgentKey@</Agent.Key>
+   <MaxRows>@@maxRecords@</MaxRows>
+   <!--<Fund.Key></Fund.Key>-->
+  </data>
+ </request>
+  <response>
+  <PortOwner.RelNo/>
+  <Portfolio.Name/>
+  <Portfolio.Number/>
+  <UnitClass.Fund.Desc/>
+  <UnitClass.Fund.Code/>
+  <UnitClass.Fund.Key/>
+  <UnitClass.Desc/>
+  <UnitClass.Fund.Ccy.ISOCode/>
+  <BalanceInUnits/>
+  <BalanceInCurrency/>
+  <ActivePortfolio/>
+ </response>
+</HiTrust>
+</DST>
+

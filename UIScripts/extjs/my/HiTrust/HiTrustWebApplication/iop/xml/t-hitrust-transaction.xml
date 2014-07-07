@@ -1,0 +1,488 @@
+<DST>
+	<user>001IN000001</user>
+	<password>Passw0rd</password>
+	<response>
+	<totalRecords>15</totalRecords>
+		<List>
+			<CtractNo>00000071</CtractNo>
+			<Type>
+				<Desc>Reinvestment</Desc>
+			</Type>
+			<OrderDate>29-Jun-2001 04:31:42</OrderDate>
+			<EffDate>29-Jun-2001 04:31:42</EffDate>
+			<PricedDate>29-Jun-2001 04:31:42</PricedDate>
+			<SFund>
+				<Key>0000000001</Key>
+			</SFund>
+			<SUnitClass>
+				<Key>0000000001</Key>
+			</SUnitClass>
+			<Price>1.399500</Price>
+			<NoUnit>114,247.802800</NoUnit>
+			<SGross>159,889.80</SGross>
+			<SNet>159,889.80</SNet>
+			<SettleNetFmFee>false</SettleNetFmFee>
+			<SLoadAmt>0.00</SLoadAmt>
+			<SLoadDiscount>0.00</SLoadDiscount>
+			<SFundManagerFee>0.00</SFundManagerFee>
+			<SFundMgrDiscount></SFundMgrDiscount>
+			<SGSTTotal>0.00</SGSTTotal>
+			<STax>0.00</STax>
+			<SCommission>0.00</SCommission>
+			<TotCommPercent></TotCommPercent>
+			<Settled>true</Settled>
+			<CtStatus>
+				<Desc>Settled</Desc>
+			</CtStatus>
+		</List>
+		<List>
+			<CtractNo>00000072</CtractNo>
+			<Type>
+				<Desc>Reinvestment</Desc>
+			</Type>
+			<OrderDate>29-Jun-2001 04:31:42</OrderDate>
+			<EffDate>29-Jun-2001 04:31:42</EffDate>
+			<PricedDate>29-Jun-2001 04:31:42</PricedDate>
+			<SFund>
+				<Key>0000000002</Key>
+			</SFund>
+			<SUnitClass>
+				<Key>0000000002</Key>
+			</SUnitClass>
+			<Price>3.805000</Price>
+			<NoUnit>129.684600</NoUnit>
+			<SGross>493.45</SGross>
+			<SNet>493.45</SNet>
+			<SettleNetFmFee>false</SettleNetFmFee>
+			<SLoadAmt>0.00</SLoadAmt>
+			<SLoadDiscount>0.00</SLoadDiscount>
+			<SFundManagerFee>0.00</SFundManagerFee>
+			<SFundMgrDiscount></SFundMgrDiscount>
+			<SGSTTotal>0.00</SGSTTotal>
+			<STax>0.00</STax>
+			<SCommission>0.00</SCommission>
+			<TotCommPercent></TotCommPercent>
+			<Settled>true</Settled>
+			<CtStatus>
+				<Desc>Settled</Desc>
+			</CtStatus>
+		</List>
+		<List>
+			<CtractNo>00000073</CtractNo>
+			<Type>
+				<Desc>Reinvestment</Desc>
+			</Type>
+			<OrderDate>29-Jun-2001 04:31:42</OrderDate>
+			<EffDate>29-Jun-2001 04:31:42</EffDate>
+			<PricedDate>29-Jun-2001 04:31:42</PricedDate>
+			<SFund>
+				<Key>0000000002</Key>
+			</SFund>
+			<SUnitClass>
+				<Key>0000000002</Key>
+			</SUnitClass>
+			<Price>3.805000</Price>
+			<NoUnit>129.684600</NoUnit>
+			<SGross>493.45</SGross>
+			<SNet>493.45</SNet>
+			<SettleNetFmFee>false</SettleNetFmFee>
+			<SLoadAmt>0.00</SLoadAmt>
+			<SLoadDiscount>0.00</SLoadDiscount>
+			<SFundManagerFee>0.00</SFundManagerFee>
+			<SFundMgrDiscount></SFundMgrDiscount>
+			<SGSTTotal>0.00</SGSTTotal>
+			<STax>0.00</STax>
+			<SCommission>0.00</SCommission>
+			<TotCommPercent></TotCommPercent>
+			<Settled>true</Settled>
+			<CtStatus>
+				<Desc>Settled</Desc>
+			</CtStatus>
+		</List>
+		<List>
+			<CtractNo>00000074</CtractNo>
+			<Type>
+				<Desc>Reinvestment</Desc>
+			</Type>
+			<OrderDate>29-Jun-2001 04:31:42</OrderDate>
+			<EffDate>29-Jun-2001 04:31:42</EffDate>
+			<PricedDate>29-Jun-2001 04:31:42</PricedDate>
+			<SFund>
+				<Key>0000000002</Key>
+			</SFund>
+			<SUnitClass>
+				<Key>0000000002</Key>
+			</SUnitClass>
+			<Price>3.805000</Price>
+			<NoUnit>129.684600</NoUnit>
+			<SGross>493.45</SGross>
+			<SNet>493.45</SNet>
+			<SettleNetFmFee>false</SettleNetFmFee>
+			<SLoadAmt>0.00</SLoadAmt>
+			<SLoadDiscount>0.00</SLoadDiscount>
+			<SFundManagerFee>0.00</SFundManagerFee>
+			<SFundMgrDiscount></SFundMgrDiscount>
+			<SGSTTotal>0.00</SGSTTotal>
+			<STax>0.00</STax>
+			<SCommission>0.00</SCommission>
+			<TotCommPercent></TotCommPercent>
+			<Settled>true</Settled>
+			<CtStatus>
+				<Desc>Settled</Desc>
+			</CtStatus>
+		</List>
+		<List>
+			<CtractNo>00000075</CtractNo>
+			<Type>
+				<Desc>Reinvestment</Desc>
+			</Type>
+			<OrderDate>29-Jun-2001 04:31:42</OrderDate>
+			<EffDate>29-Jun-2001 04:31:42</EffDate>
+			<PricedDate>29-Jun-2001 04:31:42</PricedDate>
+			<SFund>
+				<Key>0000000002</Key>
+			</SFund>
+			<SUnitClass>
+				<Key>0000000002</Key>
+			</SUnitClass>
+			<Price>3.805000</Price>
+			<NoUnit>129.684600</NoUnit>
+			<SGross>493.45</SGross>
+			<SNet>493.45</SNet>
+			<SettleNetFmFee>false</SettleNetFmFee>
+			<SLoadAmt>0.00</SLoadAmt>
+			<SLoadDiscount>0.00</SLoadDiscount>
+			<SFundManagerFee>0.00</SFundManagerFee>
+			<SFundMgrDiscount></SFundMgrDiscount>
+			<SGSTTotal>0.00</SGSTTotal>
+			<STax>0.00</STax>
+			<SCommission>0.00</SCommission>
+			<TotCommPercent></TotCommPercent>
+			<Settled>true</Settled>
+			<CtStatus>
+				<Desc>Settled</Desc>
+			</CtStatus>
+		</List>
+		<List>
+			<CtractNo>00000076</CtractNo>
+			<Type>
+				<Desc>Reinvestment</Desc>
+			</Type>
+			<OrderDate>29-Jun-2001 04:31:42</OrderDate>
+			<EffDate>29-Jun-2001 04:31:42</EffDate>
+			<PricedDate>29-Jun-2001 04:31:42</PricedDate>
+			<SFund>
+				<Key>0000000002</Key>
+			</SFund>
+			<SUnitClass>
+				<Key>0000000002</Key>
+			</SUnitClass>
+			<Price>3.805000</Price>
+			<NoUnit>129.684600</NoUnit>
+			<SGross>493.45</SGross>
+			<SNet>493.45</SNet>
+			<SettleNetFmFee>false</SettleNetFmFee>
+			<SLoadAmt>0.00</SLoadAmt>
+			<SLoadDiscount>0.00</SLoadDiscount>
+			<SFundManagerFee>0.00</SFundManagerFee>
+			<SFundMgrDiscount></SFundMgrDiscount>
+			<SGSTTotal>0.00</SGSTTotal>
+			<STax>0.00</STax>
+			<SCommission>0.00</SCommission>
+			<TotCommPercent></TotCommPercent>
+			<Settled>true</Settled>
+			<CtStatus>
+				<Desc>Settled</Desc>
+			</CtStatus>
+		</List>
+		<List>
+			<CtractNo>00000077</CtractNo>
+			<Type>
+				<Desc>Reinvestment</Desc>
+			</Type>
+			<OrderDate>29-Jun-2001 04:31:42</OrderDate>
+			<EffDate>29-Jun-2001 04:31:42</EffDate>
+			<PricedDate>29-Jun-2001 04:31:42</PricedDate>
+			<SFund>
+				<Key>0000000002</Key>
+			</SFund>
+			<SUnitClass>
+				<Key>0000000002</Key>
+			</SUnitClass>
+			<Price>3.805000</Price>
+			<NoUnit>129.684600</NoUnit>
+			<SGross>493.45</SGross>
+			<SNet>493.45</SNet>
+			<SettleNetFmFee>false</SettleNetFmFee>
+			<SLoadAmt>0.00</SLoadAmt>
+			<SLoadDiscount>0.00</SLoadDiscount>
+			<SFundManagerFee>0.00</SFundManagerFee>
+			<SFundMgrDiscount></SFundMgrDiscount>
+			<SGSTTotal>0.00</SGSTTotal>
+			<STax>0.00</STax>
+			<SCommission>0.00</SCommission>
+			<TotCommPercent></TotCommPercent>
+			<Settled>true</Settled>
+			<CtStatus>
+				<Desc>Settled</Desc>
+			</CtStatus>
+		</List>
+		<List>
+			<CtractNo>00000078</CtractNo>
+			<Type>
+				<Desc>Reinvestment</Desc>
+			</Type>
+			<OrderDate>29-Jun-2001 04:31:42</OrderDate>
+			<EffDate>29-Jun-2001 04:31:42</EffDate>
+			<PricedDate>29-Jun-2001 04:31:42</PricedDate>
+			<SFund>
+				<Key>0000000002</Key>
+			</SFund>
+			<SUnitClass>
+				<Key>0000000002</Key>
+			</SUnitClass>
+			<Price>3.805000</Price>
+			<NoUnit>129.684600</NoUnit>
+			<SGross>493.45</SGross>
+			<SNet>493.45</SNet>
+			<SettleNetFmFee>false</SettleNetFmFee>
+			<SLoadAmt>0.00</SLoadAmt>
+			<SLoadDiscount>0.00</SLoadDiscount>
+			<SFundManagerFee>0.00</SFundManagerFee>
+			<SFundMgrDiscount></SFundMgrDiscount>
+			<SGSTTotal>0.00</SGSTTotal>
+			<STax>0.00</STax>
+			<SCommission>0.00</SCommission>
+			<TotCommPercent></TotCommPercent>
+			<Settled>true</Settled>
+			<CtStatus>
+				<Desc>Settled</Desc>
+			</CtStatus>
+		</List>
+		<List>
+			<CtractNo>00000079</CtractNo>
+			<Type>
+				<Desc>Reinvestment</Desc>
+			</Type>
+			<OrderDate>29-Jun-2001 04:31:42</OrderDate>
+			<EffDate>29-Jun-2001 04:31:42</EffDate>
+			<PricedDate>29-Jun-2001 04:31:42</PricedDate>
+			<SFund>
+				<Key>0000000002</Key>
+			</SFund>
+			<SUnitClass>
+				<Key>0000000002</Key>
+			</SUnitClass>
+			<Price>3.805000</Price>
+			<NoUnit>129.684600</NoUnit>
+			<SGross>493.45</SGross>
+			<SNet>493.45</SNet>
+			<SettleNetFmFee>false</SettleNetFmFee>
+			<SLoadAmt>0.00</SLoadAmt>
+			<SLoadDiscount>0.00</SLoadDiscount>
+			<SFundManagerFee>0.00</SFundManagerFee>
+			<SFundMgrDiscount></SFundMgrDiscount>
+			<SGSTTotal>0.00</SGSTTotal>
+			<STax>0.00</STax>
+			<SCommission>0.00</SCommission>
+			<TotCommPercent></TotCommPercent>
+			<Settled>true</Settled>
+			<CtStatus>
+				<Desc>Settled</Desc>
+			</CtStatus>
+		</List>
+		<List>
+			<CtractNo>00000080</CtractNo>
+			<Type>
+				<Desc>Reinvestment</Desc>
+			</Type>
+			<OrderDate>29-Jun-2001 04:31:42</OrderDate>
+			<EffDate>29-Jun-2001 04:31:42</EffDate>
+			<PricedDate>29-Jun-2001 04:31:42</PricedDate>
+			<SFund>
+				<Key>0000000002</Key>
+			</SFund>
+			<SUnitClass>
+				<Key>0000000002</Key>
+			</SUnitClass>
+			<Price>3.805000</Price>
+			<NoUnit>129.684600</NoUnit>
+			<SGross>493.45</SGross>
+			<SNet>493.45</SNet>
+			<SettleNetFmFee>false</SettleNetFmFee>
+			<SLoadAmt>0.00</SLoadAmt>
+			<SLoadDiscount>0.00</SLoadDiscount>
+			<SFundManagerFee>0.00</SFundManagerFee>
+			<SFundMgrDiscount></SFundMgrDiscount>
+			<SGSTTotal>0.00</SGSTTotal>
+			<STax>0.00</STax>
+			<SCommission>0.00</SCommission>
+			<TotCommPercent></TotCommPercent>
+			<Settled>true</Settled>
+			<CtStatus>
+				<Desc>Settled</Desc>
+			</CtStatus>
+		</List>
+		<List>
+			<CtractNo>00000081</CtractNo>
+			<Type>
+				<Desc>Reinvestment</Desc>
+			</Type>
+			<OrderDate>29-Jun-2001 04:31:42</OrderDate>
+			<EffDate>29-Jun-2001 04:31:42</EffDate>
+			<PricedDate>29-Jun-2001 04:31:42</PricedDate>
+			<SFund>
+				<Key>0000000002</Key>
+			</SFund>
+			<SUnitClass>
+				<Key>0000000002</Key>
+			</SUnitClass>
+			<Price>3.805000</Price>
+			<NoUnit>129.684600</NoUnit>
+			<SGross>493.45</SGross>
+			<SNet>493.45</SNet>
+			<SettleNetFmFee>false</SettleNetFmFee>
+			<SLoadAmt>0.00</SLoadAmt>
+			<SLoadDiscount>0.00</SLoadDiscount>
+			<SFundManagerFee>0.00</SFundManagerFee>
+			<SFundMgrDiscount></SFundMgrDiscount>
+			<SGSTTotal>0.00</SGSTTotal>
+			<STax>0.00</STax>
+			<SCommission>0.00</SCommission>
+			<TotCommPercent></TotCommPercent>
+			<Settled>true</Settled>
+			<CtStatus>
+				<Desc>Settled</Desc>
+			</CtStatus>
+		</List>
+		<List>
+			<CtractNo>00000082</CtractNo>
+			<Type>
+				<Desc>Reinvestment</Desc>
+			</Type>
+			<OrderDate>29-Jun-2001 04:31:42</OrderDate>
+			<EffDate>29-Jun-2001 04:31:42</EffDate>
+			<PricedDate>29-Jun-2001 04:31:42</PricedDate>
+			<SFund>
+				<Key>0000000002</Key>
+			</SFund>
+			<SUnitClass>
+				<Key>0000000002</Key>
+			</SUnitClass>
+			<Price>3.805000</Price>
+			<NoUnit>129.684600</NoUnit>
+			<SGross>493.45</SGross>
+			<SNet>493.45</SNet>
+			<SettleNetFmFee>false</SettleNetFmFee>
+			<SLoadAmt>0.00</SLoadAmt>
+			<SLoadDiscount>0.00</SLoadDiscount>
+			<SFundManagerFee>0.00</SFundManagerFee>
+			<SFundMgrDiscount></SFundMgrDiscount>
+			<SGSTTotal>0.00</SGSTTotal>
+			<STax>0.00</STax>
+			<SCommission>0.00</SCommission>
+			<TotCommPercent></TotCommPercent>
+			<Settled>true</Settled>
+			<CtStatus>
+				<Desc>Settled</Desc>
+			</CtStatus>
+		</List>
+		<List>
+			<CtractNo>00000083</CtractNo>
+			<Type>
+				<Desc>Reinvestment</Desc>
+			</Type>
+			<OrderDate>29-Jun-2001 04:31:42</OrderDate>
+			<EffDate>29-Jun-2001 04:31:42</EffDate>
+			<PricedDate>29-Jun-2001 04:31:42</PricedDate>
+			<SFund>
+				<Key>0000000002</Key>
+			</SFund>
+			<SUnitClass>
+				<Key>0000000002</Key>
+			</SUnitClass>
+			<Price>3.805000</Price>
+			<NoUnit>129.684600</NoUnit>
+			<SGross>493.45</SGross>
+			<SNet>493.45</SNet>
+			<SettleNetFmFee>false</SettleNetFmFee>
+			<SLoadAmt>0.00</SLoadAmt>
+			<SLoadDiscount>0.00</SLoadDiscount>
+			<SFundManagerFee>0.00</SFundManagerFee>
+			<SFundMgrDiscount></SFundMgrDiscount>
+			<SGSTTotal>0.00</SGSTTotal>
+			<STax>0.00</STax>
+			<SCommission>0.00</SCommission>
+			<TotCommPercent></TotCommPercent>
+			<Settled>true</Settled>
+			<CtStatus>
+				<Desc>Settled</Desc>
+			</CtStatus>
+		</List>
+		<List>
+			<CtractNo>00000084</CtractNo>
+			<Type>
+				<Desc>Reinvestment</Desc>
+			</Type>
+			<OrderDate>29-Jun-2001 04:31:42</OrderDate>
+			<EffDate>29-Jun-2001 04:31:42</EffDate>
+			<PricedDate>29-Jun-2001 04:31:42</PricedDate>
+			<SFund>
+				<Key>0000000002</Key>
+			</SFund>
+			<SUnitClass>
+				<Key>0000000002</Key>
+			</SUnitClass>
+			<Price>3.805000</Price>
+			<NoUnit>129.684600</NoUnit>
+			<SGross>493.45</SGross>
+			<SNet>493.45</SNet>
+			<SettleNetFmFee>false</SettleNetFmFee>
+			<SLoadAmt>0.00</SLoadAmt>
+			<SLoadDiscount>0.00</SLoadDiscount>
+			<SFundManagerFee>0.00</SFundManagerFee>
+			<SFundMgrDiscount></SFundMgrDiscount>
+			<SGSTTotal>0.00</SGSTTotal>
+			<STax>0.00</STax>
+			<SCommission>0.00</SCommission>
+			<TotCommPercent></TotCommPercent>
+			<Settled>true</Settled>
+			<CtStatus>
+				<Desc>Settled</Desc>
+			</CtStatus>
+		</List>
+		<List>
+			<CtractNo>00000085</CtractNo>
+			<Type>
+				<Desc>Reinvestment</Desc>
+			</Type>
+			<OrderDate>29-Jun-2001 04:31:42</OrderDate>
+			<EffDate>29-Jun-2001 04:31:42</EffDate>
+			<PricedDate>29-Jun-2001 04:31:42</PricedDate>
+			<SFund>
+				<Key>0000000002</Key>
+			</SFund>
+			<SUnitClass>
+				<Key>0000000002</Key>
+			</SUnitClass>
+			<Price>3.805000</Price>
+			<NoUnit>129.684600</NoUnit>
+			<SGross>493.45</SGross>
+			<SNet>493.45</SNet>
+			<SettleNetFmFee>false</SettleNetFmFee>
+			<SLoadAmt>0.00</SLoadAmt>
+			<SLoadDiscount>0.00</SLoadDiscount>
+			<SFundManagerFee>0.00</SFundManagerFee>
+			<SFundMgrDiscount></SFundMgrDiscount>
+			<SGSTTotal>0.00</SGSTTotal>
+			<STax>0.00</STax>
+			<SCommission>0.00</SCommission>
+			<TotCommPercent></TotCommPercent>
+			<Settled>true</Settled>
+			<CtStatus>
+				<Desc>Settled</Desc>
+			</CtStatus>
+		</List>
+	
+	</response>
+</DST>

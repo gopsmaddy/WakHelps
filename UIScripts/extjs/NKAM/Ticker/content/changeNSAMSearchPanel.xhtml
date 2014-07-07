@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom" >
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.nsamChangeSearch_Title}
+    </ui:define>
+    <ui:define name="workArea">
+
+        <h:form id="idFormChangeNSAMSearch" onsubmit="document.body.style.cursor='wait';">
+
+
+            <ui:fragment rendered="#{ChangeNSAMSearch.searchShow}">
+                <table class="acTable">
+
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.nsamChangeSearch_Device}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:selectOneMenu  value="#{ChangeNSAMSearch.uiFilterData.deviceId}">
+                                <f:selectItems value="#{ChangeNSAMSearch.listDeviceType}"/>
+                            </h:selectOneMenu>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.nsamChangeSearch_BE}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:selectManyListbox   value="#{ChangeNSAMSearch.uiFilterData.beIds}" size="6">
+                                <f:selectItems value="#{ChangeNSAMSearch.listBusinessEntity}" />
+                            </h:selectManyListbox  >
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.nsamChangeSearch_NCRS}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:selectOneMenu  value="#{ChangeNSAMSearch.uiFilterData.ncrsId}">
+                                <f:selectItems value="#{ChangeNSAMSearch.listNcrs}"/>
+                            </h:selectOneMenu>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.nsamChangeSearch_RVendor}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:selectOneMenu  value="#{ChangeNSAMSearch.uiFilterData.readerVendorId}">
+                                <f:selectItems value="#{ChangeNSAMSearch.listReaderVendor}"/>
+                            </h:selectOneMenu>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.nsamChangeSearch_EVendor}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:selectOneMenu  value="#{ChangeNSAMSearch.uiFilterData.equipmentVendorId}">
+                                <f:selectItems value="#{ChangeNSAMSearch.listEquipmentVendor}"/>
+                            </h:selectOneMenu>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.nsamChangeSearch_NSAM}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:inputText id="chipId" value="#{ChangeNSAMSearch.uiFilterData.chipId}"
+                                         minimum="16"
+                                         maxlength="16"
+                                         styleClass="form-input-text"
+                                         required="false"
+                                         label="Chip Id" 
+                                         onblur="this.value=this.value.toUpperCase();" 
+                                         autocomplete="off">
+                                <f:validator validatorId="hexValueValidator" />
+                                <f:validateLength minimum="16" maximum="16" />
+                            </h:inputText>
+                            <br/> <h:message for="chipId" styleClass="warn"/>
+                        </td>
+                    </tr>
+
+                    <!--<h:inputText id="testt" value="#{ChangeNSAMSearch.uiFilterData.deviceId}" />-->
+                </table>
+                <h:selectOneMenu  value="#{ChangeNSAMSearch.limit}">
+                    <f:selectItems value="#{ChangeNSAMSearch.listNoOfRecords}"/>
+                </h:selectOneMenu>
+                &#160;
+                |
+                &#160;
+                <h:commandButton  id="idSubmit" action="#{ChangeNSAMSearch.listValidNSAMs}"  value="#{msg.nsamChangeSearch_Search}" />
+                &#160;
+                <!--h:commandButton  id="idReset" action="#{ChangeNSAMSearch.reset}"  value="Reset" /-->
+                <!--<h:commandLink action="#{ChangeNSAMSearch.listValidNSAMs}">#{msg.nsamChangeSearch_Search}</h:commandLink>-->
+            </ui:fragment>
+            &#160;
+            <!--<h:commandLink action="#{nsamRequestPane}" immediate="true">#{msg.cancelLink}</h:commandLink>-->
+        </h:form>
+        <h:messages globalOnly="true" layout="table" styleClass="warn"
+                    infoClass="info" warnClass="warn"
+                    errorClass="warn"
+                    fatalClass="warn"/>
+
+        <br/>
+
+
+
+    </ui:define>
+</ui:composition>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<DST>
+	<HiTrust>
+		<businessObject>BaProfiles</businessObject>
+		<operation>SEARCH</operation>
+		<user>@@user@</user>
+		<password>@@pass@</password>
+		<request>
+			<data>
+				<Key>@@profileKey@</Key>
+			</data>
+		</request>
+		<response>
+			<RelNo />
+			<Key />
+			<Salutation />
+			<GivenName />
+			<Name />
+			<Status.Desc />
+			<IDType.Desc />
+			<TFNQuoted.Desc />
+			<ABNQuoted.Desc />
+			<TaxCode.Desc />
+			<Domicile.Desc />
+			<CorporateID />
+			<User.Key />
+			<Type.Desc />
+			<Type.Key />
+			<Type.Code />
+			<BirthDate/>
+			<Company.Key/>
+			<ValidTFN/>
+			<ValidCorporateID/>					
+		</response>
+	</HiTrust>
+</DST>
+

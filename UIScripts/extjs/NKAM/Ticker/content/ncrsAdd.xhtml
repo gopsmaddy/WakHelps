@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom">
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.ncrs_AddTitle}
+    </ui:define>
+    <ui:define name="workArea">
+        <h:form onsubmit="document.body.style.cursor='wait';">
+            <table class="acTable">
+				<tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.ncrs_ID}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:inputText id="typeColumn" value="#{NCRS.ncrs.ncrsId}"
+                                     maxlength="4"
+                                     styleClass="form-input-text"
+                                     required="true"
+                                    validator="#{Validators.validateUniqueNCRS}"
+                                    onblur="this.value=this.value.toUpperCase();" 
+                                         autocomplete="off" >
+                            <f:validateLength minimum="4" maximum="4" />
+                        </h:inputText>
+                        <br/> <h:message for="typeColumn" styleClass="warn"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.ncrs_Name}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:inputText id="nameColumn" value="#{NCRS.ncrs.name}"
+                                     maxlength="40"
+                                     styleClass="form-input-text"
+                                     required="true" />
+                        <br/><h:message for="nameColumn" styleClass="warn"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.ncrs_URL}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:inputText id="TLAColumn" value="#{NCRS.ncrs.wsdlUrl}"
+                                     maxlength="150"
+                                     styleClass="form-input-text-large-extra"
+                                     required="true"/>
+                        <br/><h:message for="TLAColumn" styleClass="warn"/>
+                    </td>
+                </tr>
+
+            </table>
+            <h:commandLink id="saveDevice"  action="#{NCRS.saveAction}"
+                           onclick="if (!confirm('Are you sure you want to save this NCRS?')) return false">
+                #{msg.saveLink}</h:commandLink>
+             &#160;
+            <!--<h:commandLink action="#{nsamDeviceType}" immediate="true">#{msg.cancelLink}</h:commandLink>-->
+        </h:form>
+            <h:messages globalOnly="true" layout="table" styleClass="warn"
+            infoClass="info" warnClass="warn"
+            errorClass="warn"
+            fatalClass="warn"/>
+
+            <br/>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

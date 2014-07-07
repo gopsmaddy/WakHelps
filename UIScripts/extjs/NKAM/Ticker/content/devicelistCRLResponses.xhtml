@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom">
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.deviceListCRLResponse_Title}
+    </ui:define>
+    <ui:define name="workArea">
+        <h:form onsubmit="document.body.style.cursor='wait';">
+            <table>
+                <tr>
+                    <td>
+                      
+                        <ac:pkDataTable id="responseDevices" binding="#{DeviceListPane.deviceListPaneData}"
+                                        primaryKey="id"
+                                        var="devices"
+                                        value="#{DeviceListPane.responseDeviceListUI}"
+                                        headerClass="table-header"
+                                        footerClass="table-footer"
+                                        styleClass="acTable"
+                                        cellpadding="0" cellspacing="0"
+                                        rendered="#{not empty DeviceListPane.responseDeviceListUI}">
+
+                                    <h:column id="FailColumn" >
+                                        <f:facet name="header">
+                                            <h:outputText value="#{msg.deviceListPane_RejectDesc}"/>
+                                        </f:facet>
+                                        <h:outputText id="descriptionFail" value="#{devices.rejectDescription}"/>
+                                    </h:column>
+
+                        </ac:pkDataTable>
+                    </td>
+                </tr>
+            </table>
+            <p> #{msg.deviceListCRLResponse_Title5} </p>
+            <br/>
+            <h:commandButton id="response2" action="#{DeviceListPane.processResponse}"
+                             onclick="if (!confirm('You will lose this information(if any), do you want to proceed anyway?')) return false" 
+                             value="#{msg.response}"/>
+
+        </h:form>
+            <h:messages globalOnly="true" layout="table" styleClass="warn"
+            infoClass="info" warnClass="warn"
+            errorClass="warn"
+            fatalClass="warn"/>
+
+            <br/>        
+    </ui:define>
+</ui:composition>
+</body>
+</html>

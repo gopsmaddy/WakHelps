@@ -1,0 +1,499 @@
+<html>
+	<head>
+		<link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+            <!--<script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base.js" type="text/javascript"></script>
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all.js" type="text/javascript"></script>-->
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all-debug.js" type="text/javascript"></script>
+	   <body>
+	   	
+	   	<script type="text/javascript">
+	/*
+	// Tabs
+  $('#tabs').bind('tabsselect', function (event, ui) {
+        if(ui.tab.text=='Funds Under Management')
+        {
+        	if(!myGridStore.loaded)
+            myGridStore.load(); 
+         //   alert("Funds Under Management");
+            return true;
+         }
+        
+        if(ui.tab.text=='Taxation Details')
+        {
+        if(!taxationForm.loaded)
+            taxationForm.load({url: '/XMLDataLoader.aspx?action=baprofiles&user=001IN000001&pass=Passw0rd', method: 'GET'});
+          //  alert("Taxation Details");
+            return true;
+         }
+            
+        if(ui.tab.text=='Contact Details')
+        {
+        	if(!contactStore.loaded)
+           contactStore.load();
+           
+          if(!contactForm.loaded)
+           contactForm.load({url:'/XMLDataLoader.aspx?action=BaSProfileAddrs&user=001IN000001&pass=Passw0rd&relNo=IN000001', method: 'GET'});
+          //  alert("Contact Details");
+            return true;
+         }
+            
+         if(ui.tab.text=='Bank Accounts')
+         {
+         	if(!bankStore.loaded)
+            bankStore.load();
+          //  alert("Bank Accounts");
+            return true;
+         }
+        });
+
+	*/
+	
+///////////////////fund under management///////////////////////////////////////////	
+
+Ext.Ajax.timeout = 60000;
+Ext.onReady
+(
+	function()
+	{
+	
+		// create the Data Store
+		 myGridStore = new Ext.data.Store
+		 (
+		 	{
+			// load using HTTP
+				proxy : new Ext.data.HttpProxy
+				(
+					{																
+						method: 'GET',
+						prettyUrls: false,
+						url: 'http://localhost:8080/HiTrustWebApplication/iop/jsp/bafunds.jsp'
+						//url: '/XMLDataLoader.aspx?action=bafunds&user=001IN000001&pass=Passw0rd'
+					}
+				),
+	
+			// the return will be XML, so lets set up a reader
+			reader: new Ext.data.XmlReader
+			(
+				{
+				   // records will have an "Item" tag
+				   record: 'List',
+				   id: 'Key',
+				   totalProperty: 'totalRecords'
+			   }, 
+			   [
+				   // set up the fields mapping into the xml doc
+				   // The first needs mapping, the others are very basic
+								{name:  'fundname', mapping: 'Desc'},
+								{name : 'fundcode', mapping: 'Code'},
+								{name : 'currencycode', mapping: 'Ccy > ISOCode'}
+			   ]
+		   ),
+		   listeners: 
+		   {
+		   	load: function()
+		   	{
+		   		this.loaded = true;
+		   	}
+		  }
+			   
+		}
+	);
+	
+		// create the grid
+		var grid = new Ext.grid.GridPanel
+		(
+			{
+				//title: 'Search Results',
+				store: myGridStore,
+				columns: 
+				[
+					{id: 'fundname', header: 'Fund Long Name', dataIndex : 'fundname', width : 250, sortable : true, align: 'left'},
+					{header: 'Fund Short Name', dataIndex : 'fundcode', width : 150, sortable : true, align: 'left'},
+					{header: 'Currency', dataIndex : 'currencycode', width : 100, sortable : true, align: 'left'}
+				],
+				
+			  autoExpandColumn: 'fundname',
+		    renderTo:'flexme2',
+		    autoWidth: true,
+				height: 300,
+				bbar: new Ext.PagingToolbar
+				(
+					{
+					  id : 'pBar',
+						pageSize: 10,
+						store: myGridStore,
+						displayInfo: true,
+						displayMsg: 'Displaying {0} - {1} of {2}',
+						emptyMsg: "No items to display"
+					}
+		   )
+						
+			}
+		);
+		
+						   
+	////////////////////taxation//////////////////////////////////////////					
+	
+		
+	taxationForm = new Ext.FormPanel
+	(
+		{
+			reader: new Ext.data.XmlReader
+			(
+				{
+					record: 'List',
+					id: 'Key',
+					totalRecords: 'totalRecords'
+				}, 
+				[
+					{name: 'tfn', mapping: 'TFN'},
+					{name: 'tfnType', mapping: 'TaxCode/Desc'},
+					{name: 'taxDomcile', mapping: 'Domicile/Desc'},
+					{name: 'abnAcn', mapping: 'CorporateID'}
+				]
+			),
+				
+					
+			renderTo: 'taxation',
+			labelWidth: 150, // label settings here cascade unless overridden
+			border: false,
+			height: 200,
+			defaults: {width: 150},
+			defaultType: 'textfield',
+			
+			listeners: 
+			{
+		   	actioncomplete: function()
+		   	{
+		   		
+		   		this.loaded = true;	
+		   	}
+		  },	
+						
+			items: 
+			[
+				{
+					fieldLabel: 'TFN/EXEMPTION QUOTED',
+					name: 'tfn',
+					readOnly: true
+				},
+				{
+					fieldLabel: 'TFN TYPE',
+					name: 'tfnType',
+					readOnly: true
+				},
+				{
+					fieldLabel: 'TAX DOMCILE',
+					name: 'taxDomcile',
+					readOnly: true
+				},
+				{
+					fieldLabel: 'ABN/ACN QUOTED',
+					name: 'abnAcn',
+					readOnly: true
+				}
+			]
+		}
+	);
+	
+///////////////////contact grid///////////////////////////////////////////	
+	
+	contactStore = new Ext.data.Store
+	(
+		{
+			
+			proxy : new Ext.data.HttpProxy
+			(
+				{																
+					method: 'GET',
+					prettyUrls: false,
+					url: 'http://localhost:8080/HiTrustWebApplication/iop/jsp/BaSProfileAddrs.jsp'
+					//url:'/XMLDataLoader.aspx?action=BaSProfileAddrs&user=001IN000001&pass=Passw0rd&relNo=IN000001', method: 'GET',
+				}
+			),
+			
+			reader: new Ext.data.XmlReader
+			(
+				{
+					record: 'List',
+					id: 'Key',
+					totalRecords: 'totalRecords'
+				},				
+				[				
+					{name: 'AddressKey',mapping: 'Key'},	
+					{name: 'DefaultAddress',mapping: 'DefaultAddr'},
+					{name: 'AddressLine1',mapping: 'Address1'},					
+					{name: 'AddressLine2',mapping: 'Address2'},
+					{name: 'AddressLine3',mapping: 'Address3'},	
+					{name: 'AddressLine4',mapping: 'Address4'},
+					{name: 'State',mapping: 'State'},					
+					{name: 'ZipCode',mapping: 'ZipCode'},
+					{name: 'StartDate',mapping: 'StartDate'},													
+					{name: 'Country',mapping: 'Country>Desc'},
+					{name: 'HomeTel',mapping: 'TelNo'},					
+					{name: 'WorkTel',mapping: 'TelNo2'},				
+					{name: 'Mobile',mapping: 'MobileNo'},				
+					{name: 'Fax',mapping: 'FaxNo'},
+					{name: 'Email',mapping: 'EMail'},
+					{name: 'Deleted',mapping: 'Deleted'}
+				]
+			),
+	    listeners: 
+	    {
+		   	load: function()
+		   	{
+		   		this.loaded = true;
+		   	}
+		  }
+		}
+	);
+		
+		
+	var contactGrid = new Ext.grid.GridPanel
+	(
+		{
+			store: contactStore,			
+			columns:
+			[
+				{id: 'AddressLine1',header: 'Address',dataIndex: 'AddressLine1',width: 102,sortable: true,align: 'left'},					
+				{header: 'Suburb',dataIndex: 'AddressLine3',width: 102,sortable: true,	align: 'left'},	
+				{header: 'State',dataIndex: 'State',width: 102,sortable: true,align: 'left'},
+				{header: 'ZipCode',dataIndex: 'ZipCode',width: 102,sortable: true,align: 'left'},
+				{header: 'Status',dataIndex: 'Status',	width: 102,sortable: true,align: 'left'},	
+				{header: 'Default Address',dataIndex: 'DefaultAddress',width: 102,sortable: true,align: 'left'}
+			],				
+			renderTo:'contacts',
+			autoHeight: true					
+		}
+	);
+		
+	/////////////////contact form/////////////////////////////////////////////
+		
+	contactForm = new Ext.FormPanel
+	(
+		{
+			
+			reader: new Ext.data.XmlReader
+			(
+				{
+						record: 'List',
+						id: 'Key',
+						totalRecords: 'totalRecords'
+				}, 
+				[
+					{name: 'AddressLine1',mapping: 'Address1'},					
+					{name: 'AddressLine2',mapping: 'Address2'},					
+					{name: 'Surburb',mapping: 'Address3'},
+					{name: 'State',mapping: 'State'},					
+					{name: 'ZipCode',mapping: 'ZipCode'},					
+					{name: 'Country',mapping: 'Country/Desc'},
+					{name: 'HomeTel',mapping: 'TelNo'},					
+					{name: 'WorkTel',mapping: 'TelNo2'},				
+					{name: 'Mobile',mapping: 'MobileNo'},				
+					{name: 'Fax',mapping: 'FaxNo'},
+					{name: 'Email',mapping: 'EMail'}
+				]
+			),
+			
+			renderTo: 'contactDetailsBelow',
+			labelWidth: 220, // label settings here cascade unless overridden
+			border: false,
+			defaults: {width: 150},
+			defaultType: 'textfield',			
+			listeners: 
+			{
+		   	actioncomplete: function()
+		   	{		   		
+		   		this.loaded = true;	
+		   	}
+		  },	
+				
+			items: 
+			[
+				{
+					fieldLabel: 'Address Line 1',
+					name: 'AddressLine1',
+					readOnly: true
+				},
+				{
+					fieldLabel: 'Address Line 2',
+					name: 'AddressLine2',
+					readOnly: true
+				},
+				{
+					fieldLabel: 'Surburb',
+					name: 'Surburb',
+					readOnly: true
+				},
+				{
+					fieldLabel: 'State',
+					name: 'State',
+					readOnly: true
+				},
+				{
+					fieldLabel: 'Postcode',
+					name: 'ZipCode',
+					readOnly: true
+				},
+				{
+					fieldLabel: 'Country',
+					name: 'Country',
+					readOnly: true
+				},
+				{
+					fieldLabel: 'Home Tel',
+					name: 'HomeTel',
+					readOnly: true
+				},
+				{
+					fieldLabel: 'Work Tel',
+					name: 'WorkTel',
+					readOnly: true
+				},
+				{
+					fieldLabel: 'Mobile',
+					name: 'Mobile',
+					readOnly: true
+				},
+				{
+					fieldLabel: 'Fax',
+					name: 'Fax',
+					readOnly: true
+				},
+				{
+					fieldLabel: 'Email',
+					name: 'Email',
+					readOnly: true
+				}
+			]
+		}
+	);
+		
+	//////////////////bank account////////////////////////////////////////////
+	
+		bankStore = new Ext.data.Store
+		(
+			{
+				
+				proxy : new Ext.data.HttpProxy
+				(
+					{																
+						method: 'GET',
+						prettyUrls: false,
+						url: 'http://localhost:8080/HiTrustWebApplication/iop/jsp/BaSSBankAccounts.jsp'
+						//url:'/XMLDataLoader.aspx?action=BaSSBankAccounts&user=001IN000001&pass=Passw0rd&relNo=IN000001', method: 'GET',
+					}
+				),
+		
+				reader: new Ext.data.XmlReader
+				(
+					{
+						record: 'List',
+						totalRecords: 'totalRecords'
+					},					
+					[
+						{name: 'AccountNumber',mapping: 'Number'},
+						{name: 'BSBCode',mapping: 'SortCode/BSBCode'},
+						{name: 'AccountName',mapping: 'Name'},
+						{name: 'BankName',mapping: 'SortCode/Bankname'}
+					]
+			 ),
+		   listeners: 
+		   {
+		   	load: function()
+		   	{
+		   		this.loaded = true;
+		   	}
+		   }
+		 }
+	 );		
+		
+		
+		var bankGrid = new Ext.grid.GridPanel
+		(
+			{
+				store: bankStore,
+				
+				columns:
+				[
+					{id: 'AccountNumber',header: 'Account Number',width: 150,sortable: true,align: 'left'},
+					{header: 'BSB Code',id: 'BSBCode',width: 150,sortable: true,align: 'left'},	
+					{header: 'Account Name',id: 'AccountName',width: 150,sortable: true,align: 'left'	},
+					{header: 'Bank Name',id: 'BankName',width: 150,sortable: true,align: 'left'}
+				],					
+				renderTo:'bankAccounts',
+				autoHeight: true
+					
+				
+					
+			}
+		);
+	
+	//////////////////////////////////////////////////////////////
+	
+		grid.getBottomToolbar().refresh.hide();	
+		
+		myMask = new Ext.LoadMask
+			(
+				Ext.getBody(), 
+				{
+						msg:"Please wait...",	
+						removeMask:true,			
+						store:myGridStore
+				}
+			);
+		
+		if(!myGridStore.loaded)	
+    {
+    	myMask.show();			
+			myGridStore.load({params:{start:0, limit:10}});
+		} 
+		
+		//contactStore.load({params:{start:0, limit:10}});
+		//bankStore.load({params:{start:0, limit:10}});
+		//taxationForm.load({url: '/XMLDataLoader.aspx?action=baprofiles&user=001IN000001&pass=Passw0rd', method: 'GET'});
+  	//contactForm.load({url:'/XMLDataLoader.aspx?action=BaSProfileAddrs&user=001IN000001&pass=Passw0rd&relNo=IN000001', method: 'GET'});
+  	
+  	//taxationForm.load({url: 'http://localhost:8080/HiTrustWebApplication/iop/jsp/baprofiles.jsp?start=0&limit=20', method: 'GET'});
+  	//contactForm.load({url:'http://localhost:8080/HiTrustWebApplication/iop/jsp/BaSProfileAddrs.jsp?start=0&limit=20', method: 'GET'});
+		
+		
+	
+	}
+);
+
+
+</script>
+<div id="tabs">
+<ul>
+<li><a href="#tabs-1"><strong>Funds Under Management</strong></a></li>
+<li><a href="#tabs-2"><strong>Taxation Details</strong></a></li>
+<li><a href="#tabs-3"><strong>Contact Details</strong></a></li>
+<li><a href="#tabs-4"><strong>Bank Accounts</strong></a></li>
+</ul>
+<div id="tabs-1">
+<div id="flexme2"></div>
+
+
+
+</div>
+<div id="tabs-2">
+<div id="taxation"></div>
+</div>
+
+<div id="tabs-3">
+	<div id="contacts">
+		<div id="paneAddress"></div>
+			<h2>Address 1</h2>
+		<div id="contactDetailsBelow"></div>
+	</div>
+</div>
+
+
+<div id="tabs-4">
+<div id="bankAccounts"></div>
+</div>
+
+</body>
+</html>

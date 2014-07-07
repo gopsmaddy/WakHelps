@@ -1,0 +1,249 @@
+<!--
+  Target:    aconite-nsam-web.war
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	
+	<parent>
+		<groupId>com.aconitesolutions</groupId>
+		<artifactId>aconite</artifactId>
+		<version>4.1.0</version>
+        	<relativePath>../../../aconite/pom.xml</relativePath>
+	</parent>
+	<!--
+	<parent>
+		<groupId>net.aconite.affina</groupId>
+		<artifactId>affina-parent</artifactId>
+		<version>2.6.2</version>
+		<relativePath>../../Affina/affina-parent/pom.xml</relativePath>
+    </parent>
+	-->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.aconitesolutions</groupId>
+	<artifactId>NkamWeb</artifactId>
+	<packaging>war</packaging>
+	<name>Aconite NSAM War</name>
+	<url>http://maven.apache.org</url>
+
+    <build>
+		<plugins>
+			<!--mvn clover2:clean clover2:setup test clover2:aggregate clover2:clover-->
+
+			<plugin>
+				<groupId>com.atlassian.maven.plugins</groupId>
+                <artifactId>maven-clover2-plugin</artifactId>
+				<version>3.1.4</version>
+                <configuration>
+                    <flushPolicy>threaded</flushPolicy>
+                    <flushInterval>100</flushInterval>                     
+					<includesAllSourceRoots>true</includesAllSourceRoots>
+                </configuration>
+				<executions>
+                    <execution>
+                        <id>main</id>
+                        <goals>
+                            <goal>setup</goal>
+                            <goal>aggregate</goal>
+                            <goal>check</goal>
+                            <goal>log</goal>
+                        </goals>
+                    </execution>
+                </executions>
+			</plugin>
+			
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.7.3</version>
+                <executions>
+                      <execution>
+                          <id>generate-nsam</id>
+                        <goals>
+                          <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <verbose>false</verbose>
+                            <specVersion>2.0</specVersion>
+                            <schemaDirectory>src/main/resources/xmlschema</schemaDirectory>
+                            <generateDirectory>src/main/java</generateDirectory>
+                            <generatePackage>com.aconitesolutions.nsam.jsfmanager.process</generatePackage>
+                            <forceRegenerate>true</forceRegenerate>
+                        </configuration>
+                      </execution>
+                </executions>
+            </plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.0.1-SNAPSHOT</version>
+				<configuration>
+					<archive>
+					    <!-- Use our own classpath - must be updated when required -->
+					    <manifestFile>src/main/webapp/META-INF/MANIFEST.MF</manifestFile>
+						<manifest>
+						<!--	<addClasspath>true</addClasspath> -->
+						</manifest>
+					</archive>
+					<!-- Don't want jars in WEB-INF/lib for distributable war -->
+					<!-- Warning - excludes is broken in v2.0 of the war plugin, use 2.0-beta-2 or 2.0.1 if available -->
+					<excludes>WEB-INF/lib/*.jar</excludes>
+
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<archive>
+						<addMavenDescriptor>false</addMavenDescriptor>
+                        
+                        <manifestEntries>
+                            <Source-Revision>${build-info.revision}</Source-Revision>
+                            <!--<Implementation-Version>${build.number}</Implementation-Version>-->
+                        </manifestEntries>                        
+					</archive>
+					<webResources>
+						<resource>
+							 <!-- this is relative to the pom.xml directory -->
+							<directory>${basedir}/src/main/resources</directory>
+							<targetPath>WEB-INF/classes</targetPath>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>RemoveWarLibs</id>
+						<phase>package</phase>
+						<configuration>
+							<tasks>
+								<echo>Removing unwanted jars from WAR file</echo>
+								<unzip src="${project.build.directory}/${project.build.finalName}.war" dest="${project.build.directory}/temp"/>
+								<delete>
+									<fileset dir="${project.build.directory}/temp/WEB-INF/lib" includes="xalan-2.6.0.jar"/>
+									<fileset dir="${project.build.directory}/temp/WEB-INF/lib" includes="xercesImpl-2.0.2.jar"/>
+									<fileset dir="${project.build.directory}/temp/WEB-INF/lib" includes="xercesImpl-unknown.jar"/>
+									<fileset dir="${project.build.directory}/temp/WEB-INF/lib" includes="sax-Xerces-J_2_3_0.jar"/>
+									<fileset dir="${project.build.directory}/temp/WEB-INF/lib" includes="xmlParserAPIs-2.0.2.jar"/>
+									<fileset dir="${project.build.directory}/temp/WEB-INF/lib" includes="xmlParserAPIs-2.6.2.jar"/>
+									<fileset dir="${project.build.directory}/temp/WEB-INF/lib" includes="xom-1.0b3.jar"/>
+									<fileset dir="${project.build.directory}/temp/WEB-INF/lib" includes="xsdlib-unknown.jar"/>
+									<fileset dir="${project.build.directory}/temp/WEB-INF/lib" includes="jsf-api-1.2.jar"/>
+									<fileset dir="${project.build.directory}/temp/WEB-INF/lib" includes="jsf-impl-1.2.jar"/>
+								</delete>
+								<delete file="${project.build.directory}/${project.build.finalName}.war"/>  
+								<zip destfile="${project.build.directory}/${project.build.finalName}.war"
+									 basedir="${project.build.directory}/temp"/>
+								<delete dir="${project.build.directory}/temp"/>
+                                <copy todir="${project.build.directory}/install">
+                                    <fileset dir="${project.build.directory}/../../NSAMConfig"/>
+                                </copy>
+                                <copy file="${project.build.directory}/${project.build.finalName}.war" tofile="${project.build.directory}/${project.artifactId}.war" overwrite="true"/>
+                                <copy todir="${project.build.directory}/install/deploy/war">
+                                    <fileset file="${project.build.directory}/${project.artifactId}.war"/>
+                                </copy>
+                                <!--<delete file="${project.build.directory}/${project.build.finalName}.war"/>-->
+                                <zip destfile="${project.build.directory}/NSAMConfig.zip" basedir="${project.build.directory}/install"/>
+                            </tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			
+			
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>
+			<groupId>com.aconitesolutions</groupId>
+			<artifactId>aconite-utils</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.aconitesolutions</groupId>
+			<artifactId>aconite-server-utils</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.aconitesolutions</groupId>
+			<artifactId>aconite-data-dictionary</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.aconitesolutions</groupId>
+			<artifactId>aconite-dao-common</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+
+        <dependency>
+            <groupId>javax.j2ee</groupId>
+            <artifactId>j2ee</artifactId>
+            <version>1.4</version>
+            <scope>provided</scope>
+        </dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
+		    <scope>provided</scope>
+		</dependency>
+        <dependency>
+            <groupId>com.aconitesolutions</groupId>
+            <artifactId>aconite-common-jsf</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.2</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.aconitesolutions</groupId>
+            <artifactId>aconite-nsam-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm</groupId>
+            <artifactId>dhbcore</artifactId>
+            <version>6.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+             <version>2.2.4</version>
+        </dependency>
+    </dependencies>
+    <properties>
+		<!-- Turn off tests until they are ready to work out of the box : todo : not recommended : fix asap -->
+		<maven.test.skip>true</maven.test.skip>
+	</properties>
+</project>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom">
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.eqVendor_AddTitle}
+    </ui:define>
+    <ui:define name="workArea">
+        <h:form onsubmit="document.body.style.cursor='wait';">
+            <table class="acTable">
+				<tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.eqVendor_ID}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:inputText id="typeColumn" value="#{EqVendor.vendor.vendorId}"
+                                     maxlength="1"
+                                     styleClass="form-input-text"
+                                     required="true"
+                                    validator="#{Validators.validateUniqueEqVendor}"
+                                    onblur="this.value=this.value.toUpperCase();" 
+                                         autocomplete="off" >
+                            <f:validateLength minimum="1" maximum="1" />
+			    <f:validator validatorId="hexValueValidator" />
+                        </h:inputText>
+                        <br/> <h:message for="typeColumn" styleClass="warn"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.eqVendor_Name}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:inputText id="nameColumn" value="#{EqVendor.vendor.name}"
+                                     maxlength="40"
+                                     styleClass="form-input-text"
+                                     required="true" />
+                        <br/><h:message for="nameColumn" styleClass="warn"/>
+                    </td>
+                </tr>
+
+            </table>
+            <h:commandLink id="saveDevice"  action="#{EqVendor.saveAction}"
+                           onclick="if (!confirm('Are you sure you want to save this Equipment Vendor?')) return false">
+                #{msg.saveLink}</h:commandLink>
+             &#160;
+            <!--<h:commandLink action="#{nsamDeviceType}" immediate="true">#{msg.cancelLink}</h:commandLink>-->
+        </h:form>
+		<h:messages globalOnly="true" layout="table" styleClass="warn"
+            infoClass="info" warnClass="warn"
+            errorClass="warn"
+            fatalClass="warn"/>
+
+            <br/>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

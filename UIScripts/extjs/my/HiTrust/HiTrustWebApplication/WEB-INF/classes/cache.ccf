@@ -1,0 +1,81 @@
+#---------------------------------------------------------------------------# 
+# DEFAULT CACHE REGION							    #
+#---------------------------------------------------------------------------#
+
+# - default disk cache to PDC file sys configuration - see below            #
+jcs.default=PDC
+
+jcs.default.cacheattributes= org.apache.jcs.engine.CompositeCacheAttributes
+jcs.default.cacheattributes.MaxObjects=1000
+jcs.default.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+
+# - remove from cache to make room, cached object not everlasting           #
+jcs.default.elementattributes.IsEternal=false
+
+# - max life seconds - required if IsEternal is "false". 30 mins            #
+# - auto expell when 30 minutes is up                                       #
+jcs.default.elementattributes.MaxLifeSeconds=1800
+
+jcs.default.elementattributes.IdleTime=1800
+jcs.default.elementattributes.IsSpool=true
+jcs.default.elementattributes.IsRemote=true
+jcs.default.elementattributes.IsLateral=true
+
+#---------------------------------------------------------------------------# 
+# PAYLOAD CACHE REGION	- USE AS DEFAULT
+#---------------------------------------------------------------------------#
+
+# - default disk cache setting to PDC configuration - see below             #
+jcs.region.PayloadCache=PDC
+
+jcs.region.PayloadCache.cacheattributes.UseMemoryShrinker=true
+
+# - check for expired elements every 60 minutes (3600 seconds)
+jcs.region.PayloadCache.cacheattributes.ShrinkerIntervalSeconds=3600
+
+# - if element not accessed for 5 mins then spool to disk (300 seconds)     #
+jcs.region.PayloadCache.cacheattributes.MaxMemoryIdleTimeSeconds=300
+
+# - remove from cache to make room, cached object not everlasting           #
+jcs.region.PayloadCache.elementattributes.IsEternal=false
+
+# - max life seconds - required if IsEternal is set to "false".             #
+# - auto expell when 120 minutes is up                                      #
+jcs.region.PayloadCache.elementattributes.MaxLifeSeconds=7200
+
+jcs.region.PayloadCache.cacheattributes.MaxSpoolPerRun=500
+jcs.region.PayloadCache.elementattributes=org.apache.jcs.engine.ElementAttributes
+
+# - cache element can be spooled to disk	                            #
+jcs.region.PayloadCache.elementattributes.IsSpool=true
+
+#---------------------------------------------------------------------------# 
+# APPLICATION RESOURCES CACHE REGION				            #
+#---------------------------------------------------------------------------#
+
+# - default disk cache setting to PDC configuration - see below             #
+jcs.region.ApplicationResourcesCache=PDC
+
+jcs.region.ApplicationResourcesCache.cacheattributes.UseMemoryShrinker=true
+
+# - if element not accessed for 3 days then spool to disk (259200 seconds)  #
+jcs.region.ApplicationResourcesCache.cacheattributes.MaxMemoryIdleTimeSeconds=259200
+
+# - object is everlasting                                                   #
+jcs.region.ApplicationResourcesCache.elementattributes.IsEternal=true
+
+jcs.region.ApplicationResourcesCache.cacheattributes.MaxSpoolPerRun=500
+jcs.region.ApplicationResourcesCache.elementattributes=org.apache.jcs.engine.ElementAttributes
+
+# - cache element can be spooled to disk	                            #
+jcs.region.ApplicationResourcesCache.elementattributes.IsSpool=true
+
+#---------------------------------------------------------------------------# 
+# AUXILIARY - PAYLOAD DISK CACHE					    #
+#---------------------------------------------------------------------------#
+
+jcs.auxiliary.PDC=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheFactory
+jcs.auxiliary.PDC.attributes=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheAttributes
+jcs.auxiliary.PDC.attributes.DiskPath=${com.sun.aas.instanceRoot}/HiTrustCache/payload
+jcs.auxiliary.PDC.attributes.MaxKeySize=2500
+jcs.auxiliary.PDC.attributes.OptimizeAtRemoveCount=2500

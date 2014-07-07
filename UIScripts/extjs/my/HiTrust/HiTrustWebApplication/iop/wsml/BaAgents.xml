@@ -1,0 +1,26 @@
+<DST>
+  <HiTrust>
+    <businessObject>BaAgents</businessObject>
+    <operation>SEARCH</operation>
+    <user>@@user@</user>
+    <password>@@pass@</password>
+<request> 
+ <data>
+  <Client.Key>@@profileClientKey@</Client.Key>
+ </data>
+</request>  
+<response>
+<Client.Key/>
+<Key/>
+<Name/>
+<Number/>
+<MasterAgent.Name/>
+<Client.Salutation/>
+<Client.GivenName/>
+<Client.Name/>
+<Company.Desc/>
+<Status.Desc/>
+<DefViewCommission.Desc/>
+</response>
+</HiTrust>
+</DST>                                                                     

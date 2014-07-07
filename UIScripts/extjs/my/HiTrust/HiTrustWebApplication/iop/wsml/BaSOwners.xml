@@ -1,0 +1,29 @@
+<DST>
+	<HiTrust>
+		<businessObject>BaSOwners</businessObject>
+		<operation>SEARCH</operation>
+		<user>@@user@</user>
+		<password>@@pass@</password>
+		<request>
+			<data>
+				<mPortfolio.Key>@@portfolioKey@</mPortfolio.Key>
+			</data>
+		</request>
+		<response>
+			<mPortfolio.Number />
+			<mPortfolio.Key />
+			<Profile.Key />
+			<Profile.Salutation />
+			<Profile.GivenName />
+			<Profile.Name />
+			<Profile.TFN />
+			<Profile.SSNo />
+			<Profile.IDType.Desc />
+
+                        <Profile.TFNQuoted.Desc/>
+                        <Profile.ValidTFN/>
+
+
+		</response>
+	</HiTrust>
+</DST>

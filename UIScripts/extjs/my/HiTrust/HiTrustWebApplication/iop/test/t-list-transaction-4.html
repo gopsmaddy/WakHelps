@@ -1,0 +1,335 @@
+<html>
+	<head>
+
+		<link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+            <!--<script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base.js" type="text/javascript"></script>
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all.js" type="text/javascript"></script>-->
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all-debug.js" type="text/javascript"></script>
+	   <script type="text/javascript">   
+				Ext.onReady(function(){
+					
+					
+					
+					  var portfolioStore = new Ext.data.Store({
+				        // load using HTTP
+				        url: 'http://localhost:8080/HiTrustWebApplication/iop/xml/t-hitrust-portfolioList.xml',
+
+		<link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+            <!--<script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/adapter/ext/ext-base.js" type="text/javascript"></script>
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/ext-all.js" type="text/javascript"></script>-->
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/ext-all-debug.js" type="text/javascript"></script>
+	   <script type="text/javascript">   
+				Ext.onReady(function(){
+					
+					
+					
+					  var portfolioStore = new Ext.data.Store({
+				        // load using HTTP
+				        url: 'http://AppServer:8080/hitrust3/t-hitrust-portfolioList.xml',
+
+				
+				        // the return will be XML, so lets set up a reader
+				        reader: new Ext.data.XmlReader({
+				               // records will have an "Item" tag
+				               record: 'List',
+				               id: 'Portfolio > Key',
+				               totalRecords: '@total'
+				           }, [
+				               // set up the fields mapping into the xml doc
+				               // The first needs mapping, the others are very basic
+				               {name: 'portfolioNumber', mapping: 'Portfolio > Number'},
+				               {name:'portfolioName', mapping: 'Portfolio > Name' },
+				                {name:'financialPlanner', mapping: 'Portfolio > Key' },
+				                {name:'status', mapping: 'Portfolio > Status >Desc' },
+				                {name:'unitPrice', mapping: 'UnitPrice' },
+				                {name:'fundCode', mapping: 'Fund > Code' },
+				                {name:'fundName', mapping: 'Fund > Desc' },
+				                {name:'balanceInUnits', mapping: 'BalanceInUnits' },
+				                {name:'balanceInDollars', mapping: 'BalanceInCurrency' },
+				                {name:'accountNumber', mapping: 'Account > Number' }
+				           ])
+				    });
+					
+					
+					
+					var transactionForm = new Ext.FormPanel
+					(
+						{
+							frame: true,
+							title: 'Transaction History Search',
+							waitMsgTarget: true,
+							width: 600,
+							layout :'column',
+							renderTo: 'transactionHistorySearch',								
+								
+									items:
+									[
+										{
+											xtype: 'compositefield',						
+											defaults:{margins:'0 10 10 0'},
+											items:
+												[														
+														{
+                               xtype: 'displayfield',
+                               value: 'Portfolio Number',
+                              width:100
+                           	},
+														{
+															xtype:'combo',
+															store: portfolioStore,
+															fieldLabel: '',
+															hiddenName:'portfolioNumber',
+															displayField:'portfolioNumber',
+															valueField:'portfolioNumber',
+															typeAhead: true,
+															mode: 'local',
+															triggerAction: 'all',
+															emptyText:'Select...',
+															selectOnFocus:true,															
+															width:150
+														}
+													,		
+													{
+                               xtype: 'displayfield',
+                               value: 'Portfolio Name',                              
+                               width:90
+                           	},												
+														{
+															xtype:'combo',
+															store: portfolioStore,
+															fieldLabel: '',
+															hiddenName:'portfolioName',
+															displayField:'portfolioName',
+															valueField:'portfolioName',
+															typeAhead: true,
+															mode: 'local',
+															triggerAction: 'all',
+															emptyText:'Select...',
+															selectOnFocus:true,
+															width:150
+														}													
+													]
+											},
+											{
+											xtype: 'compositefield',						
+											defaults:{margins:'0 10 10 0'},
+											items:
+												[														
+														{
+                               xtype: 'displayfield',
+                               value: 'Fund Name',
+                              width:100
+                           	},
+														{
+															xtype:'combo',
+															store: portfolioStore,
+															fieldLabel: '',
+															hiddenName:'fundName',
+															displayField:'fundName',
+															valueField:'fundName',
+															typeAhead: true,
+															mode: 'local',
+															triggerAction: 'all',
+															emptyText:'Select...',
+															selectOnFocus:true,															
+															width:150
+														}
+													,		
+													{
+                               xtype: 'displayfield',
+                               value: 'Unit Class',                              
+                               width:90
+                           	},												
+														{
+															xtype:'combo',
+														//	store: ####,
+															fieldLabel: '',
+															hiddenName:'unitClass',
+															displayField:'unitClass',
+															valueField:'unitClass',
+															typeAhead: true,
+															mode: 'local',
+															triggerAction: 'all',
+															emptyText:'Select...',
+															selectOnFocus:true,
+															width:150
+														}												
+													]
+											},
+											{
+											xtype: 'compositefield',						
+											defaults:{margins:'0 10 10 0'},
+											items:
+												[														
+														{
+                               xtype: 'displayfield',
+                               value: 'Transaction Type',
+                              width:100
+                           	},
+														{
+															xtype:'combo',
+															//store: ####,
+															fieldLabel: '',
+															hiddenName:'transactionType',
+															displayField:'transactionType',
+															valueField:'transactionType',
+															typeAhead: true,
+															mode: 'local',
+															triggerAction: 'all',
+															emptyText:'Select...',
+															selectOnFocus:true,															
+															width:150
+														}
+													,		
+													{
+                               xtype: 'displayfield',
+                               value: 'Contract No',                              
+                               width:90
+                           	},												
+														{
+															xtype:'textfield',
+															fieldLabel: '',
+															hiddenName:'contractNo',
+															valueField:'contractNo',
+															width:150
+														}													
+													]
+											},
+											{
+											xtype: 'compositefield',						
+											defaults:{margins:'0 10 10 0'},
+											items:
+												[														
+														{
+                              xtype: 'displayfield',
+                              value: 'Date From',
+                              width:100
+                           	},
+														{
+															xtype:'datefield',
+															//store: ####,
+															fieldLabel: '',
+															hiddenName:'transactionType',
+															displayField:'transactionType',
+															valueField:'transactionType',
+															typeAhead: true,
+															mode: 'local',
+															triggerAction: 'all',
+															emptyText:'Select...',
+															selectOnFocus:true,															
+															width:150
+														}
+													,		
+													{
+                               xtype: 'displayfield',
+                               value: 'Date To',                              
+                               width:90
+                           	},												
+														{
+															xtype:'textfield',
+															fieldLabel: '',
+															hiddenName:'contractNo',
+															valueField:'contractNo',
+															width:150
+														}													
+													]
+											}
+										]	
+													
+											,				
+									buttons: 
+									[
+										{
+											text: 'Save'
+										}
+									]
+						}
+					);
+					portfolioStore.load();
+
+
+<<<<<<< .mine
+=======
+				
+>>>>>>> .r162
+					
+					
+					
+					
+				    // create the Data Store
+				    var transactionStore = new Ext.data.Store({
+				        URL: 'http://AppServer:8080/hitrust3/WebContent/iop/t-hitrust-transaction.xml',method: 'GET',
+				     	//	url: 'http://sunappsvr122:8080/LANDC/t-transaction.jsp',method: 'POST',
+				        reader: new Ext.data.XmlReader({
+				               // records will have an "Item" tag
+				               record: 'List',
+				               id: 'CtractNo',
+				               totalProperty: 'totalRecords'
+				           }, [
+				               // set up the fields mapping into the xml doc
+				               // The first needs mapping, the others are very basic
+				               {name: 'contractNumber', mapping: 'CtractNo'},
+				               {name:'transactionDate', mapping: 'OrderDate' },
+				                {name:'valueDate', mapping: 'PricedDate' },
+				                {name:'fundName', mapping: 'SFund > Key' },//unsure of this mapping
+				                {name:'units', mapping: 'NoUnit' },
+				                {name:'unitPrice', mapping: 'Price' },
+				                {name:'amount', mapping: 'SGross' },//unsure of this mapping
+				                {name:'transactionType', mapping: 'Type > Desc' },
+				                {name:'status', mapping: 'CtStatus > Desc' }
+				           ])
+				    });
+						
+				    
+				    /** create the grid				
+				    var portfolioGrid = new Ext.grid.GridPanel({
+				        store: transactionStore,
+				        columns: [
+				            {header: "Contract No", width: 95, dataIndex: 'contractNumber', sortable: true},
+				            {header: "Transaction Date", width: 95, dataIndex: 'transactionDate', sortable: true},
+				            {header: "Value Date", width: 95, dataIndex: 'valueDate', sortable: true},
+				            {header: "Fund Name", width: 193, dataIndex: 'fundName', sortable: true},
+				            {header: "Units", width: 45, dataIndex: 'units', sortable: true},
+				            {header: "Unit Price", width: 45, dataIndex: 'unitPrice', sortable: true},
+				            {header: "Amount($)", width: 95, dataIndex: 'amount', sortable: true},
+				            {header: "Trans Type", width: 95, dataIndex: 'transactionType', sortable: true},
+				            {header: "Status", width: 95, dataIndex: 'status', sortable: true}
+				        ],	        					
+						renderTo: 'transactionList',
+						width: 980,
+				    height:400,
+						title: 'Search Results',
+						bbar: new Ext.PagingToolbar
+							({
+								  id : 'pBar',
+			            pageSize: 3,
+			            store: transactionStore,
+			            displayInfo: true,
+			            displayMsg: 'Displaying {0} - {1} of {2}',
+			            emptyMsg: "No items to display" 
+			       	 }
+			       	 )
+			       	 
+				    });
+				   portfolioGrid.getBottomToolbar().refresh.hide();
+				    stripeRows: true;				    
+						transactionStore.load({params:{start:0, limit:3}});
+				
+				});**/
+	   </script>
+   
+	</head>
+<body>
+	<div id="transactionHistorySearch"></div>
+	<br/>
+	<div id="transactionList"></div>
+	
+<br/>
+<br/>
+<br/>
+<br/>
+</body>
+	
+</html>

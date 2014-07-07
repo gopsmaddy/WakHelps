@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+        >
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.view_history}
+    </ui:define>
+    <ui:define name="workArea">
+        <h:form onsubmit="document.body.style.cursor='wait';">
+            <ui:fragment rendered="#{StatusPaneChange.historyDTO.NSAM}">
+                <!-- rejected -->
+                <ui:fragment rendered="#{StatusPaneChange.nsamHistoryDTO.rejectionDescription!=null}">
+                    <table class="acTable">
+                        <tr>
+                            <td class="panel-feature-form-enhanced-field-name">#{msg.view_history_RejectDesc}</td>
+                            <td class="panel-feature-form-enhanced-field-value">
+                                <h:outputText id="rejectDescription" value="#{StatusPaneChange.nsamHistoryDTO.rejectionDescription}"/>
+                            </td>
+                        </tr>
+                    </table>
+                </ui:fragment>
+                <ui:fragment rendered="#{StatusPaneChange.nsamHistoryDTO.rejectionDescription==null}">
+                <table border="0">
+                    <tr>
+                        <td>
+                            <table class="acTable" border="0">
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">#{msg.view_history_DeviceID}</td>
+                                    <td class="panel-feature-form-enhanced-field-value">
+                                        <h:outputText id="cardIdentifierID" value="#{StatusPaneChange.nsamHistoryDTO.deviceID}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">#{msg.view_history_CardPersoDate}</td>
+                                    <td class="panel-feature-form-enhanced-field-value">
+                                        <h:outputText id="cardIdentifierChipStatus" value="#{StatusPaneChange.nsamHistoryDTO.personalisationDate}" >
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:outputText>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		    </tr>		
+                    <tr>
+                        <td>					
+                            <table class="acTable" border="0">
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">
+                                        <h:outputText id="applications" value="#{msg.view_history_Applications}" style="font-weight:bold"/>
+                                    </td>
+                                </tr>
+                                <ui:repeat id="applnDTO" value="#{StatusPaneChange.applicationDTO}" var="applicationDTO">
+                                    <tr>
+                                        <td class="panel-feature-form-enhanced-field-name">#{msg.view_history_AppName}</td>
+                                        <td class="panel-feature-form-enhanced-field-value">
+                                            <h:outputText id="applnDTOName" value="#{applicationDTO.name}"/>
+                                        </td>
+                                        
+                                        <td class="panel-feature-form-enhanced-field-name">#{msg.view_history_AppVersion}</td>
+                                        <td class="panel-feature-form-enhanced-field-value">
+                                            <h:outputText id="applnDTOVersion" value="#{applicationDTO.version}"/>
+                                        </td>
+                                    </tr>                                    
+                                </ui:repeat>
+                            </table>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <table class="acTable"  border="0">
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">
+                                        <h:outputText id="updates" value="#{msg.view_history_Update}" style="font-weight:bold"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">
+                                        <h:outputText id="update1" value="#{msg.view_history_Update_DateofChange}" />
+                                    </td>
+                                    <td class="panel-feature-form-enhanced-field-name">
+                                        <h:outputText id="update2" value="#{msg.view_history_UpdateDesc}" />
+                                    </td>									
+                                </tr>									
+                                <ui:repeat id="cardUpdateDTO" value="#{StatusPaneChange.cardUpdateDTO}" var="cardUpdateDTO">
+                                    <tr>
+                                        <td class="panel-feature-form-enhanced-field-value">
+                                            <h:outputText id="updateChangeDate" value="#{cardUpdateDTO.changeDate}" >
+                                                <f:convertDateTime pattern="dd-MM-yyyy" />
+                                            </h:outputText>
+                                        </td>
+                                        <td class="panel-feature-form-enhanced-field-value">
+                                            <h:outputText id="updateDesc" value="#{cardUpdateDTO.description}" />
+                                        </td>
+                                    </tr>
+                                </ui:repeat>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </ui:fragment>
+          </ui:fragment>    
+          <ui:fragment rendered="#{StatusPaneChange.historyDTO.SAM}">
+                <!-- rejected -->
+                <ui:fragment rendered="#{StatusPaneChange.samHistoryDTO.rejectionDescription!=null}">
+                    <table class="acTable">
+                        <tr>
+                            <td class="panel-feature-form-enhanced-field-name">#{msg.view_history_RejectDesc}</td>
+                            <td class="panel-feature-form-enhanced-field-value">
+                                <h:outputText id="samRejectDescription" value="#{StatusPaneChange.samHistoryDTO.rejectionDescription}"/>
+                            </td>
+                        </tr>
+                    </table>
+                </ui:fragment> 
+                <ui:fragment rendered="#{StatusPaneChange.samHistoryDTO.rejectionDescription==null}">
+                <table border="0">
+                    <tr>
+                        <td>
+                            <table class="acTable" border="0">
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">#{msg.view_history_DeviceID}</td>
+                                    <td class="panel-feature-form-enhanced-field-value">
+                                        <h:outputText id="samCardIdentifierID" value="#{StatusPaneChange.samHistoryDTO.deviceID}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">#{msg.view_history_samImportDate}</td>
+                                    <td class="panel-feature-form-enhanced-field-value">
+                                        <h:outputText id="samCardIdentifierChipStatus" value="#{StatusPaneChange.samHistoryDTO.importDate}" >
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:outputText>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		    </tr>		
+                    <tr>
+                        <td>
+                            <table class="acTable"  border="0">
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">
+                                        <h:outputText id="samupdates" value="#{msg.view_history_samChangeChipStatus}" style="font-weight:bold"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">
+                                        <h:outputText id="samUpdateDate" value="#{msg.view_history_Update_DateofChange}" />
+                                    </td>
+                                    <td class="panel-feature-form-enhanced-field-name">
+                                        <h:outputText id="samUpdateDesc" value="#{msg.view_samhistory_UpdateDesc}" />
+                                    </td>									
+                                </tr>									
+                                <ui:repeat id="samCardUpdateDTO" value="#{StatusPaneChange.cardUpdateDTO}" var="cardUpdateDTO">
+                                    <tr>
+                                        <td class="panel-feature-form-enhanced-field-value">
+                                            <h:outputText id="samupdateChangeDate" value="#{cardUpdateDTO.changeDate}" >
+                                                <f:convertDateTime pattern="dd-MM-yyyy" />
+                                            </h:outputText>
+                                        </td>
+                                        <td class="panel-feature-form-enhanced-field-value">
+                                            <h:outputText id="samUpdateCardDesc" value="#{cardUpdateDTO.description}" />
+                                        </td>
+                                    </tr>
+                                </ui:repeat>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </ui:fragment>
+            </ui:fragment>
+            <h:commandLink id="backLink"  action="viewHistoryHome">
+                    #{msg.backLink}
+            </h:commandLink>
+            &#160;
+        </h:form>
+        <h:messages globalOnly="true" layout="table" styleClass="warn"
+                    infoClass="info" warnClass="warn"
+                    errorClass="warn"
+                    fatalClass="warn"/>
+
+        <br/>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

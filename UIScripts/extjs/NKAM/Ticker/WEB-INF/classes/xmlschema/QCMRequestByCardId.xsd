@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Steve Nichols (Datacard Platform Seven Limited) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xs:include schemaLocation="IFSData.xsd"/>
+	<xs:element name="QCMRequestByCardId">
+		<xs:annotation>
+			<xs:documentation>QueryCardManifest</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="User" type="UserType">
+					<xs:annotation>
+						<xs:documentation>Identifies user name and scope for use in audit trail </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DataContext" type="DataContextType">
+					<xs:annotation>
+						<xs:documentation>Identifies the scope and name of the data context</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="CardId" type="CardIdType">
+					<xs:annotation>
+						<xs:documentation>The identifier for a card within the Affina database</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

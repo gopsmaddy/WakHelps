@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>com.aconitesolutions</groupId>
+		<artifactId>aconite</artifactId>
+		<version>4.1.0</version>
+	        <relativePath>../../../aconite/pom.xml</relativePath>
+	</parent>
+	<!--
+	<parent>
+		<groupId>net.aconite.affina</groupId>
+		<artifactId>affina-parent</artifactId>
+		<version>2.6.2</version>
+		<relativePath>../../Affina/affina-parent/pom.xml</relativePath>
+    </parent>
+	-->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.aconitesolutions</groupId>
+	<artifactId>Nkam</artifactId>
+	<packaging>ear</packaging>
+	<name>Nkam Ear</name>
+
+	
+    <dependencies>
+        <dependency>
+            <groupId>com.aconitesolutions</groupId>
+            <artifactId>NkamWeb</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+        </dependency>
+    </dependencies>     
+	
+	<build>
+	  <plugins>		
+	    <plugin>
+	      <artifactId>maven-ear-plugin</artifactId>
+	      <configuration>
+	        <version>1.4</version>
+	        <defaultLibBundleDir>lib</defaultLibBundleDir>
+	        <defaultBundleDir>lib</defaultBundleDir>
+            <stripVersion>true</stripVersion>  
+		    <archive>
+		      <index>true</index>
+		      <manifest>
+		        <addClasspath>true</addClasspath>
+		      </manifest>
+		    </archive>	        
+	        <modules>
+	          <webModule>
+	            <groupId>com.aconitesolutions</groupId>
+				<artifactId>NkamWeb</artifactId>
+	            <bundleFileName>NkamWeb.war</bundleFileName> 
+				<contextRoot>/nkam</contextRoot>
+	          </webModule>
+	        </modules>			
+	      </configuration>
+	    </plugin>
+	    <plugin>
+	      <artifactId>maven-resources-plugin</artifactId>
+	      <version>2.3</version>
+	      <configuration>
+	        <encoding>UTF-8</encoding>
+	      </configuration>
+	    </plugin>
+	  </plugins>
+	  <finalName>${project.artifactId}</finalName>
+	</build>
+	
+	
+	
+</project>

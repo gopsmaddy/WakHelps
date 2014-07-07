@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<DST>
+	<user>001IN000001</user>
+	<password>Passw0rd</password>
+	<response>
+		<List>
+			<Profile>
+				<RelNo>IN000001</RelNo>
+			</Profile>
+			<Portfolio>
+				<Key>0000000001</Key>
+				<Number>IN000001LS001</Number>
+				<Name>Woods P/Plan A</Name>
+				<Status>
+					<Desc>InActive</Desc>
+				</Status>
+			</Portfolio>
+			<Account>
+				<Number>IN000001LS001YELBALUSABS000001</Number>
+			</Account>
+			<Fund>
+				<Key>0000000008</Key>
+				<Desc>Balanced Fund - USA</Desc>
+				<Code>YELBALUSA</Code>
+			</Fund>
+			<UnitPrice>0.972500</UnitPrice>
+			<BalanceInUnits>28,329.456000</BalanceInUnits>
+			<BalanceInCurrency>27,550.39596</BalanceInCurrency>
+			<Fund>
+				<NoDecUnits>4</NoDecUnits>
+				<UnitDecNo>4</UnitDecNo>
+				<UnitDecNo>4</UnitDecNo>
+			</Fund>
+			<Portfolio>
+				<ReinvestSplit />
+			</Portfolio>
+			<Account>
+				<ReinvestSplit />
+				<WHTApplicable />
+			</Account>
+		</List>
+		<List>
+			<Profile>
+				<RelNo>IN000002</RelNo>
+			</Profile>
+			<Portfolio>
+				<Key>0000000002</Key>
+				<Number>IN000002LS001</Number>
+				<Name>Woods P/Plan B</Name>
+				<Status>
+					<Desc>Active</Desc>
+				</Status>
+			</Portfolio>
+			<Account>
+				<Number>IN000002LS001BLUGROASIART000001</Number>
+			</Account>
+			<Fund>
+				<Key>0000000001</Key>
+				<Desc>Australasian Equity Fund</Desc>
+				<Code>BLUGROASIA</Code>
+			</Fund>
+			<UnitPrice>1.399500</UnitPrice>
+			<BalanceInUnits>141,361.561100</BalanceInUnits>
+			<BalanceInCurrency>197,835.504759</BalanceInCurrency>
+			<Fund>
+				<NoDecUnits>4</NoDecUnits>
+				<UnitDecNo>4</UnitDecNo>
+				<UnitDecNo>4</UnitDecNo>
+			</Fund>
+			<Portfolio>
+				<ReinvestSplit />
+			</Portfolio>
+			<Account>
+				<ReinvestSplit />
+				<WHTApplicable />
+			</Account>
+		</List>
+		<List>
+			<Profile>
+				<RelNo>IN000003</RelNo>
+			</Profile>
+			<Portfolio>
+				<Key>0000000005</Key>
+				<Number>IN000003LS001</Number>
+				<Name>Woods P/Plan C</Name>
+				<Status>
+					<Desc>Active</Desc>
+				</Status>
+			</Portfolio>
+			<Account>
+				<Number>IN000003LS001BLUBALAUSST000001</Number>
+			</Account>
+			<Fund>
+				<Key>0000000002</Key>
+				<Desc>Australian Balanced (testing to field length 60............
+				</Desc>
+				<Code>BLUBALAUS</Code>
+			</Fund>
+			<UnitPrice>3.805000</UnitPrice>
+			<BalanceInUnits>13,427.384700</BalanceInUnits>
+			<BalanceInCurrency>51,091.198784</BalanceInCurrency>
+			<Fund>
+				<NoDecUnits>4</NoDecUnits>
+				<UnitDecNo>4</UnitDecNo>
+				<UnitDecNo>4</UnitDecNo>
+			</Fund>
+			<Portfolio>
+				<ReinvestSplit />
+			</Portfolio>
+			<Account>
+				<ReinvestSplit />
+				<WHTApplicable />
+			</Account>
+		</List>
+	</response>
+</DST>

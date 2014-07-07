@@ -1,0 +1,48 @@
+<DST>
+	<HiTrust>
+		<businessObject>BaReportCtracts</businessObject>
+		<operation>SEARCH</operation>
+		<user>@@user@</user>
+		<password>@@pass@</password>
+		<request>
+		<data>
+		  <Company.Key>@@profileCompanyKey@</Company.Key>
+		  <MaxRows>@@maxRecords@</MaxRows>
+                  <SEffDateTo>@@sEffDateTo@</SEffDateTo>
+		  <SEffDateFrom>@@sEffDateFrom@</SEffDateFrom>	 
+				
+		</data>
+		</request>
+		<response>
+			<CtractNo />
+			<SPortfolio.Number></SPortfolio.Number>
+			<SPortfolio.Key></SPortfolio.Key>
+			<SUnitClass.Key></SUnitClass.Key>
+			<SUnitClass.Desc/>
+			<Type.Desc />			
+			<OrderDate />
+			<EffDate />
+			<PricedDate />
+			<SFund.Key />
+			<SFund.Desc />
+			<Price />
+			<NoUnit />
+			<SGross />
+			<SNet />
+			<SettleNetFmFee />
+			<SLoadAmt />
+			<SLoadDiscount />
+			<SFundManagerFee />
+			<SFundMgrDiscount />
+			<STax />
+			<SCommission />
+			<TotCommPercent />
+			<Settled />
+			<CtStatus.Desc />
+			<RptTranCodeDesc/>
+			<RptStatusDesc/>
+<TotalFees/>
+<TotalFeeDiscount/>
+		</response>
+	</HiTrust>
+</DST>

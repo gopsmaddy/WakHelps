@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<title>APM-Login</title>
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache">
+		<link media="screen" type="text/css" href="../../layout/css/layout.css" rel="stylesheet">
+	  	<script src="../../lib/jquery/jquery-1.7.2.min.js"></script>		
+		<script src="../../lib/jquery/jquery.validate.min.js" type="text/javascript"></script>		
+<!-- 		<script type="text/javascript" language="JavaScript" src="../../lib/jQuery/jquery.i18n.properties-min-1.0.9.js"></script>				 -->
+		<script type="text/javascript" src="login.js"></script>
+		
+	</head>
+	<body>
+		<div>			
+				<header id="header" class="lkheader"></header>
+				<div class="formpadding">					
+					<section id="wrapper">
+						<section><img src="../../layout/img/aconite_logo.png"/><label class="login">PIN Manager</label></section>
+						<form id="loginform" method="post" action="/admin/system/j_spring_security_check" autocomplete = "off"> 
+							<fieldset class="myClass">
+								<label for="username" class="login" id="username">Username:</label><br/>
+								<input type="text" name="j_username" class="required "/><br/>
+
+								<label for="password" class="login" id="password">Password:</label><br/>
+								<input type="password" name="j_password" class="required"/><br/>
+							</fieldset>	
+							<input type="submit" value="Login" name="submit" class="submit" id="btnSubmit"/><br/>
+                            <label id="errorMessage"></label>
+						</form>
+					</section>
+				</div>
+		</div>
+</body>
+</html>
+
+
+

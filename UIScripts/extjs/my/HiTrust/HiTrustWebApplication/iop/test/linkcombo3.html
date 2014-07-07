@@ -1,0 +1,427 @@
+<html>
+	<head>
+		<link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+            <!--<script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base.js" type="text/javascript"></script>
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all.js" type="text/javascript"></script>-->
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/ext-all-debug.js" type="text/javascript"></script>
+	   <body>
+	   	
+	   	<!-- http://extjs.wima.co.uk/ -->
+
+<script type="text/javascript">
+	// To play in Firebug uncomment next line
+// Ext.get(document.body).update('<div id="ext-test"></div>');
+ 
+// reference local blank image
+Ext.BLANK_IMAGE_URL = 'http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/resources/images/default/s.gif';
+ 
+
+ 
+	Ext.onReady(function(){
+	
+
+	
+	myFundStore = new Ext.data.Store
+  (
+  	{   
+        
+        // load using HTTP
+				proxy : new Ext.data.HttpProxy
+				(
+					{																
+						method: 'GET',
+						prettyUrls: false,
+						// load using HTTP
+		        //url: 'http://localhost:8080/HiTrustWebApplication/iop/xml/bafunds.xml',
+		        url: 'http://localhost:8080/HiTrustWebApplication/iop/xml/BaPortSummaryDatas.xml',
+		        //url: 'http://localhost/test-extjs/iop/xml/bafunds.xml',
+		        //url: '/XMLDataLoader.aspx?action=BaPortSummaryDatas&user=001IN000001&pass=Passw0rd',
+					}
+				),
+
+        // the return will be XML, so lets set up a reader
+        reader: new Ext.data.XmlReader
+        (
+        	{
+               // records will have an "Item" tag
+               record: 'List',
+               id: 'Fund>Key',
+               totalRecords: '@total'
+           }, 
+           [
+               // set up the fields mapping into the xml doc
+               // The first needs mapping, the others are very basic
+               {name:'name', mapping: 'Fund>Desc'},
+               {name:'code', mapping: 'Fund>Code' },
+               {name:'key', mapping: 'Fund>Key' }               
+           ]
+         ),
+         listeners: 
+         {
+				   	load: function()
+				   	{
+				   		this.loaded = true;		 		   		  		
+				   	}
+				  }
+    	}
+   );	
+  
+  var myClassStore = new Ext.data.Store
+  (
+  	{       
+        // load using HTTP
+				proxy : new Ext.data.HttpProxy
+				(
+					{																
+						method: 'GET',
+						prettyUrls: false,
+						// load using HTTP
+		        //url: 'http://localhost:8080/HiTrustWebApplication/iop/xml/bafundclasses.xml',
+		        url: 'http://localhost:8080/HiTrustWebApplication/iop/xml/BaPortSummaryClass.xml',
+		        //url: 'http://localhost/test-extjs/iop/xml/bafundclasses.xml',
+		        //url: 'http://localhost:8080/HiTrustWebApplication/iop/jsp/t-transaction.jsp',method: 'POST',
+		        //url: '/XMLDataLoader.aspx?action=BaPortSummaryDatas&user=001IN000001&pass=Passw0rd',	
+					}
+				),
+
+        // the return will be XML, so lets set up a reader
+        reader: new Ext.data.XmlReader
+        (
+        	{
+               // records will have an "Item" tag
+               record: 'List',
+               id: 'Fund>Key',
+               totalRecords: '@total'
+           }, 
+           [
+               // set up the fields mapping into the xml doc
+               // The first needs mapping, the others are very basic
+               {name:'name', mapping: 'UnitClass>Desc'},
+               {name:'code', mapping: 'UnitClass>Code' },
+               {name:'key', mapping: 'UnitClass>Key' }                
+           ]
+         )
+    	}
+   );	
+   
+  
+  
+  
+  
+  myForm = new Ext.FormPanel
+  (
+  	{
+      labelWidth: 100, // label settings here cascade unless overridden
+      frame:true,
+      renderTo: 'fundPricesForm',
+      title: 'Test panel',
+      bodyStyle:'padding:5px 5px 0',      
+      width: 650,			
+      
+      items:
+				[
+					{
+						layout: 'column',
+						items:
+						[
+							{	
+								columnWidth:.5,
+								layout: 'form',
+								items:
+								[
+									{      			
+						        xtype: 'combo',
+						        id: 'fundname',
+						        fieldLabel: 'Fund Name',
+						        hiddenName: 'ddi_fund',
+						        emptyText: 'Select a Fund...',
+						        store:myFundStore,		       
+						        displayField: 'name',
+						        valueField: 'key',
+						        selectOnFocus: true,
+						        mode: 'local',
+						        typeAhead: true,
+						        editable: false,
+						        triggerAction: 'all',
+						        //value: 'GROASIA',
+						        listeners: 
+						          { select: 
+						          		{ fn:function(combo, value)
+						                {
+						                  Ext.getCmp('fundclass').clearValue();
+						                  //alert('Value>'+this.value);
+						                  myClassStore.load({params:{fundKey: this.value}});
+						                  //myClassStore.load();
+						                  //myClassStore.load({params:{ddi_country: 'GB'}});
+						                  Ext.getCmp('fundcode').clearValue();
+						                }
+						          }  }
+						      },
+						      {						      	
+						        xtype: 'combo',
+						        id: 'fundcode',
+						        fieldLabel: 'Fund Code',
+						        hiddenName: 'ddi_fundCode',
+						        emptyText: 'Select a FundCode...',
+						        store:myFundStore,		       
+						        displayField: 'code',
+						        valueField: 'key',
+						        selectOnFocus: true,
+						        mode: 'local',
+						        typeAhead: true,
+						        editable: false,
+						        triggerAction: 'all',
+						        //value: 'GROASIA',
+						        listeners: 
+						          { select: 
+						          		{ fn:function(combo, value)
+						                {
+						                  Ext.getCmp('fundclass').clearValue();
+						                  //alert('Value>'+this.value);
+						                  myClassStore.load({params:{fundKey: this.value}});
+						                  //myClassStore.load();
+						                  //myClassStore.load({params:{ddi_country: 'GB'}});
+						                  Ext.getCmp('fundname').clearValue();
+						                }
+						          }  }
+						      },
+									{							      	
+						        xtype: 'combo',
+						        id: 'fundclass',
+						        fieldLabel: "Fund Class",
+						        hiddenName: 'ddi_fundclass',
+						        name: "name",
+						        triggerAction: "all",
+						        loadingText: "Loading...",
+						        emptyText: "Select Fund/Code first...",
+						        selectOnFocus:true,
+						        store: myClassStore,
+						        mode:'local',
+						        displayField: "name",
+						        valueField: "code",
+						        forceSelection: true,
+						        editable: false
+					      	}										
+								]
+							},							
+							{	
+								columnWidth:.5,
+								layout: 'form',
+								items: 
+								[									
+									new Ext.form.DateField
+									(
+										{
+											id: 'datefrom',
+											fieldLabel: 'Date From',
+											name: 'dateFrom',
+											anchor:'95%',
+											width:100,
+											allowBlank:true
+										}
+									),
+									new Ext.form.DateField
+									(
+										{
+											id: 'dateto',
+											fieldLabel: 'Date To',
+											name: 'dateTo',
+											anchor:'95%',
+											width:100,
+											allowBlank:true
+										}
+									)
+								]
+							}
+						]
+					}					
+				], //items
+		    buttons: 
+		    [
+		    	{
+            text: 'Load',
+            handler: function()
+            {
+                if(myForm.getForm().isValid())
+                {
+                	//waitMsg: 'Loading fund prices...',
+                	//var mykey='';
+                	//if(Ext.getCmp('fundname').value!=null)
+                	//	mykey=Ext.getCmp('fundname').value;
+                	
+                	//if(Ext.getCmp('fundcode').value!=null)
+                	//	mykey=Ext.getCmp('fundcode').value;
+                	//alert('df>'+Ext.getCmp('fundname').value);
+                	//mykey = (Ext.getCmp('fundname').value!=null) ? Ext.getCmp('fundname').value : Ext.getCmp('fundcode').value;
+                	
+                	myGridStore.load
+                	(
+                		{
+                				params:
+                				{
+                						start:0, 
+                						limit:10,
+                						fundKey: Ext.getCmp('fundname').value,
+		                        fundCode: Ext.getCmp('fundcode').value,
+		                        unitClassKey: Ext.getCmp('fundclass').value,
+		                        sEffDateFrom: Ext.getCmp('datefrom').value,
+		                        sEffDateTo: Ext.getCmp('dateto').value	                        
+
+                				}
+                		}
+                	);	
+                	
+                	/*
+	                myForm.getForm().submit
+	                (
+	                	{
+	                    //url: 'file-upload.php',
+	                    url: 'http://localhost:8080/HiTrustWebApplication/iop/jsp/bafunds.jsp',	
+	                    
+	                    waitMsg: 'Loading fund prices...',
+	                    success: function(myForm, o)
+	                    {
+	                        //msg('Success', 'Processed file "'+o.result.file+'" on the server');
+	                        //myFundStore.load();
+	                        //alert('Value>'+Ext.getCmp('fundCombo').value);
+	                        //alert('Value>'+Ext.getCmp('fundCodeCombo').value);
+	                        //alert('Value>'+Ext.getCmp('fundClassCombo').value);
+	                        myGridStore.load
+	                        (
+		                        {
+		                        	params:
+		                        	{	start:0, limit:10,
+		                        		//ddi_fund: Ext.getCmp('fundCombo').value,
+		                        		//ddi_fundcode: Ext.getCmp('fundCodeCombo').value,
+		                        		//ddi_fundclass: Ext.getCmp('fundClassCombo').value
+		                        	}
+		                        }
+	                        );
+	                    }	                    
+	                	}
+	                );
+	                */
+                }
+            }
+        	},
+        	{
+            text: 'Reset',
+            handler: function()
+            {
+                myForm.getForm().reset();
+            }
+        	}
+        ]
+
+
+    }
+  ); // end of Ext.FormPanel
+    
+    if(!myFundStore.loaded)
+    myFundStore.load();
+    // not sure if it is the right place for this?
+    //myClassStore.load({params:{ddi_country: 'GB'}});
+    
+    //////////////////////////////////////////////////////////////////
+    
+    	// create the Data Store
+	 myGridStore = new Ext.data.Store
+	 (
+	 	{
+			// load using HTTP
+			proxy : new Ext.data.HttpProxy
+			(
+				{																
+					method: 'GET',
+					prettyUrls: false,
+					//url: '/XMLDataLoader.aspx?action=BaPrices&user=001IN000001&pass=Passw0rd'
+					//url: 'http://localhost:8080/HiTrustWebApplication/iop/xml/bafunds.xml'
+					url: 'http://localhost:8080/HiTrustWebApplication/iop/jsp/BaPrices.jsp'		
+					//url: 'http://localhost:8080/HiTrustWebApplication/iop/t-transaction.jsp'			
+				}
+			),
+
+		// the return will be XML, so lets set up a reader
+		reader: new Ext.data.XmlReader
+		(
+			{
+			   // records will have an "Item" tag
+			   record: 'List',
+			   id: 'Key',
+			   totalProperty: 'totalRecords'
+		   }, 
+			   [
+				   // set up the fields mapping into the xml doc
+				   // The first needs mapping, the others are very basic
+								{name: 'priceDate', mapping: 'PriceDate'},
+								{name: 'fundDesc' , mapping: 'Fund>Desc'},
+								{name: 'fundCode', mapping: 'Fund>Code'},
+								{name: 'unitClass', mapping: 'UnitClass>Code'},
+								{name: 'entryPrice', mapping: 'BidPrice'},
+								{name: 'navPrice', mapping: 'NAVPrice'},
+								{name: 'exitPrice', mapping: 'OfferPrice'}
+								
+			   ]
+		   ),
+		   listeners: 
+		   {
+		   	load: function()
+		   	{
+		   		this.loaded = true;		 		   		  		
+		   	}
+		  }		   
+		}
+	);
+
+	// create the grid
+	var grid = new Ext.grid.GridPanel
+	(
+		{
+			//title: 'Search Results',
+			store: myGridStore,
+			columns: 
+							[
+								{id: 'priceDate', header: 'Date', dataIndex : 'priceDate', width : 150, sortable : true, align: 'left'},
+								{header: 'Fund Name', dataIndex : 'fundDesc', width : 200, sortable : true, align: 'left'},
+								{header: 'Fund Code', dataIndex : 'fundCode', width : 100, sortable : true, align: 'left'},								
+								{header: 'Unit Class', dataIndex : 'unitClass', width : 100, sortable : true, align: 'left'},
+								{header: 'Entry Price($)', dataIndex : 'entryPrice', width : 100, sortable : true, align: 'left'},
+								{header: 'NAV Price($)', dataIndex : 'navPrice', width : 100, sortable : true, align: 'left'},
+								{header: 'Exit Price($)', dataIndex : 'exitPrice', width : 100, sortable : true, align: 'left'}//,renderer: 'usMoney'
+							],
+			
+			//autoExpandColumn: 'priceDate',
+	   	renderTo:'fundPricesResultsForm',
+	   	autoWidth: true,
+			height: 300,
+			bbar: new Ext.PagingToolbar
+					(
+						{
+								id : 'pBar',
+								pageSize: 10,
+								store: myGridStore,
+								displayInfo: true,
+								displayMsg: 'Displaying {0} - {1} of {2}',
+								emptyMsg: "No items to display"
+					 	}
+					)	 
+				 
+				
+		}
+	);
+    
+  grid.getBottomToolbar().refresh.hide();	
+	//if(!myGridStore.loaded)
+	//myGridStore.load({params:{start:0, limit:10}});						
+	   
+ 
+});
+
+</script>  
+
+<div id="fundPricesForm"></div><br>
+<div id="fundPricesResultsForm"></div>
+
+</body>
+</html>

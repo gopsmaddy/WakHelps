@@ -1,0 +1,36 @@
+/*
+ * Re-factored stylings for version 4.0
+ */
+.acForm {
+    border-collapse: collapse;
+    /*background: white;*/
+}
+
+/* Layout For Buttons Text*/
+.acForm input{
+    border-style: solid;
+    border-color: #aaaaaa;
+    border-width: 1px;
+}
+
+.acForm  input[type="submit"]{
+    font-family: arial, helvetica, sans-serif;
+    font-size: 1em;
+    background-color: #dedede;
+    width: 100px;
+    height: 20px;
+}
+
+.acForm  input[type="text"]{
+    color: black;
+    font-size: 1em;
+    font-family: arial, helvetica, sans-serif;
+    background-color: #dedede;
+}
+
+/* Remove extra padding, margin etc for JSF's vertical radio button */
+.acForm-radio-compact td {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}

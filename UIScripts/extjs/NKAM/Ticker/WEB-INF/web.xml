@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4" id="WebApp_1">
+
+<display-name>NSAM Web Application</display-name>
+
+    <description>Web module that contains the NSAM Operator Interface</description>
+
+    <!-- PPVM start-->
+    <context-param>
+        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+        <param-value>server</param-value>
+    </context-param>
+    <!-- Default jsp suffix for 'normal' jsp view handler -->
+    <context-param>
+        <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+        <param-value>.jsp</param-value>
+    </context-param>
+    <!-- .xhtml will be handled by facelets view handler -->
+    <context-param>
+        <param-name>facelets.VIEW_MAPPINGS</param-name>
+        <param-value>*.xhtml</param-value>
+    </context-param>
+    <!-- Prevent html comments from being rendered -->
+    <context-param>
+        <param-name>facelets.SKIP_COMMENTS</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <!-- Special Debug Output for Facelets Development -->
+    <context-param>
+        <param-name>facelets.DEVELOPMENT</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>Error.Messages.Properties.File</param-name>
+        <param-value>ErrorMessages.properties</param-value>
+    </context-param>
+    <!-- PPVM end-->
+
+    <!-- JavaServer Faces servlet -->
+    <servlet id="Servlet_1">
+        <servlet-name>JavaServerFaces</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+
+
+    <servlet id="Servlet_2">
+        <servlet-name>UIErrorLogger</servlet-name>
+        <servlet-class>com.aconitesolutions.nsam.jsfmanager.admin.logger.UIErrorLogger</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
+    <servlet id="Servlet_3">
+        <servlet-name>UIEventLogger</servlet-name>
+        <servlet-class>com.aconitesolutions.nsam.jsfmanager.admin.logger.UIEventLogger</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
+    <listener>
+        <listener-class>com.aconitesolutions.nsam.jsfmanager.admin.listener.NSAMContextListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.aconitesolutions.nsam.jsfmanager.admin.listener.NSAMSessionListener</listener-class>
+    </listener>
+
+    <!--listener>
+        <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+    </listener-->
+
+    <!-- JavaServer Faces servlet mapping -->
+    <servlet-mapping id="ServletMapping_1">
+        <servlet-name>JavaServerFaces</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping id="ServletMapping_2">
+        <servlet-name>UIErrorLogger</servlet-name>
+        <url-pattern>/UIErrorLogger</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping id="ServletMapping_3">
+        <servlet-name>UIEventLogger</servlet-name>
+        <url-pattern>/UIEventLogger</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list id="WelcomeFileList_1">
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+    </welcome-file-list>
+
+    <resource-ref id="ResourceRef_1">
+        <res-ref-name>NSAMDataSource</res-ref-name>
+        <res-type>javax.sql.ConnectionPoolDataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <filter>
+        <filter-name>MyFacesExtensionsFilter</filter-name>
+        <filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
+        <init-param>
+            <param-name>uploadMaxFileSize</param-name>
+            <param-value>20m</param-value>
+        </init-param>
+    </filter>
+
+
+
+
+    <!-- extension mapping for adding <script/>, <link/>, and other resource tags to JSF-pages  -->
+    <filter-mapping>
+        <filter-name>MyFacesExtensionsFilter</filter-name>
+        <!-- servlet-name must match the name of your javax.faces.webapp.FacesServlet entry -->
+        <servlet-name>JavaServerFaces</servlet-name>
+    </filter-mapping>
+
+    <!-- extension mapping for serving page-independent resources (javascript, stylesheets, images, etc.)  -->
+    <filter-mapping>
+        <filter-name>MyFacesExtensionsFilter</filter-name>
+        <url-pattern>/faces/myFacesExtensionResource/*</url-pattern>
+    </filter-mapping>
+    <!-- extension mapping for adding <script/>, <link/>, and other resource tags to JSF-pages  -->
+    <filter-mapping>
+        <filter-name>MyFacesExtensionsFilter</filter-name>
+        <url-pattern>*.jsf</url-pattern>
+    </filter-mapping>
+
+    <servlet-mapping>
+        <servlet-name>JavaServerFaces</servlet-name>
+        <url-pattern>*.faces</url-pattern>
+    </servlet-mapping>
+
+    <security-role>
+        <role-name>NSAMOperator</role-name>
+    </security-role>
+    <!--<login-config>-->
+    <!--<auth-method>FORM</auth-method>-->
+    <!--<realm-name>admin-realm</realm-name>-->
+    <!--<form-login-config>-->
+    <!--<form-login-page>/content/login.xhtml</form-login-page>-->
+    <!--<form-error-page>/content/loginerror.xhtml</form-error-page>-->
+    <!--</form-login-config>-->
+    <!--</login-config>-->
+
+    <security-constraint id="SecurityConstraint_1">
+        <web-resource-collection id="WebResourceCollection_1">
+            <web-resource-name>Secure Pages</web-resource-name>
+            <url-pattern>/UIErrorLogger</url-pattern>
+            <url-pattern>/faces/content/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>NSAMOperator</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <!--&lt;!&ndash; Security Constraint for resources available to all roles. &ndash;&gt;-->
+    <!--<security-constraint id="SecurityConstraint_1">-->
+    <!--<web-resource-collection id="WebResourceCollection_1">-->
+    <!--<web-resource-name>AconiteJSFManager</web-resource-name>-->
+    <!--<url-pattern>/faces/content/*</url-pattern>-->
+    <!--</web-resource-collection>-->
+    <!--<auth-constraint>-->
+    <!--<role-name>admin</role-name>-->
+    <!--</auth-constraint>-->
+    <!--</security-constraint>-->
+
+    <!-- The form-based authentication definition. -->
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>admin-realm</realm-name>
+        <form-login-config>
+            <form-login-page>/faces/jsp/login.jsp</form-login-page>
+            <form-error-page>/faces/jsp/loginretry.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+
+<!--
+    <error-page>
+        <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+        <location>/faces/content/sessionTimeout.xhtml</location>
+    </error-page> -->
+	
+    <error-page>
+        <error-code>500</error-code>
+        <location>/faces/content/home.xhtml</location>
+    </error-page>
+	
+    <error-page>
+        <error-code>403</error-code>
+        <location>/faces/content/home.xhtml</location>
+    </error-page>	
+	
+    <error-page>
+        <error-code>404</error-code>
+        <location>/faces/content/home.xhtml</location>
+    </error-page>	
+
+    <session-config>
+        <session-timeout>15</session-timeout>
+    </session-config>
+
+</web-app>

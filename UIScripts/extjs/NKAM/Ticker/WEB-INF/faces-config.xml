@@ -1,0 +1,978 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE faces-config PUBLIC
+        "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
+        "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+
+<faces-config>
+
+    <application>
+        <!-- Use the facelets view handler -->
+        <view-handler>
+            com.sun.facelets.FaceletViewHandler
+        </view-handler>
+        <message-bundle>MessageResource</message-bundle>
+        <locale-config>
+            <default-locale>en</default-locale>
+        </locale-config>
+    </application>
+    
+     <application>
+	  <message-bundle>NKAMGUIMessages</message-bundle>
+     </application>    
+	
+	<!-- Session Expired 
+	<error-page>
+		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
+		<location>/sessionExpired.jsf</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>400</error-code>
+		<location>/400.html</location>
+	</error-page>
+	
+       	<error-page>
+          		<exception-type>javax.servlet.ServletException</exception-type>
+          		<location>/content/systemError.xhtml</location>
+       	</error-page>
+    -->
+
+    <!-- Global -->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>System Error</display-name>
+            <from-outcome>systemError</from-outcome>
+            <to-view-id>/content/systemError.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+	
+	
+    <!-- Top Menu -->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Home</display-name>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/content/home.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Login</display-name>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/jsp/login.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Logout</display-name>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>/logout.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <!-- Help Menu -->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Help</display-name>
+            <from-outcome>help</from-outcome>
+            <to-view-id>/content/help.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>About</display-name>
+            <from-outcome>helpAbout</from-outcome>
+            <to-view-id>/content/helpAbout.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>confirmAction</from-outcome>
+            <to-view-id>/content/confirm.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+
+    <!-- Device Type -->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Device Type Home</display-name>
+            <from-outcome>nsamDeviceType</from-outcome>
+            <to-view-id>/content/deviceTypeHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Device Type SearchAll</display-name>
+            <from-outcome>nsamDeviceTypeSearchAll</from-outcome>
+            <to-view-id>/content/deviceTypeSearchAll.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Device Type Add</display-name>
+            <from-outcome>nsamDeviceTypeAdd</from-outcome>
+            <to-view-id>/content/deviceTypeAdd.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Device Type Edit</display-name>
+            <from-outcome>nsamDeviceTypeEdit</from-outcome>
+            <to-view-id>/content/deviceTypeEdit.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Device Type Edit Restricted</display-name>
+            <from-outcome>nsamDeviceTypeEditRestricted</from-outcome>
+            <to-view-id>/content/deviceTypeEditRestricted.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <!-- PTO -->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>PTO Home</display-name>
+            <from-outcome>nsamPTO</from-outcome>
+            <to-view-id>/content/ptoHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>PTO SearchAll</display-name>
+            <from-outcome>nsamPTOSearchAll</from-outcome>
+            <to-view-id>/content/ptoSearchAll.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>PTO Add</display-name>
+            <from-outcome>nsamPTOAdd</from-outcome>
+            <to-view-id>/content/ptoAdd.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>PTO Edit</display-name>
+            <from-outcome>nsamPTOEdit</from-outcome>
+            <to-view-id>/content/ptoEdit.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+	
+    <!-- NCRS -->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NCRS Home</display-name>
+            <from-outcome>nsamNCRS</from-outcome>
+            <to-view-id>/content/ncrsHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NCRS SearchAll</display-name>
+            <from-outcome>nsamNCRSSearchAll</from-outcome>
+            <to-view-id>/content/ncrsSearchAll.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NCRS Add</display-name>
+            <from-outcome>nsamNCRSAdd</from-outcome>
+            <to-view-id>/content/ncrsAdd.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NCRS Edit</display-name>
+            <from-outcome>nsamNCRSEdit</from-outcome>
+            <to-view-id>/content/ncrsEdit.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+	
+	
+    <!-- Equipment Vendor -->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Equipment Vendor Home</display-name>
+            <from-outcome>nsamEqVendor</from-outcome>
+            <to-view-id>/content/eqVendorHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Equipment Vendor SearchAll</display-name>
+            <from-outcome>nsamEqVendorSearchAll</from-outcome>
+            <to-view-id>/content/eqVendorSearchAll.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Equipment Vendor Add</display-name>
+            <from-outcome>nsamEqVendorAdd</from-outcome>
+            <to-view-id>/content/eqVendorAdd.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Equipment Vendor Edit</display-name>
+            <from-outcome>nsamEqVendorEdit</from-outcome>
+            <to-view-id>/content/eqVendorEdit.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+	
+    <!-- Reader Vendor -->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Reader Vendor Home</display-name>
+            <from-outcome>nsamRdVendor</from-outcome>
+            <to-view-id>/content/rdVendorHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Reader Vendor SearchAll</display-name>
+            <from-outcome>nsamRdVendorSearchAll</from-outcome>
+            <to-view-id>/content/rdVendorSearchAll.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Reader Vendor Add</display-name>
+            <from-outcome>nsamRdVendorAdd</from-outcome>
+            <to-view-id>/content/rdVendorAdd.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Reader Vendor Edit</display-name>
+            <from-outcome>nsamRdVendorEdit</from-outcome>
+            <to-view-id>/content/rdVendorEdit.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+	
+    <!-- Import Certificate -->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Certificate Home Home</display-name>
+            <from-outcome>nsamCertificateHome</from-outcome>
+            <to-view-id>/content/impcertHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>	
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM Certificate Upload</display-name>
+            <from-outcome>nsamCertificateUpload</from-outcome>
+            <to-view-id>/content/impcertUpload.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM Certificate Confirm</display-name>
+            <from-outcome>nsamCertificateConfirm</from-outcome>
+            <to-view-id>/content/impcertConfirm.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM Certificate Error</display-name>
+            <from-outcome>nsamCertificateError</from-outcome>
+            <to-view-id>/content/impcertError.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <!--  NSAM Request Pane -->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM Request Pane</display-name>
+            <from-outcome>nsamRequestPane</from-outcome>
+            <to-view-id>/content/requestPane.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM Request Pane Confirm</display-name>
+            <from-outcome>nsamRequestPaneConfirm</from-outcome>
+            <to-view-id>/content/requestPaneConfirm.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM Request Pane Result</display-name>
+            <from-outcome>nsamRequestPaneResult</from-outcome>
+            <to-view-id>/content/requestPaneResult.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <!--  NSAM Device List Pane -->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Import Data Home</display-name>
+            <from-outcome>importData</from-outcome>
+            <to-view-id>/content/importDataHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM Device List Pane</display-name>
+            <from-outcome>nsamDeviceListPane</from-outcome>
+            <to-view-id>/content/deviceListPane.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM Device List Pane result</display-name>
+            <from-outcome>nsamDeviceListPaneConfirm</from-outcome>
+            <to-view-id>/content/deviceListPaneConfirm.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <!--  NSAM CRL Processing -->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM CRL Processing</display-name>
+            <from-outcome>nsamCRLProcess</from-outcome>
+            <to-view-id>/content/crlProcess.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM CRL Processing Result</display-name>
+            <from-outcome>nsamCRLProcessResult</from-outcome>
+            <to-view-id>/content/crlProcessResult.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Import Data Response</display-name>
+            <from-outcome>importDataResponse</from-outcome>
+            <to-view-id>/content/importDataResponse.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM DeviceList CRL Responses Home</display-name>
+            <from-outcome>nsamDeviceCRLResponsesHome</from-outcome>
+            <to-view-id>/content/devicelistCRLResponsesHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM DeviceList CRL Responses</display-name>
+            <from-outcome>nsamDeviceCRLResponses</from-outcome>
+            <to-view-id>/content/devicelistCRLResponses.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- Change NSAM/SAM : search Menu -->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Change NSAM HOME</display-name>
+            <from-outcome>nsamChange</from-outcome>
+            <to-view-id>/content/changeNSAMHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Change NSAM Search</display-name>
+            <from-outcome>nsamChangeNSAMSearchPanel</from-outcome>
+            <to-view-id>/content/changeNSAMSearchPanel.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Change NSAM Result</display-name>
+            <from-outcome>nsamChangeNSAMResultPanel</from-outcome>
+            <to-view-id>/content/changeNSAMResultPanel.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+
+    <!-- Update Group of NSAM/SAM : search Menu -->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Update NSAM HOME</display-name>
+            <from-outcome>nsamUpdate</from-outcome>
+            <to-view-id>/content/updateNSAMHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Update NSAM Search</display-name>
+            <from-outcome>nsamUpdateNSAMSearchPanel</from-outcome>
+            <to-view-id>/content/updateNSAMSearchPanel.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Update NSAM Result</display-name>
+            <from-outcome>nsamUpdateNSAMResultPanel</from-outcome>
+            <to-view-id>/content/updateNSAMResultPanel.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+
+    <!--  Changing NSAM/SAM Status Pane-->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM Changing NSAM/SAM Status Pane</display-name>
+            <from-outcome>nsamChangeStatusPane</from-outcome>
+            <to-view-id>/content/changeStatusPane.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM Changing NSAM/SAM Status Pane Result</display-name>
+            <from-outcome>nsamChangeStatusPaneResult</from-outcome>
+            <to-view-id>/content/changeStatusPaneResult.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM Changing NSAM/SAM Status Pane Confirm</display-name>
+            <from-outcome>nsamChangeStatusPaneConfirm</from-outcome>
+            <to-view-id>/content/changeStatusPaneConfirm.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    
+    <!--View data-->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>View Data attributes</display-name>
+            <from-outcome>viewData</from-outcome>
+            <to-view-id>/content/viewDataHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM perso data - Device ID</display-name>
+            <from-outcome>nsamDeviceID</from-outcome>
+            <to-view-id>/content/viewPersoByDeviceID.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM view perso data - chip ID</display-name>
+            <from-outcome>nsamChipID</from-outcome>
+            <to-view-id>/content/viewPersoByChipID.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM Perso Chip ID data details</display-name>
+            <from-outcome>nsamPersoChipData</from-outcome>
+            <to-view-id>/content/viewPersoChipDataDetails.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>NSAM Perso Device ID data details</display-name>
+            <from-outcome>nsamPersoDeviceData</from-outcome>
+            <to-view-id>/content/viewPersoDeviceDataDetails.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>View History Home</display-name>
+            <from-outcome>viewHistoryHome</from-outcome>
+            <to-view-id>/content/viewHistoryHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>  
+    <navigation-rule>
+        <navigation-case>
+            <display-name>View History</display-name>
+            <from-outcome>viewHistory</from-outcome>
+            <to-view-id>/content/viewHistory.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>         
+
+    <!-- start Keys Change -->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Request Key Change Home</display-name>
+            <from-outcome>requestKeyChange</from-outcome>
+            <to-view-id>/content/requestKeyChangeHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <display-name>MSA Key loading Keys</display-name>
+            <from-outcome>requestMSAKeyLoadingKeysChange</from-outcome>
+            <to-view-id>/content/requestMSAKeyLoadingKeysChange.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>MSA Key loading Keys Generation</display-name>
+            <from-outcome>requestMSAKeyLoadingKeysChangeGen</from-outcome>
+            <to-view-id>/content/requestMSAKeyLoadingKeysChange_Gen.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>    
+
+    <navigation-rule>
+        <navigation-case>
+            <display-name>MSA Ceiling Value Master Key Home</display-name>
+            <from-outcome>requestMSACVMKChangeHome</from-outcome>
+            <to-view-id>/content/requestMSACVMKChangeHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>MSA Ceiling Value Master Key</display-name>
+            <from-outcome>requestMSACVMKChange</from-outcome>
+            <to-view-id>/content/requestMSACVMKChange.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>MSA Ceiling Value Master Key Generation</display-name>
+            <from-outcome>requestMSACVMKChangeGen</from-outcome>
+            <to-view-id>/content/requestMSACVMKChange_Gen.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>    
+
+    <navigation-rule>
+        <navigation-case>
+            <display-name>MSA Privacy Key Home</display-name>
+            <from-outcome>requestMSAPrivacyKeyChangeHome</from-outcome>
+            <to-view-id>/content/requestMSAPrivacyKeyChangeHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>MSA Privacy Key</display-name>
+            <from-outcome>requestMSAPrivacyKeyChange</from-outcome>
+            <to-view-id>/content/requestMSAPrivacyKeyChange.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>MSA Privacy Key - Generation</display-name>
+            <from-outcome>requestMSAPrivacyKeyChangeGen</from-outcome>
+            <to-view-id>/content/requestMSAPrivacyKeyChange_Gen.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>    
+
+
+    <navigation-rule>
+        <navigation-case>
+            <display-name>MSA CT_ULC Key Home</display-name>
+            <from-outcome>reqMSACT_ULCKeyChangeHome</from-outcome>
+            <to-view-id>/content/reqMSACT_ULCKeyChangeHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>MSA CT_ULC Key</display-name>
+            <from-outcome>reqKeychange_MSACT_ULCKey</from-outcome>
+            <to-view-id>/content/requestMSACT_ULCKeyChange.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>MSA CT_ULC Key Generation</display-name>
+            <from-outcome>reqKeychange_MSACT_ULCKeyGen</from-outcome>
+            <to-view-id>/content/requestMSACT_ULCKeyChange_Gen.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>       
+
+
+    <navigation-rule>
+        <navigation-case>
+            <display-name>MSA Ticketing Keys Home</display-name>
+            <from-outcome>reqMSATicketingKeysChangeHome</from-outcome>
+            <to-view-id>/content/reqMSATicketingKeysChangeHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>MSA Ticketing Keys</display-name>
+            <from-outcome>requestMSATicketingKeysChange</from-outcome>
+            <to-view-id>/content/requestMSATicketingKeysChange.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>MSA Ticketing Keys Geneartion</display-name>
+            <from-outcome>requestMSATicketingKeysChangeGen</from-outcome>
+            <to-view-id>/content/requestMSATicketingKeysChange_Gen.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>    
+
+    <!-- end Keys Change -->
+
+    
+
+    <!-- Ticketing Key File Menu -->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>TKF Management Home</display-name>
+            <from-outcome>nsamTicketingKeyFileHome</from-outcome>
+            <to-view-id>/content/ticketingKeyFileHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <display-name>TKF Request</display-name>
+            <from-outcome>nsameTicketingKeyFileRequest</from-outcome>
+            <to-view-id>/content/ticketingKeyFileRequest.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <!-- Post Issuance Update Menu -->
+
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Application Management Home</display-name>
+            <from-outcome>nsamUpdateHome</from-outcome>
+            <to-view-id>/content/updatePaneHome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Application Management</display-name>
+            <from-outcome>nsamUpdate</from-outcome>
+            <to-view-id>/content/updatePane.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Application Management</display-name>
+            <from-outcome>nsamUpdateResults</from-outcome>
+            <to-view-id>/content/updatePane.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <!-- delivery Staged Updates Menu -->
+    <navigation-rule>
+        <navigation-case>
+            <display-name>Application Management</display-name>
+            <from-outcome>deleteStagedUpdates</from-outcome>
+            <to-view-id>/content/deleteStagedUpdates.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+
+
+    <!-- Validators-->
+    <validator>
+        <validator-id>emailValidator</validator-id>
+        <validator-class>com.aconitesolutions.nsam.jsfmanager.admin.validator.EmailValidator</validator-class>
+    </validator>
+	
+    <validator>
+        <validator-id>hexValueValidator</validator-id>
+        <validator-class>com.aconitesolutions.nsam.jsfmanager.admin.validator.HexValueValidator</validator-class>
+    </validator>
+	
+    <converter>
+        <converter-id>aconite.DateTimeConverter</converter-id>
+        <converter-class>com.aconitesolutions.nsam.jsfmanager.jsf.custom.converter.DateTimeConverter</converter-class>
+    </converter>
+
+    <!-- Action request (request-scoped) to handle action requests -->
+    <managed-bean>
+        <description>Represents a user action request.</description>
+        <managed-bean-name>ActionRequest</managed-bean-name>
+        <managed-bean-class>
+            com.aconitesolutions.nsam.ui.mbean.request.ActionRequestMBean
+        </managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>Validators</managed-bean-name>
+        <managed-bean-class>
+            com.aconitesolutions.nsam.ui.mbean.request.ValidatorsMBean
+        </managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>
+            Encapsulates data and behaviour related to help.
+        </description>
+        <managed-bean-name>Help</managed-bean-name>
+        <managed-bean-class>
+            com.aconitesolutions.nsam.ui.mbean.request.HelpMBean
+        </managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>ViewDispatcher</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.ui.mbean.request.ViewDispatcher</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+    <!--
+       Session scoped beans
+    -->
+    <!-- Managed bean (session-scoped) to handle action confirmation/cancel -->
+    <managed-bean>
+        <description>Handles action confirmation/cancellation.</description>
+        <managed-bean-name>ActionConfirm</managed-bean-name>
+        <managed-bean-class>
+            com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.ActionConfirmMBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Login</managed-bean-name>
+        <managed-bean-class>
+            com.aconitesolutions.nsam.ui.mbean.session.LoginMBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <!--
+   	<managed-bean>
+        <managed-bean-name>UserSession</managed-bean-name>
+        <managed-bean-class>
+         			com.aconitesolutions.nsam.ui.mbean.session.UserSessionMBean
+      		</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+   	-->
+    <managed-bean>
+        <managed-bean-name>Menus</managed-bean-name>
+        <managed-bean-class>
+            com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.MenusMBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Maintains user session context information.</description>
+        <managed-bean-name>Context</managed-bean-name>
+        <managed-bean-class>
+            com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.ContextMBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Managed bean for Device Type -->
+    <managed-bean>
+        <managed-bean-name>DeviceType</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.DeviceTypeMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Managed bean for PTO -->
+    <managed-bean>
+        <managed-bean-name>PTO</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.PTOMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+	
+    <!-- Managed bean for NCRS -->
+    <managed-bean>
+        <managed-bean-name>NCRS</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.NCRSMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+	
+    <!-- Managed bean for Equipment Vendor -->
+    <managed-bean>
+        <managed-bean-name>EqVendor</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.EqVendorMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+	
+    <!-- Managed bean for Reader Vendor -->
+    <managed-bean>
+        <managed-bean-name>RdVendor</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.RdVendorMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Managed bean for Request Pane -->
+    <managed-bean>
+        <managed-bean-name>RequestPane</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.RequestPaneMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Managed bean for Device List Pane -->
+    <managed-bean>
+        <managed-bean-name>DeviceListPane</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.DeviceListPaneMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>PIUpdateBean</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.PostIssuanceUpdateMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>DeleteStageUpdateBean</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.DeleteStageUpdateMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Managed bean for Change Group of NSAMs Pane -->
+    <managed-bean>
+        <managed-bean-name>ChangeNSAMSearch</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.ChangeNSAMSearchMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Managed bean for Update group of NSAMs Pane -->
+    <managed-bean>
+        <managed-bean-name>UpdateNSAMSearch</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.UpdateNSAMSearchMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Managed bean for TKF Request -->
+    <managed-bean>
+        <managed-bean-name>RequestTicketingKeyFileBean</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.RequestTicketingKeyFileMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Managed bean for CRL Process -->
+    <managed-bean>
+        <managed-bean-name>CRLProcess</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.CRLProcessMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Managed bean for Change Status Pane -->
+    <managed-bean>
+        <managed-bean-name>StatusPaneChange</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.StatusPaneChangeMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Managed bean for Ticketing Keys Change -->
+    <managed-bean>
+        <managed-bean-name>TicketingKeyPane</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.TicketingKeysPaneMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- Managed bean for CVMK Change -->
+    <managed-bean>
+        <managed-bean-name>CVMKChange</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.CVMKChangeMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>PrivacyKeyPane</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.PrivacyKeyPaneMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>CT_ULCKeyPane</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.CT_ULCKeyPaneMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>KeyLoadingKeysPane</managed-bean-name>
+        <managed-bean-class>com.aconitesolutions.nsam.jsfmanager.jsf.mbean.stateful.KeyLoadingKeysPaneMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>contextMBean</property-name>
+            <value>#{Context}</value>
+        </managed-property>
+    </managed-bean>
+    
+
+    <!---->
+    <!--<application>-->
+    <!--<message-bundle>MessageResource</message-bundle>-->
+    <!--<locale-config>-->
+    <!--<default-locale>en</default-locale>-->
+    <!--</locale-config>-->
+    <!--</application>-->
+
+    <component>
+        <component-type>com.aconite.LongText</component-type>
+        <component-class>com.aconitesolutions.nsam.jsfmanager.jsf.custom.component.LongText</component-class>
+    </component>
+
+</faces-config>

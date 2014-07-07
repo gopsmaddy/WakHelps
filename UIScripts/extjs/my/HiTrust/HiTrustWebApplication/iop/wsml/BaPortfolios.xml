@@ -1,0 +1,41 @@
+<DST>
+	<HiTrust>
+		<businessObject>BaPortfolios</businessObject>
+		<operation>SEARCH</operation>
+		<user>@@user@</user>
+		<password>@@pass@</password>
+		<request>
+			<data>
+				<MaxRows>@@maxRecords@</MaxRows>
+				<Number>@@profileRelNo@</Number>			
+			</data>
+		</request>
+		<response>
+			<Key/>
+			<Number/>
+			<Name/>
+			<Status.Desc />
+			<Type.Desc />
+			<SSNo />
+			<IncomeMethod.Desc />
+			<ReinvestSplit />
+			<Profile.RelNo />
+			<TaxProfile.Name />
+			<TaxProfile.GivenName />
+			<PortfolioCcy.ISOCode />
+			<PortfolioCcy.Desc />
+			<Agent.Number />
+			<Agent.Name />
+			<Agent.AgentType.Desc />
+			<Company.Key/>
+			<Company.Desc/>
+                        <NoMarketing/>
+			
+			<DefPrefComm.Desc/>
+			<DefAnnRepDispatch.Desc/>
+			<DefAnnRepElect.Desc/>
+			<NoMarketing/>
+
+		</response>
+	</HiTrust>
+</DST>

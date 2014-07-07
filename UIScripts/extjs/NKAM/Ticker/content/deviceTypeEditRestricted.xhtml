@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom">
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.deviceType_EditTitle}
+    </ui:define>
+    <ui:define name="workArea">
+        <h3>#{msg.deviceType_Edit_Restricted_Reason}</h3>
+        <h:form onsubmit="document.body.style.cursor='wait';">
+            <table class="acTable">
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.deviceType_DeviceName}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:inputText id="nameColumn" value="#{DeviceType.devicetype.name}"
+                                     maxlength="40"
+                                     styleClass="form-input-text"
+                                     required="true"
+                                     readonly="true" />
+                        <br/><h:message for="nameColumn" styleClass="warn"/>
+                        <h:inputHidden id="IdColumn" value="#{DeviceType.devicetype.id}"/>
+						<h:inputHidden id="VersionColumn" value="#{DeviceType.devicetype.version}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.deviceType_DeviceType}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:outputText id="typeColumn" value="#{DeviceType.devicetype.deviceType}" readonly="true"/>
+                        <h:inputHidden id="typeColumn2" value="#{DeviceType.devicetype.deviceType}"/>
+
+                                    <!--validator="#{Validators.validateUniqueDeviceType}"/>-->
+                        <br/> <h:message for="typeColumn" styleClass="warn"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.deviceType_DeviceTLA}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:inputText id="TLAColumn" value="#{DeviceType.devicetype.abbreviation}"
+                                     maxlength="3"
+                                     styleClass="form-input-text"
+                                     required="true"
+                                     readonly="true" />
+                        <br/><h:message for="TLAColumn" styleClass="warn"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.deviceType_keyType}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:selectOneMenu id="KeyTypeColumn" value="#{DeviceType.devicetype.keyType}">
+                            <f:selectItem itemLabel="None" itemValue="None"/>
+                            <f:selectItem itemLabel="Personalisation" itemValue="Personalisation"/>
+                            <f:selectItem itemLabel="Service" itemValue="Service"/>
+                            <f:selectItem itemLabel="Validation" itemValue="Validation"/>
+                            <f:selectItem itemLabel="Enquiry" itemValue="Enquiry"/>
+                        </h:selectOneMenu>
+                    </td>
+                </tr>
+            </table>
+             &#160;
+            <!--<h:commandLink action="#{nsamDeviceType}" immediate="true">#{msg.cancelLink}</h:commandLink>-->
+        </h:form>
+            <h:messages globalOnly="true" layout="table" styleClass="warn"
+            infoClass="info" warnClass="warn"
+            errorClass="warn"
+            fatalClass="warn"/>
+
+            <br/>        
+    </ui:define>
+</ui:composition>
+</body>
+</html>

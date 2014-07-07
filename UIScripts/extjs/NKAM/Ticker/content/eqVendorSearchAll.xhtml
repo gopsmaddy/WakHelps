@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom">
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.eqVendor_Title}
+    </ui:define>
+    <ui:define name="workArea">
+        <h:form onsubmit="document.body.style.cursor='wait';">
+            <table class="acTable">
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        <ac:pkDataTable id="allVendor" binding="#{EqVendor.vendorData}"
+                                        primaryKey="id"
+                                        var="vendor"
+                                        value="#{EqVendor.allVendor}"
+                                        headerClass="table-header"
+                                        footerClass="table-footer"
+                                        styleClass="acTable"
+                                        cellpadding="0" cellspacing="0">
+
+                        <h:column id="NameColumn" >
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.eqVendor_Name}"/>
+                            </f:facet>
+                            <h:outputText id="NameValue" value="#{vendor.name}"/>
+                        </h:column>
+                        <h:column id="TLAColumn">
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.eqVendor_ID}"/>
+                            </f:facet>
+                            <h:outputText id="TLAValue" value="#{vendor.vendorId}"/>
+                        </h:column>
+						<!--
+						<h:column id="StatusColumn">
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.eqVendor_Status}"/>
+                            </f:facet>
+                            <h:outputText id="StatusValue" value="#{vendor.status}"/>
+                        </h:column>
+						-->
+                        <h:column id="actionColumn">
+                             <span style="white-space: nowrap;">
+                                <h:commandLink id="editLink" action="#{EqVendor.editAction}"
+                                               title="#{msg.editLink}">
+                                               #{msg.editLink}
+                                </h:commandLink>
+                                &#160;
+                                <h:commandLink id="deleteLink" action="#{EqVendor.deleteAction}"
+                                               onclick="if (!confirm('Are you sure you want to delete this Equipment Vendor?')) return false"
+                                               title="#{msg.deleteLink}">#{msg.deleteLink}
+                                </h:commandLink>
+								<!--
+								&#160;
+								<h:panelGroup rendered="#{vendor.status!=1}">
+									<h:commandLink id="enableLink" action="#{EqVendor.enableAction}"
+                                               onclick="if (!confirm('Are you sure you want to enable vendor?')) return false"
+                                               title="#{msg.enableLink}">#{msg.enableLink}
+									</h:commandLink>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{vendor.status==1}">
+									<h:commandLink id="disableLink" action="#{EqVendor.disableAction}"
+                                               onclick="if (!confirm('Are you sure you want to disable vendor?')) return false"
+                                               title="#{msg.disableLink}">#{msg.disableLink}
+									</h:commandLink>
+								</h:panelGroup>
+								-->
+                             </span>
+                         </h:column>
+
+                    </ac:pkDataTable>
+                    </td>
+                </tr>
+            </table>
+            <!--</ui:fragment>-->
+        </h:form>
+            <h:messages globalOnly="true" layout="table" styleClass="warn"
+            infoClass="info" warnClass="warn"
+            errorClass="warn"
+            fatalClass="warn"/>
+
+            <br/>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

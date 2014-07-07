@@ -1,0 +1,16 @@
+<DST>
+	<user>001IN000001</user>
+	<password>Passw0rd</password>
+	<response>
+		<List>
+			<Key>0000000001</Key>
+			<Code>RT</Code>
+			<Desc>Retail</Desc>
+		</List>
+		<List>
+			<Key>0000000022</Key>
+			<Code>BS</Code>
+			<Desc>Basic</Desc>
+		</List>
+	</response>
+</DST>

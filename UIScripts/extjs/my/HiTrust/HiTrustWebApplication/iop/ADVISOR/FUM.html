@@ -1,0 +1,309 @@
+<html>
+	<head>
+		<!--<link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base.js" type="text/javascript"></script>
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all.js" type="text/javascript"></script>-->
+			<link href="../includes/jquery-ui-1.css" rel="stylesheet" type="text/css" media="screen">
+			<link href="../includes/uniform.css" rel="stylesheet" type="text/css" media="screen">
+			<link href="../includes/flexigrid.css" rel="stylesheet" type="text/css" media="screen">
+			<link href="../includes/web_fonts.css" rel="stylesheet" type="text/css" media="screen">
+			<link href="../includes/ext-all-css.css" rel="stylesheet" type="text/css" media="screen">
+			<link href="../includes/xtheme-gray-css.css" rel="stylesheet" type="text/css" media="screen">
+			<link href="../includes/iop_screen.css" rel="stylesheet" type="text/css" media="screen">
+			
+			<script src="../includes/jquery-1.js" type="text/javascript"></script>
+			<script src="../includes/jquery-ui-1.js" type="text/javascript"></script>
+			<script src="../includes/jquery.js" type="text/javascript"></script>
+			<script src="../includes/flexigrid.js" type="text/javascript"></script>
+			<script src="../includes/iop_functions.js" type="text/javascript"></script>
+			<script src="../includes/ext-base.js" type="text/javascript"></script>
+			<script src="../includes/ext-all-js.js" type="text/javascript"></script>
+			
+			<script src="../js/tools.js" type="text/javascript"></script>
+			<script src="../js/myStaticDataStore.js" type="text/javascript"></script>
+			<script src="../js/myExternalURL.js" type="text/javascript"></script>
+			<script src="../js/myDynamicDataStore.js" type="text/javascript"></script>			
+			<script src="../js/vtypes.js" type="text/javascript"></script>			
+			<script src="../js/pagesizeplugin.js" type="text/javascript"></script>
+			<script src="../js/myDynamicDataGrid.js" type="text/javascript"></script>
+			<script src="../js/mySearchPanel.js" type="text/javascript"></script>
+			
+	   <body>
+
+<script type="text/javascript">
+	   		
+
+		//$('#auto').val(getUrlVars()["auto"]); 
+	  //$('#sessionid').val(getUrlVars()["sessionid"]); 
+	  
+	  
+	
+
+Ext.Ajax.timeout = 60000;
+Ext.onReady
+(
+	function()
+	{
+		
+	////////////////////////jquery calls/////////////////////////////////////   		
+			
+
+		// Tabs
+  $('#tabs').bind('tabsselect', function (event, ui) {
+        
+        //=============================================== 
+        if(ui.tab.innerHTML=='My Funds Under Management')
+        {
+        	if(!myBaAgentSummaryByUCsStore.loaded)
+        	{
+            myBaAgentSummaryByUCsStore.load({params:{start:0, limit:Ext.getCmp('pBaAgentSummaryByUCsBar').pageSize}});
+            myBaAgentSummaryByUCsMask.show();	
+          }          	
+          myBaAgentSummaryByUCsGrid.show();			
+					myBaAgentSummaryByUCsGrid.render('myFundsUnderManagementGrid');
+          // alert("My Funds Under Management");
+          return true;
+         }
+        //===============================================    
+        if(ui.tab.innerHTML=='My Investors Per Fund')
+        { 
+        	if(!myBaAgentFundsStore.loaded)
+        	{
+            myBaAgentFundsStore.load();
+            myBaAgentFundsMask.show();	
+          }  
+                          	
+        	if(!myBaAgentSummarysStore.loaded)
+        	{
+            myBaAgentSummarysStore.load({params:{start:0, limit:Ext.getCmp('pBaAgentSummarysBar').pageSize,activePortfolio:'true'}});
+            myBaAgentSummarysMask.show();	
+          } 
+          
+          myBaAgentSummarysSearch.show();
+          myBaAgentSummarysSearch.render('myInvestorPerFundSearch'); 
+          
+          myBaAgentSummarysGrid.show();
+					myBaAgentSummarysGrid.render('myInvestorPerFundGrid'); 
+          //alert("My Investor Per Fund");
+           return true;
+         }  
+        //===============================================  
+        if(ui.tab.innerHTML=='My Advisors')
+        {
+        	if(!myBaAgentByCcysStore.loaded)
+        	{
+            myBaAgentByCcysStore.load({params:{start:0, limit:Ext.getCmp('pBaAgentByCcysBar').pageSize}});
+            myBaAgentByCcysMask.show();	
+          } 
+          myBaAgentByCcysGrid.show();
+					myBaAgentByCcysGrid.render('myAdvisorGrid');
+        		//alert("My Advisor");
+            return true;
+         }          
+       	//=============================================== 
+    });
+    
+  //#########################################################################  
+  //////////////My Funds Under Management///////////////////////////////////
+    
+		myBaAgentSummaryByUCsGrid.show();			
+		myBaAgentSummaryByUCsGrid.render('myFundsUnderManagementGrid');
+		
+	//-------------------------------------------------------------------------	
+		
+	myBaAgentSummaryByUCsGrid.getSelectionModel().on
+	(
+		'rowselect', function(sm, rowIdx, r) 
+		{					
+			
+			//alert(r.data.LoginUserType);
+			
+			if(r.data.LoginUserType==varDealerGroup || r.data.LoginUserType==varDealer)
+			{
+				myBaAgentSummLevel2sStore.load
+				(
+					{
+						params:
+						{
+							start:0
+							,limit:Ext.getCmp('pBaAgentSummLevel2sBar').pageSize
+							,unitClassKey:r.data.UnitClass_Key
+						}
+					}
+				);
+				myBaAgentSummLevel2sMask.show();
+				
+				myBaAgentSummLevel2sGrid.show();
+				myBaAgentSummLevel2sGrid.render('myFundsUnderManagementL2Grid');
+				
+				myBaAgentSummLevel3sGrid.hide();
+				
+				myBaAgentSummaryByUCsGrid.getSelectionModel().clearSelections();
+			}
+		}
+  );
+  //-------------------------
+  
+  myBaAgentSummLevel2sGrid.getSelectionModel().on
+	(
+		'rowselect', function(sm, rowIdx, r) 
+		{					
+			
+			//alert(r.data.LoginUserType);
+			
+			if(r.data.LoginUserType==varDealerGroup )
+			{
+				myBaAgentSummLevel3sStore.load
+				(
+					{
+						params:
+						{
+							start:0
+							,limit:Ext.getCmp('pBaAgentSummLevel3sBar').pageSize
+							,subAgentKey:r.data.SubAgent_Key
+							,unitClassKey:r.data.UnitClass_Key
+						}
+					}
+				);
+				myBaAgentSummLevel3sMask.show();
+				
+				myBaAgentSummLevel3sGrid.show();			
+				myBaAgentSummLevel3sGrid.render('myFundsUnderManagementL3Grid');	
+				
+				myBaAgentSummLevel2sGrid.getSelectionModel().clearSelections();
+			}
+		}
+  );	
+	//----------------default setup (FUM)--------------------------------------	
+	
+		if(!myBaAgentSummaryByUCsStore.loaded)	
+	  {	  				
+			myBaAgentSummaryByUCsStore.load({params:{start:0, limit:Ext.getCmp('pBaAgentSummaryByUCsBar').pageSize}});
+			myBaAgentSummaryByUCsMask.show();
+		} 		
+	//##################### My Investor Per Fund ####################################
+	/////////////////////default setup (IPF)/////////////////////////////////////////	
+	
+	myBaAgentSummarysStore.on
+	 ('beforeload', function(store)
+		 	{
+				store.baseParams = 
+				{												
+						fundKey: Ext.getCmp('fundname').value,
+            activePortfolio	: Ext.getCmp('activePortfolio').getValue()==true?'true':''  
+				};
+	    }
+   );
+	
+	//################# My Advisor ######################################
+	myBaAgentByCcysGrid.getSelectionModel().on
+	(
+		'rowselect', function(sm, rowIdx, r) 
+		{					
+			
+			//alert(r.data.LoginUserType);
+			
+			if(r.data.LoginUserType==varDealerGroup || r.data.LoginUserType==varDealer)
+			{
+				myBaSubAgentByCcysStore.load
+				(
+					{
+						params:
+						{
+							start:0
+							,limit:Ext.getCmp('pBaSubAgentByCcysBar').pageSize
+							,subAgentKey:r.data.SubAgent_Key
+						}
+					}
+				);
+				myBaSubAgentByCcysMask.show();
+				
+				myBaSubAgentByCcysGrid.show();
+				myBaSubAgentByCcysGrid.render('myAdvisorGrid2');
+				
+				myBaAgentSummaryByUCsGrid2.hide();
+				
+				myBaAgentByCcysGrid.getSelectionModel().clearSelections();
+			}			
+			
+			
+		}
+  );
+  
+  //-------------------------------
+  
+  myBaSubAgentByCcysGrid.getSelectionModel().on
+	(
+		'rowselect', function(sm, rowIdx, r) 
+		{		
+			
+			if(r.data.LoginUserType==varDealerGroup)
+			{
+				myBaAgentSummaryByUCsStore.load
+				(
+					{
+						params:
+						{
+							start:0
+							,limit:Ext.getCmp('pBaAgentSummaryByUCsBar').pageSize
+							,currencyCode:r.data.Currency_ISOCode
+						}
+					}
+				);
+				myBaAgentSummaryByUCsMask.show();
+				
+				myBaAgentSummaryByUCsGrid2.show();
+				myBaAgentSummaryByUCsGrid2.render('myAdvisorGrid3');					
+				
+			}
+			
+			
+		}
+  );
+  
+	//-------------default setup (ADV)----------------------------	
+		
+		
+		
+		
+			
+	}
+);
+
+
+</script>
+
+
+
+
+<div id="tabs">
+    <ul>
+      <li><a href="#fum">My Funds Under Management</a></li>
+      <li><a href="#inv-fund">My Investors Per Fund</a></li>
+      <li><a href="#adv">My Advisor</a></li>
+    </ul>
+
+    <div id="fum">
+	    <div id="myFundsUnderManagementGrid"></div><br>
+			<div id="myFundsUnderManagementL2Grid"></div><br>
+			<div id="myFundsUnderManagementL3Grid"></div>
+    </div>
+    
+    
+    <div id="inv-fund">
+    	<div id="myInvestorPerFundSearch"></div><br>
+    	<div id="myInvestorPerFundGrid"></div>
+    </div>
+    
+		<div id="adv">
+			<div id="myAdvisorGrid"></div><br>	
+			<div id="myAdvisorGrid2"></div><br>
+			<div id="myAdvisorGrid3"></div>
+		</div>
+</div>
+
+
+
+
+</body>
+</html>

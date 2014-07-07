@@ -1,0 +1,1100 @@
+<html>
+	<head>
+		<link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+            <!--<script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base.js" type="text/javascript"></script>
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all.js" type="text/javascript"></script>-->
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/ext-all-debug.js" type="text/javascript"></script>
+      
+      
+			 <link href="http://modules.eurouwins.com/iop/styles/jquery-ui-1.8.4.custom.css" type="text/css" rel="stylesheet" media="screen">			
+			
+      <script src="http://modules.eurouwins.com/iop/scripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/jquery.uniform.min.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/jquery-ui-1.8.4.custom.min.js" type="text/javascript"></script>
+			
+      <link href="http://modules.eurouwins.com/iop/styles/flexigrid.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/iop_screen.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/uniform.default.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/web_fonts.css" type="text/css" rel="stylesheet" media="screen">
+			
+			<script src="http://modules.eurouwins.com/iop/scripts/flexigrid.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/iop_functions.js" type="text/javascript"></script>
+			
+			<script src="../js/myExternalURL.js" type="text/javascript"></script>
+			<script src="../js/pagesizeplugin.js" type="text/javascript"></script>
+			
+	   <body>
+	   	
+	   	<!-- http://extjs.wima.co.uk/ -->
+<script type="text/javascript">
+	// To play in Firebug uncomment next line
+// Ext.get(document.body).update('<div id="ext-test"></div>');
+ 
+// reference local blank image
+Ext.BLANK_IMAGE_URL = 'http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/resources/images/default/s.gif';
+ 
+ 
+	Ext.onReady(function(){
+	
+	//////////////myFundStore////////////////////
+	
+	myFundStore = new Ext.data.Store
+  (
+  	{   
+        
+        // load using HTTP
+				proxy : new Ext.data.HttpProxy
+				(
+					{																
+						method: 'GET',
+						prettyUrls: false,
+						// load using HTTP
+		        url: varBaInvestorPortFundsURL		        
+					}
+				),
+				remoteSort:true,		
+				sortInfo: {field: "Fund_Desc", direction: "ASC" },	
+				
+        // the return will be XML, so lets set up a reader
+        reader: new Ext.data.XmlReader
+        (
+        	{
+               // records will have an "Item" tag
+               record: 'List',
+               id: '>Fund>Key',
+               totalRecords: 'totalRecords'
+           }, 
+           [
+               // set up the fields mapping into the xml doc
+               // The first needs mapping, the others are very basic
+               {name:'Fund_Desc', mapping: '>Fund>Desc'},
+               {name:'Fund_Code', mapping: '>Fund>Code' },
+               {name:'Fund_Key', mapping: '>Fund>Key' }          
+           ]
+         ),
+         listeners: 
+         {
+				   	load: function()
+				   	{
+				   		this.loaded = true;		 		   		  		
+				   	}
+				  }
+    	}
+   );	
+   
+   //////////////myUnitClassStore////////////////////
+  
+  var myUnitClassStore = new Ext.data.Store
+  (
+  	{       
+        // load using HTTP
+				proxy : new Ext.data.HttpProxy
+				(
+					{																
+						method: 'GET',
+						prettyUrls: false,
+						// load using HTTP
+		        url: varBaSUnitClasssURL
+					}
+				),
+				remoteSort:true,		
+				sortInfo: {field: "Desc", direction: "ASC" },	
+				
+        // the return will be XML, so lets set up a reader
+        reader: new Ext.data.XmlReader
+        (
+        	{
+               // records will have an "Item" tag
+               record: 'List',
+               id: '>Key',
+               totalRecords: 'totalRecords'
+           }, 
+           [
+               // set up the fields mapping into the xml doc
+               // The first needs mapping, the others are very basic
+               {name:'Desc', mapping: '>Desc'},
+               {name:'Code', mapping: '>Code' },
+               {name:'Key' , mapping: '>Key' }                
+           ]
+         )
+    	}
+   );	
+   
+  /////////////////////myPaymentStore//////////////////////////////////////////////////
+	
+   myPaymentFormPanel= new Ext.FormPanel
+			(
+				{		
+					reader: new Ext.data.XmlReader
+            (
+              {
+                record: 'List',
+                id: '>Key',
+                totalRecords: 'totalRecords'
+              }, 
+              [
+								{name:'Key', mapping: '>Key'},
+                {name:'Income_Key', mapping: '>Income>Key'},
+                {name:'SettleAc_Name', mapping: '>SettleAc>Name' },
+                {name:'SettleAc_Number' , mapping: '>SettleAc>Number'} ,   
+                {name:'SettleAc_SortCode_BSBCode' , mapping: '>SettleAc>SortCode>BSBCode' }  
+						 ]
+           ),			
+					id:'idMyPaymentForm',					
+					listeners: 
+				   {
+				   	actioncomplete: function()
+				   	{
+				   		this.loaded = true;					   		
+				   		Ext.getCmp('idDistributionDetailsPopup').getForm().setValues
+				   		(
+					   		{					   			
+					   			idpaymentnumber:Ext.getCmp('idkey').getValue() ,
+					   			idaccountnumber: Ext.getCmp('idsettleacnumber').getValue(),
+					   			idaccountname: Ext.getCmp('idsettleacname').getValue(), 
+					   			idbsbcode: Ext.getCmp('idsettleacsortcodebsbcode').getValue() 
+					   		}
+				   		);
+				   	}
+				  },
+				  items: 
+            [  
+              {					      	
+				        xtype: 'textfield',
+				        id: 'idkey',
+				        name: 'Key',	
+				        listeners: 
+								{
+              		'render': function(p) 
+              		{                        
+                  	this.hide()
+              		}
+			        	}					        
+			      	},
+			      	{					      	
+				        xtype: 'textfield',
+				        id: 'idsettleacname',
+				        name: 'SettleAc_Name',	
+				        listeners: 
+								{
+              		'render': function(p) 
+              		{                        
+                  	this.hide()
+              		}
+			        	}					        
+			      	},
+			      	{					      	
+				        xtype: 'textfield',
+				        id: 'idsettleacnumber',
+				        name: 'SettleAc_Number',	
+				        listeners: 
+								{
+              		'render': function(p) 
+              		{                        
+                  	this.hide()
+              		}
+			        	}					        
+			      	},
+			      	{					      	
+				        xtype: 'textfield',
+				        id: 'idsettleacsortcodebsbcode',
+				        name: 'SettleAc_SortCode_BSBCode',	
+				        listeners: 
+								{
+              		'render': function(p) 
+              		{                        
+                  	this.hide()
+              		}
+			        	}					        
+			      	}
+			      ]
+		    }
+		  );
+  
+  ///////////////////FormPanel////////////////////////////////
+  
+  myDistributionHistorySearchPanel = new Ext.FormPanel
+  (
+  	{
+      labelWidth: 100, // label settings here cascade unless overridden
+      frame:true,
+      renderTo: 'distributionHistorySearch',
+      //title: 'Test panel',
+      bodyStyle:'padding:5px 5px 0',      
+      width: 650,			
+      
+      items:
+				[
+					{
+						layout: 'column',
+						items:
+						[
+							{	
+								columnWidth:.5,
+								layout: 'form',
+								items:
+								[
+									{      			
+						        xtype: 'combo',
+						        id: 'fundname',
+						        fieldLabel: 'Fund Name',
+						        hiddenName: 'ddi_fund',
+						        emptyText: 'Select a Fund...',
+						        store:myFundStore,		       
+						        displayField: 'Fund_Desc',
+						        valueField: 'Fund_Key',
+						        selectOnFocus: true,
+						        mode: 'local',
+						        typeAhead: true,
+						        editable: false,
+						        triggerAction: 'all',
+						        //value: 'GROASIA',
+						        listeners: 
+						          { select: 
+						          		{ fn:function(combo, record, index)
+						                {
+						                  Ext.getCmp('unitclass').clearValue();
+						                  //alert('Value>'+this.value);
+						                  myUnitClassStore.load({params:{fundKey: this.value}});
+						                  //myUnitClassStore.load();
+						                  //myUnitClassStore.load({params:{ddi_country: 'GB'}});
+						                  //Ext.getCmp('fundcode').clearValue();
+						                  Ext.getCmp('fundcode').setValue(record.get('Fund_Key'));
+						                  myUnitClassMask.show();
+						                }
+						          }  }
+						      },
+						      {						      	
+						        xtype: 'combo',
+						        id: 'fundcode',
+						        fieldLabel: 'Fund Code',
+						        hiddenName: 'ddi_fundCode',
+						        emptyText: 'Select a FundCode...',
+						        store:myFundStore,		       
+						        displayField: 'Fund_Code',
+						        valueField: 'Fund_Key',
+						        selectOnFocus: true,
+						        mode: 'local',
+						        typeAhead: true,
+						        editable: false,
+						        triggerAction: 'all',
+						        //value: 'GROASIA',
+						        listeners: 
+						          { select: 
+						          		{ fn:function(combo, record, index)
+						                {
+						                  Ext.getCmp('unitclass').clearValue();
+						                  //alert('Value>'+this.value);
+						                  myUnitClassStore.load({params:{fundKey: this.value}});
+						                  //myUnitClassStore.load();
+						                  //myUnitClassStore.load({params:{ddi_country: 'GB'}});
+						                  //Ext.getCmp('fundname').clearValue();
+						                  Ext.getCmp('fundname').setValue(record.get('Fund_Key'));
+						                  myUnitClassMask.show();
+						                }
+						          }  }
+						      },
+									{							      	
+						        xtype: 'combo',
+						        id: 'unitclass',
+						        fieldLabel: "Unit Class",
+						        hiddenName: 'ddi_unitclass',
+						        name: "name",
+						        triggerAction: "all",
+						        loadingText: "Loading...",
+						        emptyText: "Select Fund/Code first...",
+						        selectOnFocus:true,
+						        store: myUnitClassStore,
+						        mode:'local',
+						        displayField: "Desc",
+						        valueField: "Key",
+						        forceSelection: true,
+						        editable: false
+					      	}										
+								]
+							},							
+							{	
+								columnWidth:.5,
+								layout: 'form',
+								items: 
+								[									
+									new Ext.form.DateField
+									(
+										{
+											id: 'exdate',
+											fieldLabel: 'Ex Date',
+											name: 'exdate',
+											format:'d-M-Y',
+											emptyText: "DD/MM/YYYY",	
+											anchor:'95%',
+											width:100,
+											allowBlank:true,
+										  editable: false
+										}
+									),
+									new Ext.form.DateField
+									(
+										{
+											id: 'paydate',
+											fieldLabel: 'Payment Date',
+											name: 'paydate',
+											format:'d-M-Y',
+											emptyText: "DD/MM/YYYY",	
+											anchor:'95%',
+											width:100,
+											allowBlank:true,
+										  editable: false
+										}
+									),
+									new Ext.form.TextField
+									(
+										{
+											id: 'entnumber',
+											fieldLabel: 'Entitlement Number',
+											name: 'entnumber',
+											anchor:'95%',
+											width:100,
+											allowBlank:true
+										}
+									)
+								]
+							}
+						]
+					}					
+				], //items
+		    buttons: 
+		    [
+		    	{
+            text: 'Filter',
+            handler: function()
+            {
+                if(myDistributionHistorySearchPanel.getForm().isValid())
+                {
+                	//waitMsg: 'Loading fund prices...',
+                	//var mykey='';
+                	//if(Ext.getCmp('fundname').value!=null)
+                	//	mykey=Ext.getCmp('fundname').value;
+                	
+                	//if(Ext.getCmp('fundcode').value!=null)
+                	//	mykey=Ext.getCmp('fundcode').value;
+                	//alert('df>'+Ext.getCmp('fundname').value);
+                	//mykey = (Ext.getCmp('fundname').value!=null) ? Ext.getCmp('fundname').value : Ext.getCmp('fundcode').value;
+                	
+                	myDistributionHistoryStore.load
+                	(
+                		{
+                				params:
+                				{
+                						start:0, 
+                						limit:Ext.getCmp('pDistributionHistoryBar').pageSize,
+                						fundKey: Ext.getCmp('fundname').value,
+		                        fundCode: Ext.getCmp('fundcode').value,
+		                        unitClassKey: Ext.getCmp('unitclass').value,
+		                        exDate: Ext.getCmp('exdate').getValue(),
+		                        paymentDate: Ext.getCmp('paydate').getValue(),
+		                        entitlementNo: Ext.getCmp('entnumber').getValue()	                      
+
+                				}
+                		}
+                	);	
+                	myDistributionHistoryMask.show();
+                	/*
+	                myDistributionHistorySearchPanel.getForm().submit
+	                (
+	                	{
+	                    //url: 'file-upload.php',
+	                    url: varbafundsURL,	
+	                    
+	                    waitMsg: 'Loading fund prices...',
+	                    success: function(myDistributionHistorySearchPanel, o)
+	                    {
+	                        //msg('Success', 'Processed file "'+o.result.file+'" on the server');
+	                        //myFundStore.load();
+	                        //alert('Value>'+Ext.getCmp('fundCombo').value);
+	                        //alert('Value>'+Ext.getCmp('fundCodeCombo').value);
+	                        //alert('Value>'+Ext.getCmp('unitclassCombo').value);
+	                        myDistributionHistoryStore.load
+	                        (
+		                        {
+		                        	params:
+		                        	{	start:0, limit:10,
+		                        		//ddi_fund: Ext.getCmp('fundCombo').value,
+		                        		//ddi_fundcode: Ext.getCmp('fundCodeCombo').value,
+		                        		//ddi_unitclass: Ext.getCmp('unitclassCombo').value
+		                        	}
+		                        }
+	                        );
+	                    }	                    
+	                	}
+	                );
+	                */
+                }
+            }
+        	},
+        	{
+            text: 'Reset',
+            handler: function()
+            {
+                myDistributionHistorySearchPanel.getForm().reset();
+                
+                myDistributionHistoryStore.load({params:{start:0, limit:Ext.getCmp('pDistributionHistoryBar').pageSize}});	
+								myDistributionHistoryMask.show();
+            }
+        	}
+        ]
+
+
+    }
+  ); // end of Ext.FormPanel
+    
+    
+    // not sure if it is the right place for this?
+    //myUnitClassStore.load({params:{ddi_country: 'GB'}});
+    
+   //////////////////////////////////////////////////////////////////
+    
+    	// create the Data Store
+	 myDistributionHistoryStore = new Ext.data.Store
+	 (
+	 	{
+			// load using HTTP
+			proxy : new Ext.data.HttpProxy
+			(
+				{																
+					method: 'GET',
+					prettyUrls: false,					
+					url: varInIncomeSummarysURL									
+				}
+			),
+			remoteSort:true,		
+			sortInfo: {field: "Portfolio_Name", direction: "ASC" },	
+
+			// the return will be XML, so lets set up a reader
+			reader: new Ext.data.XmlReader
+			(
+				{
+				   // records will have an "Item" tag
+				   record: 'List',
+				   id: '>Income>Key',
+				   totalProperty: 'totalRecords'
+			   }, 
+			   [
+				   // set up the fields mapping into the xml doc
+				   // The first needs mapping, the others are very basic
+				        {name: 'Portfolio_Name'				, mapping: '>Portfolio>Name'},
+								{name: 'Portfolio_Number' 		, mapping: '>Portfolio>Number'},
+								{name: 'Income_Key'						, mapping: '>Income>Key'},
+								{name: 'Fund_Desc'						, mapping: '>Fund>Desc'},
+								{name: 'Fund_Code'						, mapping: '>Fund>Code'},																
+								{name: 'UnitClass_Code'				, mapping: '>UnitClass>Code'},
+								{name: 'UnitClass_Desc'				, mapping: '>UnitClass>Desc'},
+								{name: 'ExDate'								, mapping: '>ExDate'},								
+								{name: 'PaymentDate'					, mapping: '>PaymentDate'},
+								{name: 'Income_IncomeGross'		, mapping: '>Income>IncomeGross'},
+								{name: 'Income_WithHeldTax'	  , mapping: '>Income>WithHeldTax '},
+								{name: 'DollarPerUnit'				, mapping: '>DollarPerUnit '},
+								{name: 'Income_Income'				, mapping: '>Income>Income'},
+								{name: 'Income_IncMethod_Desc', mapping: '>Income>IncMethod>Desc'},
+								{name: 'Income_Units'					, mapping: '>Income>Units'},
+								{name: 'PaymentDate'					, mapping: '>PaymentDate'},
+								{name: 'ReinvestSplit'				, mapping: '>ReinvestSplit'}
+								
+								
+								
+			   ]
+		   ),
+		   listeners: 
+		   {
+		   	load: function()
+		   	{
+		   		this.loaded = true;		 		   		  		
+		   	}
+		  }		   
+		}
+	);
+	
+	myDistributionHistoryStore.on
+	 ('beforeload', function(store)
+		 	{
+				store.baseParams = 
+				{						
+					fundKey: Ext.getCmp('fundname').value,
+          fundCode: Ext.getCmp('fundcode').value,
+          unitClassKey: Ext.getCmp('unitclass').value,
+          exDate: Ext.getCmp('exdate').getValue(),
+          paymentDate: Ext.getCmp('paydate').getValue(),
+          entitlementNo: Ext.getCmp('entnumber').getValue()	 
+				};
+	    }
+   );
+  
+  
+	// create the myDistributionHistoryGrid
+	var myDistributionHistoryGrid = new Ext.grid.GridPanel
+	(
+		{
+			//title: 'Search Results',
+			store: myDistributionHistoryStore,
+			columns: 
+				[
+				  {id: 'Income_Key'						,header: 'Entitlement No'				, dataIndex : 'Income_Key'				, width : 80, sortable : true, align: 'left'},	 
+					{id: 'Portfolio_Name'				,header: 'Portfolio Name'				, dataIndex : 'Portfolio_Name'		, width : 90, sortable : true, align: 'left'},
+					{id: 'Portfolio_Number'			,header: 'Portfolio Number'			, dataIndex : 'Portfolio_Number'	, width : 90, sortable : true, align: 'left'},
+					{id: 'Fund_Desc'						,header: 'Fund Name'						, dataIndex : 'Fund_Desc'					, width : 90, sortable : true, align: 'left'},
+					{id: 'Fund_Code'						,header: 'Fund Code'						, dataIndex : 'Fund_Code'					, width : 80, sortable : true, align: 'left'},
+					{id: 'UnitClass_Desc'				,header: 'Unit Class'						, dataIndex : 'UnitClass_Desc'		, width : 80, sortable : true, align: 'left'},
+					{id: 'ExDate'								,header: 'Ex Date'							, dataIndex : 'ExDate'						, width : 80, sortable : true, align: 'left'},
+					{id: 'PaymentDate'					,header: 'Payment Date'					, dataIndex : 'PaymentDate'				, width : 80, sortable : true, align: 'left'},
+					{id: 'Income_IncomeGross'		,header: 'Gross'								, dataIndex : 'Income_IncomeGross', width : 80, sortable : true, align: 'right'},//renderer: 'usMoney'					
+					{id: 'Income_WithHeldTax'		,header: 'WHT'				     			, dataIndex : 'Income_WithHeldTax', width : 70, sortable : true, align: 'right'},
+					{id: 'Income_Income'				,header: 'Net'			        		, dataIndex : 'Income_Income'			, width : 80, sortable : true, align: 'right'},
+					{id: 'Income_IncMethod_Desc',header: 'Distribution Method'	, dataIndex : 'IncMethod'   			, width : 80, sortable : true, align: 'right'}					
+				
+				],
+				
+			
+	   	renderTo:'distributionHistoryResultsForm',	    
+			//autoExpandColumn: 'Portfolio_Name',
+	   	autoWidth: true,
+	   	autoHeight:true,
+	   	stripeRows: true,
+	    sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
+			viewConfig: {emptyText: 'No records to display.'},
+			bbar: new Ext.PagingToolbar
+					(
+						{
+							id : 'pDistributionHistoryBar',								
+							displayInfo: true,
+							pageSize:10,	
+							displayMsg: 'Displaying {0} - {1} of {2}',
+							emptyMsg: "No items to display",
+							store: myDistributionHistoryStore,
+							plugins: [new Ext.ux.PageSizePlugin()]
+						}
+					)				 
+				
+		}
+	);		
+	
+  myDistributionHistoryGrid.getBottomToolbar().refresh.hide();	
+  
+  //////////////myTransactionHistoryGrid Events////////////////////////////	
+			
+			myDistributionHistoryGrid.getSelectionModel().on
+			(
+				'rowselect', function(sm, rowIdx, r) 
+				{
+					//------popup panel--------------------
+					
+				
+					myDistributionDetailsPopupPanel.getForm().items.get('idfunddesc').setValue(r.data.Fund_Desc);					
+					myDistributionDetailsPopupPanel.getForm().items.get('idunitclassdesc').setValue(r.data.UnitClass_Desc);					
+					myDistributionDetailsPopupPanel.getForm().items.get('idpaymentdate').setValue(r.data.PaymentDate);						
+					myDistributionDetailsPopupPanel.getForm().items.get('idincomekey').setValue(r.data.Income_Key);
+					myDistributionDetailsPopupPanel.getForm().items.get('idincomeincomegross').setValue(r.data.Income_IncomeGross);
+					myDistributionDetailsPopupPanel.getForm().items.get('idexdate').setValue(r.data.ExDate);
+					myDistributionDetailsPopupPanel.getForm().items.get('idincomeunits').setValue(r.data.Income_Units);
+					
+					myDistributionDetailsPopupPanel.getForm().items.get('idfundcode').setValue(r.data.Fund_Code);						
+					myDistributionDetailsPopupPanel.getForm().items.get('idpaymentdate').setValue(r.data.PaymentDate);					
+					myDistributionDetailsPopupPanel.getForm().items.get('iddollarperunit').setValue(r.data.DollarPerUnit);					
+					myDistributionDetailsPopupPanel.getForm().items.get('idincomeincome').setValue(r.data.Income_Income);					
+					myDistributionDetailsPopupPanel.getForm().items.get('idreinvestsplit').setValue(r.data.ReinvestSplit);
+					myDistributionDetailsPopupPanel.getForm().items.get('idincomewithheldtax').setValue(r.data.Income_WithHeldTax);
+					myDistributionDetailsPopupPanel.getForm().items.get('idincomeincmethoddesc').setValue(r.data.Income_IncMethod_Desc);
+					
+					//---------------------------------
+					
+					myPaymentFormPanel.load
+            (
+            	{
+            		method: 'GET', 
+            		url: varBaPaymentsURL,	 
+            		params:{incomeKey:r.data.Income_Key}
+            	}
+            );
+					
+					
+					//---------------------------------
+					//alert('CtractNo>'+r.data.CtractNo);
+					//JQuery Link Panel//
+					$('#transaction').dialog('open');
+					//$('#holdings').dialog('open');
+
+				}
+		  );	
+		  
+	
+   
+   
+	  //////////////Transaction Details Popup Panel////////////////////////////	
+   		
+			myDistributionDetailsPopupPanel = new Ext.FormPanel
+			(
+				{	    	
+					renderTo: 'DistributionDetailsPopupPanel',					
+					labelWidth: 100, // label settings here cascade unless overridden
+		      frame:true,
+		      bodyStyle:'padding:5px 5px 0',      
+		      width: 1200,	
+		      id:'idDistributionDetailsPopup',
+		      listeners: 
+					{
+				   	actioncomplete: function()
+				   	{				   		
+				   		this.loaded = true;	
+				   	}
+				  },
+				  items: 
+					[						
+						{	
+						  layout:'column',
+							items: 
+							[
+								{
+								   
+								  columnWidth: .45,
+								  layout: 'form',
+									items:
+									[												
+										{							      	
+							        xtype: 'textfield',
+							        id: 'idfunddesc',
+							        fieldLabel: "Fund Name",	
+											width:220,
+											readOnly: true					        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idunitclassdesc',
+							        fieldLabel: "Unit Class",	  
+											width:220,
+											readOnly: true								        					        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idincomekey',
+							        fieldLabel: "Entitlement Number",							        
+							        //name: 'Entitlement Number',
+							        //anchor:'90%',
+											width:220,
+											readOnly: true					        
+						      	},						      	
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idincomeincomegross',
+							        fieldLabel: "Gross",							        
+							        //name: 'Account.IncomeMethod.Desc',
+							        //anchor:'90%',
+											width:220,
+											readOnly: true						        
+							        					        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idexdate',
+							        fieldLabel: "Ext Date",							        
+							        //name: 'Account.IncomeMethod.Desc',
+							        //anchor:'90%',
+											width:220,
+											readOnly: true						        
+							        					        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idincomeunits',
+							        fieldLabel: "Units",							        
+							        //name: 'Account.IncomeMethod.Desc',
+							        //anchor:'90%',
+											width:220,
+											readOnly: true						        
+							        					        
+						      	},
+						      	//------------
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idpaymentnumber',
+							        fieldLabel: "Payment Number",							        
+							        //name: 'Account.IncomeMethod.Desc',
+							        //anchor:'90%',
+											width:220,
+											readOnly: true  
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idaccountnumber',
+							        fieldLabel: "Account Number",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:220,
+											readOnly: true									        
+						      	}		
+						      	,
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idaccountname',
+							        fieldLabel: "Account Name",							        
+							        //name: 'Account.IncomeMethod.Desc',
+							        //anchor:'90%',
+											width:220,
+											readOnly: true  
+						      	}						
+						      											
+									]								
+								},
+								{								    
+								    columnWidth: .10,
+								    html: '&nbsp;&nbsp;&nbsp;&nbsp;'
+								},
+								{								  								    
+									columnWidth:.45,
+									layout: 'form',
+									items:
+									[
+										{							      	
+							        xtype: 'textfield',
+							        id: 'idfundcode',
+							        fieldLabel: "Fund Code",							       
+							        //name: 'Account.Status.Desc'	,
+							        //anchor:'60%',
+											width:200,
+											readOnly: true								        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idpaymentdate',
+							        fieldLabel: "Payment Date",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:200,
+											readOnly: true		
+							        
+						      	},						      	
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'iddollarperunit',
+							        fieldLabel: "Dollars Per Unit",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:200,
+											readOnly: true		
+							        
+						      	}	,
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idincomeincome',
+							        fieldLabel: "Net",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:200,
+											readOnly: true		
+							        
+						      	}	,
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idreinvestsplit',
+							        fieldLabel: "Reinvest Split",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:200,
+											readOnly: true		
+							        
+						      	}	,
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idincomewithheldtax',
+							        fieldLabel: "WHT",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:200,
+											readOnly: true		
+							        
+						      	}	,
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idincomeincmethoddesc',
+							        fieldLabel: "Distribution Method",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:200,
+											readOnly: true		
+							        
+						      	},
+						      	//-----------------						      	
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idbsbcode',
+							        fieldLabel: "BSB Code",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:200,
+											readOnly: true		
+							        
+						      	}										
+									]								
+								}
+							]
+						}
+					]
+
+					
+					/*
+					items: 
+					[						
+						{
+							layout: 'column',
+							items:
+							[
+								{	
+									columnWidth:.4,
+									layout: 'form',
+									items:
+									[												
+										{							      	
+							        xtype: 'textfield',
+							        id: 'idfunddesc',
+							        fieldLabel: "Fund Name",	
+											width:220,
+											readOnly: true					        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idunitclassdesc',
+							        fieldLabel: "Unit Class",	  
+											width:220,
+											readOnly: true								        					        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idincomekey',
+							        fieldLabel: "Entitlement Number",							        
+							        //name: 'Entitlement Number',
+							        //anchor:'90%',
+											width:220,
+											readOnly: true					        
+						      	},						      	
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idincomeincomegross',
+							        fieldLabel: "Gross",							        
+							        //name: 'Account.IncomeMethod.Desc',
+							        //anchor:'90%',
+											width:220,
+											readOnly: true						        
+							        					        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idexdate',
+							        fieldLabel: "Ext Date",							        
+							        //name: 'Account.IncomeMethod.Desc',
+							        //anchor:'90%',
+											width:220,
+											readOnly: true						        
+							        					        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idincomeunits',
+							        fieldLabel: "Units",							        
+							        //name: 'Account.IncomeMethod.Desc',
+							        //anchor:'90%',
+											width:220,
+											readOnly: true						        
+							        					        
+						      	},
+						      	//------------
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idpaymentnumber',
+							        fieldLabel: "Payment Number",							        
+							        //name: 'Account.IncomeMethod.Desc',
+							        //anchor:'90%',
+											width:220,
+											readOnly: true  
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idaccountnumber',
+							        fieldLabel: "Account Number",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:220,
+											readOnly: true									        
+						      	}		
+						      	,
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idaccountname',
+							        fieldLabel: "Account Name",							        
+							        //name: 'Account.IncomeMethod.Desc',
+							        //anchor:'90%',
+											width:220,
+											readOnly: true  
+						      	}						
+						      											
+									]
+								},
+								{
+									columnWidth:.4,
+									layout: 'form',
+									items:
+									[
+										{							      	
+							        xtype: 'textfield',
+							        id: 'idfundcode',
+							        fieldLabel: "Fund Code",							       
+							        //name: 'Account.Status.Desc'	,
+							        //anchor:'60%',
+											width:200,
+											readOnly: true								        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idpaymentdate',
+							        fieldLabel: "Payment Date",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:200,
+											readOnly: true		
+							        
+						      	},						      	
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'iddollarperunit',
+							        fieldLabel: "Dollars Per Unit",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:200,
+											readOnly: true		
+							        
+						      	}	,
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idincomeincome',
+							        fieldLabel: "Net",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:200,
+											readOnly: true		
+							        
+						      	}	,
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idreinvestsplit',
+							        fieldLabel: "Reinvest Split",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:200,
+											readOnly: true		
+							        
+						      	}	,
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idincomewithheldtax',
+							        fieldLabel: "WHT",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:200,
+											readOnly: true		
+							        
+						      	}	,
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idincomeincmethoddesc',
+							        fieldLabel: "Distribution Method",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:200,
+											readOnly: true		
+							        
+						      	},
+						      	//-----------------						      	
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idbsbcode',
+							        fieldLabel: "BSB Code",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:200,
+											readOnly: true		
+							        
+						      	}										
+									]								
+								}					
+							]
+						}									
+						
+					]*/
+					
+					
+		    }
+		  );	
+  
+  
+  ////////////////masking//////////////////////////////
+  
+  var myFundMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Loading Funds...",
+				removeMask:true,			
+				store:myFundStore
+		}
+	);
+	
+	var myUnitClassMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Loading Unit Classes...",	
+				removeMask:true,			
+				store:myUnitClassStore
+		}
+	);
+	
+  
+  var myDistributionHistoryMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Please wait...",	
+				removeMask:true,			
+				store:myDistributionHistoryStore
+		}
+	);
+	
+  /////////////default setu////////////////////////////////
+  
+  if(!myFundStore.loaded)
+  {
+    myFundStore.load();
+    myFundMask.show();
+  }
+  
+	if(!myDistributionHistoryStore.loaded)
+	{
+		//alert(Ext.getCmp('pDistributionHistoryBar').pageSize);
+		myDistributionHistoryStore.load({params:{start:0, limit:Ext.getCmp('pDistributionHistoryBar').pageSize}});	
+		myDistributionHistoryMask.show();
+	}	
+					
+	//////////////Test///////////////////////////////   
+	
+	
+ 
+});
+
+</script>   
+
+<div id="distributionHistorySearch"></div><br>
+<div id="distributionHistoryResultsForm"></div>
+
+<div id="transaction" title="Distribution Details" >
+	<div id="DistributionDetailsPopupPanel"></div><!-- DONE -->			
+</div>
+
+</body>
+</html>

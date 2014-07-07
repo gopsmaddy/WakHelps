@@ -1,0 +1,92 @@
+body {
+font-size: 9pt;
+font-family: Arial, Helvetica, sans-serif;
+line-height: 1.5;
+}
+
+h1 {
+font-family: "Trebuchet MS", Arial, Verdana;
+font-size: 2.4em;
+font-weight: normal;
+color: #d05d19;
+}
+h2 {
+font-size: 1.6em;
+color: #d05d19;
+}
+h3 {
+font-size: 1.4em;
+color: #000;
+}
+h4, h5, h6 {
+font-size: 1.2em;
+color: #000;
+}
+
+a {
+color: #000;
+text-decoration: underline;
+}
+a img {
+border: none;
+}
+
+#topnav, #nav, #footer ul, #banner {
+display: none;
+}
+
+#content {
+border-bottom: 0.5pt solid #000;
+border-top: 0.5pt solid #000;
+margin-top: 2em;
+}
+
+/* data tables */
+table.data {
+font-size: 1em;
+width: 100%;
+border-top: 0.5pt solid #000;
+border-left: 0.5pt solid #000;
+margin: 1em auto;
+}
+table.data thead th {
+font-weight: bold;
+}
+table.data td, table.data th {
+border-bottom: 0.5pt solid #000;
+border-right: 0.5pt solid #000;
+text-align: right;
+padding: 0.2em;
+}
+table.data td:first-child, table.data td.first-col {
+text-align: left;
+}
+table.data tr.Y, table.data tfoot tr, table.data tr:hover {
+font-weight: bold;
+}
+table.data caption {
+font-size: 1em;
+margin: 0 0 1em 0;
+text-align: center;
+}
+table.data caption span {
+display: block;
+font-weight: bold;
+color: #d05d19;
+}
+
+/* markets tables */
+table.markets th, table.markets td, table.markets td:first-child {
+text-align: center;
+padding: 0.5em;
+}
+
+/* correlation table */
+table.correlation td, table.correlation td:first-child {
+font-size: 1em;
+text-align: center;
+padding: 0.5em;
+}
+table.correlation td:nth-child(2n) {
+font-weight: bold;
+}

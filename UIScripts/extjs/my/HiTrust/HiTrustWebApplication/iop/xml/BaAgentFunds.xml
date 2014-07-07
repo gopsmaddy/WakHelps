@@ -1,0 +1,48 @@
+<DST>
+  <user>AG000009</user> 
+  <password>Passw0rd</password> 
+<response>
+<List>
+<Fund>
+  <Key>0000000002</Key> 
+  <Code>BALAUS</Code> 
+  <Desc>Australian Balanced</Desc> 
+  </Fund>
+  </List>
+<List>
+<Fund>
+  <Key>0000000003</Key> 
+  <Code>BALUSA</Code> 
+  <Desc>Balanced USA</Desc> 
+  </Fund>
+  </List>
+<List>
+<Fund>
+  <Key>0000000004</Key> 
+  <Code>BALASIA</Code> 
+  <Desc>Balanced Fund Asia</Desc> 
+  </Fund>
+  </List>
+<List>
+<Fund>
+  <Key>0000000006</Key> 
+  <Code>CAPEUR</Code> 
+  <Desc>Capital Stable Europe</Desc> 
+  </Fund>
+  </List>
+<List>
+<Fund>
+  <Key>0000000007</Key> 
+  <Code>EQTEUR</Code> 
+  <Desc>European Equities</Desc> 
+  </Fund>
+  </List>
+<List>
+<Fund>
+  <Key>0000000009</Key> 
+  <Code>EQTASIA</Code> 
+  <Desc>Equities Asia</Desc> 
+  </Fund>
+  </List>
+  </response>
+  </DST>

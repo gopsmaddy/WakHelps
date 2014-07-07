@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom" >
+  <body>
+
+    <ui:composition template="../content/main.xhtml">
+      <ui:define name="workAreaTitle">
+        #{msg.reqnsamtkt_Title}
+      </ui:define>
+      <ui:define name="workArea">
+        <h:form onsubmit="document.body.style.cursor='wait';">
+
+          <ui:fragment rendered="true">
+            <table class="acTable">
+
+              <tr>
+                <td class="panel-feature-form-enhanced-field-name">#{msg.chipId}</td>
+                <td class="panel-feature-form-enhanced-field-value">
+                  <h:inputText id="cardId" value="#{RequestTicketingKeyFileBean.piUpdateData.cardId}"
+                               minimum="16"
+                               maxlength="16"
+                               styleClass="form-input-text"
+                               required="true"
+                               label="Chip ID" 
+                               onblur="this.value=this.value.toUpperCase();" 
+                               autocomplete="off" >
+                      <f:validator validatorId="hexValueValidator" />
+                      <f:validateLength minimum="16" maximum="16" />
+                  </h:inputText>
+                  <br/> <h:message for="cardId" styleClass="warn"/>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <h:outputText value=" "/>
+                  <h:commandButton id="idGetNSAMTicketingKeyFiles" action="#{RequestTicketingKeyFileBean.getNSAMTicketingKeyFiles}"
+                                   value="#{msg.tktkey_view_btn}" />
+                  <h:outputText value=" "/>
+                </td>
+              </tr>
+                
+              <ui:fragment id="requestTKF1" rendered="#{RequestTicketingKeyFileBean.requestTKF}">
+                <tr>
+                <td colspan="2">
+                    <ac:pkDataTable rendered="#{RequestTicketingKeyFileBean.optionsAvailable}" id="allTKF" binding="#{RequestTicketingKeyFileBean.tkfData}"
+                                    primaryKey="id"
+                                    var="dataRow"
+                                    value="#{RequestTicketingKeyFileBean.allTKF}"
+                                    headerClass="table-header"
+                                    footerClass="table-footer"
+                                    styleClass="acTable"
+                                    cellpadding="0" cellspacing="0">
+
+
+                        <h:column id="isinColumn" >
+                            <f:facet name="header">
+                                <h:outputText value="ISIN"/>
+                            </f:facet>
+                            <h:outputText id="idIsin" value="#{dataRow.isinId}"/>
+                        </h:column>
+
+                        <h:column id="chipIdColumn" >
+                            <f:facet name="header">
+                                <h:outputText value="Chip Id"/>
+                            </f:facet>
+                            <h:outputText id="idChipId" value="#{dataRow.chipId}"/>
+                        </h:column>
+
+                        <h:column id="chipStatusColumn" >
+                            <f:facet name="header">
+                                <h:outputText value="Chip Status"/>
+                            </f:facet>
+                            <h:outputText id="idChipStatus" value="#{dataRow.chipStatus}"/>
+                        </h:column>
+
+                        <h:column id="businessEntityIdColumn" >
+                            <f:facet name="header">
+                                <h:outputText value="Business Entity"/>
+                            </f:facet>
+                            <h:outputText id="idBeId" value="#{dataRow.beId}"/>
+                        </h:column>
+
+                        <h:column id="ncrsIdColumn" >
+                            <f:facet name="header">
+                                <h:outputText value="NCRS"/>
+                            </f:facet>
+                            <h:outputText id="idNcrsId" value="#{dataRow.ncrsId}"/>
+                        </h:column>
+
+                        <h:column id="baActionColumn" >
+                            <f:facet name="header">
+                                <h:outputText value="Action"/>
+                            </f:facet>
+                            <h:outputText id="idBAAction" value="#{dataRow.baAction}"/>
+                        </h:column>
+
+                    </ac:pkDataTable>
+
+                </td>
+              </tr>
+              <tr>
+                 <td colspan="2">
+                     <h:commandButton  id="idUpdateNSAMTicketingKeyFile" 
+                                       action="#{RequestTicketingKeyFileBean.updateNSAMTicketingKeyFile}"  
+                                       value="#{msg.tktkey_request_btn}" />
+                 </td>
+              </tr>
+            </ui:fragment>
+
+          </table>
+
+        </ui:fragment>
+          &#160;
+        </h:form>
+        <h:messages globalOnly="true" layout="table" styleClass="warn"
+                    infoClass="info" warnClass="warn"
+                    errorClass="warn"
+                    fatalClass="warn"/>
+
+        <br/>
+      </ui:define>
+    </ui:composition>
+  </body>
+</html>

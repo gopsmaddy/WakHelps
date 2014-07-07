@@ -1,0 +1,35 @@
+<DST>
+	<HiTrust>
+		<businessObject>BaSProfileAddrs</businessObject>
+		<operation>SEARCH</operation>
+		<user>@@user@</user>
+		<password>@@pass@</password>
+		<request>
+			<data>
+				<Client.RelNo>@@profileRelNo@</Client.RelNo>
+				<Deleted>false</Deleted>
+			</data>
+		</request>
+		<response>
+			<Client.RelNo/>
+			<Client.Key/>
+			<Key />
+			<DefaultAddr />
+			<Address1 />
+			<Address2 />
+			<Address3 />
+			<Address4 />
+			<State />
+			<ZipCode />
+			<StartDate />
+			<Country.Desc />
+			<TelNo />
+			<TelNo2 />
+			<MobileNo />
+			<FaxNo />
+			<EMail />
+			<Deleted />
+			<Client.PrefCommMethod.Desc />
+		</response>
+	</HiTrust>
+</DST>

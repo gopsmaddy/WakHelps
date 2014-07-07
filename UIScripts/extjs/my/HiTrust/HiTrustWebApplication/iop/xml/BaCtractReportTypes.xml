@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<DST>
+	<user>001IN000001</user>
+	<password>Passw0rd</password>
+	<response>
+		<List>
+			<Company>
+				<Key>0000000001</Key>
+				<Desc>Australia</Desc>
+			</Company>
+			<Desc>Cooling Off Refund</Desc>
+		</List>
+		<List>
+			<Company>
+				<Key>0000000001</Key>
+				<Desc>Australia</Desc>
+			</Company>
+			<Desc>Deductions</Desc>
+		</List>
+		<List>
+			<Company>
+				<Key>0000000001</Key>
+				<Desc>Australia</Desc>
+			</Company>
+			<Desc>Fee Rebate</Desc>
+		</List>
+		<List>
+			<Company>
+				<Key>0000000001</Key>
+				<Desc>Australia</Desc>
+			</Company>
+			<Desc>Redemption</Desc>
+		</List>
+		<List>
+			<Company>
+				<Key>0000000001</Key>
+				<Desc>Australia</Desc>
+			</Company>
+			<Desc>Regular Redemption</Desc>
+		</List>
+		<List>
+			<Company>
+				<Key>0000000001</Key>
+				<Desc>Australia</Desc>
+			</Company>
+			<Desc>Regular Subscription</Desc>
+		</List>
+		<List>
+			<Company>
+				<Key>0000000001</Key>
+				<Desc>Australia</Desc>
+			</Company>
+			<Desc>Reinvestment</Desc>
+		</List>
+		<List>
+			<Company>
+				<Key>0000000001</Key>
+				<Desc>Australia</Desc>
+			</Company>
+			<Desc>Subscription</Desc>
+		</List>
+		<List>
+			<Company>
+				<Key>0000000001</Key>
+				<Desc>Australia</Desc>
+			</Company>
+			<Desc>Switch In</Desc>
+		</List>
+		<List>
+			<Company>
+				<Key>0000000001</Key>
+				<Desc>Australia</Desc>
+			</Company>
+			<Desc>Switch Out</Desc>
+		</List>
+		<List>
+			<Company>
+				<Key>0000000001</Key>
+				<Desc>Australia</Desc>
+			</Company>
+			<Desc>Transfer In</Desc>
+		</List>
+		<List>
+			<Company>
+				<Key>0000000001</Key>
+				<Desc>Australia</Desc>
+			</Company>
+			<Desc>Transfer Out</Desc>
+		</List>
+	</response>
+</DST>

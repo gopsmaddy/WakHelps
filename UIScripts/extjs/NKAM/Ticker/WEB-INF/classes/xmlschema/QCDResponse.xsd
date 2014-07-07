@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Steve Nichols (Datacard Platform Seven Limited) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xs:include schemaLocation="IFSData.xsd"/>
+	<xs:element name="QCDResponse">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="Rejection" type="RejectionType">
+					<xs:annotation>
+						<xs:documentation>Identifies why the query has been rejected</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Cardholder" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CardHolderIdentifier">
+								<xs:annotation>
+									<xs:documentation>The cardholder identifier for the card account (usually a reference to the cardholder) and e-mail address</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="Scope" type="xs:string" use="required"/>
+									<xs:attribute name="Id" type="xs:string" use="required"/>
+									<xs:attribute name="Email" type="xs:string" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ProductionStatus" type="ProductionStatusType"/>
+							<xs:element name="CardIdentifier" type="BasicCardType"/>
+							<xs:element name="TextualName" type="TextualNameType">
+								<xs:annotation>
+									<xs:documentation>Cardholder name, which is used as by Affina as display data</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="PlasticNumber" type="PlasticNumberType">
+								<xs:annotation>
+									<xs:documentation>Identifies scope and the plastic number</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="TextualValidityPeriod" type="TextualValidityPeriodType">
+								<xs:annotation>
+									<xs:documentation>The period for which the card is valid</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

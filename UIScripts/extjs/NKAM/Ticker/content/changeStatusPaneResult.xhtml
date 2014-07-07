@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom">
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.nsamStatusPane_Result}
+    </ui:define>
+    <ui:define name="workArea">
+        <h:form onsubmit="document.body.style.cursor='wait';">
+
+            <!--<ui:fragment rendered="#{(StatusPaneChange.chipStatusUI.processingRequest)}">-->
+                    <p>#{msg.nsamStatusPane_Result_Title1}</p>
+                    <!--<p>#{msg.nsamStatusPane_Result_Title2}</p>-->
+                    <br/>
+					<!--
+                    <p><u>#{msg.nsamStatusPane_Response}</u></p>
+                    
+                <ui:fragment rendered="#{(StatusPaneChange.chipStatusUI.chipStatusRejected)}">
+                    <table class="acTable" >
+                        <tr>
+                            <td>#{msg.nsamStatusPane_Description}</td>
+                            <td>
+                                 <h:outputText id="description" value="#{StatusPaneChange.chipStatusUI.rejectDescription}"/>
+                            </td>
+                        </tr>
+                    </table>
+                </ui:fragment>
+                <ui:fragment rendered="#{!(StatusPaneChange.chipStatusUI.chipStatusRejected)}">
+                    <table class="acTable" >
+                        <tr>
+                            <td>#{msg.nsamStatusPane_TrackingRef}</td>
+                            <td>
+                                 <h:outputText id="trackingRef" value="#{StatusPaneChange.chipStatusUI.trackingRef}"/>
+                            </td>
+                        </tr>
+                    </table>
+                </ui:fragment>
+				-->
+            
+        </h:form>
+                <h:messages globalOnly="true" layout="table" styleClass="warn"
+                    infoClass="info" warnClass="warn"
+                    errorClass="warn"
+                    fatalClass="warn"/>
+
+        <br/>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

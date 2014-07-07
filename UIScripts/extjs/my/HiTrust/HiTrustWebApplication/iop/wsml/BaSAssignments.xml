@@ -1,0 +1,23 @@
+<DST>
+               <HiTrust>
+                 <businessObject>BaReportAssigns</businessObject>
+                  <operation>SEARCH</operation>
+                 <user>@@user@</user>
+                 <password>@@pass@</password>
+                <request>
+                 <data>
+                   <Portfolio.Key>@@portfoliokey@</Portfolio.Key>
+                    <!-- <AccountKey>@@accountKey@</AccountKey>-->
+                </data>
+                </request>
+                <response>
+                <AccountKey/>
+                <Portfolio.Key/>
+                <AssignmentKey/>
+                <Profile.Name/>
+                <Type.Desc/>
+                <Currency.ISOCode/>
+                <Amount/>
+                </response>
+                </HiTrust>
+ </DST>

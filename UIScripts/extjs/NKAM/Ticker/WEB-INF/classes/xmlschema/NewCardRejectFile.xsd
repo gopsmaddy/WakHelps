@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Steve Nichols (Datacard Platform Seven Limited) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xs:include schemaLocation="IFSData.xsd"/>
+	<xs:element name="NewCardRejectFile">
+		<xs:annotation>
+			<xs:documentation>Indicates that Affina has rejected a batch request file</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="FileName" type="FileNameType">
+					<xs:annotation>
+						<xs:documentation>Name of the rejected batch request file</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="FileRejection" type="RejectionType">
+					<xs:annotation>
+						<xs:documentation>Identifies why the file was rejected</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

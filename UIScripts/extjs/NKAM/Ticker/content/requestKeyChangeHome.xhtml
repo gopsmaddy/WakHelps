@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html" >
+<body>
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">#{msg.reqKeychange_Title}</ui:define>
+    <ui:define name="workArea">
+
+        <p>#{msg.reqKeychange_welcome1}</p>
+        <p>#{msg.reqKeychange_welcome2}</p>
+
+        <h:form>
+            <br/>
+            <h:commandLink id="keyLoadingKeys"  action="requestMSAKeyLoadingKeysChangeGen">
+                #{msg.reqKeychange_MSAKeyLoadingKeys}
+            </h:commandLink>
+            <br/>
+            <br/>
+            <h:commandLink id="cvmk"  action="requestMSACVMKChangeHome">
+                #{msg.reqKeychange_MSACeilingValueMasterKey}
+            </h:commandLink>
+            <br/>
+            <br/>
+            <h:commandLink id="privacyKey"  action="requestMSAPrivacyKeyChangeHome">
+                #{msg.reqKeychange_MSAPrivacyKey}
+            </h:commandLink>
+            <br/>
+            <br/>
+            <h:commandLink id="ticketingKeys"  action="reqMSATicketingKeysChangeHome">
+                #{msg.reqKeychange_MSATicketingKeys}
+            </h:commandLink>
+            <br/>
+            <br/>
+            <h:commandLink id="ct_ULCKey"  action="reqMSACT_ULCKeyChangeHome">
+                #{msg.reqKeychange_MSACT_ULCKey}
+            </h:commandLink>
+            <br/>
+        </h:form>
+        <br/><br/>
+        <span id="idUIErrorLogger" style="color: red;"></span>
+            <span id="idGlobalMessage">
+                <h:messages globalOnly="true" layout="table" styleClass="warn"
+                            infoClass="info" warnClass="warn"
+                            errorClass="warn"
+                            fatalClass="warn"/>
+	        </span>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

@@ -1,0 +1,1377 @@
+<html>
+	<head> 
+			<link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+            <!--<script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base.js" type="text/javascript"></script>
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all.js" type="text/javascript"></script>-->
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all-debug.js" type="text/javascript"></script>
+      
+      <link href="http://modules.eurouwins.com/iop/styles/jquery-ui-1.8.4.custom.css" type="text/css" rel="stylesheet" media="screen">			
+			
+      <script src="http://modules.eurouwins.com/iop/scripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/jquery.uniform.min.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/jquery-ui-1.8.4.custom.min.js" type="text/javascript"></script>
+			
+      <link href="http://modules.eurouwins.com/iop/styles/flexigrid.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/iop_screen.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/uniform.default.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/web_fonts.css" type="text/css" rel="stylesheet" media="screen">
+			
+			<script src="http://modules.eurouwins.com/iop/scripts/flexigrid.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/iop_functions.js" type="text/javascript"></script>
+			
+			
+			<script src="../js/myAppProperties.js" type="text/javascript"></script>
+	    <script src="../js/tools.js" type="text/javascript"></script>
+	    <script src="../js/myExternalURL.js" type="text/javascript"></script>
+	    <script src="../js/myStaticDataStore.js" type="text/javascript"></script>
+	    <script src="../js/myDynamicDataStore.js" type="text/javascript"></script>
+	    <script src="../js/vtypes.js" type="text/javascript"></script>
+	
+	    <script src="../js/pagesizeplugin.js" type="text/javascript"></script>
+	    <script src="../js/date.js" type="text/javascript"></script>
+	    <script src="../js/utils.js" type="text/javascript"></script>
+
+			
+	   <body>
+	   	
+	   	<!-- http://extjs.wima.co.uk/ -->
+   	
+	
+<script type="text/javascript">
+
+	myHiddenFormPanel = new Ext.FormPanel
+  (
+  	{
+  		hidden:true,
+  		id:'idMyHiddenFormPanel',  		
+      
+      items:
+				[
+					new Ext.form.TextField({id: 'hidPortfolioKey',name: 'PortfolioKey'}), 
+					new Ext.form.TextField({id: 'hidPortfolioNumber',name: 'PortfolioNumber'})
+							
+				]
+
+
+    }
+  );	
+
+	Ext.onReady
+	(
+		function()
+		{
+			////////////////////////Portfolio////////////////////////////////////////////////////
+			
+			var myPortfolioStore = new Ext.data.Store
+		  (
+		  	{   
+		        // load using HTTP
+						proxy : new Ext.data.HttpProxy
+						(
+							{																
+								method: 'GET',
+								prettyUrls: false,
+								// load using HTTP
+				        url: 'http://localhost:8080/HiTrustWebApplication/iop/jsp/HiTrust.jsp?action=BaPortfolios'
+				         //url: '/XMLDataLoader.aspx?action=BaPortfolios'
+				        //url:'http://iop.kurtosys.com/XMLDataLoader.aspx?action=BaPortfolios'
+							}
+						),
+						remoteSort:true,	
+						sortInfo: { field: "Name", direction: "ASC" }, 
+		        // the return will be XML, so lets set up a reader
+		        reader: new Ext.data.XmlReader
+		        (
+		        	{
+		               // records will have an "Item" tag
+		               record: 'List',
+		               id: '>Key',
+		               totalRecords: 'totalRecords'
+		           }, 
+		           [   
+		               {name:'Name'					, mapping: '>Name'},
+		               {name:'Number'				, mapping: '>Number' },
+		               {name:'Key'					, mapping: '>Key' },
+		               {name:'Status_Desc'	, mapping: '>Status>Desc'} ,
+		               {name:'Agent_Name'		, mapping: '>Agent>Name'}, 
+		               {name:'Agent_Number'	, mapping: '>Agent>Number'}, 
+		               {name:'Type_Desc'		, mapping: '>Type>Desc'}, 
+		               {name:'SSNo'					, mapping: '>SSNo'},
+		               {name:'DefPrefComm_Desc'				, mapping: '>DefPrefComm>Desc'}, 
+		               {name:'DefAnnRepDispatch_Desc'	, mapping: '>DefAnnRepDispatch>Desc'}, 
+		               {name:'DefAnnRepElect_Desc'		, mapping: '>DefAnnRepElect>Desc'},
+		               {name:'NoMarketing_Desc'				, mapping: '>NoMarketing'}
+		               		               
+		           ]
+		         ),
+		         listeners: 
+		         {
+						   	load: function()
+						   	{
+						   		this.loaded = true;		 		   		  		
+						   	}
+						  }
+		    	}
+		   );
+			
+				
+	    					
+			 ///////////////////////////////////////////////////		    
+	    // create the grid				
+	    var myPortfolioGrid = new Ext.grid.GridPanel
+	    (
+		    {
+	        store: myPortfolioStore,
+	        columns: 
+	        [
+	           	{id:'Number'			,header: "Portfolio Number" 	, dataIndex: 'Number'			    ,width: 120, sortable: true,align: 'left' },
+	            {id:'Name'	 			,header: "Portfolio Name"	 		, dataIndex: 'Name'						,width: 180, sortable: true,align: 'left' },
+	            {id:'Agent_Name'	,header: "Financial Planner"	, dataIndex: 'Agent_Name'			,width: 115, sortable: true,align: 'left'},
+	            {id:'Status_Desc'	,header: "Status"							, dataIndex: 'Status_Desc'	  ,width: 100, sortable: true,align: 'left' }
+	        ],
+					renderTo: 'portfolioTop',
+			    autoExpandColumn: 'Name',
+			   	autoWidth: true,
+			   	autoHeight:true,
+			   	stripeRows: true,
+			    sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
+					viewConfig: {emptyText: 'No records to display.'},					
+					bbar: new Ext.PagingToolbar
+					(
+						{
+							id : 'pPortfolioBar',								
+							displayInfo: true,
+							pageSize:10,	
+							displayMsg: 'Displaying {0} - {1} of {2}',
+							emptyMsg: "No items to display",
+							store: myPortfolioStore,
+							plugins: [new Ext.ux.PageSizePlugin()]
+						}
+					)			
+		    }
+	    );	   
+	   
+	  
+	   /////////////////event setup////////////////////////
+					    
+			myPortfolioGrid.getSelectionModel().on
+			(
+				'rowselect', function(sm, rowIdx, r) 
+				{
+					Ext.fly('portfolioName').update(r.data.Name); 
+					
+					myOtherDetailsFormPanel.getForm().items.get('advisorNumber').setValue(r.data.Agent_Number);
+					myOtherDetailsFormPanel.getForm().items.get('advisorName').setValue(r.data.Agent_Name);
+					myOtherDetailsFormPanel.getForm().items.get('portfolioType').setValue(r.data.Type_Desc);
+					myOtherDetailsFormPanel.getForm().items.get('unitHolderNumber').setValue(r.data.SSNo); 
+				//	myOtherDetailsFormPanel.getForm().items.get('idholdwht').setValue(r.data.Account_WithHeldTax);	
+				
+					
+					
+					myCommMethodFormPanel.getForm().items.get('idPreferredCommunication').setValue(r.data.DefPrefComm_Desc);
+					myCommMethodFormPanel.getForm().items.get('idAnnualReportCommunication').setValue(r.data.DefAnnRepDispatch_Desc);
+					myCommMethodFormPanel.getForm().items.get('idAnnualReportElection').setValue(r.data.DefAnnRepElect_Desc);
+					myCommMethodFormPanel.getForm().items.get('idReceiveMarkertingMetarial').setValue(r.data.Account_NoMarketing_Desc);
+					myCommMethodFormPanel.getForm().items.get('idDisallowedMaterial').setValue('x');
+						
+					
+					
+					var portName=r.data.name;
+					myOtherDetailsFormPanel.getForm().items.get('superFund').setValue(portName ? 'Yes' : 'N/A');
+					
+					myPortfolioSummaryStore.load
+					(
+						{
+							params:
+							{
+								start:0
+								,limit:Ext.getCmp('pPortfolioSummaryBar').pageSize
+								,portfolioKey:r.data.Key
+							}
+						}
+					);
+					myPortfolioSummaryMask.show();
+					
+					Ext.getCmp('hidPortfolioKey').setValue(r.data.Key);	
+					Ext.getCmp('hidPortfolioNumber').setValue(r.data.Number);
+					
+					///////////////////////////////////////////////////////////
+					
+					
+					
+					
+					
+				}
+		  );
+		  
+		  
+		  /////////////////JQuery Link Panel///////////////////////////////////
+		 
+	
+		  
+		  $('#tabs').bind('tabsselect', function (event, ui) 	  
+		  	{
+		  		//alert('text>'+ui.tab.innerHTML);
+		        		        
+		        
+		        if(ui.tab.innerHTML.indexOf('Contact Details') > -1)
+		        {								
+							myPortfolioContactStore.load
+							(
+								{
+									params:
+									{
+										start:0
+										,limit:10
+										,portfolioNumber:Ext.getCmp('hidPortfolioNumber').getValue()		
+									}
+								}
+							);
+							myPortfolioContactMask.show();
+								
+		            return true;
+		        }		        
+		        
+		        if(ui.tab.innerHTML.indexOf('Owners') > -1)
+		        {		        
+		        	myOwnersStore.load
+							(
+								{
+									params:
+									{
+										start:0
+										,limit:10
+										,portfolioKey:Ext.getCmp('hidPortfolioKey').getValue()										
+										
+									}
+								}
+							);
+							myOwnersMask.show();
+					
+		            return true;
+		        }            
+		        
+		     });
+
+
+		  //Links
+		  
+	    
+	    ////////////////////////Holdings////////////////////////////////////////////////////
+				
+	   
+	   // create the Data Store
+	    myPortfolioSummaryStore = new Ext.data.Store
+	    (
+	    	{  
+					// load using HTTP
+					proxy : new Ext.data.HttpProxy
+					(
+						{																
+							method: 'GET',
+							prettyUrls: false,									
+							 url: 'http://localhost:8080/HiTrustWebApplication/iop/jsp/HiTrust.jsp?action=BaPortSummaryDatas'
+							 //url: '/XMLDataLoader.aspx?action=BaPortSummaryDatas'
+						}
+					),
+					remoteSort:true,	
+					sortInfo: { field: "Fund_Desc", direction: "ASC" }, 	
+	        // the return will be XML, so lets set up a reader
+	        reader: new Ext.data.XmlReader
+	        (
+	        	{
+               // records will have an "Item" tag
+               record: 'List',
+               //id: 'Portfolio>Key',
+			   			 id: '>Key',
+               totalRecords: 'totalRecords'
+	          }, 
+	          [
+              // set up the fields mapping into the xml doc
+              // The first needs mapping, the others are very basic
+              {name:'Profile_RelNo'							, mapping: '>Profile > RelNo'},
+              {name:'Portfolio_Number'					, mapping: '>Portfolio > Number'},
+              {name:'Portfolio_Name'						, mapping: '>Portfolio > Name' },
+              {name:'Portfolio_Key'							, mapping: '>Portfolio > Key' },
+              {name:'Portfolio_Status_Desc'			, mapping: '>Portfolio > Status >Desc' },
+              {name:'UnitPrice'									, mapping: '>UnitPrice' },
+              {name:'Fund_Code'									, mapping: '>Fund > Code' },
+              {name:'Fund_Desc'									, mapping: '>Fund > Desc' },
+              {name:'BalanceInUnits'						, mapping: '>BalanceInUnits' },
+              {name:'BalanceInCurrency'					, mapping: '>BalanceInCurrency' },            
+							 
+							             
+							{name: 'Portfolio_Type_Desc'			, mapping: '>Portfolio>Type>Desc' }, 							  
+							{name: 'Portfolio_Agent_Number'		, mapping: '>Portfolio>Agent>Number' }, 
+							{name: 'Portfolio_Agent_Name'			, mapping: '>Portfolio>Agent>Name' },                            
+							{name: 'Portfolio_SSNo'						, mapping: '>Portfolio>SSNo' },                                              		
+				      
+				      {name: 'Account_Number'						, mapping: '>Account>Number'},	//holding number							
+				      {name: 'Account_Status_Desc'			, mapping: '>Account>Status>Desc'},	//status ??
+				      {name: 'Account_IncomeMethod_Desc', mapping: '>Account>IncomeMethod>Desc'},	//distribution method ??
+				      {name: 'Portfolio_ReinvestSplit'	, mapping: '>Portfolio>ReinvestSplit'},	//distribution split		empty??		
+				      {name: 'UnitClass_Desc'           , mapping: '>UnitClass>Desc'},
+				      
+				      {name: 'Account_WithHeldTax'      , mapping: '>Account>WHTApplicable'},
+				      
+				      
+				      
+				      
+				      {name:'Account_DefPrefComm_Desc'					, mapping: '>Account>DefPrefComm>Desc'}, 
+              {name:'Account_DefAnnRepDispatch_Desc'		, mapping: '>Account>DefAnnRepDispatch>Desc'}, 
+              {name:'Account_DefAnnRepElect_Desc'				, mapping: '>Account>DefAnnRepElect>Desc'},
+              {name:'Account_NoMarketing_Desc'					, mapping: '>Account>NoMarketing>Desc'}
+				      
+				      
+				      
+              
+					    // Detail URL is not part of the column model of the grid
+					    //'DetailPageURL'
+	          ]
+	        ),
+	        remoteSort:true,
+         	listeners: 
+         	{
+			   	 	load: function()
+			   	 	{
+			   		 this.loaded = true;		 		   		  		
+			   	 	}
+			   	}
+	      }
+      );
+      
+		myPortfolioSummaryStore.on
+		 ('beforeload', function(store)
+			 	{
+					store.baseParams = 
+					{												
+							portfolioKey:Ext.getCmp('hidPortfolioKey').getValue()
+					};
+		    }
+	   );
+			// create the grid				
+	    var myPortfolioFurtherGrid = new Ext.grid.GridPanel
+	    (
+		    {
+	        store: myPortfolioSummaryStore,
+	        columns: 
+	        [
+            {id:'Fund_Desc'							,header: 'Fund Name'  				,dataIndex: 'Fund_Desc'							,sortable : true,  align: 'left'},	
+            {id:'Fund_Code'							,header: 'Fund Code'  				,dataIndex: 'Fund_Code'							,width : 90,sortable : true ,  align: 'left'},										
+            {id:'UnitClass_Desc'	      ,header: 'Unit Class'					,dataIndex: 'UnitClass_Desc'	      ,width : 90,sortable : true ,  align: 'left'	},
+						{id:'BalanceInUnits'	  		,header: 'Balance in Units'		,dataIndex: 'BalanceInUnits'				,width : 100,sortable : true ,  align: 'right'},												
+						{id:'BalanceInCurrency'  		,header: 'Balance in Dollars'	,dataIndex: 'BalanceInCurrency'			,width : 100,sortable : true ,  align: 'right'},										
+						{id:'Portfolio_Status_Desc'	,header: 'Status'							,dataIndex: 'Portfolio_Status_Desc'	,width : 80,sortable : true  ,  align: 'left'	}
+						
+	        ],
+	        id: 'myPortfolioFurtherGrid',	
+					renderTo: 'furtherPortfolioDetails',
+			   autoExpandColumn: 'Fund_Desc',
+			   	autoWidth: true,
+			   	autoHeight:true,
+			   	stripeRows: true,
+			    sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
+					viewConfig: {emptyText: 'No records to display.'},					
+					bbar: new Ext.PagingToolbar
+					(
+						{
+							id : 'pPortfolioSummaryBar',								
+							displayInfo: true,
+							pageSize:10,	
+							displayMsg: 'Displaying {0} - {1} of {2}',
+							emptyMsg: "No items to display",
+							store: myPortfolioSummaryStore,
+							plugins: [new Ext.ux.PageSizePlugin()]
+						} 
+					)
+		    }
+	    );	    
+	
+			//////////////myPortfolioFurtherGrid Events////////////////////////////	
+			
+			myPortfolioFurtherGrid.getSelectionModel().on
+			(
+				'rowselect', function(sm, rowIdx, r) 
+				{		
+					
+					//------popup panel--------------------
+					myCommonFormPanel.getForm().items.get('idcomfundname').setValue(r.data.Fund_Desc);
+					myCommonFormPanel.getForm().items.get('idcomportfolioname').setValue(r.data.Portfolio_Name);
+					myCommonFormPanel.getForm().items.get('idcomportfolionumber').setValue(r.data.Portfolio_Number);
+					myCommonFormPanel.getForm().items.get('idcomportfoliokey').setValue(r.data.Portfolio_Key);
+					
+					myHoldingFormPanel.getForm().items.get('idholholdingnumber').setValue(r.data.Account_Number);
+					myHoldingFormPanel.getForm().items.get('idholdistributionmethod').setValue(r.data.Account_IncomeMethod_Desc);
+					myHoldingFormPanel.getForm().items.get('idholstatus').setValue(r.data.Account_Status_Desc);
+					myHoldingFormPanel.getForm().items.get('idholdistributionsplit').setValue(r.data.Portfolio_ReinvestSplit);	
+					myHoldingFormPanel.getForm().items.get('idholdwht').setValue(r.data.Account_WithHeldTax);	
+					
+					//---------------------------------
+					myPortfolioSettlnssStore.load({params:{start:0, limit:10,settleInsType:'subscription',portfoliokey:Ext.getCmp('idcomportfoliokey').value}}); 
+					myPortfolioSettlnssMask.show();	
+					//alert('pname>'+r.data.fundCode);
+					
+					
+					//------------------------------
+					myPopupCommMethodFormPanel.getForm().items.get('idPopupPreferredCommunication').setValue(r.data.Account_DefPrefComm_Desc);
+					myPopupCommMethodFormPanel.getForm().items.get('idPopupAnnualReportCommunication').setValue(r.data.Account_DefAnnRepDispatch_Desc);
+					myPopupCommMethodFormPanel.getForm().items.get('idPopupAnnualReportElection').setValue(r.data.Account_DefAnnRepElect_Desc);
+					myPopupCommMethodFormPanel.getForm().items.get('idPopupReceiveMarkertingMetarial').setValue(r.data.NoMarketing_Desc);
+					myPopupCommMethodFormPanel.getForm().items.get('idPopupDisallowedMaterial').setValue('x');
+										
+					
+					
+					
+					
+					
+					
+					//JQuery Link Panel//
+					$('#holdings').dialog('open');
+					myPortfolioFurtherGrid.getSelectionModel().clearSelections();
+				}
+				
+		  );	
+		  
+		  	
+					
+			//////////////Other Details////////////////////////////	
+				
+			var myOtherDetailsFormPanel = new Ext.FormPanel
+			(
+				{
+								
+					renderTo: 'otherDetailsForms',
+					labelWidth: 250, // label settings here cascade unless overridden
+					border: false,
+					defaults: {width: 200},
+					defaultType: 'textfield',
+					items: 
+					[
+						{fieldLabel: 'Advisor Number'		  	,name: 'advisorNumber'		      ,id: 'advisorNumber'		      ,readOnly: true},
+						{fieldLabel: 'Advisor Name'			  	,name: 'advisorName'			      ,id: 'advisorName'			      ,readOnly: true},
+						{fieldLabel: 'Portfolio Type'		  	,name: 'portfolioType'		      ,id: 'portfolioType'		      ,readOnly: true},
+						{fieldLabel: 'Unit Holder Number'	  ,name: 'unitHolderNumber'	      ,id: 'unitHolderNumber'      	,readOnly: true},
+						{fieldLabel: 'Super Fund/Trust TFN'	,name: 'superFund'				      ,id: 'superFund'				      ,readOnly: true},
+						{fieldLabel: 'WHT Applicable'	      ,name: 'Account_WithHeldTax'		,id: 'Account_WithHeldTax'		,readOnly: true}
+						
+					]
+		    }
+		  );	
+		  
+		  
+		  //////////////Comm Method////////////////////////////	
+				
+			myCommMethodFormPanel = new Ext.FormPanel
+			(
+				{
+								
+					renderTo: 'commMethodForm',
+					labelWidth: 220, // label settings here cascade unless overridden
+					border: false,
+					defaults: {width: 200},
+					id:'idCommMethodForm',
+					defaultType: 'textfield',
+					items: 
+					[
+						{fieldLabel: 'Preferred Communication'		  	,name: 'PreferredCommunication'			,id: 'idPreferredCommunication'			,readOnly: true},
+						{fieldLabel: 'Annual Report Communication'		,name: 'AnnualReportCommunication'	,id: 'idAnnualReportCommunication'	,readOnly: true},
+						{fieldLabel: 'Annual Report Election'		  		,name: 'AnnualReportElection'				,id: 'idAnnualReportElection'				,readOnly: true},
+						{fieldLabel: 'Receive Marketing Material'	    ,name: 'ReceiveMarkertingMetarial'	,id: 'idReceiveMarkertingMetarial'	,readOnly: true},
+						{fieldLabel: 'Disallowed Material'						,name: 'DisallowedMaterial'					,id: 'idDisallowedMaterial'					,readOnly: true}
+					]
+		    }
+		  );	
+		  
+		  			//////////////ContactDetails////////////////////////////		
+			
+	myPortfolioContactStore = new Ext.data.Store
+	(
+		{
+			
+			proxy : new Ext.data.HttpProxy
+			(
+				{																
+					method: 'GET',
+					prettyUrls: false,
+					 url:'http://localhost:8080/HiTrustWebApplication/iop/jsp/HiTrust.jsp?action=BaSPortfolioAddrs'							
+					 //url:'/XMLDataLoader.aspx?action=BaSPortfolioAddrs'		
+				}
+			),
+			remoteSort:true,
+			sortInfo: { field: "Address_Address1", direction: "ASC" }, 
+			reader: new Ext.data.XmlReader
+			(
+				{
+					record: 'List',
+					id: '>Key',
+					totalRecords: 'totalRecords'
+				},				
+				[				
+					{name: 'AddrType_Desc'				, mapping: '>AddrType>Desc'},									
+					{name: 'Address_Address1'			, mapping: '>Address>Address1'},
+					{name: 'Address_Address2'			, mapping: '>Address>Address2'},
+					{name: 'Address_Address3'			, mapping: '>Address>Address3'},
+					{name: 'Address_State'				, mapping: '>Address>State'},
+					{name: 'Address_ZipCode'			, mapping: '>Address>ZipCode'},
+					{name: 'Address_Country_Desc'	, mapping: '>Address>Country>Desc'},
+					{name: 'Address_TelNo'				, mapping: '>Address>TelNo'},
+					{name: 'Address_Telno2'				, mapping: '>Address>Telno2'},
+					{name: 'Address_MobileNo'			, mapping: '>Address>MobileNo'},
+					{name: 'Address_FaxNo'				, mapping: '>Address>FaxNo'},
+					{name: 'Address_EMail'				, mapping: '>Address>EMail'}	
+
+				]
+			),
+	    listeners: 
+	    {
+		   	load: function()
+		   	{
+		   		this.loaded = true;
+		   	}
+		  }
+		}
+	);
+		
+	myPortfolioContactGrid = new Ext.grid.GridPanel
+	(
+		{
+			store: myPortfolioContactStore,			
+			columns:
+			[
+				{id: 'idAddressAddress1'		,header: 'Address 1'		,dataIndex: 'Address_Address1'	,width: 140, sortable: true,align: 'left'},	
+				{id: 'idAddressAddress2'		,header: 'Address 2'		,dataIndex: 'Address_Address2'	,width: 140,sortable: true,align: 'left'},				
+				{id: 'idAddressAddress3'		,header: 'Suburb'				,dataIndex: 'Address_Address3'	,width: 100,sortable: true,align: 'left'},	
+				{id: 'idAddressState'				,header: 'State'				,dataIndex: 'Address_State'			,width: 100,sortable: true,align: 'left'},
+				{id: 'idAddressZipCode'			,header: 'Postcode'			,dataIndex: 'Address_ZipCode'		,width: 80,sortable: true,align: 'left'}
+								
+			],				
+			renderTo:'contactDetailsGrid',
+			//autoExpandColumn: 'idAddressAddress1',
+   	  autoWidth: true,
+	   	autoHeight:true,
+	   	stripeRows: true,
+	    sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
+			viewConfig: {emptyText: 'No records to display.'},
+			bbar: new Ext.PagingToolbar
+			(
+				{
+				  id : 'pPortfolioContactBar',
+					pageSize: 10,
+					store: myPortfolioContactStore,
+					displayInfo: true,
+					displayMsg: 'Displaying {0} - {1} of {2}',
+					emptyMsg: "No items to display"
+				}
+	    )
+		}
+	);	  
+	/////////////////Contact Grid event setup////////////////////////
+	
+			
+					    
+			myPortfolioContactGrid.getSelectionModel().on
+			(
+				'rowselect', function(sm, rowIdx, r) 
+				{
+					Ext.getCmp('idPortfolioContactForm').getForm().setValues
+				   		(
+					   		{
+					   			idAddrTypeDesc			    :	r.data.AddrType_Desc,
+									idAddressAddress1		    :	r.data.Address_Address1,
+									idAddressAddress2		    :	r.data.Address_Address2,
+									idAddressAddress3		    :	r.data.Address_Address3,
+									idAddressState			    :	r.data.Address_State,
+									idAddressZipCode		    :	r.data.Address_ZipCode,
+									idAddressCountry_Desc   :	r.data.Address_Country_Desc,
+									idAddressTelNo			    :	r.data.Address_TelNo,
+									idAddressTelno2			    :	r.data.Address_Telno2,
+									idAddressMobileNo		    :	r.data.Address_MobileNo,
+									idAddressFaxNo			    :	r.data.Address_FaxNo,
+									idAddressEMail			    :	r.data.Address_EMail				  		   			
+					   			
+					   		}
+				   		);				
+				}
+		  );
+	
+	/////////////////contact form/////////////////////////////////////////////
+		
+	myPortfolioContactForm = new Ext.FormPanel
+	(
+		{			
+			id:'idPortfolioContactForm',		
+			renderTo: 'contactDetailsForm',
+			labelWidth: 250, // label settings here cascade unless overridden
+			border: false,
+			defaults: {width: 150},
+			autoWidth: true,
+			defaultType: 'textfield',		
+			listeners: 
+			{
+		   	actioncomplete: function()
+		   	{		   		
+		   		this.loaded = true;	
+		   	}
+		  },							
+			items: 
+			[
+				{id:'idAddrTypeDesc'					,fieldLabel: 'Address Type'		,name: 'AddrType_Desc'				,readOnly: true, width:210},  
+				{id:'idAddressAddress1'				,fieldLabel: 'Address Line 1'	,name: 'Address_Address1'			,readOnly: true, width:210},
+				{id:'idAddressAddress2'				,fieldLabel: 'Address Line 2'	,name: 'Address_Address2'			,readOnly: true, width:210},
+				{id:'idAddressAddress3'				,fieldLabel: 'Suburb'					,name: 'Address_Address3'			,readOnly: true, width:210},
+				{id:'idAddressState'					,fieldLabel: 'State'					,name: 'Address_State'				,readOnly: true, width:210},  
+				{id:'idAddressZipCode'				,fieldLabel: 'Postcode'				,name: 'Address_ZipCode'			,readOnly: true, width:210},  
+				{id:'idAddressCountry_Desc'		,fieldLabel: 'Country'				,name: 'Address_Country_Desc'	,readOnly: true, width:210},
+				{id:'idAddressTelNo'					,fieldLabel: 'Home Tel'				,name: 'Address_TelNo'				,readOnly: true, width:210},  
+				{id:'idAddressTelno2'					,fieldLabel: 'Work Tel'				,name: 'Address_Telno2'				,readOnly: true, width:210},
+				{id:'idAddressMobileNo'				,fieldLabel: 'Mobile'					,name: 'Address_MobileNo'			,readOnly: true, width:210},
+				{id:'idAddressFaxNo'					,fieldLabel: 'Fax'						,name: 'Address_FaxNo'				,readOnly: true, width:210},  
+				{id:'idAddressEMail'					,fieldLabel: 'Email'					,name: 'Address_EMail'				,readOnly: true, width:210}  
+			]
+		}
+	);
+	
+	
+						
+				    
+
+			//////////////Owners////////////////////////////	
+	
+			var myOwnersStore = new Ext.data.Store
+			(
+				{					
+					// load using HTTP
+					proxy : new Ext.data.HttpProxy
+					(
+						{																
+							method: 'GET',
+							prettyUrls: false,									
+							 url: 'http://localhost:8080/HiTrustWebApplication/iop/jsp/HiTrust.jsp?action=BaSOwners'		
+							 //url: '/XMLDataLoader.aspx?action=BaSOwners'		
+						}
+					),
+					remoteSort:true,
+					sortInfo: { field: "Profile_GivenName", direction: "ASC" }, 
+					reader: new Ext.data.XmlReader
+					(
+						{				         
+		           record: 'List',
+		           id:'>Key',
+		           totalRecords: 'totalRecords'  
+						},								
+				    [
+							{name: 'Profile_Salutation'	, mapping: '>Profile>Salutation'},
+							{name: 'Profile_GivenName'	, mapping: '>Profile>GivenName'},
+							{name: 'Profile_Name'				, mapping: '>Profile>Name'},
+							//{name: 'Profile_TFN'				, mapping: '>Profile>TFN'},
+							//{name: 'Profile_ValidTFN'		, mapping: '>Profile>ValidTFN'}
+							
+							{name: 'Profile_TFN'				, mapping: '>Profile>TFNQuoted>Desc'}, // to be added when DST correct their mapping
+							{name: 'Profile_ValidTFN'		, mapping: '>Profile>ValidTFN'}
+						]
+				  ),				  
+	        listeners: 
+	        {
+				   	load: function()
+				   	{
+				   		this.loaded = true;		 		   		  		
+				   	}
+				  }
+				}
+			);
+						
+		// create the grid
+	  var myOwnersGrid = new Ext.grid.GridPanel
+		(
+			{
+				store: myOwnersStore,
+				columns: 
+				[
+					{id:'Profile_Salutation',header: 'Title'								,dataIndex: 'Profile_Salutation',width : 140,sortable : true,align: 'left'},					
+					{id:'Profile_GivenName'	,header: 'First Name'						,dataIndex: 'Profile_GivenName'	,width : 100,sortable : true,align: 'left'},							
+					{id:'Profile_Name'			,header: 'Last/Entity Name'			,dataIndex: 'Profile_Name'			,width : 180,sortable :true,align: 'left'},					
+					{id:'Profile_TFN'				,header: 'TFN/Exemption Quoted'	,dataIndex: 'Profile_TFN'				,width : 140,sortable : true,align: 'left'},
+					{id:'Profile_ValidTFN'	,header: 'TFN Valid'	          ,dataIndex: 'Profile_ValidTFN'	,width : 100,sortable : true,align: 'left'}
+				],
+			  renderTo:'owners',
+			  autoExpandColumn: 'Profile_Salutation',
+		   	autoWidth: true,
+		   	autoHeight:true,
+		   	stripeRows: true,
+		    sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
+				viewConfig: {emptyText: 'No records to display.'}
+			}
+		);
+		
+		
+					
+	
+	////////////////masking//////////////////////////	
+	myPortfolioContactMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Please wait...",	
+				removeMask:true,			
+				store:myPortfolioContactStore 
+		}
+	);
+	myOwnersMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Please wait...",	
+				removeMask:true,			
+				store:myOwnersStore
+		}
+	);
+		
+	
+	
+	myPortfolioSummaryMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Please wait...",	
+				removeMask:true,			
+				store:myPortfolioSummaryStore
+		}
+	);
+	
+	
+	myPortfolioMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Please wait...",	
+				removeMask:true,			
+				store:myPortfolioStore
+		}
+	);
+	
+	///////////////default setup/////////////////////////////
+	
+	if(!myPortfolioStore.loaded)
+	{
+		myPortfolioStore.load
+		(
+			{
+				params:
+				{
+					start:0
+					,limit:Ext.getCmp('pPortfolioBar').pageSize					
+				}
+			}
+		);
+		myPortfolioMask.show();	
+	}
+	
+		  ///////////////////////////////////////////////////////////
+			//////////// POPUP //////////
+			//////////////Common Panel////////////////////////////	
+		
+			myCommonFormPanel = new Ext.FormPanel
+			(
+				{
+								
+					renderTo: 'commonForm',
+					labelWidth: 100, // label settings here cascade unless overridden
+					border: false,
+					defaults: {width: 200},
+					//defaultType: 'textfield',
+					id:'idcommonform',
+					items: 
+					[
+						{							      	
+			        xtype: 'textfield',
+			        id: 'idcomfundname',
+			        fieldLabel: "Fund Name",	
+							width:240,
+							readOnly: true					        
+		      	},
+						{							      	
+			        xtype: 'textfield',
+			        id: 'idcomportfolioname',
+			        fieldLabel: "Portfolio Name",							        
+			        //name: 'Portfolio.Name',			        
+							width:240,
+							readOnly: true					        
+		      	},
+		       	{							      	
+			        xtype: 'textfield',
+			        id: 'idcomportfolionumber',
+			        fieldLabel: "Portfolio Number",		
+							width:240,
+							readOnly: true					        
+		      	},
+		      	{							      	
+			        xtype: 'textfield',
+			        id: 'idcomportfoliokey', 	
+							listeners: 
+								{
+              		'render': function(p) 
+              		{                        
+                  	this.hide()
+              		}
+			        	}							        
+		      	}  	
+		      	
+		      	
+					]
+		    }
+		  );	
+		  
+		 /////////////////JQuery Link Panel///////////////////////////////////
+		 
+		  // Tabs
+		  
+		  $('#holdings-tabs').bind('tabsselect', function (event, ui) 	  
+		  	{
+		  		//alert('text>'+ui.tab.innerHTML);
+		        //if(ui.tab.text=='Holdings')
+		        if(ui.tab.innerHTML.indexOf('Holding Detail') > -1)
+		        {
+								
+								myPortfolioSettlnssStore.load
+								(
+								{
+								params:
+								{
+								start:0, 
+								limit:10,
+								settleInsType:'subscription',portfoliokey:Ext.getCmp('idcomportfoliokey').value}}); 
+								myPortfolioSettlnssMask.show();	
+		         		// alert("Holdings");
+		            return true;
+		         }
+		        
+		        //if(ui.tab.text=='Assignments')
+		        if(ui.tab.innerHTML.indexOf('Assignments') > -1)
+		        {
+		        //if(!myAssignmentStore.loaded)
+		            myAssignmentStore.load
+								(
+									{
+										params:
+										{
+											start:0, 
+											limit:Ext.getCmp('pAssignmentBar').pageSize,
+											portfoliokey:Ext.getCmp('idcomportfoliokey').value
+											//,limit:Ext.getCmp('pAssignmentBar').pageSize
+											
+										}
+									}
+								); 
+							//	myAssignmentMask.show();	
+								
+		          //alert("Assignments");
+		            return true;
+		         }            
+		        
+		     });
+
+
+		  //Links
+		  
+		  $(
+				function() 
+				{			
+					$( "#hold-tab a" ).click(function() 						 
+						{ 
+							
+							
+							if($(this).text()=='Subscription Instructions')
+		        	{
+		        		//alert('text>Subscription Instructions');
+								//if(!myPortfolioSettlnssStore.loaded)				
+								myPortfolioSettlnssStore.load({params:{start:0, limit:10,settleInsType:'subscription',portfoliokey:Ext.getCmp('idcomportfoliokey').value}}); 
+								myPortfolioSettlnssMask.show();	
+								return false; 
+							}
+							if($(this).text()=='Redemption Instructions')
+		        	{
+		        		//alert('text>Redemption Instructions');
+								//if(!myPortfolioSettlnssStore.loaded)				
+								myPortfolioSettlnssStore.load({params:{start:0, limit:10,settleInsType:'redemption',portfoliokey:Ext.getCmp('idcomportfoliokey').value}});
+								myPortfolioSettlnssMask.show();	
+								return false; 
+							}
+							if($(this).text()=='Distribution Instructions')
+		        	{
+		        		//alert('text>Distribution Instructions');
+								//if(!myPortfolioSettlnssStore.loaded)				
+								myPortfolioSettlnssStore.load({params:{start:0, limit:10,settleInsType:'distribution',portfoliokey:Ext.getCmp('idcomportfoliokey').value}}); 
+								myPortfolioSettlnssMask.show();	
+								return false; 
+							}
+							if($(this).text()=='Fee Rebate Instructions')
+		        	{
+		        		//alert('text>Fee Rebate Instructions');
+								//if(!myPortfolioSettlnssStore.loaded)				
+								myPortfolioSettlnssStore.load({params:{start:0, limit:10,settleInsType:'Fee Rebate Instructions',portfoliokey:Ext.getCmp('idcomportfoliokey').value}}); 
+								myPortfolioSettlnssMask.show();	 
+								return false; 
+							}
+						}
+					);
+				}
+			);
+		  
+		  
+   		//////////////Holding Panel////////////////////////////	
+   		
+			myHoldingFormPanel = new Ext.FormPanel
+			(
+				{	    	
+					renderTo: 'holdingForm',					
+					labelWidth: 100, // label settings here cascade unless overridden
+		      frame:true,
+		      bodyStyle:'padding:5px 5px 0',      
+		      width: 750,	
+		      id:'idholdingform',
+		      listeners: 
+					{
+				   	actioncomplete: function()
+				   	{				   		
+				   		this.loaded = true;	
+				   	}
+				  },	
+					
+					items: 
+					[
+						{
+							layout: 'column',
+							items:
+							[
+								{	
+									columnWidth:.45,
+									layout: 'form',
+									items:
+									[												
+										{							      	
+							        xtype: 'textfield',
+							        id: 'idholholdingnumber',
+							        fieldLabel: "Holding Number",							        
+							        //name: 'Account.Number',
+							        //anchor:'90%',
+											width:240,
+											readOnly: true					        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idholdistributionmethod',
+							        fieldLabel: "Distribution Method",							        
+							        //name: 'Account.IncomeMethod.Desc',
+							        //anchor:'90%',
+											width:240,
+											readOnly: true						        
+							        					        
+						      	}													
+									]
+								},
+								{								    
+								    columnWidth: .10,
+								    html: '&nbsp;&nbsp;&nbsp;&nbsp;'
+								},
+								{
+									columnWidth:.45,
+									layout: 'form',
+									items:
+									[
+										{							      	
+							        xtype: 'textfield',
+							        id: 'idholstatus',
+							        fieldLabel: "Status",							       
+							        //name: 'Account.Status.Desc'	,
+							        //anchor:'60%',
+											width:240,
+											readOnly: true								        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idholdistributionsplit',
+							        fieldLabel: "Distribution Split",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:240,
+											readOnly: true		
+							        
+						      	}	,
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idholdwht',
+							        fieldLabel: "WHT Applicable",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:240,
+											readOnly: true		
+							        
+						      	}									
+									]								
+								}								
+							]
+						}									
+						
+					]
+					
+					
+		    }
+		  );	
+		  
+		  //////////////////holdingGrid//////////////////////////////////
+		  
+		  myPortfolioSettlnssStore = new Ext.data.Store
+		  (
+		  	{   
+		        
+		        // load using HTTP
+						proxy : new Ext.data.HttpProxy
+						(
+							{																
+								method: 'GET',
+								prettyUrls: false,
+								// load using HTTP
+				         url: 'http://localhost:8080/HiTrustWebApplication/iop/jsp/HiTrust.jsp?action=BaPortfolioSttInss'
+				          //url: '/XMLDataLoader.aspx?action=BaPortfolioSttInss'				        
+				         //   url: '/XMLDataLoader.aspx?action=BaPortfolioSttInss'	
+							}
+						),
+		
+		        // the return will be XML, so lets set up a reader
+		        reader: new Ext.data.XmlReader
+		        (
+		        	{
+		               // records will have an "Item" tag
+		               record: 'List',
+		               id: 'Account>Key',
+		               totalRecords: 'totalRecords'
+		           }, 
+		           [
+		               // set up the fields mapping into the xml doc
+		               // The first needs mapping, the others are very basic
+		               {name:'SettleInsType_Desc'								, mapping: 'SettleInsType>Desc'},
+		               {name:'SettleCurrency_ISOCode'						, mapping: 'SettleCurrency>ISOCode' },
+		               {name:'SettleAccount_Number'							, mapping: 'SettleAccount>Number' },		               
+		               {name:'SettleAccount_SortCode_BSBCode'		, mapping: 'SettleAccount>SortCode>BSBCode'},		               
+		               {name:'SettleAccount_Name'								, mapping: 'SettleAccount>Name' },		               
+		               {name:'SettleAccount_SortCode_Bankname'	, mapping: 'SettleAccount>SortCode>Bankname'} 
+		           ]
+		         ),
+		         listeners: 
+		         {
+						   	load: function()
+						   	{
+						   		this.loaded = true;	
+						   				   		  		
+						   	}
+						  }
+		    	}
+		   );
+		   
+		  
+		  // create the grid
+				myHoldingGrid = new Ext.grid.GridPanel
+				(
+					{
+						//title: 'Search Results',
+						store: myPortfolioSettlnssStore,
+						columns: 
+						[
+							{id: 'SettleInsType_Desc'							, header: 'Instruction Type'	, dataIndex : 'SettleInsType_Desc'					, width : 100},
+							{id: 'SettleCurrency_ISOCode'					, header: 'Currency'			, dataIndex : 'SettleCurrency_ISOCode'					, width : 100},
+							{id: 'SettleAccount_Number'						, header: 'Account No'		, dataIndex : 'SettleAccount_Number'						, width : 100},
+							{id: 'SettleAccount_SortCode_BSBCode'	, header: 'BSB'						, dataIndex : 'SettleAccount_SortCode_BSBCode'	, width : 100},
+							{id: 'SettleAccount_Name'							, header: 'Account Name'	, dataIndex : 'SettleAccount_Name'							, width : 100},
+							{id: 'SettleAccount_SortCode_Bankname', header: 'Bank Name'			, dataIndex : 'SettleAccount_SortCode_Bankname'	, width : 100}
+						],
+						
+						//autoExpandColumn: 'priceDate',
+				   	renderTo:'holdingGrid',
+				   	autoExpandColumn: 'SettleAccount_Name',
+				   	autoWidth: true,
+				   	autoHeight:true,
+						sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
+						viewConfig: {emptyText: 'No records to display.'}
+					}
+				);
+			    
+			
+					
+					
+		//////////////////assignmentsGrid//////////////////////////////////
+		  
+		  myAssignmentStore = new Ext.data.Store
+		  (
+		  	{   
+		        
+		        // load using HTTP
+						proxy : new Ext.data.HttpProxy
+						(
+							{																
+								method: 'GET',
+								prettyUrls: false,
+								// load using HTTP
+				         url: 'http://localhost:8080/HiTrustWebApplication/iop/jsp/HiTrust.jsp?action=BaSAssignments'
+				         //url: '/XMLDataLoader.aspx?action=BaSAssignments'
+				        
+							}
+						),
+		
+		        // the return will be XML, so lets set up a reader
+		        reader: new Ext.data.XmlReader
+		        (
+		        	{
+		               // records will have an "Item" tag
+		               record: 'List',
+		               id: '>uid',
+		               totalRecords: 'totalRecords'
+		           }, 
+		           [
+		              // set up the fields mapping into the xml doc
+		              // The first needs mapping, the others are very basic     
+		              // {name:'SettleInsType_Desc'							, mapping: 'SettleInsType>Desc'},
+		              // {name:'Profile_Name'					          , mapping: 'Profile>Name' },
+		              // {name:'SettleAccount_Number'						, mapping: 'Type>Desc'},		               
+		              // {name:'SettleAccount_SortCode_BSBCode'	, mapping: 'Currency>ISOCode'},		               
+		              // {name:'SettleAccount_Name'							, mapping: 'Amount' },		               
+		              // {name:'SettleAccount_SortCode_Bankname', mapping: 'SettleAccount>SortCode>Bankname'} 		               
+		              // {name:'SettleInsType_Desc'				      , mapping: 'SettleInsType>Desc'},
+		              
+			               //{name:'Key'				    	        , mapping: 'Key' },
+			               {name:'Profile_Name'				    	, mapping: 'Profile>Name' },
+			               {name:'Type_Desc'						    , mapping: 'Type>Desc'},		               
+			               {name:'Currency_ISOCode'	        , mapping: 'Currency>ISOCode'},		               
+			               {name:'Amount'							      , mapping: 'Amount' }		               
+		              // {name:'SettleAccount_SortCode_Bankname', mapping: 'SettleAccount>SortCode>Bankname'} 
+		               
+		        ]
+		         ),
+		         listeners: 
+		         {
+						   	load: function()
+						   	{
+						   		this.loaded = true;	
+						   				   		  		
+						   	}
+						  }
+		    	}
+		   );
+		   
+		 myAssignmentStore.on
+		 ('beforeload', function(store)
+			 	{
+					store.baseParams = 
+					{												
+							portfoliokey:Ext.getCmp('idcomportfoliokey').value
+					};
+		    }
+	   );
+		   
+		  
+		  // create the grid
+				myAssignmentGrid = new Ext.grid.GridPanel
+				(
+					{
+						//title: 'Search Results',
+						store: myAssignmentStore,
+						columns: 
+						[
+							{id: 'Profile_Name'					, header: 'Corporate Name'	, dataIndex : 'Profile_Name'				, width : 250},
+							{id: 'Type_Desc'						, header: 'Assignment Type'	, dataIndex : 'Type_Desc'					  , width : 150},
+							{id: 'Currency_ISOCode'	    , header: 'Currency'				, dataIndex : 'Currency_ISOCode'    , width : 150, align:'righ'},
+							{id: 'Amount'						   	, header: 'Amount'					, dataIndex : 'Amount'					   	, width : 150, align:'right'}
+						],					
+						
+				   	renderTo:'assignmentsGrid',
+				   	//autoExpandColumn: 'SettleAccount_Name',
+				   	width:700,
+				   	autoHeight:true,
+				   	stripeRows: true,
+						sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
+						viewConfig: {emptyText: 'No records to display.'}
+						,	bbar: new Ext.PagingToolbar
+						(
+							{
+								id : 'pAssignmentBar',								
+								displayInfo: true,
+								pageSize:10,	
+								displayMsg: 'Displaying {0} - {1} of {2}',
+								emptyMsg: "No items to display",
+								store: myAssignmentStore,
+								plugins: [new Ext.ux.PageSizePlugin()]
+							}
+						)			
+					}
+				);
+	
+	
+	
+		//////////////Popup Comm Method////////////////////////////	
+				
+			var myPopupCommMethodFormPanel = new Ext.FormPanel
+			(
+				{
+								
+					renderTo: 'comm-tab',
+					labelWidth: 220, // label settings here cascade unless overridden
+					border: false,
+					defaults: {width: 200},
+					id:'idPopupCommMethodForm',
+					defaultType: 'textfield',
+					items: 
+					[
+						{fieldLabel: 'Preferred Communication'		  	,name: 'PopupPreferredCommunication'			,id: 'idPopupPreferredCommunication'			,readOnly: true},
+						{fieldLabel: 'Annual Report Communication'		,name: 'PopupAnnualReportCommunication'		,id: 'idPopupAnnualReportCommunication'		,readOnly: true},
+						{fieldLabel: 'Annual Report Election'		  		,name: 'PopupAnnualReportElection'				,id: 'idPopupAnnualReportElection'				,readOnly: true},
+						{fieldLabel: 'Receive Marketing Material'	    ,name: 'PopupReceiveMarkertingMetarial'		,id: 'idPopupReceiveMarkertingMetarial'		,readOnly: true},
+						{fieldLabel: 'Disallowed Material'						,name: 'PopupDisallowedMaterial'					,id: 'idPopupDisallowedMaterial'					,readOnly: true}
+					]
+		    }
+		  );	
+	
+	
+	///////////////////masking2//////////////////////////////////////////////
+	
+	myPortfolioSettlnssMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Please wait...",	
+				removeMask:true,			
+				store:myPortfolioSettlnssStore
+		}
+	);
+	
+	/**myAssignmentMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Please wait...",	
+				removeMask:true,			
+				store:myAssignmentStore
+		}
+	);**/		    
+		  
+	////////////default setup2////////////////////////////////////////
+	
+	//-------------Test--------------------------
+		 /*
+		  myHoldingFormPanel.load
+			(
+				{
+					method: 'GET',
+					prettyUrls: false,	
+					url:'http://localhost:8080/HiTrustWebApplication/iop/jsp/BaPortSummaryDatas.jsp', 
+					//url:'/XMLDataLoader.aspx?action=BaPortSummaryDatas,	
+					params:
+					{
+						start:0,
+						limit:1,
+						portfoliokey:Ext.getCmp('portfoliokey').value
+					}						
+				}
+			);		
+									
+			myPortfolioSettlnssStore.load
+			(
+				{	
+					params:
+					{
+							start:0, 
+							limit:5,
+							settleInsType:'subscription',
+							portfoliokey:Ext.getCmp('portfoliokey').value
+					}
+				}
+			); 		
+			
+			myAssignmentStore.load
+			(
+				{
+					params:
+					{
+						start:0, 
+						limit:5,
+						portfoliokey:Ext.getCmp('portfoliokey').value
+					}
+				}
+			); 	
+			*/		
+
+		
+		}
+	);
+
+
+
+</script>
+
+
+
+
+
+
+<h2>Further details on your portfolio in the tabs below.</h2>
+
+<div id="portfolioTop"></div>
+<br>
+<br>
+
+<div id="tabs">
+    <ul>
+        <li><a href="#tabs-1"><strong>Holdings</strong></a></li>
+        <li><a href="#tabs-2"><strong>Other Details</strong></a></li>
+        <li><a href="#tabs-3"><strong>Contact Details</strong></a></li>
+        <li><a href="#tabs-4"><strong>Owners</strong></a></li>
+        <li><a href="#tabs-5"><strong>Comm Method</strong></a></li>
+    </ul>
+
+<br>
+    <div id="tabs-1">
+      <h3>Portfolio Name:<div id="portfolioName"></div></h3><br>
+      <div id="furtherPortfolioDetails"></div>
+    </div>    
+    <div id="tabs-2"><div id="otherDetailsForms"></div></div>    
+    <div id="tabs-3">
+    	<div id="contactDetailsGrid"></div><br>
+    	<div id="contactDetailsForm"></div>
+    </div>     
+    <div id="tabs-4"><div id="owners"></div></div>  
+    <div id="tabs-5"><div id="commMethodForm"></div></div>      
+</div>
+
+
+
+
+
+<div id="holdings" title="Portfolio Detail">
+		<div id="commonForm"></div><br>		
+		<div id="holdings-tabs">
+			<ul>
+				<li><a href="#hold-tab"><strong>Holding Detail</strong></a></li>
+				<li><a href="#assign-tab"><strong>Assignments</strong></a></li>
+        <li><a href="#comm-tab"><strong>Comm Method</strong></a></li>
+			</ul>
+			<div id="hold-tab">
+				<div id="holdingForm"></div><br>
+							
+					<ul class="buttonBarSmall ui-helper-clearfix ui-corner-all ui-widget-header ui-widget-content">
+						<li><a href="#" class="ui-state-default"><strong>Subscription Instructions</strong></a></li>
+						<li><a href="#" class="ui-state-default"><strong>Redemption Instructions</strong></a></li>
+						<li><a href="#" class="ui-state-default"><strong>Distribution Instructions</strong></a></li>
+						<li><a href="#" class="ui-state-default"><strong>Fee Rebate Instructions</strong></a></li>
+					</ul>
+					<div id="holdingGrid"></div><br>
+				
+			</div>
+			<div id="assign-tab">
+				<div id="assignmentsGrid"></div><br>				
+			</div>
+         <div id="comm-tab">
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom">
+<body>
+    <ui:composition template="../layout/main-page.xhtml">
+        <ui:define name="title"><ui:insert name="workAreaTitle">Work area Title</ui:insert></ui:define>
+
+        <ui:define name="productName">#{msg.productName}</ui:define>
+        <ui:define name="menu">
+            <ac:menuBar id="theMenuBar">
+                <ac:menuItem label="#{msg.label_ConfigurationMenu}">
+                    <ac:menuItem label="#{msg.deviceType_Title}" action="nsamDeviceType">
+                        <ac:menuItem label="#{msg.showAll}" action="#{Menus.selectDeviceTypes}"/>
+                        <ac:menuItem label="#{msg.deviceType_AddMenu}" action="#{Menus.selectDeviceTypeAdd}"/>
+                    </ac:menuItem>
+                    <ac:menuItem label="#{msg.pto_Title}" action="nsamPTO">
+                        <ac:menuItem label="#{msg.showAll}" action="#{Menus.selectPTO}"/>
+                        <ac:menuItem label="#{msg.pto_AddMenu}" action="#{Menus.selectPTOAdd}"/>
+                    </ac:menuItem>
+		    <ac:menuItem label="#{msg.ncrs_Title}" action="nsamNCRS">
+                        <ac:menuItem label="#{msg.showAll}" action="#{Menus.selectNCRSs}"/>
+                        <ac:menuItem label="#{msg.ncrs_AddMenu}" action="#{Menus.selectNCRSAdd}"/>
+                    </ac:menuItem>
+					
+		    <ac:menuItem label="#{msg.eqVendor_Title}" action="nsamEqVendor">
+                        <ac:menuItem label="#{msg.showAll}" action="#{Menus.selectEqVendors}"/>
+                        <ac:menuItem label="#{msg.eqVendor_AddMenu}" action="#{Menus.selectEqVendorAdd}"/>
+                    </ac:menuItem>
+		    <ac:menuItem label="#{msg.rdVendor_Title}" action="nsamRdVendor">
+                        <ac:menuItem label="#{msg.showAll}" action="#{Menus.selectRdVendors}"/>
+                        <ac:menuItem label="#{msg.rdVendor_AddMenu}" action="#{Menus.selectRdVendorAdd}"/>
+                    </ac:menuItem>
+					
+                    <ac:menuItem label="#{msg.impcert_Title}" action="nsamCertificateHome">
+                            <ac:menuItem label="#{msg.certificate_Title}" action="#{Menus.selectCertificateUpload}"/>
+                    </ac:menuItem>
+                </ac:menuItem>
+                <ac:menuItem label="#{msg.label_S9S2DataMenu}">
+                    <ac:menuItem label="#{msg.impdat_Title}" action="importData">
+                        <ac:menuItem label="#{msg.deviceListPane_Title}" action="#{Menus.selectDeviceListPane}"/>
+                        <ac:menuItem label="#{msg.crlProcess_Menu}" action="#{Menus.selectCRLProcess}"/>
+                    </ac:menuItem>
+					<!-- AF-2265					
+                    <ac:menuItem label="#{msg.impres_Title}" action="importDataResponse">
+                        <ac:menuItem label="#{msg.deviceListCRLResponse_Menu}" action="#{Menus.selectDeviceListCRLResponse}"/>
+                    </ac:menuItem>
+					-->
+                </ac:menuItem>
+		<ac:menuItem label="#{msg.label_NSAMDataMenu}">
+                    <ac:menuItem label="#{msg.nsamRequestPane_Title}" action="#{Menus.selectRequestPane}"/>                     
+                    <ac:menuItem label="#{msg.view_Title}" action="viewData">
+                        <ac:menuItem label="#{msg.persoByDeviceID}" action="#{Menus.selectDeviceID}"/>
+                        <ac:menuItem label="#{msg.persoByChipID}" action="#{Menus.selectChipID}"/>
+                        <ac:menuItem label="#{msg.view_history}" action="#{Menus.viewHistory}"/>
+                    </ac:menuItem>
+                    <ac:menuItem label="#{msg.change_Title}" action="nsamChange">
+                        <ac:menuItem label="#{msg.nsamsts_Title}" action="#{Menus.selectChangeStatusPane}"/>
+			<ac:menuItem label="#{msg.nsambuss_Menu}" action="#{Menus.nsamChangeNSAMSearchPanel}"/>
+                    </ac:menuItem> 
+        	    <ac:menuItem label="#{msg.tktkey_Title}" action="nsamTicketingKeyFileHome">
+                        <ac:menuItem label="#{msg.reqnsamtkt_MainMenu}" action="#{Menus.nsamTicketingKeyFileRequest}"/>
+                        <ac:menuItem label="#{msg.reqKeychange_Title}" action="#{Menus.selectKeyChange}"/>
+                    </ac:menuItem> 
+                    <ac:menuItem label="#{msg.appmgmt_Menu}" action="nsamUpdateHome">
+                        <ac:menuItem label="#{msg.nsamupdate_Menu}" action="#{Menus.nsamUpdateNSAMSearchPanel}"/>
+                        <ac:menuItem label="#{msg.appupdates_Menu}" action="nsamUpdate"/>
+                        <ac:menuItem label="#{msg.delfaildelv_Menu}" action="#{Menus.nsamDelStagedUpdates}"/>
+                     </ac:menuItem>
+                </ac:menuItem>
+		
+            </ac:menuBar>
+        </ui:define>
+        <ui:define name="content"><ui:insert name="workArea"/></ui:define>
+        <ui:define name="header">This is the header stuff</ui:define>
+        <h:messages globalOnly="true" layout="table" styleClass="warn"
+                    infoClass="info" warnClass="warn"
+                    errorClass="warn" fatalClass="warn"/>
+    </ui:composition>
+</body>
+</html>
+

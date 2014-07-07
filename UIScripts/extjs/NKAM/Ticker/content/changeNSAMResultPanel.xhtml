@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom">
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.nsamChangeResult_Title}
+    </ui:define>
+    <ui:define name="workArea">
+        <h:form onsubmit="document.body.style.cursor='wait';">
+            <table class="acTable">
+            </table>
+            <table class="acTable">
+                <tr valign="top">
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <ac:pkDataTable id="allTableData" binding="#{ChangeNSAMSearch.uiBindingData}"
+                                                    primaryKey="id"
+                                                    var="myRowData"
+                                                    value="#{ChangeNSAMSearch.uiTableData}"
+                                                    headerClass="table-header"
+                                                    footerClass="table-footer"
+                                                    styleClass="acTable"
+                                                    cellpadding="0" cellspacing="0">
+
+                                        <h:column id="IdCheckColumn">
+                                            <f:facet name="header">
+                                                <h:commandLink action="#{ChangeNSAMSearch.checkAll}">
+                                                    <h:outputText value="#{msg.nsamChangeSearch_Check}"/>
+                                                </h:commandLink>
+                                            </f:facet>
+                                            <h:selectBooleanCheckbox id="idCheckValue" value="#{myRowData.canBeRequested}" />
+                                        </h:column>
+
+                                        <h:column id="IdDeviceIdColumn">
+                                            <f:facet name="header">
+                                                <h:outputText value="#{msg.nsamChangeSearch_Device}"/>
+                                            </f:facet>
+                                            <h:outputText id="idDeviceValue" value="#{myRowData.deviceId}"/>
+                                        </h:column>
+
+                                        <h:column id="IdBeTlaColumn" >
+                                            <f:facet name="header">
+                                                <h:outputText value="#{msg.nsamChangeSearch_BE}"/>
+                                            </f:facet>
+                                            <h:outputText id="idBeTla" value="#{myRowData.beTla}"/>
+                                        </h:column>
+
+                                        <h:column id="IdNcrsIdColumn">
+                                            <f:facet name="header">
+                                                <h:outputText value="#{msg.nsamChangeSearch_NCRS}"/>
+                                            </f:facet>
+                                            <h:outputText id="IdNcrsId" value="#{myRowData.ncrsId}"/>
+                                        </h:column>
+
+                                        <h:column id="IdChipIdColumn">
+                                            <f:facet name="header">
+                                                <h:outputText value="#{msg.nsamChangeSearch_NSAM}"/>
+                                            </f:facet>
+                                            <h:outputText id="IdChipId" value="#{myRowData.chipId}"/>
+                                        </h:column>
+
+                                        <h:column id="IdMSAAppExistColumn">
+                                            <f:facet name="header">
+                                                <h:outputText value="MSA Exist"/>
+                                            </f:facet>
+                                            <h:outputText id="IdMSAAppExistId" value="#{myRowData.isMSAAppExist}"/>
+                                        </h:column>
+
+                                        <h:column id="IdS9AppExistColumn">
+                                            <f:facet name="header">
+                                                <h:outputText value="S9 Exist"/>
+                                            </f:facet>
+                                            <h:outputText id="IdS9AppExistId" value="#{myRowData.isS9AppExist}"/>
+                                        </h:column>
+										<!--
+                                        <h:column id="IdMSAAppVersionColumn">
+                                            <f:facet name="header">
+                                                <h:outputText value="MSA Version"/>
+                                            </f:facet>
+                                            <h:outputText id="IdMSAAppVersionId" value="#{myRowData.msaAppVersion}"/>
+                                        </h:column>
+
+                                        <h:column id="IdS9AppVersionColumn">
+                                            <f:facet name="header">
+                                                <h:outputText value="S9 Version"/>
+                                            </f:facet>
+                                            <h:outputText id="IdS9AppVersionId" value="#{myRowData.s9AppVersion}"/>
+                                        </h:column>
+										-->
+                                        <h:column id="IdISINColumn">
+                                            <f:facet name="header">
+                                                <h:outputText value="ISIN"/>
+                                            </f:facet>
+                                            <h:outputText id="IdISINId" value="#{myRowData.isinId}"/>
+                                        </h:column>
+
+                                    </ac:pkDataTable>
+                                </td>
+                            </tr>
+                        </table>
+                        <h:commandButton value="&lt;" action="#{ChangeNSAMSearch.prev}"/>
+                        <h:outputText value="#{ChangeNSAMSearch.pageInfo}"/>
+                        <!--h:outputText value=" page #{ChangeNSAMSearch.pageIndex}  of  #{ChangeNSAMSearch.pages} "/-->
+                        <h:commandButton value="&gt;" action="#{ChangeNSAMSearch.next}"/>
+                        &#160;&#160;&#160;&#160;&#160;&#160;
+                        <h:outputText value="#{ChangeNSAMSearch.recordInfo}"/>
+                        <!--h:outputText value=" Displaying topics #{ChangeNSAMSearch.fromIndex} - #{ChangeNSAMSearch.toIndex} of #{ChangeNSAMSearch.totalCount}"/>
+                        <h:inputHidden value="#{ChangeNSAMSearch.pageIndex}"/-->
+                        <h:inputHidden value="#{ChangeNSAMSearch.start}"/>
+                        <h:inputHidden value="#{ChangeNSAMSearch.limit}"/>
+                        <h:inputHidden value="#{ChangeNSAMSearch.totalCount}"/>
+                        <h:inputHidden value="#{ChangeNSAMSearch.checkAllIndex}"/>
+                        <br/><br/>
+                        <!--h:commandButton value="Submit Changes" action="#{ChangeNSAMSearch.submitAction}" /-->
+
+                    </td><td>
+                    <table class="acTable">
+
+                        <!--tr>
+                            <td class="panel-feature-form-enhanced-field-name">#{msg.nsamChangeSearch_Device}</td>
+                            <td class="panel-feature-form-enhanced-field-value">
+                                <h:selectOneMenu  value="#{ChangeNSAMSearch.uiChangeData.deviceId}">
+                                    <f:selectItems value="#{ChangeNSAMSearch.allDeviceType}"/>
+                                </h:selectOneMenu>
+
+                            </td>
+                        </tr-->
+
+                        <tr>
+                            <td class="panel-feature-form-enhanced-field-name">#{msg.nsamChangeSearch_BE}</td>
+                            <td class="panel-feature-form-enhanced-field-value">
+                                <h:selectOneMenu   value="#{ChangeNSAMSearch.uiFilterData.newBeId}">
+                                    <f:selectItems value="#{ChangeNSAMSearch.listBusinessEntityAsJson}" />
+                                </h:selectOneMenu  >
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="panel-feature-form-enhanced-field-name">#{msg.nsamChangeSearch_NCRS}</td>
+                            <td class="panel-feature-form-enhanced-field-value">
+                                <h:selectOneMenu  value="#{ChangeNSAMSearch.uiFilterData.newNcrsId}">
+                                    <f:selectItems value="#{ChangeNSAMSearch.listNcrs}"/>
+                                </h:selectOneMenu>
+
+                            </td>
+                        </tr>
+                        <!--tr>
+                            <td class="panel-feature-form-enhanced-field-name">#{msg.nsamChangeSearch_NSAM}</td>
+                            <td class="panel-feature-form-enhanced-field-value">
+                                <h:selectOneMenu  value="#{ChangeNSAMSearch.uiChangeData.chipId}">
+                                    <f:selectItems value="#{ChangeNSAMSearch.allNCRS}"/>
+                                </h:selectOneMenu>
+
+                            </td>
+                        </tr-->
+
+                    </table>
+                </td>
+                </tr>
+            </table>
+            <h:commandButton action="#{ChangeNSAMSearch.executeUpdateNSAMs}" value="#{msg.confirm}"/>
+            &#160;
+            <h:commandButton action="#{Menus.nsamChangeNSAMSearchPanel}" immediate="true" value="#{msg.cancelLink}"/>
+            <!--</ui:fragment>-->
+        </h:form>
+        <h:messages globalOnly="true" layout="table" styleClass="warn"
+                    infoClass="info" warnClass="warn"
+                    errorClass="warn"
+                    fatalClass="warn"/>
+
+        <br/>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

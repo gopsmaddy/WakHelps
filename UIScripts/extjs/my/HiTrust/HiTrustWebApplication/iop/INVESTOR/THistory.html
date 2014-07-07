@@ -1,0 +1,865 @@
+<html>
+	<head>
+		<link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+            <!--<script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base.js" type="text/javascript"></script>
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all.js" type="text/javascript"></script>-->
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/ext-all-debug.js" type="text/javascript"></script>
+      
+      
+       <link href="http://modules.eurouwins.com/iop/styles/jquery-ui-1.8.4.custom.css" type="text/css" rel="stylesheet" media="screen">			
+			
+      <script src="http://modules.eurouwins.com/iop/scripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/jquery.uniform.min.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/jquery-ui-1.8.4.custom.min.js" type="text/javascript"></script>
+			
+      <link href="http://modules.eurouwins.com/iop/styles/flexigrid.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/iop_screen.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/uniform.default.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/web_fonts.css" type="text/css" rel="stylesheet" media="screen">
+			
+			<script src="http://modules.eurouwins.com/iop/scripts/flexigrid.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/iop_functions.js" type="text/javascript"></script>
+			
+			<script src="../js/myExternalURL.js" type="text/javascript"></script>
+			<script src="../js/vtypes.js" type="text/javascript"></script>
+			<script src="../js/pagesizeplugin.js" type="text/javascript"></script>
+			
+	   <body>
+	   	
+	   	<!-- http://extjs.wima.co.uk/ -->
+
+<script type="text/javascript">
+	// To play in Firebug uncomment next line
+// Ext.get(document.body).update('<div id="ext-test"></div>');
+ 
+// reference local blank image
+Ext.BLANK_IMAGE_URL = 'http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/resources/images/default/s.gif';
+ 
+
+ 
+	Ext.onReady(function(){
+	
+	var myPortfolioStore = new Ext.data.Store
+  (
+  	{   
+        // load using HTTP
+				proxy : new Ext.data.HttpProxy
+				(
+					{																
+						method: 'GET',
+						prettyUrls: false,
+						// load using HTTP
+		         url: varBaPortfoliosURL		         	        
+					}
+				),
+				remoteSort:true,		
+				sortInfo: {field: "Name", direction: "ASC" },	
+        // the return will be XML, so lets set up a reader
+        reader: new Ext.data.XmlReader
+        (
+        	{
+               // records will have an "Item" tag
+               record: 'List',
+               id: '>Key',
+               totalRecords: 'totalRecords'
+           }, 
+           [   
+               {name:'Name', mapping: '>Name'},
+               {name:'Number', mapping: '>Number' },
+               {name:'Key', mapping: '>Key' },
+               {name:'Company_Key', mapping: 'Company>Key' } 
+           ]
+         ),
+         listeners: 
+         {
+				   	load: function()
+				   	{
+				   		this.loaded = true;		 		   		  		
+				   	}
+				  }
+    	}
+   );	
+	
+	var myFundStore = new Ext.data.Store
+  (
+  	{   
+        // load using HTTP
+				proxy : new Ext.data.HttpProxy
+				(
+					{																
+						method: 'GET',
+						prettyUrls: false,
+						// load using HTTP
+		        url: varBaInvestorPortFundsURL	         
+		        
+					}
+				),
+				remoteSort:true,		
+				sortInfo: {field: "Fund_Desc", direction: "ASC" },	
+        // the return will be XML, so lets set up a reader
+        reader: new Ext.data.XmlReader
+        (
+        	{
+               // records will have an "Item" tag
+               record: 'List',
+               id: '>Fund>Key',
+               totalRecords: 'totalRecords'
+           }, 
+           [
+               {name:'Fund_Desc', mapping: '>Fund>Desc'},
+               {name:'Fund_Code', mapping: '>Fund>Code' },
+               {name:'Fund_Key', mapping:  '>Fund>Key' }
+           ]
+         ),
+         listeners: 
+         {
+				   	load: function()
+				   	{
+				   		this.loaded = true;		 		   		  		
+				   	}
+				  }
+    	}
+   );	
+  
+  var myTransactionTypeStore = new Ext.data.Store
+  (
+  	{   
+        // load using HTTP
+				proxy : new Ext.data.HttpProxy
+				(
+					{																
+						method: 'GET',
+						prettyUrls: false,
+						// load using HTTP
+		        url: varBaCtractReportTypesURL		        
+		        
+					}
+				),
+				remoteSort:true,		
+				sortInfo: {field: "Desc", direction: "ASC" },	
+        // the return will be XML, so lets set up a reader
+        reader: new Ext.data.XmlReader
+        (
+        	{
+               // records will have an "Item" tag
+               record: 'List',
+               id: '>Desc',
+               totalRecords: 'totalRecords'
+           }, 
+           [   
+               {name:'Desc', mapping: '>Desc' } 
+           ]
+         ),
+         listeners: 
+         {
+				   	load: function()
+				   	{
+				   		this.loaded = true;		 		   		  		
+				   	}
+				  }
+    	}
+   );
+   
+  var myUnitClassStore = new Ext.data.Store
+  (
+  	{       
+        // load using HTTP
+				proxy : new Ext.data.HttpProxy
+				(
+					{																
+						method: 'GET',
+						prettyUrls: false,
+						// load using HTTP
+		         url: varBaSUnitClasssURL
+					}
+				),
+				remoteSort:true,		
+				sortInfo: {field: "Desc", direction: "ASC" },	
+        // the return will be XML, so lets set up a reader
+        reader: new Ext.data.XmlReader
+        (
+        	{
+               // records will have an "Item" tag
+               record: 'List',
+               id: '>Key',
+               totalRecords: 'totalRecords'
+           }, 
+           [
+               // set up the fields mapping into the xml doc
+               // The first needs mapping, the others are very basic
+               {name:'Desc', mapping: '>Desc'},
+               {name:'Code', mapping: '>Code' },
+               {name:'Key', mapping: '>Key' }                
+           ]
+         )
+    	}
+   );		
+   
+  
+  
+  
+  
+  myTransactionHistorySearchPanel = new Ext.FormPanel
+  (
+  	{
+      labelWidth: 100, // label settings here cascade unless overridden
+      frame:true,
+      renderTo: 'transactionHistorySearch',
+      //title: 'Test panel',
+      bodyStyle:'padding:5px 5px 0',      
+      width: 650,			
+      
+      items:
+				[
+					{
+						layout: 'column',
+						items:
+						[
+							{	
+								columnWidth:.5,
+								layout: 'form',
+								items:
+								[									
+					      	{      			
+						        xtype: 'combo',
+						        id: 'portfolioname',
+						        fieldLabel: "Portfolio Name",
+						        hiddenName: 'ddi_portfolioname',						       
+						        triggerAction: "all",
+						        loadingText: "Loading...",
+						        emptyText: "Select a Portfolio Name...",
+						        selectOnFocus:true,
+						        store: myPortfolioStore,
+						        mode:'local',
+						        displayField: "Name",
+						        valueField: "Key",
+						        forceSelection: true,
+						        editable: false,
+						        listeners: 
+						          { select: 
+						          		{ fn:function(combo, record, index)
+						                {
+						                	//alert('Company_Key2>'+record.get('Company_Key'));	
+						                  //Ext.getCmp('portfolionumber').clearValue();
+						                  Ext.getCmp('portfolionumber').setValue(record.get('Number'));
+						                  Ext.getCmp('fundname').clearValue();
+						                  Ext.getCmp('unitclass').clearValue();	
+						                  Ext.getCmp('transactiontype').clearValue();	
+						                  myFundStore.load({params:{portfolioKey: this.value}});						                  
+						                  myFundMask.show();	
+						                  myTransactionTypeStore.load({params:{companyKey: record.get('Company_Key')}});
+    													myTransactionHistoryMask.show();
+						                }
+						          		}  
+						          }							        
+						        
+						      }	,
+						      {							      	
+						        xtype: 'combo',
+						        id: 'portfolionumber',
+						        fieldLabel: "Portfolio Number",
+						        hiddenName: 'ddi_portfolionumber',						       
+						        triggerAction: "all",
+						        loadingText: "Loading...",
+						        emptyText: "Select a Portfolio Number...",
+						        selectOnFocus:true,
+						        store: myPortfolioStore,
+						        mode:'local',
+						        displayField: "Number",
+						        valueField: "Number",
+						        forceSelection: true,
+						        editable: false,
+						        listeners: 
+						          { select: 
+						          		{ fn:function(combo, record, index)
+						                {				                 			                  
+						                	//alert('Company_Key1>'+record.get('Company_Key'));			
+						                  //Ext.getCmp('portfolioname').clearValue();
+						                  Ext.getCmp('portfolioname').setValue(record.get('Key'));
+						                  Ext.getCmp('fundname').clearValue();	
+						                  Ext.getCmp('unitclass').clearValue();	
+						                  Ext.getCmp('transactiontype').clearValue();	
+						                  myFundStore.load({params:{portfolioNumber: this.value}});						                  
+						                  myFundMask.show();	
+						                  myTransactionTypeStore.load({params:{companyKey: record.get('Company_Key')}});
+    													myTransactionHistoryMask.show();					                 
+						                }
+						          		}  
+						          }
+					      	}	,					
+									{      			
+						        xtype: 'combo',
+						        id: 'fundname',
+						        fieldLabel: 'Fund Name',
+						        hiddenName: 'ddi_fund',
+						        emptyText: 'Select a Portfolio First...',
+						        store:myFundStore,		       
+						        displayField: 'Fund_Desc',
+						        valueField: 'Fund_Key',
+						        selectOnFocus: true,
+						        mode: 'local',
+						        typeAhead: true,
+						        editable: false,
+						        triggerAction: 'all',
+						        //value: 'GROASIA',
+						        listeners: 
+						          { select: 
+						          		{ fn:function(combo, value)
+						                {
+						                  Ext.getCmp('unitclass').clearValue();						                  
+						                  myUnitClassStore.load({params:{fundKey: this.value}});						                 
+						                  myUnitClassMask.show();					                  
+						                }
+						          	}  
+						          }
+						      },						      
+									{							      	
+						        xtype: 'combo',
+						        id: 'unitclass',
+						        fieldLabel: "Unit Class",
+						        hiddenName: 'ddi_unitclass',
+						        name: "name",
+						        triggerAction: "all",
+						        loadingText: "Loading...",
+						        emptyText: "Select a Fund first...",
+						        selectOnFocus:true,
+						        store: myUnitClassStore,
+						        mode:'local',
+						        displayField: "Desc",
+						        valueField: "Key",
+						        forceSelection: true,
+						        editable: false
+					      	}					      	      
+																					
+								]
+							},							
+							{	
+								columnWidth:.5,
+								layout: 'form',
+								items: 
+								[		
+								
+									{      			
+						        xtype: 'combo',						        
+						        id: 'transactiontype',
+						        fieldLabel: "Transaction Type",
+						        hiddenName: 'ddi_transactiontype',						       
+						        triggerAction: "all",
+						        loadingText: "Loading...",
+						        emptyText: "Select a Transaction Type...",
+						        selectOnFocus:true,
+						        store: myTransactionTypeStore,
+						        mode:'local',
+						        displayField: "Desc",
+						        valueField: "Desc",
+						        forceSelection: true,
+						        editable: false
+						      }	,		
+						      {
+											xtype: 'textfield',
+											id: 'contractnumber',
+											fieldLabel: 'Contract Number',																					
+											anchor:'95%',
+											width:120,
+											allowBlank:true
+									},	
+									{
+						      	xtype: 'datefield',
+						      	id: 'datefrom',
+										fieldLabel: 'Date From',
+										name: 'dateFrom',					        
+						        vtype: 'daterange',
+						        endDateField: 'dateto', // id of the end date field
+						        emptyText: "DD/MM/YYYY",
+						        anchor:'95%',
+										width:120,
+										format:'d-M-Y',
+										allowBlank:true,
+										editable: false
+						      },
+						      {
+						      	xtype: 'datefield',
+						      	id: 'dateto',
+										fieldLabel: 'Date To',
+										name: 'dateTo',						        
+						        vtype: 'daterange',
+						        startDateField: 'datefrom', // id of the start date field
+						        emptyText: "DD/MM/YYYY",
+						        anchor:'95%',
+										width:120,
+										format:'d-M-Y',
+										allowBlank:true,
+										editable: false
+						      }	
+									
+								]
+							}
+						]
+					}					
+				], //items
+		    buttons: 
+		    [
+		    	{
+            text: 'Filter',
+            handler: function()
+            {
+                if(myTransactionHistorySearchPanel.getForm().isValid())
+                {
+                	myTransactionHistoryStore.load
+                	(
+                		{
+                				params:
+                				{
+                						start:0, 
+                						limit:Ext.getCmp('pTransactionHistoryBar').pageSize,
+                						portfolioNumber: Ext.getCmp('portfolionumber').value,		                        
+		                        portfolioKey: Ext.getCmp('portfolioname').value,
+                						fundKey: Ext.getCmp('fundname').value,		                        
+		                        unitClassKey: Ext.getCmp('unitclass').value,		                        
+		                        transactionType: Ext.getCmp('transactiontype').value,
+		                        contractNumber: Ext.getCmp('contractnumber').getValue(),
+		                        sEffDateFrom: Ext.getCmp('datefrom').getValue(),
+		                        sEffDateTo: Ext.getCmp('dateto').getValue()	                       
+
+                				}
+                		}
+                	);	
+                	
+                	
+                }
+            }
+        	},
+        	{
+            text: 'Reset',
+            handler: function()
+            {
+            		Ext.getCmp('dateto').setValue('31/12/2100');
+                Ext.getCmp('datefrom').setValue('01/01/1900');
+                myTransactionHistorySearchPanel.getForm().reset();
+                
+                myTransactionHistoryStore.load({params:{start:0, limit:Ext.getCmp('pTransactionHistoryBar').pageSize}});		
+								myTransactionHistoryMask.show();
+            }
+        	}
+        ]
+
+
+    }
+  ); // end of Ext.FormPanel
+    
+     
+    
+  //////////////////////////////////////////////////////////////////
+    
+    	// create the Data Store
+	 myTransactionHistoryStore = new Ext.data.Store
+	 (
+	 	{
+			// load using HTTP
+			proxy : new Ext.data.HttpProxy
+			(
+				{																
+					method: 'GET',
+					prettyUrls: false,
+					url: varBaReportCtractsURL			
+				}				
+			),
+		remoteSort:true,		
+		sortInfo: {field: "OrderDate", direction: "DESC" },	
+		// the return will be XML, so lets set up a reader
+		reader: new Ext.data.XmlReader
+		(
+			{
+			   // records will have an "Item" tag
+			   record: 'List',
+			   id: '>CtractNo',
+			   totalProperty: 'totalRecords'
+		   }, 
+			   [
+				   // set up the fields mapping into the xml doc
+				   // The first needs mapping, the others are very basic
+								{name: 'CtractNo'			      , mapping: '>CtractNo'},
+								{name: 'OrderDate' 					, mapping: '>OrderDate'},
+								{name: 'EffDate'						, mapping: '>EffDate'},
+								{name: 'SFund_Desc'					, mapping: '>SFund>Desc'},
+								{name: 'NoUnit'							, mapping: '>NoUnit'},
+								{name: 'Price'							, mapping: '>Price'},
+								{name: 'SGross'							, mapping: '>SGross'},
+								{name: 'Type_Desc'					, mapping: '>Type>Desc'},
+								{name: 'CtStatus_Desc'			, mapping: '>CtStatus>Desc'},
+								{name: 'RptTranCodeDesc'		, mapping: '>RptTranCodeDesc'},
+								{name: 'RptStatusDesc'			, mapping: '>RptStatusDesc'},
+								
+								{name: 'SLoadAmt'						, mapping: '>SLoadAmt'},
+								{name: 'SFundManagerFee'		, mapping: '>SFundManagerFee'},
+								{name: 'STax'								, mapping: '>STax'},
+								{name: 'SCommission'				, mapping: '>SCommission'},
+								{name: 'SLoadDiscount'			, mapping: '>SLoadDiscount'},
+								{name: 'SFundMgrDiscount'		, mapping: '>SFundMgrDiscount'},
+								
+								//{name: 'Fees'								, mapping: '>SLoadAmt'},
+								//{name: 'FeeDiscount'				, mapping: '>SFundMgrDiscount'},								
+								{name: 'TotalFees'						, mapping: '>TotalFees'},
+								{name: 'TotalFeeDiscount'			, mapping: '>TotalFeeDiscount'},								
+								{name: 'SUnitClass_Desc'       , mapping: '>SUnitClass>Desc'}  
+								
+								
+			   ]
+		   ),
+		   listeners: 
+		   {
+		   	load: function()
+		   	{
+		   		this.loaded = true;		 		   		  		
+		   	}
+		  }		   
+		}
+	);
+	
+	 myTransactionHistoryStore.on
+	 ('beforeload', function(store)
+		 	{
+				store.baseParams = 
+				{							
+					portfolioNumber: Ext.getCmp('portfolionumber').value,		                        
+          portfolioKey: Ext.getCmp('portfolioname').value,
+					fundKey: Ext.getCmp('fundname').value,		                        
+          unitClassKey: Ext.getCmp('unitclass').value,		                        
+          transactionType: Ext.getCmp('transactiontype').value,
+          contractNumber: Ext.getCmp('contractnumber').getValue(),
+          sEffDateFrom: Ext.getCmp('datefrom').getValue(),
+          sEffDateTo: Ext.getCmp('dateto').getValue()	                       
+
+				};
+	    }
+   );
+	// create the myTransactionHistoryGrid
+	var myTransactionHistoryGrid = new Ext.grid.GridPanel
+	(
+		{
+			//title: 'Search Results',
+			store: myTransactionHistoryStore,
+			columns: 
+							[
+								{id: 'CtractNo'				, header: 'Contract No'			, dataIndex : 'CtractNo'			  , width : 100, sortable : true, align: 'left'},
+								{id: 'OrderDate'			, header: 'Transaction Date', dataIndex : 'OrderDate'			  , width : 100, sortable : true, align: 'left'},
+								{id: 'EffDate'				, header: 'Value Date'			, dataIndex : 'EffDate'				  , width : 100, sortable : true, align: 'left'},								
+								{id: 'SFund_Desc'			, header: 'Fund Name'				, dataIndex : 'SFund_Desc'		  , width : 120, sortable : true, align: 'left'},
+								{id: 'SUnitClass_Desc', header: 'Unit Class'			, dataIndex : 'SUnitClass_Desc'	, width : 80,  sortable : true, align: 'left'},
+								{id: 'NoUnit'					, header: 'Units'						, dataIndex : 'NoUnit'				  , width : 100, sortable : true, align: 'right'},
+								{id: 'Price'					, header: 'Unit Price'			, dataIndex : 'Price'					  , width : 100, sortable : true, align: 'right'},
+								{id: 'SGross'					, header: 'Amount($)'				, dataIndex : 'SGross'				  , width : 100, sortable : true, align: 'right'},//,renderer: 'usMoney'
+								{id: 'RptTranCodeDesc', header: 'Trans Type'			, dataIndex : 'RptTranCodeDesc'	, width : 100, sortable : true, align: 'left'},
+								{id: 'RptStatusDesc'	, header: 'Status'					, dataIndex : 'RptStatusDesc'		, width : 100, sortable : true, align: 'left'}
+								
+							],
+			
+			//autoExpandColumn: 'priceDate',
+	   	renderTo:'transactionSummaryResultsGrid',			
+			//autoExpandColumn: 'SFund_Desc',
+   		autoWidth: true,
+	   	autoHeight:true,
+	   	stripeRows: true,
+	    sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
+			viewConfig: {emptyText: 'No records to display.'},			
+			bbar: new Ext.PagingToolbar
+					(
+						{
+							id : 'pTransactionHistoryBar',								
+							displayInfo: true,
+							pageSize:10,	
+							displayMsg: 'Displaying {0} - {1} of {2}',
+							emptyMsg: "No items to display",
+							store: myTransactionHistoryStore,
+							plugins: [new Ext.ux.PageSizePlugin()]
+					 	}
+					)	
+		}
+	);	
+	myTransactionHistoryGrid.getBottomToolbar().refresh.hide();	
+	
+	//////////////myTransactionHistoryGrid Events////////////////////////////	
+			
+			myTransactionHistoryGrid.getSelectionModel().on
+			(
+				'rowselect', function(sm, rowIdx, r) 
+				{
+					//------popup panel--------------------
+					
+					myTransactionDetailsPopupPanel.getForm().items.get('idorderdate').setValue(r.data.OrderDate);
+					myTransactionDetailsPopupPanel.getForm().items.get('idrptstatusdesc').setValue(r.data.RptStatusDesc);
+					myTransactionDetailsPopupPanel.getForm().items.get('idnounit').setValue(r.data.NoUnit);
+					myTransactionDetailsPopupPanel.getForm().items.get('idprice').setValue(r.data.Price);	
+					myTransactionDetailsPopupPanel.getForm().items.get('idsgross').setValue(r.data.SGross);
+					myTransactionDetailsPopupPanel.getForm().items.get('idrpttrancodedesc').setValue(r.data.RptTranCodeDesc);
+					myTransactionDetailsPopupPanel.getForm().items.get('idctractno').setValue(r.data.CtractNo);
+					myTransactionDetailsPopupPanel.getForm().items.get('idtotalfees').setValue(r.data.TotalFees);	
+					myTransactionDetailsPopupPanel.getForm().items.get('idtotalfeediscount').setValue(r.data.TotalFeeDiscount);
+					myTransactionDetailsPopupPanel.getForm().items.get('ideffdate').setValue(r.data.EffDate);
+					
+					//---------------------------------
+					//alert('CtractNo>'+r.data.CtractNo);
+					//JQuery Link Panel//
+					$('#transaction').dialog('open');
+					//$('#holdings').dialog('open');
+
+				}
+		  );	
+		  
+		  
+	
+	  //////////////Transaction Details Popup Panel////////////////////////////	
+   		
+			myTransactionDetailsPopupPanel = new Ext.FormPanel
+			(
+				{	    	
+					renderTo: 'TransactionDetailsPopupPanel',					
+					labelWidth: 100, // label settings here cascade unless overridden
+		      frame:true,
+		      bodyStyle:'padding:5px 5px 0',      
+		      width: 750,	
+		      id:'idTransactionDetailsPopup',
+		      listeners: 
+					{
+				   	actioncomplete: function()
+				   	{				   		
+				   		this.loaded = true;	
+				   	}
+				  },	
+					
+					items: 
+					[
+						{
+							layout: 'column',
+							items:
+							[
+								{	
+									columnWidth:.45,
+									layout: 'form',
+									items:
+									[												
+										{							      	
+							        xtype: 'textfield',
+							        id: 'idorderdate',
+							        fieldLabel: "Transaction Date",							        
+							        //name: 'Account.Number',
+							        //anchor:'90%',
+											width:150,
+											readOnly: true					        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idrptstatusdesc',
+							        fieldLabel: "Status",							        
+							        //name: 'Account.IncomeMethod.Desc',
+							        //anchor:'90%',
+											width:150,
+											readOnly: true						        
+							        					        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idnounit',
+							        fieldLabel: "Units",							        
+							        //name: 'Account.Number',
+							        //anchor:'90%',
+											width:150,
+											readOnly: true					        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idprice',
+							        fieldLabel: "Unit Price",							        
+							        //name: 'Account.IncomeMethod.Desc',
+							        //anchor:'90%',
+											width:150,
+											readOnly: true						        
+							        					        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idsgross',
+							        fieldLabel: "Amount($)",							        
+							        //name: 'Account.IncomeMethod.Desc',
+							        //anchor:'90%',
+											width:150,
+											readOnly: true						        
+							        					        
+						      	}					
+						      											
+									]
+								},
+								{								    
+								    columnWidth: .10,
+								    html: '&nbsp;&nbsp;&nbsp;&nbsp;'
+								},
+								{
+									columnWidth:.45,
+									layout: 'form',
+									items:
+									[
+										{							      	
+							        xtype: 'textfield',
+							        id: 'idrpttrancodedesc',
+							        fieldLabel: "Contract Type",							       
+							        //name: 'Account.Status.Desc'	,
+							        //anchor:'60%',
+											width:150,
+											readOnly: true								        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idctractno',
+							        fieldLabel: "Contract No",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:150,
+											readOnly: true		
+							        
+						      	},
+						      	{							      	
+							        xtype: 'label',							        
+							        fieldLabel: "Fees & Adjustments",							        
+											width:150																	        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idtotalfees',
+							        fieldLabel: "Fees",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:150,
+											readOnly: true		
+							        
+						      	}	,
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'idtotalfeediscount',
+							        fieldLabel: "Fee Discount",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        //anchor:'60%',
+											width:150,
+											readOnly: true									        
+						      	},
+						      	{							      	
+							        xtype: 'textfield',
+							        id: 'ideffdate',
+							        fieldLabel: "Value Date",							       
+							        //name: 'Portfolio.ReinvestSplit',
+							        anchor:'60%',
+											width:150,
+											readOnly: true		
+							        
+						      	}										
+									]								
+								}								
+							]
+						}									
+						
+					]
+					
+					
+		    }
+		  );	
+  
+  ///////////////////masking/////////////////////////////////
+  
+  var myPortfolioMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Loading Portfolios...",
+				removeMask:true,			
+				store:myPortfolioStore
+		}
+	);
+	
+	var myFundMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Loading Funds...",
+				removeMask:true,			
+				store:myFundStore
+		}
+	);
+  
+  var myTransactionTypeMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Loading Transaction Types...",
+				removeMask:true,			
+				store:myTransactionTypeStore
+		}
+	);
+	
+	var myUnitClassMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Loading Unit Classes...",	
+				removeMask:true,			
+				store:myUnitClassStore
+		}
+	);
+	
+  var myTransactionHistoryMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Please wait...",	
+				removeMask:true,			
+				store:myTransactionHistoryStore
+		}
+	);
+	
+  ///////////////default setup/////////////////////////////
+  
+ 
+	 if(!myPortfolioStore.loaded)
+    {
+    	myPortfolioStore.load();
+    	myPortfolioMask.show();
+    }
+       
+    
+    //if(!myFundStore.loaded)
+	 // {
+	  //	myFundStore.load();
+	 // 	myFundMask.show();
+	 // }
+    
+    //if(!myTransactionTypeStore.loaded)
+    //{
+    //	myTransactionTypeStore.load();
+    //	myTransactionHistoryMask.show();
+    //}
+    
+	  if(!myTransactionHistoryStore.loaded)
+		{
+			myTransactionHistoryStore.load({params:{start:0, limit:Ext.getCmp('pTransactionHistoryBar').pageSize}});		
+			myTransactionHistoryMask.show();
+		}
+	
+	//////////////////Test//////////////////////////
+					
+	   
+ 
+});
+
+</script>
+  
+
+<div id="transactionHistorySearch"></div><br>
+<div id="transactionSummaryResultsGrid"></div>
+
+
+<div id="transaction" title="Transaction Details" >
+	<div id="TransactionDetailsPopupPanel"></div><!-- DONE -->			
+</div>
+
+
+</body>
+</html>

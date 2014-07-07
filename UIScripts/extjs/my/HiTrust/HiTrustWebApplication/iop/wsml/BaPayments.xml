@@ -1,0 +1,28 @@
+<DST>
+	<HiTrust>
+		<businessObject>BaPayments</businessObject>
+		<operation>SEARCH</operation>
+		<user>@@user@</user>
+		<password>@@pass@</password>
+		<request>
+			<data>
+			
+			<IncomeKey.Key>@@INCOMEKEY@</IncomeKey.Key>                               
+			<MaxRows>@@maxRecords@</MaxRows>								
+			</data>
+		</request>
+		<response>
+			<Key/>
+			<IncomeKey.Key/>
+			<IncomeKey.IncMethod.Desc/>
+			<IncomeKey.IncMethod.Redistribution/>
+			<SettleAc.Key/>
+			<SettleAc.Number/>
+			<SettleAc.Name/>
+			<SettleAc.SortCode.BSBCode/>
+			<Type.Desc/>
+			<Date/>
+			<Reference/>
+		</response>
+	</HiTrust>
+</DST>

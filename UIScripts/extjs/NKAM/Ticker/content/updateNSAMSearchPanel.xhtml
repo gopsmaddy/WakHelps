@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+        >
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.nsamUpdateSearch_Title}
+    </ui:define>
+    <ui:define name="workArea">
+
+        <h:form id="idFormChangeNSAMSearch" onsubmit="document.body.style.cursor='wait';">
+
+
+            <ui:fragment rendered="#{UpdateNSAMSearch.searchShow}">
+                <table class="acTable">
+
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.nsamUpdateSearch_Device}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:selectOneMenu  value="#{UpdateNSAMSearch.uiFilterData.deviceId}">
+                                <f:selectItems value="#{UpdateNSAMSearch.listDeviceType}"/>
+                            </h:selectOneMenu>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.nsamUpdateSearch_BE}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:selectManyListbox   value="#{UpdateNSAMSearch.uiFilterData.beIds}" size="6">
+                                <f:selectItems value="#{UpdateNSAMSearch.listBusinessEntity}" />
+                            </h:selectManyListbox  >
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.nsamUpdateSearch_NCRS}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:selectOneMenu  value="#{UpdateNSAMSearch.uiFilterData.ncrsId}">
+                                <f:selectItems value="#{UpdateNSAMSearch.listNcrs}"/>
+                            </h:selectOneMenu>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.nsamUpdateSearch_RVendor}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:selectOneMenu  value="#{UpdateNSAMSearch.uiFilterData.readerVendorId}">
+                                <f:selectItems value="#{UpdateNSAMSearch.listReaderVendor}"/>
+                            </h:selectOneMenu>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.nsamUpdateSearch_EVendor}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:selectOneMenu  value="#{UpdateNSAMSearch.uiFilterData.equipmentVendorId}">
+                                <f:selectItems value="#{UpdateNSAMSearch.listEquipmentVendor}"/>
+                            </h:selectOneMenu>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.nsamUpdateSearch_S9AppAction}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:selectOneMenu  value="#{UpdateNSAMSearch.uiFilterData.s9AppAction}">
+                                <f:selectItems value="#{UpdateNSAMSearch.listS9AppActions}"/>
+                            </h:selectOneMenu>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.nsamUpdateSearch_MSAAppAction}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:selectOneMenu  value="#{UpdateNSAMSearch.uiFilterData.msaAppAction}">
+                                <f:selectItems value="#{UpdateNSAMSearch.listMSAAppActions}"/>
+                            </h:selectOneMenu>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.nsamUpdateSearch_NSAM}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:inputText id="chipId" value="#{UpdateNSAMSearch.uiFilterData.chipId}"
+                                         minimum="16"
+                                         maxlength="16"
+                                         styleClass="form-input-text"
+                                         required="false"
+                                         label="Chip Id" 
+                                         onblur="this.value=this.value.toUpperCase();" 
+                                         autocomplete="off">
+                                <f:validator validatorId="hexValueValidator" />
+                                <f:validateLength minimum="16" maximum="16" />
+                            </h:inputText>
+                            <br/> <h:message for="chipId" styleClass="warn"/>
+                        </td>
+                    </tr>
+
+                    <!--<h:inputText id="testt" value="#{UpdateNSAMSearch.uiFilterData.deviceId}" />-->
+                </table>
+                <h:selectOneMenu  value="#{UpdateNSAMSearch.limit}">
+                    <f:selectItems value="#{UpdateNSAMSearch.listNoOfRecords}"/>
+                </h:selectOneMenu>
+                &#160;
+                |
+                &#160;
+                <h:selectBooleanCheckbox value="#{UpdateNSAMSearch.showDetails}"/>
+                Show Details
+                &#160;
+                |
+                &#160;
+                <h:commandButton  id="idSubmit" action="#{UpdateNSAMSearch.listValidNSAMs}"  value="#{msg.nsamUpdateSearch_Search}" />
+                &#160;
+                <!--h:commandButton  id="idReset" action="#{UpdateNSAMSearch.reset}"  value="Reset" /-->
+                <!--<h:commandLink action="#{UpdateNSAMSearch.listValidNSAMs}">#{msg.nsamUpdateSearch_Search}</h:commandLink>-->
+            </ui:fragment>
+            &#160;
+            <!--<h:commandLink action="#{nsamRequestPane}" immediate="true">#{msg.cancelLink}</h:commandLink>-->
+        </h:form>
+        <h:messages globalOnly="true" layout="table" styleClass="warn"
+                    infoClass="info" warnClass="warn"
+                    errorClass="warn"
+                    fatalClass="warn"/>
+
+        <br/>
+
+
+
+    </ui:define>
+</ui:composition>
+</body>
+</html>

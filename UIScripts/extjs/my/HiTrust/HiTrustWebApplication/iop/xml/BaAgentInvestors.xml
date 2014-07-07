@@ -1,0 +1,50 @@
+<DST>
+	<user>AG000009</user>
+	<password>Passw0rd</password>
+	<response>
+		<List>
+			<PortOwner>
+				<Key>0000000010</Key>
+				<RelNo>CI001022</RelNo>
+				<Name>Asset Union Corporation</Name>
+				<GivenName></GivenName>
+				<Company>
+					<Key>0000000001</Key>
+				</Company>
+			</PortOwner>
+		</List>
+		<List>
+			<PortOwner>
+				<Key>0000000015</Key>
+				<RelNo>IN000004</RelNo>
+				<Name>Beddeley</Name>
+				<GivenName>Aaron</GivenName>
+				<Company>
+					<Key>0000000001</Key>
+				</Company>
+			</PortOwner>
+		</List>
+		<List>
+			<PortOwner>
+				<Key>0000000040</Key>
+				<RelNo>CI001025</RelNo>
+				<Name>DST Cooperation</Name>
+				<GivenName></GivenName>
+				<Company>
+					<Key>0000000001</Key>
+				</Company>
+			</PortOwner>
+		</List>
+		<List>
+			<PortOwner>
+				<Key>0000000041</Key>
+				<RelNo>CI001026</RelNo>
+				<Name>Australian Security Board</Name>
+				<GivenName></GivenName>
+				<Company>
+					<Key>0000000001</Key>
+				</Company>
+			</PortOwner>
+		</List>
+	</response>
+</DST>

@@ -1,0 +1,19 @@
+<DST>
+ <HiTrust>
+<businessObject>BaExtUserPwdResets</businessObject>
+  <user>@@nonSecureAdminUsername@</user>
+  <password>@@nonSecureAdminPassword@</password>
+  <request><data>
+<LoginID>@@loginID@</LoginID>				
+<EmailAddress>@@emailAddress@</EmailAddress>		
+<SignificantDate>@@significantDate@</SignificantDate>			
+<SecretIDWord>@@secretIdWord@</SecretIDWord>			
+<NewPwd>@@newPassword@</NewPwd>					
+<OldPwd>@@confirmPassword@</OldPwd>					
+<AuthenticationCode>@@authenticationCode@</AuthenticationCode> 
+</data>
+<SAVE/>
+</request>
+ <response></response>
+ </HiTrust>
+</DST>         

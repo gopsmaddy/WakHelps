@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>ExtJS Table Sample</title>
+			<link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/ext-all-debug.js" type="text/javascript"></script>
+</head>
+<body>
+<!-- http://xantorohara.blogspot.com/2008/02/xml-elements-and-attributes-in-extjs.html -->
+<script type="text/javascript">
+    Ext.onReady(function() 
+    {
+        var reader = new Ext.data.XmlReader
+        (
+        	{record: "item"},[{name: "id", mapping:"@id"}, "code","name"]
+        );
+
+        var store = new Ext.data.Store
+        (
+        	{
+        		url: "items.xml", 
+        		reader: reader
+        	}
+        );
+
+        var columnModel = new Ext.grid.ColumnModel
+        (
+	        [
+		        {header: "Id", dataIndex: "id"},
+		        {header: "Code", dataIndex: "code"},
+		        {header: "Name", dataIndex: "name"}
+	        ]
+        );
+
+        var table = new Ext.grid.GridPanel
+        (
+	        {
+	            store: store,
+	            height: 200,
+	            cm: columnModel,
+	            renderTo: "table"
+	        }
+        );
+        store.load();
+    });
+</script>
+
+<div id="table" style="width:300px; height:200px;"></div>
+</body>
+</html>

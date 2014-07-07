@@ -1,0 +1,22 @@
+
+<DST>  
+ <HiTrust>    
+  <businessObject>BaCommissionSummarys</businessObject>             
+  <operation>SEARCH</operation>    
+    <user>@@user@</user>
+    <password>@@pass@</password>
+ <request>  
+  <data>  
+   <Agent.Key>@@profileAgentKey@</Agent.Key>
+   <MaxRows>@@maxRecords@</MaxRows>
+   <Processed>true</Processed>
+  </data>
+ </request>  
+ <response>  
+  <Payment.Key/>
+  <PaymentDate/>
+  <Currency.ISOCode/>
+  <Payment.SettleAmount/>
+ </response>
+</HiTrust>
+</DST>

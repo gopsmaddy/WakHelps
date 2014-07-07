@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+            <!--<script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base.js" type="text/javascript"></script>
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all.js" type="text/javascript"></script>-->
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all-debug.js" type="text/javascript"></script>
+	    
+       <script type="text/javascript" src="my-sample-grid.js"></script>
+
+
+
+	
+<script type="text/javascript">
+Ext.Ajax.timeout = 60000;
+Ext.onReady(function(){	
+
+
+	
+	var investorSummaryTabs = new Ext.TabPanel({
+      renderTo: 'tabs',
+      activeTab: 0,
+      width:600,
+      height:250,
+      plain:true,
+			tabMarginTop: 30,	/* Push the tab strip down 30px from top. If not set, defaults to 15.*/
+			bodyStyle: 'padding: 10px',
+        defaults:{autoScroll: true},
+        items:[{
+						title: 'Funds Under Management',
+						items: new SampleGrid([0, 1, 2])					
+					},{
+						title: 'Taxation Details',
+						items: new SampleGrid([0, 1, 2])
+					},{
+						title: 'Contact Details',
+						items: new SampleGrid([0, 1, 2])
+					},{
+						title: 'Bank Accounts',
+						items: new SampleGrid([0, 1, 2])
+					}
+				]
+    });
+	
+	
+
+});
+
+
+</script>
+</head>
+<body>
+<div id="tabs"></div>
+
+</body>
+	
+</html>

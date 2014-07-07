@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+        >
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.persoByChipIDTitle}
+    </ui:define>
+    <ui:define name="workArea">
+        <h:form onsubmit="document.body.style.cursor='wait';">
+                <table  border="1">
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.change_StatusPane_chipID}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:inputText id="chipIDColumn" value="#{StatusPaneChange.chipStatusUI.chipID}"
+                                         maxlength="16"
+                                         styleClass="form-input-text"
+                                         required="true"
+                                         validator="#{Validators.validateHexadecimalString}" 
+					 onblur="this.value=this.value.toUpperCase();" 
+                                         autocomplete="off" >
+					<f:validateLength minimum="16" maximum="16" />
+                            </h:inputText>	
+                            <br/><h:message for="chipIDColumn" styleClass="warn"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.change_StatusPane_SamType}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:selectOneRadio id="SamType" value="#{StatusPaneChange.chipStatusUI.samType}" required="true">
+                                <f:selectItem itemLabel="S2" itemValue="01"/>
+                                <f:selectItem itemLabel="S9" itemValue="02"/>
+                                <f:selectItem itemLabel="NSAM" itemValue="03"/>
+                            </h:selectOneRadio>
+                            <h:message for="SamType" styleClass="warn"/>
+                        </td>
+                    </tr>
+
+                </table>
+                <h:commandLink id="processChipIdDevice"  action="#{StatusPaneChange.viewPersoDataByChipId}">
+                        #{msg.details}
+                </h:commandLink>
+
+
+             &#160;
+
+            <!--<h:commandLink action="#{nsamPTO}" immediate="true">#{msg.cancelLink}</h:commandLink>-->
+        </h:form>
+                <h:messages globalOnly="true" layout="table" styleClass="warn"
+                    infoClass="info" warnClass="warn"
+                    errorClass="warn"
+                    fatalClass="warn"/>
+
+        <br/>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

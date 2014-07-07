@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+}
+html {
+    margin: 0;
+}
+
+#menu-bar {
+	float: left;
+    width: 12em;
+}
+
+#center {
+	margin-left: 12em;
+    margin-right: 1em;
+}
+
+#footer {
+    clear: both;
+    border-style: none;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 1px;
+    border-color: #000033;
+    color: rgb(0, 0, 51);
+    font-family: verdana,arial,helvetica,sans-serif;
+    font-size: 1.0em;
+    font-weight: normal;
+    font-style: italic;
+    text-align: center;
+    padding: 2px;
+    margin-top: 2em;
+}
+
+#header {
+    background: white url( ../common/img/logo.jpg ) no-repeat right ;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    padding-left: 3px;
+    margin-right: 0.3em;
+    margin-left: 0.3em;
+    color: rgb(35, 62, 122);
+    font-family: verdana,arial,helvetica,sans-serif;
+    font-size: 32px;
+    letter-spacing: -1px;
+}
+
+#info-bar {
+    background-color: rgb(230, 242, 251);
+    width: 100%;
+}
+
+.image-logo {
+    position: absolute;
+	right: 1em;
+}
+
+#titleText
+{
+    color: black;
+}
+
+#titleText h2
+{
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 100%;
+    border-style: solid;
+    border-bottom-width: 2px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-color: #A9A9A9;
+
+}
+
+#titleText p
+{
+    font-size: 1em;
+    font-weight: normal;
+}

@@ -1,0 +1,44 @@
+/*
+ * Styles common to all STP web modules
+ */
+ 
+/*
+ * Re-factored stylings for version 4.0
+ */
+body {
+    color: black;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 70%;
+    font-weight: normal;
+}
+ 
+/* Text - for emphasis */
+.text-emph {
+    font-weight: bold;
+}
+
+/* No wrapping on spaces between words in table cells etc */
+.text-nowrap {
+    white-space: nowrap;
+} 
+
+/* General - for display */
+.disp {
+    color: black;
+}
+ 
+/* General - for warning */
+.warn {
+    color: red;
+}
+ 
+/* General - for reassurance */
+.reassure {
+    color: #00EE00;
+}
+ 
+/* General - for information */
+.info {
+    color: blue;
+}
+

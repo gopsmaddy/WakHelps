@@ -1,0 +1,23 @@
+<DST>  
+ <HiTrust>    
+  <businessObject>BaSCommSplits</businessObject>             
+  <operation>SEARCH</operation>    
+  <user>@@user@</user>
+   <password>@@pass@</password>
+ <request>  
+  <data>  
+   <Agent.Key>@@profileAgentKey@</Agent.Key>
+   <MaxRows>@@maxRecords@</MaxRows>
+   <AgentPay.AgentPayKey>@@agentPayKey@</AgentPay.AgentPayKey> 
+  </data>
+ </request>  
+ <response> 
+ 	<AgentPay.AgentPayKey/> 
+  <Ctract.CtractNo/>
+  <CommPercent/>
+  <FeeType.Desc/>
+  <AgentCommAmt/>
+  <CtractCommAmt/>
+ </response>
+</HiTrust>
+</DST>

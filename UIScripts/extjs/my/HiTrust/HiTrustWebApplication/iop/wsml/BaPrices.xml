@@ -1,0 +1,30 @@
+<DST>
+	<HiTrust>
+		<businessObject>BaPrices</businessObject>
+		<operation>SEARCH</operation>
+		<user>@@user@</user>
+		<password>@@pass@</password>
+		<request>
+			<data>
+				<MaxRows>@@maxRecords@</MaxRows>
+                                <SEffDateTo>@@sEffDateTo@</SEffDateTo>
+				<SEffDateFrom>@@sEffDateFrom@</SEffDateFrom>					
+							
+			</data>
+		</request>
+		<response>
+			<Key />
+			<Fund.Key/>				
+			<Fund.Desc />
+			<Fund.Code />			
+			<AuthDate />
+			<PriceDate />
+			<NAVPrice />
+			<BidPrice />
+			<OfferPrice />			
+			<UnitClass.Key />
+			<UnitClass.Desc />
+			<UnitClass.Code />			
+		</response>
+	</HiTrust>
+</DST>

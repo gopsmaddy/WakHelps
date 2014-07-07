@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom"
+      xmlns:t="http://myfaces.apache.org/tomahawk" >
+
+
+<body>
+
+
+
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.certificate_Title}
+    </ui:define>
+    <ui:define name="workArea">
+        <f:view>
+            <h:form id="Certificate" enctype="multipart/form-data" onsubmit="document.body.style.cursor='wait';">
+                <h:panelGrid columns="3" border="0" cellspacing="5">
+                    <h:outputLabel for="SelectedFileName" value="#{msg.certificate_SelectFile}: "/>
+                    <t:inputFileUpload id="SelectedFile" value="#{DeviceListPane.uploadFile}" storage="file" 
+                                       onchange="checkFileSize(this)"  onkeypress="info()"
+                                       required="true" label="Certificate" >
+                    </t:inputFileUpload>
+                    <h:message for="SelectedFile" styleClass="warn" />
+                    <h:outputText value=" "/>
+                </h:panelGrid>
+                <h:commandButton value="Submit"
+                                 action="#{DeviceListPane.processCertificate}"
+                                 onclick="if (!confirm('Are you sure you want to process this request?')) return false"/>
+                <h:outputText value=" "/>                
+            </h:form>
+            <br/>
+            <span id="idUIErrorLogger" style="color: red;"></span>
+            <span id="idGlobalMessage">
+            <h:messages globalOnly="true" layout="table" styleClass="warn"
+                        infoClass="info" warnClass="warn"
+                        errorClass="warn"
+                        fatalClass="warn"/>
+			</span>
+
+            <br/>
+        </f:view>
+        
+        <SCRIPT LANGUAGE="JavaScript">   
+            function info()
+            {
+                alert("Direct entry is not permitted, please use Browse...");
+                
+            }
+        </SCRIPT>	        
+    </ui:define>
+</ui:composition>
+</body>
+</html>

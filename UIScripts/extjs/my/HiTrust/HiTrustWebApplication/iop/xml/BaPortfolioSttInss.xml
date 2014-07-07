@@ -1,0 +1,63 @@
+<DST>
+	<user>001IN000001</user>
+	<password>Passw0rd</password>
+	<response>
+		<List>
+			<Key>0000000013</Key>
+			<SettleInsType>
+				<Desc>Subscription</Desc>
+			</SettleInsType>
+			<SettleCurrency>
+				<Desc>United States Dollar</Desc>
+				<ISOCode>USD</ISOCode>
+			</SettleCurrency>
+			<SettleAccount>
+				<Key>0000000019</Key>
+				<Name>John Smith (USA Acc)</Name>
+				<Number>000 111 222</Number>
+				<SortCode>
+					<BSBCode>12-23-56</BSBCode>
+					<Bankname>HSBC</Bankname>
+				</SortCode>
+			</SettleAccount>
+		</List>
+		<List>
+			<Key>0000000014</Key>
+			<SettleInsType>
+				<Desc>Redemption</Desc>
+			</SettleInsType>
+			<SettleCurrency>
+				<Desc>United States Dollar</Desc>
+				<ISOCode>USD</ISOCode>
+			</SettleCurrency>
+			<SettleAccount>
+				<Key>0000000019</Key>
+				<Name>John Smith (USA Acc)</Name>
+				<Number>000 111 222</Number>
+				<SortCode>
+					<BSBCode>12-23-56</BSBCode>
+					<Bankname>HSBC</Bankname>
+				</SortCode>
+			</SettleAccount>
+		</List>
+		<List>
+			<Key>0000000015</Key>
+			<SettleInsType>
+				<Desc>Distribution</Desc>
+			</SettleInsType>
+			<SettleCurrency>
+				<Desc>United States Dollar</Desc>
+				<ISOCode>USD</ISOCode>
+			</SettleCurrency>
+			<SettleAccount>
+				<Key>0000000019</Key>
+				<Name>John Smith (USA Acc)</Name>
+				<Number>000 111 222</Number>
+				<SortCode>
+					<BSBCode>12-23-56</BSBCode>
+					<Bankname>HSBC</Bankname>
+				</SortCode>
+			</SettleAccount>
+		</List>
+	</response>
+</DST>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+        >
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.view_Title}
+    </ui:define>
+    <ui:define name="workArea">
+        <h:form onsubmit="document.body.style.cursor='wait';">
+
+            <ui:fragment rendered="#{!(StatusPaneChange.chipStatusUI.chipStatusRejected)}">
+                <table border="0">
+                    <tr>
+                        <td>
+                            <table class="acTable" border="0">
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamStatusPane_ChipID}</td>
+                                    <td class="panel-feature-form-enhanced-field-value">
+                                        <h:outputText id="cardIdentifierID" value="#{StatusPaneChange.chipStatusUI.cardIdentifierID}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamStatusPane_DeviceID}</td>
+                                    <td class="panel-feature-form-enhanced-field-value">
+                                        <h:outputText id="plasticID" value="#{StatusPaneChange.chipStatusUI.textualName}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamStatusPane_IssuingSystem}</td>
+                                    <td class="panel-feature-form-enhanced-field-value">
+                                        <h:outputText id="issuingSystem" value="#{StatusPaneChange.chipStatusUI.issuingSystem}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamStatusPane_ProductName}</td>
+                                    <td class="panel-feature-form-enhanced-field-value">
+                                        <h:outputText id="productName" value="#{StatusPaneChange.chipStatusUI.productName}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamStatusPane_ProductVersion}</td>
+                                    <td class="panel-feature-form-enhanced-field-value">
+                                        <h:outputText id="productVersion" value="#{StatusPaneChange.chipStatusUI.productVersion}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamStatusPane_Samtype}</td>
+                                    <td class="panel-feature-form-enhanced-field-value">
+                                        <h:outputText rendered="#{(StatusPaneChange.chipStatusUI.samType!=null)}" id="samType1" value="#{StatusPaneChange.chipStatusUI.samTypeName}"/>
+                                        <h:outputText rendered="#{(StatusPaneChange.chipStatusUI.samType==null)}" id="samType2" value="Unknown"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamStatusPane_ChipStatus}</td>
+                                    <td class="panel-feature-form-enhanced-field-value">
+                                        <h:outputText id="cardIdentifierChipStatus" value="#{StatusPaneChange.chipStatusUI.cardIdentifierChipStatus}"/>
+                                    </td>
+                                </tr>
+                                <ui:repeat id="cardPersoDataUI" value="#{StatusPaneChange.chipStatusUI.cardPersoNVData}" var="cardPersoData">
+                                    <ui:fragment id="cardPerso1"  rendered="#{cardPersoData.name!=null}">
+                                        <ui:fragment id="cardPlat2"  rendered="#{cardPersoData.name!='PANSequenceNumber'}">
+                                        <tr>
+                                            <td class="panel-feature-form-enhanced-field-name">#{cardPersoData.name}</td>
+                                            <td class="panel-feature-form-enhanced-field-value">
+                                                <h:outputText id="cardPersoName" value="#{cardPersoData.value}"/>
+                                            </td>
+                                        </tr>
+                                        </ui:fragment>
+                                    </ui:fragment>
+                                </ui:repeat>
+                                <ui:repeat id="cardPlatDataUI" value="#{StatusPaneChange.chipStatusUI.cardPlatformNVData}" var="cardPlatformData">
+                                  <ui:fragment id="cardPlatData"  rendered="#{cardPlatformData.name!=null}">
+                                    <ui:fragment id="cardPlat1"  rendered="#{cardPlatformData.name!='GP.CPLCEEPROM'}">
+                                        <tr>
+                                            <td class="panel-feature-form-enhanced-field-name">#{cardPlatformData.name}</td>
+                                            <td class="panel-feature-form-enhanced-field-value">
+                                                <h:outputText id="cardPlatName" value="#{cardPlatformData.value}"/>
+                                            </td>
+                                        </tr>
+                                    </ui:fragment>
+                                  </ui:fragment>
+                                </ui:repeat>
+
+                            </table>
+                        </td>
+
+                        <td>
+                            <table border="0">
+                                <ui:repeat id="businessAppDataUI" value="#{StatusPaneChange.chipStatusUI.businessApplications}" var="businessAppData">
+                                    <tr>
+                                        <td>
+                                            <table class="acTable">
+                                                <tr>
+                                                    <td class="panel-feature-form-enhanced-field-name">#{msg.businessAppID}</td>
+                                                    <td class="panel-feature-form-enhanced-field-name">
+                                                        <h:outputText id="baID" value="#{businessAppData.baID}" style="font-weight:bold"/>
+                                                    </td>
+                                                </tr>
+                                                <!--<tr>-->
+                                                <!--<td class="panel-feature-form-enhanced-field-name">#{msg.businessAppName}</td>-->
+                                                <!--<td class="panel-feature-form-enhanced-field-value">-->
+                                                <!--<h:outputText id="baName" value="#{businessAppData.baName}"/>-->
+                                                <!--</td>-->
+                                                <!--</tr>-->
+                                                <!--<tr>-->
+                                                <!--<td class="panel-feature-form-enhanced-field-name">#{msg.baLoadState}</td>-->
+                                                <!--<td class="panel-feature-form-enhanced-field-value">-->
+                                                <!--<h:outputText id="baLoadState" value="#{businessAppData.loadState}"/>-->
+                                                <!--</td>-->
+                                                <!--</tr>-->
+
+                                                <ui:repeat id="businessAppPersoDataUI" value="#{businessAppData.persoData}" var="businessAppPersoData">
+                                                    <ui:fragment id="businessAppUI"  rendered="#{businessAppPersoData.name!=null}">
+                                                    <tr>
+                                                            <td class="panel-feature-form-enhanced-field-name">#{businessAppPersoData.name}</td>
+                                                            <td class="panel-feature-form-enhanced-field-value" >
+                                                                <h:outputText id="baPersoData1" value="#{businessAppPersoData.value}"  />
+                                                            </td>
+
+                                                    </tr>
+                                                    </ui:fragment>
+                                                </ui:repeat>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+                                    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+                                </ui:repeat>
+                            </table>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </ui:fragment>
+
+            <!-- Chip Id rejected -->
+            <ui:fragment rendered="#{(StatusPaneChange.chipStatusUI.chipStatusRejected)}">
+                <table class="acTable">
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.nsamStatusPane_Description}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:outputText id="rejectDescription" value="#{StatusPaneChange.chipStatusUI.rejectDescription}"/>
+                        </td>
+                    </tr>
+                </table>
+            </ui:fragment>
+
+                <h:commandLink id="backLink"  action="nsamChipID">
+                    #{msg.backLink}
+                </h:commandLink>
+            &#160;
+
+        </h:form>
+        <h:messages globalOnly="true" layout="table" styleClass="warn"
+                    infoClass="info" warnClass="warn"
+                    errorClass="warn"
+                    fatalClass="warn"/>
+
+        <br/>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

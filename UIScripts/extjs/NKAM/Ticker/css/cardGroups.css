@@ -1,0 +1,25 @@
+/* How to display selected transaction types */
+.transTypeSelected {
+    border-style: solid;
+    border-color: gray;
+    border-width: 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+    font-family: "Courier New", "Courier New", Courier, monospace;
+    font-weight: bold;
+    color: black;
+    margin-right: 4px;
+}
+
+/* How to display unselected transaction types */ 
+.transTypeUnselected {
+    border-style: solid;
+    border-color: #e3dcdc;
+    border-width: 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+    font-family: "Courier New", "Courier New", Courier, monospace;
+    font-weight: bold;
+    color: #e3dcdc;
+    margin-right: 4px;
+}

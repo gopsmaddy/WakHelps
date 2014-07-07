@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom" >
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.nsamRequestPane_Title}
+    </ui:define>
+    <ui:define name="workArea">
+        <h:form id="requestNSAM" onsubmit="document.body.style.cursor='wait';">
+            <!--<ui:fragment rendered="#{!RequestPane.oracleConnected}">-->
+                <!--srry not connected to database-->
+            <!--</ui:fragment>-->
+            <ui:fragment rendered="#{RequestPane.oracleConnected}">
+            <table class="acTable">
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamRequestPane_PTO}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:selectOneMenu  value="#{RequestPane.requestPaneUI.ptoID}">
+                            <f:selectItems value="#{RequestPane.allPTO}" />
+                        </h:selectOneMenu>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamRequestPane_deviceName}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:selectOneMenu  value="#{RequestPane.requestPaneUI.deviceType}">
+                            <f:selectItems value="#{RequestPane.allDeviceType}"/>
+                        </h:selectOneMenu>
+
+                    </td>
+                </tr>
+				<tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamRequestPane_ncrsName}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:selectOneMenu  value="#{RequestPane.requestPaneUI.ncrsId}">
+                            <f:selectItems value="#{RequestPane.allNCRS}"/>
+                        </h:selectOneMenu>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamRequestPane_S9Persona}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:selectBooleanCheckbox id="s9Column" value="#{RequestPane.requestPaneUI.s9Personalisation}" required="true"/>
+                        <br/> <h:message for="s9Column" styleClass="warn"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamRequestPane_EquipVendor}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+						<h:selectOneMenu  value="#{RequestPane.requestPaneUI.equipVendor}">
+                            <f:selectItems value="#{RequestPane.allEquipVendor}"/>
+                        </h:selectOneMenu>
+						<!--
+                        <h:inputText id="equipVendorColumn" value="#{RequestPane.requestPaneUI.equipVendor}"
+                                     maxlength="2"
+                                     styleClass="form-input-text"
+                                     required="true"/>
+                        <br/> <h:message for="equipVendorColumn" styleClass="warn"/>-->
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamRequestPane_ReaderVendor}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+						<h:selectOneMenu  value="#{RequestPane.requestPaneUI.readerVendor}">
+                            <f:selectItems value="#{RequestPane.allReaderVendor}"/>
+                        </h:selectOneMenu>
+					<!--
+                        <h:inputText id="readrVendorColumn" value="#{RequestPane.requestPaneUI.readerVendor}"
+                                     maxlength="2"
+                                     styleClass="form-input-text"
+                                     required="true"/>
+                        <br/> <h:message for="readrVendorColumn" styleClass="warn"/>
+						-->
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamRequestPane_OrderNum}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:inputText id="oredrNumColumn" value="#{RequestPane.requestPaneUI.orderNo}"
+                                     maxlength="32"
+                                     styleClass="form-input-text"
+                                     />
+                         <br/> <h:message for="oredrNumColumn" styleClass="warn"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamRequestPane_Comment1}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:inputText id="comment1Column" value="#{RequestPane.requestPaneUI.comment1}"
+                                     maxlength="16"
+                                     styleClass="form-input-text"
+                                     />
+                         <br/> <h:message for="comment1Column" styleClass="warn"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamRequestPane_Comment2}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:inputText id="comment2Column" value="#{RequestPane.requestPaneUI.comment2}"
+                                     maxlength="16"
+                                     styleClass="form-input-text"
+                                     />
+                          <br/> <h:message for="comment2Column" styleClass="warn"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamRequestPane_Comment3}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:inputText id="comment3Column" value="#{RequestPane.requestPaneUI.comment3}"
+                                     maxlength="16"
+                                     styleClass="form-input-text"
+                                     />
+                        <br/> <h:message for="comment3Column" styleClass="warn"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.nsamRequestPane_NoOfNSAMs}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:inputText id="NumberOfNSAMs" value="#{RequestPane.requestPaneUI.noOfNSAM}"
+                                     maxlength="3"
+                                     styleClass="form-input-text"
+                                     title="#{msg.validateNumericString}" required="true"
+                                     validator="#{Validators.validateNumericString}" label="Number of NSAMs">
+                            <f:validateLongRange minimum="1" maximum="999"   />
+                        </h:inputText>
+                         <br/> <h:message for="NumberOfNSAMs" styleClass="warn"/>
+                    </td>
+
+                </tr>
+
+            </table>
+            <h:commandLink action="#{RequestPane.produceNSAMRequest}" >#{msg.process}</h:commandLink>
+            </ui:fragment>
+             &#160;
+            <!--<h:commandLink action="#{nsamRequestPane}" immediate="true">#{msg.cancelLink}</h:commandLink>-->
+        </h:form>
+            <h:messages globalOnly="true" layout="table" styleClass="warn"
+            infoClass="info" warnClass="warn"
+            errorClass="warn"
+            fatalClass="warn"/>
+
+            <br/>
+
+
+    </ui:define>
+</ui:composition>
+</body>
+</html>

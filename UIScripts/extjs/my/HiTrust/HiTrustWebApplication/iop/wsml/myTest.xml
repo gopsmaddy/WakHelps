@@ -1,0 +1,250 @@
+<DST>  
+ <HiTrust>    
+  <businessObject>BaSCommSplits</businessObject>             
+  <operation>SEARCH</operation>    
+  <user>AG000009</user>
+   <password>Passw0rd</password>
+ <request>  
+  <data>  
+  <Agent.Key>8</Agent.Key>
+   <MaxRows>200</MaxRows>
+   <AgentPay.AgentPayKey></AgentPay.AgentPayKey> 
+  </data>
+ </request>  
+ <response> 
+ 	<AgentPay.AgentPayKey/> 
+  <Ctract.CtractNo/>
+  <CommPercent/>
+  <FeeType.Desc/>
+  <AgentCommAmt/>
+  <CtractCommAmt/>
+ </response>
+</HiTrust>
+</DST>
+
+<!--
+
+<DST>  
+ <HiTrust>    
+  <businessObject>BaAgentPays</businessObject>             
+  <operation>SEARCH</operation>    
+  <user>AG000009</user>
+   <password>Passw0rd</password>
+ <request>  
+  <data>  
+  <Agent.Key>8</Agent.Key>
+   <MaxRows>200</MaxRows>
+   <Payment.Key></Payment.Key> 
+  </data>
+ </request>  
+ <response> 
+ 	 <Payment.Key/> 
+  <AgentPayKey/>
+  <PaidDate/>
+  <FeeType/>
+  <AgentAmtPaid/>
+  <Agent.Key/>
+ </response>
+</HiTrust>
+</DST>
+
+
+<DST>  
+ <HiTrust>    
+  <businessObject>BaCommissionSummarys</businessObject>             
+  <operation>SEARCH</operation>    
+    <user>AG000009</user>
+   <password>Passw0rd</password>
+ <request>  
+  <data>  
+  <Agent.Key>8</Agent.Key>
+   <MaxRows>200</MaxRows>
+   <Processed>true</Processed>
+  </data>
+ </request>  
+ <response>  
+  <Payment.Key/>
+  <PaymentDate/>
+  <Currency.ISOCode/>
+  <Payment.SettleAmount/>
+ </response>
+</HiTrust>
+</DST>
+
+
+<DST>
+ <HiTrust>
+<businessObject>BaAgentSummaryByUCs</businessObject>
+  <operation>SEARCH</operation>
+    <user>AG000009</user>
+   <password>Passw0rd</password>
+ <request>  
+  <data>  
+  <Agent.Key>8</Agent.Key>
+   <MaxRows>200</MaxRows>
+		</data>
+	</request>
+  <response>
+		<UnitClass.Fund.Key/>
+		<UnitClass.Fund.Desc/>
+		<UnitClass.Fund.Code/>
+		<UnitClass.Desc/>
+		<UnitClass.Key/>
+     <UnitClass.Fund.Ccy.ISOCode/>
+		<TotalInUnits/>
+		<TotalInCurrency/>
+		<Currency.Desc/>
+	</response>
+</HiTrust>
+</DST>
+
+
+<DST>
+  <HiTrust>
+    <businessObject>BaSubAgentByCcys</businessObject>
+    <operation>SEARCH</operation>
+  <user>AG000009</user>
+   <password>Passw0rd</password>
+  <request>
+		<data>
+			<Agent.Key>8</Agent.Key>
+   <MaxRows>200</MaxRows>
+  <SubAgent.Key></SubAgent.Key>
+ </data>
+</request>  
+<response>
+ <SubAgent.Key/>
+ <SubSubAgent.Number/>
+ <SubSubAgent.Name/>
+ <SubSubAgent.AgentType.Desc/>
+ <Currency.ISOCode/>
+ <TotalInCurrency/>
+</response>
+</HiTrust>
+</DST> 
+
+
+<DST>
+  <HiTrust>
+    <businessObject>BaAgentByCcys</businessObject>
+    <operation>SEARCH</operation>
+    <user>AG000009</user>
+   <password>Passw0rd</password>
+  <request>
+		<data>
+			<Agent.Key>8</Agent.Key>
+   <MaxRows>200</MaxRows>
+ </data>
+</request>  
+<response>
+ <SubAgent.Key/>
+ <SubAgent.Number/>
+ <SubAgent.Name/>
+ <SubAgent.AgentType.Desc/>
+ <Currency.ISOCode/>
+ <TotalInCurrency/>
+</response>
+</HiTrust>
+</DST> 
+
+
+<DST>
+ <HiTrust>
+<businessObject>BaAgentSummarys</businessObject>
+  <operation>SEARCH</operation>
+    <user>AG000009</user>
+   <password>Passw0rd</password>
+  <request>
+		<data>
+			<Agent.Key>8</Agent.Key>
+   <MaxRows>200</MaxRows>
+   <Fund.Key></Fund.Key>
+  </data>
+ </request>
+  <response>
+  <PortOwner.RelNo/>
+  <Portfolio.Name/>
+  <Portfolio.Number/>
+  <UnitClass.Fund.Desc/>
+  <UnitClass.Fund.Code/>
+  <UnitClass.Fund.Key/>
+  <UnitClass.Desc/>
+  <UnitClass.Fund.Ccy.ISOCode/>
+  <BalanceInUnits/>
+  <BalanceInCurrency/>
+ </response>
+</HiTrust>
+</DST>
+
+
+<DST>
+ <HiTrust>
+<businessObject>BaAgentSummLevel3s</businessObject>
+  <operation>SEARCH</operation>
+  <user>AG000009</user>
+   <password>Passw0rd</password>
+  <request>
+		<data>
+			<Agent.Key>8</Agent.Key>
+   		<MaxRows>2000</MaxRows>
+   <UnitClass.Key></UnitClass.Key>
+   <SubAgent.Key></SubAgent.Key>
+  </data></request>
+  <response>
+  <SubSubAgent.Number/>
+  <SubSubAgent.Name/>
+  <UnitClass.Fund.Ccy.ISOCode/>
+  <TotalInUnits/>
+  <TotalInCurrency/>
+	<UnitClass/>
+	<SubAgent.Key/>
+ </response>
+</HiTrust>
+</DST>
+
+<DST>
+ <HiTrust>
+<businessObject>BaAgentSummLevel2s</businessObject>
+  <operation>SEARCH</operation>
+  <user>AG000009</user>
+   <password>Passw0rd</password>
+  <request>
+		<data>
+			<Agent.Key>8</Agent.Key>
+   		<MaxRows>2000</MaxRows>
+			<UnitClass.Key></UnitClass.Key>
+		</data></request>
+  <response>
+		<SubAgent.Number/>
+		<SubAgent.Name/>
+		<SubAgent.Key/>
+     <UnitClass.Fund.Ccy.ISOCode/>
+     <UnitClass.Key/>
+		<TotalInUnits/>
+		<TotalInCurrency/>
+	</response>
+</HiTrust>
+</DST>
+
+<DST>
+  <HiTrust>
+    <businessObject>BaAgentInvestors</businessObject>
+    <operation>SEARCH</operation>
+    <user>AG000009</user>
+   <password>Passw0rd</password>
+  <request>
+		<data>
+			<Agent.Key>8</Agent.Key>
+   		<MaxRows>2000</MaxRows>
+ </data>
+</request>  
+<response>
+<PortOwner.Key/>
+ <PortOwner.RelNo/>
+<PortOwner.Name/>
+<PortOwner.GivenName/>
+<PortOwner.Company.Key/>
+</response>
+</HiTrust>
+</DST>
+-->

@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+	<!--meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/-->
+    <title>
+        #{msg.NSAMSystem}
+    </title>
+		
+    <link href="../common/css/navBar.css" rel="stylesheet" type="text/css"/>
+    <link href="../common/css/tabStrip.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../common/js/navBar.js" ></script>
+    <script type="text/javascript" src="../common/js/tooltips.js"></script>
+    <script type="text/javascript" src="../common/js/uierrorlogger.js"></script>
+    <script type="text/javascript" src="../common/js/custom.js"></script>
+	
+	
+	
+    <link href="../css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="../common/css/common-text.css" rel="stylesheet" type="text/css"/>
+    <link href="../common/css/common-table.css" rel="stylesheet" type="text/css"/>
+    <link href="../common/css/common-form.css" rel="stylesheet" type="text/css"/>
+
+    <!-- From original app-->
+    <link href="../css/form.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/image.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/page.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/panel.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/table.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/text.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/cardGroups.css" rel="stylesheet" type="text/css"/>
+	
+	
+	<!-- define jquery related javascripts here-->
+	<link rel="stylesheet" type="text/css" href="../lib/jquery/css/redmond/jquery-ui-1.8.21.custom.css" />
+	<script type="text/javascript" src="../lib/jquery/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="../lib/jquery/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="../lib/jquery/jquery-ui-1.8.21.custom.min.js"></script>
+	<script type="text/javascript" src="../lib/jquery/jquery.i18n.properties-min-1.0.9.js"></script>
+	
+	
+	<script type="text/javascript" src="../common/js/myProperty.js"></script>
+	<script type="text/javascript" src="../common/js/mytickerwindow.js"></script>
+	
+
+	
+</head>
+<body>
+
+<f:loadBundle basename="MessageResource" var="msg"/>
+
+<!-- div for displaying tooltips ; manipulated by javascript  -->
+<div id="tooltip" style="position:absolute;visibility:hidden"></div>
+
+
+<table style="width: 100%">
+    <tr>
+        <td colspan="2">
+            <div id="header">
+            	<h:form>
+                	<h:commandLink action="home" styleClass="text-header-productName">#{msg.productName}</h:commandLink>
+                </h:form>
+
+            </div>
+        </td>
+    </tr>
+    <tr>
+    	<td colspan="3">
+    	    <table id="info-bar">
+                <tr>
+                    <h:form>
+                        <td align="right">
+                            <!--<h:outputText rendered="#{! Menus.systemRunning}" styleClass="warn" value="  WARNING: System is not running."/>-->
+                            <!--<h:outputText rendered="#{Menus.systemRunning}" styleClass="reassure" value="System is running"/>-->
+
+                            <!-- Space characters below  -->
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+
+                        </td>
+			<td align="center">
+				<span>
+                                <h:outputText value="#{Context.nsamInstanceDescription}" styleClass="text-emph"/>
+			        </span>
+			</td>
+                        <td  align="right">
+                            <span>
+                                #{msg.loginStatus}&#160;
+                                <h:outputText value="#{Login.userName}" styleClass="text-emph"/>
+                                &#160;| &#160;
+                                <h:commandLink action="#{Menus.selectLogoutAction}">#{msg.logout}</h:commandLink>
+                                &#160;| &#160;
+                                <!--<h:commandLink action="help">#{msg.help}</h:commandLink>-->
+                                <!--&#160;| &#160;-->
+                                <h:commandLink action="helpAbout">#{msg.helpAbout}</h:commandLink>
+                                &#160;&#160;
+                             </span>
+                        </td>
+                    </h:form>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="vertical-align: top;">
+            <div style=" width: 16em;">
+                <ui:insert name="menu">
+                    Default content
+                </ui:insert>				
+            </div>
+			<div align="center" style=" width: 16em;"> <!-- background-color:#DD0000 -->
+				<input type="button" style="width:12em;color:#000000;" id="idMyTickerWindowButton" value="Alert Window" onclick="javascript: poponload()"/>
+				<script language="Javascript" type="text/javascript"> 
+					mainpolling();
+				</script>
+			</div>
+			
+        </td>
+        <td style="vertical-align: top; width: 100%;
+            border-style: solid;
+            border-bottom-width: 2px;
+            border-left-width: 0px;
+            border-right-width: 0px;
+            border-top-width: 0px;
+            border-color: #A9A9A9;
+            margin-bottom: 5%">
+            <div id="titleText">
+                <h2>
+                    <ui:insert name="title"/>
+                </h2>
+
+        <!--<ui:fragment rendered="#{Context.dataSourceUpdated}">-->
+		    <!--<h:form id="espReloadForm2" style="display: inline;">-->
+		    <!--<span class="warn">Warning: </span> #{msg.reloadRequired}&#160;-->
+		    <!--<h:commandLink action="#{Menus.selectReloadAction}">#{msg.reloadConfig}</h:commandLink>-->
+		    <!--<p/>-->
+		<!--</h:form>-->
+		<!--</ui:fragment>-->
+                <ui:insert name="content">
+                    <div>Content goes here</div>
+                </ui:insert>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">			
+            <div id="footer">
+                &#169; 2013 Aconite Technology Ltd. All rights reserved<br/>
+                Visit <img src="../img/header/logo.jpg" style="vertical-align: middle"
+                alt="Aconite Technology Ltd."/> at <b>www.aconite.net</b>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<!--<f:view><h:dataTable value="#{UserSession.validateUserSession}"/></f:view>-->
+<ui:debug hotkey="l"/>
+
+
+</body>
+</html>

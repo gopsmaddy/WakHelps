@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom">
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.change_StatusPane_Title}
+    </ui:define>
+    <ui:define name="workArea">
+        <h:form onsubmit="document.body.style.cursor='wait';">
+            <!--<ui:fragment rendered="#{!(StatusPaneChange.chipStatusUI.confirmDevice)}">-->
+                <!--<table class="acTable">-->
+                    <!--<tr>-->
+                        <!--<td class="panel-feature-form-enhanced-field-name">#{msg.change_StatusPane_chipID}</td>-->
+                        <!--<td class="panel-feature-form-enhanced-field-value">-->
+                            <!--<h:inputText id="chipIDColumn" value="#{StatusPaneChange.chipStatusUI.chipID}"-->
+                                         <!--maxlength="16"-->
+                                         <!--styleClass="form-input-text"-->
+                                         <!--required="true"-->
+                                         <!--validator="#{Validators.validateHexadecimalString}" />-->
+                            <!--<br/><h:message for="chipIDColumn" styleClass="warn"/>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td class="panel-feature-form-enhanced-field-name">#{msg.change_StatusPane_SamType}</td>-->
+                        <!--<td class="panel-feature-form-enhanced-field-value">-->
+                            <!--&lt;!&ndash;<h:selectOneMenu value="#{StatusPaneChange.chipStatusUI.status}">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<f:selectItem itemLabel="End-Of-Life" itemValue="0" />&ndash;&gt;-->
+                                <!--&lt;!&ndash;<f:selectItem itemLabel="Lost/Stolen" itemValue="1"/>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</h:selectOneMenu>&ndash;&gt;-->
+                            <!--<h:selectOneRadio id="samTypeRadio" value="#{StatusPaneChange.chipStatusUI.samType}">-->
+                                <!--<f:selectItem itemLabel="S2" itemValue="01"/>-->
+                                <!--<f:selectItem itemLabel="S9" itemValue="02"/>-->
+                                <!--<f:selectItem itemLabel="NSAM" itemValue="03"/>-->
+                            <!--</h:selectOneRadio>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                <!--</table>-->
+                <!--<h:commandLink id="processChipIdDevice"  action="#{StatusPaneChange.processChipIdDevice}">#{msg.process}-->
+                <!--</h:commandLink>-->
+            <!--</ui:fragment>-->
+
+
+            <!--<ui:fragment rendered="#{(StatusPaneChange.chipStatusUI.confirmDevice)}">-->
+                <ui:fragment rendered="#{!(StatusPaneChange.chipStatusUI.chipStatusRejected)}">
+                    <table class="acTable">
+                        <p>#{msg.nsamStatusPaneConfirmMsg}</p>
+
+
+                        <tr>
+                            <td class="panel-feature-form-enhanced-field-name">#{msg.nsamStatusPane_ChipID}</td>
+                            <td class="panel-feature-form-enhanced-field-value">
+                                <h:outputText id="cardIdentifierID" value="#{StatusPaneChange.chipStatusUI.cardIdentifierID}"/>
+                                <h:inputHidden id="cardIdentifierIDH" value="#{StatusPaneChange.chipStatusUI.cardIdentifierID}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="panel-feature-form-enhanced-field-name">#{msg.nsamStatusPane_DeviceID}</td>
+                            <td class="panel-feature-form-enhanced-field-value">
+                         <h:outputText id="plasticID" value="#{StatusPaneChange.chipStatusUI.textualName}"/>
+
+                         <h:inputHidden id="plasticIDH" value="#{StatusPaneChange.chipStatusUI.plasticNoID}"/>
+                         <h:inputHidden id="idHiddenH" value="#{StatusPaneChange.chipStatusUI.id}"/>
+                         <h:inputHidden id="chipIDHiddenH" value="#{StatusPaneChange.chipStatusUI.chipID}"/>
+                         <h:inputHidden id="cardIDHiddenH" value="#{StatusPaneChange.chipStatusUI.cardID}"/>
+                         <h:inputHidden id="samTypeHiddenH" value="#{StatusPaneChange.chipStatusUI.samType}"/>
+                         <h:inputHidden id="textualNameH" value="#{StatusPaneChange.chipStatusUI.textualName}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="panel-feature-form-enhanced-field-name">#{msg.nsamStatusPane_Samtype}</td>
+                            <td class="panel-feature-form-enhanced-field-value">
+                                <h:outputText id="samType" value="#{StatusPaneChange.chipStatusUI.samTypeName}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="panel-feature-form-enhanced-field-name">#{msg.nsamStatusPane_IssuingSystem}</td>
+                            <td class="panel-feature-form-enhanced-field-value">
+                                <h:outputText id="issuingSystem" value="#{StatusPaneChange.chipStatusUI.issuingSystem}"/>
+                                <h:inputHidden id="issuingSystemH" value="#{StatusPaneChange.chipStatusUI.issuingSystem}"/>
+                            </td>
+                        </tr>
+                        <!--<tr>-->
+                            <!--<td class="panel-feature-form-enhanced-field-name">#{msg.nsamStatusPane_PanSeq}</td>-->
+                            <!--<td class="panel-feature-form-enhanced-field-value">-->
+                                <!--<h:outputText id="panSeq" value="#{StatusPaneChange.chipStatusUI.panSeq}"/>-->
+                                <!--<h:inputHidden id="panSeqH" value="#{StatusPaneChange.chipStatusUI.panSeq}"/>-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                        <tr>
+                            <td class="panel-feature-form-enhanced-field-name">#{msg.nsamStatusPane_ProductName}</td>
+                            <td class="panel-feature-form-enhanced-field-value">
+                                <h:outputText id="productName" value="#{StatusPaneChange.chipStatusUI.productName}"/>
+                                <h:inputHidden id="productNameH" value="#{StatusPaneChange.chipStatusUI.productName}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="panel-feature-form-enhanced-field-name">#{msg.nsamStatusPane_ProductVersion}</td>
+                            <td class="panel-feature-form-enhanced-field-value">
+                                <h:outputText id="productVersion" value="#{StatusPaneChange.chipStatusUI.productVersion}"/>
+                                <h:inputHidden id="productVersionH" value="#{StatusPaneChange.chipStatusUI.productVersion}"/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="panel-feature-form-enhanced-field-name">#{msg.nsamStatusPane_ChipStatus}</td>
+                            <td class="panel-feature-form-enhanced-field-value">
+                                <h:outputText id="cardIdentifierChipStatus" value="#{StatusPaneChange.chipStatusUI.cardIdentifierChipStatus}"/>
+                                <h:inputHidden id="cardIdentifierChipStatusH" value="#{StatusPaneChange.chipStatusUI.cardIdentifierChipStatus}"/>
+                            </td>
+                        </tr>
+                     </table>
+
+                    <br/><br/>
+
+                    <ui:fragment id="changeID" rendered="#{StatusPaneChange.chipStatusUI.status==null}"> 
+                        <table class="acTable">
+                            <tr>
+                                <td class="panel-feature-form-enhanced-field-name">#{msg.change_StatusPane_Reason}</td>
+                                <td class="panel-feature-form-enhanced-field-value">
+                                    <h:inputTextarea id="reasonColumn" value="#{StatusPaneChange.chipStatusUI.reason}"
+                                                 styleClass="form-input-text"
+                                                 required="true"/>
+                                    <br/><h:message for="reasonColumn" styleClass="warn"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="panel-feature-form-enhanced-field-name">#{msg.change_StatusPane_Status}</td>
+                                <td class="panel-feature-form-enhanced-field-value">
+                                    <h:selectOneMenu id="statusMenu" value="#{StatusPaneChange.chipStatusUI.status}">
+                                        <f:selectItem itemLabel="End-Of-Life" itemValue="0" />
+                                        <f:selectItem itemLabel="Lost/Stolen" itemValue="1"/>
+                                    </h:selectOneMenu>
+                                </td>
+                            </tr>
+                        </table>
+
+                    <h:commandLink id="changeStatus" action="#{StatusPaneChange.processChipStatus}"
+                            onclick="if (!confirm('Are you sure you want to change Chip Status?')) return false">
+                        #{msg.change}
+                    </h:commandLink>
+                </ui:fragment>  
+                </ui:fragment>
+
+                <!-- Chip Id rejected -->
+                <ui:fragment rendered="#{(StatusPaneChange.chipStatusUI.chipStatusRejected)}">
+                    <table class="acTable">
+                        <tr>
+                            <td class="panel-feature-form-enhanced-field-name">#{msg.nsamStatusPane_Description}</td>
+                            <td class="panel-feature-form-enhanced-field-value">
+                                <h:outputText id="rejectDescription" value="#{StatusPaneChange.chipStatusUI.rejectDescription}"/>
+                            </td>
+                        </tr>
+                     </table>
+                </ui:fragment>
+                
+
+            <!--</ui:fragment>-->
+
+             &#160;
+
+           <h:commandLink action="#{Menus.selectChangeStatusPane}" immediate="true">#{msg.backLink}</h:commandLink>
+        </h:form>
+                <h:messages globalOnly="true" layout="table" styleClass="warn"
+                    infoClass="info" warnClass="warn"
+                    errorClass="warn"
+                    fatalClass="warn"/>
+
+        <br/>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

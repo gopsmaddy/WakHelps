@@ -1,0 +1,117 @@
+<html>
+	<head>
+		<link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+            <!--<script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base.js" type="text/javascript"></script>
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all.js" type="text/javascript"></script>-->
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all-debug.js" type="text/javascript"></script>
+      
+       <link href="http://modules.eurouwins.com/iop/styles/jquery-ui-1.8.4.custom.css" type="text/css" rel="stylesheet" media="screen">			
+			
+      <script src="http://modules.eurouwins.com/iop/scripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/jquery.uniform.min.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/jquery-ui-1.8.4.custom.min.js" type="text/javascript"></script>
+			
+      <link href="http://modules.eurouwins.com/iop/styles/flexigrid.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/iop_screen.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/uniform.default.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/web_fonts.css" type="text/css" rel="stylesheet" media="screen">
+			
+			<script src="http://modules.eurouwins.com/iop/scripts/flexigrid.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/iop_functions.js" type="text/javascript"></script>
+			
+			<script src="../js/myExternalURL.js" type="text/javascript"></script>
+			
+	   <body>
+
+
+<script type="text/javascript">
+Ext.onReady(function(){
+	
+		Ext.QuickTips.init()
+
+ 	
+    var form = new Ext.FormPanel({
+    	reader: new Ext.data.XmlReader({
+				record: 'List',
+				id: '>Key',
+				totalRecords: 'total'
+			}, [
+				{name:  'title'    			, mapping: '>Salutation'},
+				{name : 'name'     			, mapping: '>GivenName'},
+				{name : 'surname'  			, mapping: '>Name'},
+				{name : 'Date of Birth'	, mapping: '>BirthDate'},
+				{name : 'status'   			, mapping: '>Status/Desc'}
+				
+				]),
+    	labelWidth: 95, // label settings here cascade unless overridden
+			border: false,
+			height: 350,
+			defaults: {width: 150},
+			defaultType: 'textfield',
+				listeners: 
+		{
+	   	actioncomplete: function()
+	   	{
+	   		
+	   		this.loaded = true;	
+	   	}
+	  },	
+			
+			items: [{
+				xtype: 'panel',
+				border: false,
+				html: '<h2>Investor Details</h2><br>'
+			},{
+				fieldLabel: 'Title',
+				name: 'title',
+				readOnly: true
+			},{
+				fieldLabel: 'Name',
+				name: 'name',
+				readOnly: true
+			},{
+				fieldLabel: 'Surname',
+				name: 'surname',
+				readOnly: true
+			},{
+				fieldLabel: 'Date of Birth',
+				name: 'BirthDate',
+				readOnly: true
+			},{
+				fieldLabel: 'Status',
+				name: 'status',
+				readOnly: true
+			}]
+    });
+    
+  if(!form.loaded)  
+  form.load
+  (
+  	{
+  		method: 'GET',
+  		url: varBaProfilesURL  		
+  	}
+  );
+  
+  
+    var panel = new Ext.Panel
+    (
+	    {
+	    	//ctCls: 'pane panerightSummary',
+	    	border: false,
+	    	width: 250,
+	    	height: 190,
+	    	layout: 'fit',
+	   		renderTo: 'formDiv',
+	   		items: [form]
+	   	}
+   	);
+});
+   	
+   	</script>  
+
+<div id="formDiv"></div>
+
+</body>
+</html>

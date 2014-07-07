@@ -1,0 +1,26 @@
+/* Default image */
+.image-borderless {
+    border: solid;
+    border-width: 0px;
+}
+
+/* Icon image */
+.image-icon {
+    border: solid;
+    border-width: 1px;
+    border-color: #dddddd;
+}
+
+/* Icon image for data that is paginated */
+.image-icon-pagination {
+    border: solid;
+    border-width: 1px;
+    border-color: #9999ff;
+}
+
+/* Disabled icon image for data that is paginated */
+.image-icon-pagination-disabled {
+    border: solid;
+    border-width: 1px;
+    border-color: #dddddd;
+}

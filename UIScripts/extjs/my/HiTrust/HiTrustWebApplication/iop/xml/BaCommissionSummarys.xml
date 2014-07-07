@@ -1,0 +1,66 @@
+<DST>
+	<user>AG000009</user>
+	<password>Passw0rd</password>
+	<response>
+		<List>
+			<Payment>
+				<Key>0000000040</Key>
+			</Payment>
+			<PaymentDate>24/01/2011 23:40:59</PaymentDate>
+			<Currency>
+				<ISOCode>AUD</ISOCode>
+			</Currency>
+			<Payment>
+				<SettleAmount>279.84</SettleAmount>
+			</Payment>
+		</List>
+		<List>
+			<Payment>
+				<Key>0000000047</Key>
+			</Payment>
+			<PaymentDate>01/02/2011 03:28:12</PaymentDate>
+			<Currency>
+				<ISOCode>AUD</ISOCode>
+			</Currency>
+			<Payment>
+				<SettleAmount>2,809.91</SettleAmount>
+			</Payment>
+		</List>
+		<List>
+			<Payment>
+				<Key>0000000062</Key>
+			</Payment>
+			<PaymentDate>01/02/2011 05:22:45</PaymentDate>
+			<Currency>
+				<ISOCode>AUD</ISOCode>
+			</Currency>
+			<Payment>
+				<SettleAmount>3,567.46</SettleAmount>
+			</Payment>
+		</List>
+		<List>
+			<Payment>
+				<Key>0000000095</Key>
+			</Payment>
+			<PaymentDate>22/02/2011 06:50:43</PaymentDate>
+			<Currency>
+				<ISOCode>AUD</ISOCode>
+			</Currency>
+			<Payment>
+				<SettleAmount>0.00</SettleAmount>
+			</Payment>
+		</List>
+		<List>
+			<Payment>
+				<Key>0000000129</Key>
+			</Payment>
+			<PaymentDate>01/06/2011 00:23:27</PaymentDate>
+			<Currency>
+				<ISOCode>AUD</ISOCode>
+			</Currency>
+			<Payment>
+				<SettleAmount>2,951.57</SettleAmount>
+			</Payment>
+		</List>
+	</response>
+</DST>

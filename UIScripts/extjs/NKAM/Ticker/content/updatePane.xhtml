@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom" >
+  <body>
+
+    <ui:composition template="../content/main.xhtml">
+      <ui:define name="workAreaTitle">
+        #{msg.appmgmt_Title}
+      </ui:define>
+      <ui:define name="workArea">
+        <p>#{msg.appmgmt_availopts_title}</p>
+        <h:form onsubmit="document.body.style.cursor='wait';">
+          <ui:fragment rendered="true">
+            <table class="acTable">
+              <tr>
+                <td class="panel-feature-form-enhanced-field-name">#{msg.chipId}</td>
+                <td class="panel-feature-form-enhanced-field-value">
+                  <h:inputText id="cardId" value="#{PIUpdateBean.piUpdateData.cardId}"
+                               minimum="16"
+                               maxlength="16"
+                               styleClass="form-input-text"
+                               required="true"
+                               label="Chip ID"
+                               onblur="this.value=this.value.toUpperCase();" 
+                               autocomplete="off">
+                      <f:validator validatorId="hexValueValidator" />
+                      <f:validateLength minimum="16" maximum="16" />
+                  </h:inputText>
+                  <br/> <h:message for="cardId" styleClass="warn"/>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <h:outputText value=" "/>
+                  <h:commandButton id="queryAvailOptions" action="#{PIUpdateBean.queryAvailableOptions}"
+                                   value="#{msg.queryOptions}" />
+                  <h:outputText value=" "/>
+                </td>
+              </tr>
+              
+              <ui:fragment id="submitUpdates" rendered="#{PIUpdateBean.submitUpdates}">
+              <tr>
+                <td colspan="2">
+                    <h:dataTable id="dt1" value="#{PIUpdateBean.pioptionsUi}" binding="#{PIUpdateBean.table}" var="item" bgcolor="#F1F1F1" 
+                               border="0" cellpadding="0" cellspacing="0" first="0" rows="4" width="100%" 
+                               rules="all" summary="This is a JSF code to create dataTable." >
+                        <h:column>
+                          <f:facet name="header">
+                            <h:outputText value="Application" />
+                          </f:facet> 
+                          <h:outputText value="#{item.application}"></h:outputText>
+                        </h:column>
+
+                        <h:column id="AvailableOptionOptions" >
+                          <f:facet name="header">
+                            <h:outputText value="Options" />                        
+                          </f:facet>
+                            <h:selectOneMenu onchange="" id="optionList" value="#{PIUpdateBean.nsamapp}">
+                            <f:selectItems value="#{item.optionsList}"  />
+                          </h:selectOneMenu>
+                        </h:column>
+                  </h:dataTable>
+                </td>
+              </tr>
+              <tr>
+                  <td colspan="2">
+                      <h:commandButton  id="submitUpdate" action="#{PIUpdateBean.processUpdate}"
+                                   value="#{msg.submit_update}" />
+                  </td>
+              </tr>
+                  
+              </ui:fragment>
+            </table>
+              
+          </ui:fragment>
+          &#160;            
+        </h:form>
+        <h:messages globalOnly="true" layout="table" styleClass="warn"
+                    infoClass="disp" warnClass="warn"
+                    errorClass="warn"
+                    fatalClass="warn"/>
+
+        <br/>    
+      </ui:define>
+    </ui:composition>
+  </body>
+</html>

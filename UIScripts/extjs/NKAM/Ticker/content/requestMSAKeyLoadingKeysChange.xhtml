@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom"
+      xmlns:t="http://myfaces.apache.org/tomahawk" >
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.reqKeychange_MSAKeyLoadingKeys}
+    </ui:define>
+    <ui:define name="workArea">
+        <f:view>
+            <h:form id="KeyLoadingKeys" enctype="multipart/form-data" onsubmit="document.body.style.cursor='wait';">
+                <table>
+                    <tr>
+                        <td>
+                            <h:panelGrid columns="3" border="0" cellspacing="5">
+                                <h:outputLabel for="AuthenticationKey" value="#{msg.msaKeyLoadingKey_authenticationKey}: "/>
+                                <t:inputFileUpload id="AuthenticationKey" value="#{KeyLoadingKeysPane.authenticationKey}" storage="file" onchange="checkFileSize(this)" required="true" dir="rtl" label="AuthenticationKey" >
+                                </t:inputFileUpload>
+                                <h:message for="AuthenticationKey" styleClass="warn" />
+
+                                <h:outputLabel for="ConfidentialityKey" value="#{msg.msaKeyLoadingKey_confidentialityKey}: "/>
+                                <t:inputFileUpload id="ConfidentialityKey" value="#{KeyLoadingKeysPane.confidentialityKey}" storage="file" onchange="checkFileSize(this)" required="true" dir="rtl" label="ConfidentialityKey" >
+                                </t:inputFileUpload>
+                                <h:message for="ConfidentialityKey" styleClass="warn" />
+                                <h:outputText value=" "/>
+                            </h:panelGrid>
+                        </td>
+                    </tr>
+                </table>
+                <table class="acTable">
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.msaKeyLoadingKey_currentGen}</td>
+                        <td class="panel-feature-form-enhanced-field-value">#{KeyLoadingKeysPane.currentGeneration}</td>
+                        <h:inputHidden id="currentGen" value="#{KeyLoadingKeysPane.currentGeneration}" />
+                    </tr>
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.msaKeyLoadingKey_NewGen}</td>
+                        <td class="panel-feature-form-enhanced-field-value">#{KeyLoadingKeysPane.newGeneration}</td>
+                        <h:inputHidden id="newGen" value="#{KeyLoadingKeysPane.newGeneration}" />
+                    </tr>
+                </table>
+                <br/>
+                <br/>
+                <h:commandButton value="Submit"
+                                 action="#{KeyLoadingKeysPane.processKeys}"
+                                 onclick="if (!confirm('Are you sure you want to import these MSA Key Loading Keys?')) return false"/>
+                <h:outputText value=" "/>
+                <br/><br/>
+                <h:commandLink id="backLink"  action="requestMSAKeyLoadingKeysChangeGen"  immediate="true">
+                    #{msg.backLink}
+                </h:commandLink>
+                <br/>
+            </h:form>
+            <span id="idUIErrorLogger" style="color: red;"></span>
+            <span id="idGlobalMessage">
+            <h:messages globalOnly="true"  styleClass="warn"
+                        infoClass="info" warnClass="warn"
+                        errorClass="warn"
+                        fatalClass="warn"/>
+            </span>
+            <br/>
+        </f:view>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

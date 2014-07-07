@@ -1,0 +1,21 @@
+<DST>
+  <HiTrust>
+    <businessObject>BaInvestorFunds</businessObject>
+    <operation>SEARCH</operation>
+    <user>@@user@</user>
+    <password>@@pass@</password>
+    <request>
+      <data>
+        <MaxRows>@@maxRecords@</MaxRows>
+				<Profile.RelNo>@@profileRelNo@</Profile.RelNo>
+      </data>
+    </request>
+    <response>
+    	<Profile.Key/>
+    	<Profile.RelNo/>
+      <Fund.Desc/>
+      <Fund.Code/>
+      <Fund.Key/>
+    </response>
+  </HiTrust>
+</DST>

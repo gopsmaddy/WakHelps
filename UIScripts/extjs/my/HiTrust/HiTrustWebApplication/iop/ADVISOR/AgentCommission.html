@@ -1,0 +1,159 @@
+<html>
+	<head>
+		<!--<link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base.js" type="text/javascript"></script>
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all.js" type="text/javascript"></script>-->
+			<link href="../includes/jquery-ui-1.css" rel="stylesheet" type="text/css" media="screen">
+			<link href="../includes/uniform.css" rel="stylesheet" type="text/css" media="screen">
+			<link href="../includes/flexigrid.css" rel="stylesheet" type="text/css" media="screen">
+			<link href="../includes/web_fonts.css" rel="stylesheet" type="text/css" media="screen">
+			<link href="../includes/ext-all-css.css" rel="stylesheet" type="text/css" media="screen">
+			<link href="../includes/xtheme-gray-css.css" rel="stylesheet" type="text/css" media="screen">
+			<link href="../includes/iop_screen.css" rel="stylesheet" type="text/css" media="screen">
+			
+			<script src="../includes/jquery-1.js" type="text/javascript"></script>
+			<script src="../includes/jquery-ui-1.js" type="text/javascript"></script>
+			<script src="../includes/jquery.js" type="text/javascript"></script>
+			<script src="../includes/flexigrid.js" type="text/javascript"></script>
+			<script src="../includes/iop_functions.js" type="text/javascript"></script>
+			<script src="../includes/ext-base.js" type="text/javascript"></script>
+			<script src="../includes/ext-all-js.js" type="text/javascript"></script>
+			
+			<script src="../js/tools.js" type="text/javascript"></script>
+			<script src="../js/myStaticDataStore.js" type="text/javascript"></script>
+			<script src="../js/myExternalURL.js" type="text/javascript"></script>
+			<script src="../js/myDynamicDataStore.js" type="text/javascript"></script>			
+			<script src="../js/vtypes.js" type="text/javascript"></script>			
+			<script src="../js/pagesizeplugin.js" type="text/javascript"></script>
+			<script src="../js/myDynamicDataGrid.js" type="text/javascript"></script>
+			<script src="../js/mySearchPanel.js" type="text/javascript"></script>
+			
+	   <body>
+	   	
+	   	<!-- http://extjs.wima.co.uk/ -->
+
+
+<script type="text/javascript">
+	// To play in Firebug uncomment next line
+// Ext.get(document.body).update('<div id="ext-test"></div>');
+ 
+// reference local blank image
+Ext.BLANK_IMAGE_URL = 'http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/resources/images/default/s.gif';
+ 
+ 
+	Ext.onReady(function(){
+	
+		//---------Search------
+		myBaCommissionSummarysSearch.show();
+		myBaCommissionSummarysSearch.render('myCommissionSummarySearch');
+		
+		myBaCommissionSummarysStore.on
+	 ('beforeload', function(store)
+		 	{
+				store.baseParams = 
+				{												
+						sEffDateFrom: Ext.getCmp('datefrom').getValue(),
+            sEffDateTo: Ext.getCmp('dateto').getValue()	,
+						paymentKey: Ext.getCmp('paymentnumber').getValue()
+				};
+	    }
+   );
+		//-------------Grid----        	
+    myBaCommissionSummarysGrid.show();			
+		myBaCommissionSummarysGrid.render('myCommissionSummaryGrid');
+					
+					
+		myBaCommissionSummarysGrid.getSelectionModel().on
+			(	
+				'rowselect', function(sm, rowIdx, r) 
+				{	
+					Ext.fly('payNum').update('Payment Number: '+r.data.Payment_Key); 
+					  			
+        	
+          myBaAgentPaysStore.load({params:{start:0, limit:Ext.getCmp('pBaAgentPaysBar').pageSize,paymentKey:r.data.Payment_Key}});
+          myBaAgentPaysMask.show();	
+          
+          $('#transaction').dialog('close');
+                   	
+          myBaAgentPaysGrid.show();			
+					myBaAgentPaysGrid.render('myAgentPaysGrid');
+					
+					myBaCommissionSummarysGrid.getSelectionModel().clearSelections();
+					
+				}
+		  );
+		//----------------default setup --------------------------------------	
+	
+	if(!myBaCommissionSummarysStore.loaded)
+  	{
+      myBaCommissionSummarysStore.load({params:{start:0, limit:Ext.getCmp('pBaCommissionSummarysBar').pageSize}});
+      myBaCommissionSummarysMask.show();	
+    } 
+    
+//################# Consolidation ######################################
+
+		myBaAgentPaysGrid.getSelectionModel().on
+			(
+				'rowselect', function(sm, rowIdx, r) 
+				{
+					//alert(r.data.FeeType);
+					if(r.data.FeeType==varFeeType)
+					{
+						Ext.fly('consNum').update('Consolidation Number: '+r.data.AgentPayKey); 
+		        myBaSCommSplitsStore.load({params:{start:0, limit:Ext.getCmp('pBaSCommSplitsBar').pageSize,AgentPayKey:r.data.AgentPayKey}});
+		        myBaSCommSplitsMask.show();	
+	             
+					
+						$('#transaction').dialog('open');
+						myBaSCommSplitsGrid.show();		
+						myBaSCommSplitsGrid.render('mySCommSplitsGrid');
+						
+						myBaAgentPaysGrid.getSelectionModel().clearSelections();
+					}
+					
+
+				}
+		  );	
+		//----------------default setup --------------------------------------	
+		
+	//################# Transactions ######################################
+			  
+	//----------------default setup --------------------------------------	
+	
+	 
+	
+ 
+});
+
+</script> 
+
+      
+  
+  
+  
+<div id="tabs">
+<ul>
+  <li><a href="#BaCommission-search"><strong>My Commission Search</strong></a></li>
+</ul>
+
+<div id="myCommissionSummarySearch"></div>
+
+<br>
+<div id="myCommissionSummaryGrid"> </div>
+<br>
+<div>
+	<h3 id="payNum"></h3>
+	<div id="myAgentPaysGrid"> </div>
+</div>
+<br>
+<div id="transaction" title="Transaction Details" class="transaction"> 
+<h3 id="consNum"></h3>
+<div id="mySCommSplitsGrid"> </div>
+</div>
+
+
+</div>  
+  </body>
+</html>
+  
+  

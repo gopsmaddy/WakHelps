@@ -1,0 +1,2598 @@
+<DST>
+<user>001IN000002</user>
+<password>Passw0rd</password>
+<response>
+<List>
+<CtractNo>00000033</CtractNo>
+<SPortfolio>
+<Number>IN000002LS001</Number>
+<Key>0000000013</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000003</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>19/04/2001 09:02:01</OrderDate>
+<EffDate>19/04/2001 09:02:01</EffDate>
+<PricedDate>18/04/2001 08:02:01</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>1.100000</Price>
+<NoUnit>33,017.527300</NoUnit>
+<SGross>36,319.28</SGross>
+<SNet>38,659.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>2,217.92</SLoadAmt>
+<SLoadDiscount>90.90</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>2,127.02</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>4,344.94</TotalFees>
+<TotalFeeDiscount>90.90</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000034</CtractNo>
+<SPortfolio>
+<Number>IN000002LS001</Number>
+<Key>0000000013</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000003</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>19/04/2001 09:02:01</OrderDate>
+<EffDate>19/04/2001 09:02:01</EffDate>
+<PricedDate>18/04/2001 08:02:01</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>1.100000</Price>
+<NoUnit>35,144.545500</NoUnit>
+<SGross>38,659.00</SGross>
+<SNet>41,146.71</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>2,358.20</SLoadAmt>
+<SLoadDiscount>96.65</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>2,261.55</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>4,619.75</TotalFees>
+<TotalFeeDiscount>96.65</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000035</CtractNo>
+<SPortfolio>
+<Number>IN000002LS001</Number>
+<Key>0000000013</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000003</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>19/04/2001 09:02:01</OrderDate>
+<EffDate>19/04/2001 09:02:01</EffDate>
+<PricedDate>18/04/2001 08:02:01</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>1.100000</Price>
+<NoUnit>15,635.158900</NoUnit>
+<SGross>17,198.67</SGross>
+<SNet>18,305.40</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>1,049.12</SLoadAmt>
+<SLoadDiscount>43.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>1,006.12</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>2,055.24</TotalFees>
+<TotalFeeDiscount>43.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000036</CtractNo>
+<SPortfolio>
+<Number>IN000002LS001</Number>
+<Key>0000000013</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000003</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>19/04/2001 09:02:01</OrderDate>
+<EffDate>19/04/2001 09:02:01</EffDate>
+<PricedDate>18/04/2001 08:02:01</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>1.100000</Price>
+<NoUnit>33,252.218200</NoUnit>
+<SGross>36,577.44</SGross>
+<SNet>38,659.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>1,983.23</SLoadAmt>
+<SLoadDiscount>90.90</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>1,892.33</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>3,875.56</TotalFees>
+<TotalFeeDiscount>90.90</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000037</CtractNo>
+<SPortfolio>
+<Number>IN000002LS001</Number>
+<Key>0000000013</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000003</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>19/04/2001 09:02:01</OrderDate>
+<EffDate>19/04/2001 09:02:01</EffDate>
+<PricedDate>18/04/2001 08:02:01</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>1.100000</Price>
+<NoUnit>35,144.545500</NoUnit>
+<SGross>38,659.00</SGross>
+<SNet>40,872.22</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>2,108.67</SLoadAmt>
+<SLoadDiscount>96.65</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>2,012.02</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>4,120.69</TotalFees>
+<TotalFeeDiscount>96.65</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000038</CtractNo>
+<SPortfolio>
+<Number>IN000002LS001</Number>
+<Key>0000000013</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000003</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>19/04/2001 09:02:01</OrderDate>
+<EffDate>19/04/2001 09:02:01</EffDate>
+<PricedDate>18/04/2001 08:02:01</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>1.100000</Price>
+<NoUnit>15,635.158900</NoUnit>
+<SGross>17,198.67</SGross>
+<SNet>18,183.29</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>938.11</SLoadAmt>
+<SLoadDiscount>43.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>895.11</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>1,833.22</TotalFees>
+<TotalFeeDiscount>43.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000057</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000001</Key>
+<Desc>Retail</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>19/04/2001 09:02:01</OrderDate>
+<EffDate>19/04/2001 09:02:01</EffDate>
+<PricedDate>18/04/2001 08:02:01</PricedDate>
+<SFund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+</SFund>
+<Price>1.200000</Price>
+<NoUnit>5,919.908300</NoUnit>
+<SGross>19,010.00</SGross>
+<SNet>20,000.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>950.00</SLoadAmt>
+<SLoadDiscount>50.00</SLoadDiscount>
+<SFundManagerFee>107.04</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>792.96</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>1,850.00</TotalFees>
+<TotalFeeDiscount>50.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000060</CtractNo>
+<SPortfolio>
+<Number>IN000002LS001</Number>
+<Key>0000000013</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000001</Key>
+<Desc>Retail</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>19/04/2001 09:02:01</OrderDate>
+<EffDate>19/04/2001 09:02:01</EffDate>
+<PricedDate>18/04/2001 08:02:01</PricedDate>
+<SFund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+</SFund>
+<Price>1.200000</Price>
+<NoUnit>4,313.241700</NoUnit>
+<SGross>7,604.00</SGross>
+<SNet>8,000.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>380.00</SLoadAmt>
+<SLoadDiscount>20.00</SLoadDiscount>
+<SFundManagerFee>58.76</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>301.24</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>740.00</TotalFees>
+<TotalFeeDiscount>20.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000073</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000001</Key>
+<Desc>Retail</Desc>
+</SUnitClass>
+<Type>
+<Desc>Reinvestment</Desc>
+</Type>
+<OrderDate>29/06/2001 04:31:42</OrderDate>
+<EffDate>29/06/2001 04:31:42</EffDate>
+<PricedDate>29/06/2001 04:31:42</PricedDate>
+<SFund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+</SFund>
+<Price>1.399500</Price>
+<NoUnit>27,516.248700</NoUnit>
+<SGross>38,508.99</SGross>
+<SNet>38,508.99</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Reinvestment</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000076</CtractNo>
+<SPortfolio>
+<Number>IN000002LS001</Number>
+<Key>0000000013</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000001</Key>
+<Desc>Retail</Desc>
+</SUnitClass>
+<Type>
+<Desc>Reinvestment</Desc>
+</Type>
+<OrderDate>29/06/2001 04:31:42</OrderDate>
+<EffDate>29/06/2001 04:31:42</EffDate>
+<PricedDate>29/06/2001 04:31:42</PricedDate>
+<SFund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+</SFund>
+<Price>1.399500</Price>
+<NoUnit>20,048.324400</NoUnit>
+<SGross>28,057.63</SGross>
+<SNet>28,057.63</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Reinvestment</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000153</CtractNo>
+<SPortfolio>
+<Number>IN000002LS001</Number>
+<Key>0000000013</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000015</Key>
+<Desc>Short Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>09/02/2011 00:23:24</OrderDate>
+<EffDate>09/02/2011 00:23:24</EffDate>
+<PricedDate>09/02/2011 00:23:24</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>50.000000</Price>
+<NoUnit>3,000.000000</NoUnit>
+<SGross>150,000.00</SGross>
+<SNet>153,300.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>3,000.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>3,000.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>6,000.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000154</CtractNo>
+<SPortfolio>
+<Number>IN000002LS001</Number>
+<Key>0000000013</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000014</Key>
+<Desc>Long Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>09/02/2011 00:24:57</OrderDate>
+<EffDate>09/02/2011 00:24:57</EffDate>
+<PricedDate>09/02/2011 00:24:57</PricedDate>
+<SFund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+</SFund>
+<Price>10.000000</Price>
+<NoUnit>47,000.000000</NoUnit>
+<SGross>258,029.10</SGross>
+<SNet>258,029.10</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000167</CtractNo>
+<SPortfolio>
+<Number>IN000002LS001</Number>
+<Key>0000000013</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000001</Key>
+<Desc>Retail</Desc>
+</SUnitClass>
+<Type>
+<Desc>Reinvestment</Desc>
+</Type>
+<OrderDate>04/02/2011 00:00:00</OrderDate>
+<EffDate>04/02/2011 00:00:00</EffDate>
+<PricedDate>04/02/2011 00:00:00</PricedDate>
+<SFund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+</SFund>
+<Price>100.000000</Price>
+<NoUnit>182.711700</NoUnit>
+<SGross>18,271.17</SGross>
+<SNet>18,271.17</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Reinvestment</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000238</CtractNo>
+<SPortfolio>
+<Number>IN000002LS002</Number>
+<Key>0000000016</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000021</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000008</Key>
+<Desc>Balanced Fund - USA</Desc>
+</SFund>
+<Price>4.700000</Price>
+<NoUnit>35,042.430500</NoUnit>
+<SGross>300,000.00</SGross>
+<SNet>306,600.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>6,000.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>6,000.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>12,000.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000239</CtractNo>
+<SPortfolio>
+<Number>IN000002LS002</Number>
+<Key>0000000016</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000022</Key>
+<Desc>Basic</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+</SFund>
+<Price>22.000000</Price>
+<NoUnit>509.580100</NoUnit>
+<SGross>30,000.00</SGross>
+<SNet>30,000.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000240</CtractNo>
+<SPortfolio>
+<Number>IN000002LS002</Number>
+<Key>0000000016</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000004</Key>
+<Desc>Basic</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000004</Key>
+<Desc>Balanced Fund - Asia</Desc>
+</SFund>
+<Price>355.000000</Price>
+<NoUnit>107.628200</NoUnit>
+<SGross>40,000.00</SGross>
+<SNet>42,860.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>1,900.00</SLoadAmt>
+<SLoadDiscount>300.00</SLoadDiscount>
+<SFundManagerFee>1,000.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>1,600.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>4,500.00</TotalFees>
+<TotalFeeDiscount>300.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000241</CtractNo>
+<SPortfolio>
+<Number>IN000002LS002</Number>
+<Key>0000000016</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000013</Key>
+<Desc>Long Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000004</Key>
+<Desc>Balanced Fund - Asia</Desc>
+</SFund>
+<Price>120.000000</Price>
+<NoUnit>3,575.003500</NoUnit>
+<SGross>450,000.00</SGross>
+<SNet>450,049.50</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>45.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>45.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>90.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000242</CtractNo>
+<SPortfolio>
+<Number>IN000002LS002</Number>
+<Key>0000000016</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000012</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000004</Key>
+<Desc>Balanced Fund - Asia</Desc>
+</SFund>
+<Price>3.500000</Price>
+<NoUnit>5,447.624400</NoUnit>
+<SGross>20,000.00</SGross>
+<SNet>20,000.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000243</CtractNo>
+<SPortfolio>
+<Number>IN000002LS002</Number>
+<Key>0000000016</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000014</Key>
+<Desc>Long Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+</SFund>
+<Price>3.500000</Price>
+<NoUnit>9,142.857100</NoUnit>
+<SGross>32,000.00</SGross>
+<SNet>32,000.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000245</CtractNo>
+<SPortfolio>
+<Number>IN000002LS002</Number>
+<Key>0000000016</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000015</Key>
+<Desc>Short Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>90.000000</Price>
+<NoUnit>2,744.990400</NoUnit>
+<SGross>450,000.00</SGross>
+<SNet>450,049.50</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>45.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>45.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>90.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000246</CtractNo>
+<SPortfolio>
+<Number>IN000002LS002</Number>
+<Key>0000000016</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000003</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>3.500000</Price>
+<NoUnit>1,000.000000</NoUnit>
+<SGross>6,433.00</SGross>
+<SNet>6,860.11</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>404.36</SLoadAmt>
+<SLoadDiscount>16.08</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>388.28</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>792.64</TotalFees>
+<TotalFeeDiscount>16.08</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000247</CtractNo>
+<SPortfolio>
+<Number>IN000002LS002</Number>
+<Key>0000000016</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000006</Key>
+<Desc>Class F</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000006</Key>
+<Desc>Capital Stable - Europe</Desc>
+</SFund>
+<Price>3.500000</Price>
+<NoUnit>3,203.075000</NoUnit>
+<SGross>30,000.00</SGross>
+<SNet>30,006.60</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>6.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>6.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>12.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000248</CtractNo>
+<SPortfolio>
+<Number>IN000002LS002</Number>
+<Key>0000000016</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000020</Key>
+<Desc>Class B</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000007</Key>
+<Desc>European Equities</Desc>
+</SFund>
+<Price>42.000000</Price>
+<NoUnit>284.717700</NoUnit>
+<SGross>32,000.00</SGross>
+<SNet>32,000.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000251</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000021</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000008</Key>
+<Desc>Balanced Fund - USA</Desc>
+</SFund>
+<Price>4.700000</Price>
+<NoUnit>2,336.162000</NoUnit>
+<SGross>20,000.00</SGross>
+<SNet>20,000.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000252</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000022</Key>
+<Desc>Basic</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+</SFund>
+<Price>22.000000</Price>
+<NoUnit>50.958000</NoUnit>
+<SGross>3,000.00</SGross>
+<SNet>3,000.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000253</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000004</Key>
+<Desc>Basic</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000004</Key>
+<Desc>Balanced Fund - Asia</Desc>
+</SFund>
+<Price>355.000000</Price>
+<NoUnit>26.907000</NoUnit>
+<SGross>10,000.00</SGross>
+<SNet>10,715.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>475.00</SLoadAmt>
+<SLoadDiscount>75.00</SLoadDiscount>
+<SFundManagerFee>250.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>400.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>1,125.00</TotalFees>
+<TotalFeeDiscount>75.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000254</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000013</Key>
+<Desc>Long Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000004</Key>
+<Desc>Balanced Fund - Asia</Desc>
+</SFund>
+<Price>120.000000</Price>
+<NoUnit>158.889000</NoUnit>
+<SGross>20,000.00</SGross>
+<SNet>20,002.20</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>2.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>2.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>4.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000255</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000012</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000004</Key>
+<Desc>Balanced Fund - Asia</Desc>
+</SFund>
+<Price>3.500000</Price>
+<NoUnit>32,685.746900</NoUnit>
+<SGross>120,000.00</SGross>
+<SNet>120,000.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000256</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000014</Key>
+<Desc>Long Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+</SFund>
+<Price>3.500000</Price>
+<NoUnit>2,857.142800</NoUnit>
+<SGross>10,000.00</SGross>
+<SNet>10,000.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000258</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000015</Key>
+<Desc>Short Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>90.000000</Price>
+<NoUnit>60.999800</NoUnit>
+<SGross>10,000.00</SGross>
+<SNet>10,001.10</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>1.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>1.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>2.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000259</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000003</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>3.500000</Price>
+<NoUnit>10,000.000000</NoUnit>
+<SGross>64,330.00</SGross>
+<SNet>68,601.05</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>4,043.60</SLoadAmt>
+<SLoadDiscount>160.83</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>3,882.77</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>7,926.37</TotalFees>
+<TotalFeeDiscount>160.83</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000260</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000006</Key>
+<Desc>Class F</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000006</Key>
+<Desc>Capital Stable - Europe</Desc>
+</SFund>
+<Price>3.500000</Price>
+<NoUnit>1,067.691700</NoUnit>
+<SGross>10,000.00</SGross>
+<SNet>10,002.20</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>2.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>2.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>4.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000261</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000020</Key>
+<Desc>Class B</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>18/02/2011 10:00:00</OrderDate>
+<EffDate>18/02/2011 10:00:00</EffDate>
+<PricedDate>18/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000007</Key>
+<Desc>European Equities</Desc>
+</SFund>
+<Price>42.000000</Price>
+<NoUnit>88.974300</NoUnit>
+<SGross>10,000.00</SGross>
+<SNet>10,000.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000264</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000021</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>15/02/2011 10:00:00</OrderDate>
+<EffDate>15/02/2011 10:00:00</EffDate>
+<PricedDate>15/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000008</Key>
+<Desc>Balanced Fund - USA</Desc>
+</SFund>
+<Price>4.600000</Price>
+<NoUnit>20,000.000000</NoUnit>
+<SGross>167,578.00</SGross>
+<SNet>167,578.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000265</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000022</Key>
+<Desc>Basic</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>15/02/2011 10:00:00</OrderDate>
+<EffDate>15/02/2011 10:00:00</EffDate>
+<PricedDate>15/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+</SFund>
+<Price>23.300000</Price>
+<NoUnit>30,000.000000</NoUnit>
+<SGross>1,870,524.00</SGross>
+<SNet>1,870,524.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000266</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000004</Key>
+<Desc>Basic</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>15/02/2011 10:00:00</OrderDate>
+<EffDate>15/02/2011 10:00:00</EffDate>
+<PricedDate>15/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000004</Key>
+<Desc>Balanced Fund - Asia</Desc>
+</SFund>
+<Price>385.000000</Price>
+<NoUnit>49.620800</NoUnit>
+<SGross>20,000.00</SGross>
+<SNet>21,430.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>950.00</SLoadAmt>
+<SLoadDiscount>150.00</SLoadDiscount>
+<SFundManagerFee>500.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>800.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>2,250.00</TotalFees>
+<TotalFeeDiscount>150.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000267</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000013</Key>
+<Desc>Long Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>15/02/2011 10:00:00</OrderDate>
+<EffDate>15/02/2011 10:00:00</EffDate>
+<PricedDate>15/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000004</Key>
+<Desc>Balanced Fund - Asia</Desc>
+</SFund>
+<Price>120.000000</Price>
+<NoUnit>10,000.000000</NoUnit>
+<SGross>1,258,740.00</SGross>
+<SNet>1,258,878.46</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>125.87</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>125.87</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>251.74</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000268</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000012</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>15/02/2011 10:00:00</OrderDate>
+<EffDate>15/02/2011 10:00:00</EffDate>
+<PricedDate>15/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000004</Key>
+<Desc>Balanced Fund - Asia</Desc>
+</SFund>
+<Price>3.300000</Price>
+<NoUnit>10,000.000000</NoUnit>
+<SGross>34,615.35</SGross>
+<SNet>34,615.35</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000269</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000014</Key>
+<Desc>Long Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>15/02/2011 10:00:00</OrderDate>
+<EffDate>15/02/2011 10:00:00</EffDate>
+<PricedDate>15/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+</SFund>
+<Price>3.300000</Price>
+<NoUnit>20,000.000000</NoUnit>
+<SGross>66,000.00</SGross>
+<SNet>66,000.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000271</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000015</Key>
+<Desc>Short Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>15/02/2011 10:00:00</OrderDate>
+<EffDate>15/02/2011 10:00:00</EffDate>
+<PricedDate>15/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>93.700000</Price>
+<NoUnit>10,000.000000</NoUnit>
+<SGross>1,706,745.50</SGross>
+<SNet>1,706,933.24</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>170.67</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>170.67</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>341.34</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000272</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000003</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>15/02/2011 10:00:00</OrderDate>
+<EffDate>15/02/2011 10:00:00</EffDate>
+<PricedDate>15/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>3.400000</Price>
+<NoUnit>10,000.000000</NoUnit>
+<SGross>62,492.00</SGross>
+<SNet>66,768.11</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>4,043.60</SLoadAmt>
+<SLoadDiscount>156.23</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>3,887.37</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>7,930.97</TotalFees>
+<TotalFeeDiscount>156.23</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000273</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000006</Key>
+<Desc>Class F</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>15/02/2011 10:00:00</OrderDate>
+<EffDate>15/02/2011 10:00:00</EffDate>
+<PricedDate>15/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000006</Key>
+<Desc>Capital Stable - Europe</Desc>
+</SFund>
+<Price>3.800000</Price>
+<NoUnit>20,000.000000</NoUnit>
+<SGross>203,376.00</SGross>
+<SNet>203,420.75</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>40.68</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>40.68</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>81.36</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000274</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000020</Key>
+<Desc>Class B</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>15/02/2011 10:00:00</OrderDate>
+<EffDate>15/02/2011 10:00:00</EffDate>
+<PricedDate>15/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000007</Key>
+<Desc>European Equities</Desc>
+</SFund>
+<Price>47.000000</Price>
+<NoUnit>20,000.000000</NoUnit>
+<SGross>2,515,440.00</SGross>
+<SNet>2,515,440.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>0.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000314</CtractNo>
+<SPortfolio>
+<Number>IN000002LS001</Number>
+<Key>0000000013</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000015</Key>
+<Desc>Short Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>15/02/2011 10:00:00</OrderDate>
+<EffDate>15/02/2011 10:00:00</EffDate>
+<PricedDate>15/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>93.700000</Price>
+<NoUnit>106.723600</NoUnit>
+<SGross>10,000.00</SGross>
+<SNet>10,220.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>200.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>200.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>400.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000316</CtractNo>
+<SPortfolio>
+<Number>IN000002LS002</Number>
+<Key>0000000016</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000021</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>14/02/2011 10:00:00</OrderDate>
+<EffDate>14/02/2011 10:00:00</EffDate>
+<PricedDate>14/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000008</Key>
+<Desc>Balanced Fund - USA</Desc>
+</SFund>
+<Price>4.300000</Price>
+<NoUnit>2,553.479400</NoUnit>
+<SGross>20,000.00</SGross>
+<SNet>20,440.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>400.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>400.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>800.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000317</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000020</Key>
+<Desc>Class B</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>15/02/2011 10:00:00</OrderDate>
+<EffDate>15/02/2011 10:00:00</EffDate>
+<PricedDate>15/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000007</Key>
+<Desc>European Equities</Desc>
+</SFund>
+<Price>47.000000</Price>
+<NoUnit>159.017900</NoUnit>
+<SGross>20,000.00</SGross>
+<SNet>20,220.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>200.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>200.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>400.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000366</CtractNo>
+<SPortfolio>
+<Number>IN000002LS001</Number>
+<Key>0000000013</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000015</Key>
+<Desc>Short Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>15/02/2011 10:00:00</OrderDate>
+<EffDate>15/02/2011 10:00:00</EffDate>
+<PricedDate>15/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>93.700000</Price>
+<NoUnit>320.170800</NoUnit>
+<SGross>30,000.00</SGross>
+<SNet>30,660.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>600.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>600.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>1,200.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000367</CtractNo>
+<SPortfolio>
+<Number>IN000002LS001</Number>
+<Key>0000000013</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000003</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>15/02/2011 10:00:00</OrderDate>
+<EffDate>15/02/2011 10:00:00</EffDate>
+<PricedDate>15/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>3.400000</Price>
+<NoUnit>2,941.176500</NoUnit>
+<SGross>10,000.00</SGross>
+<SNet>10,226.47</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>205.88</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>205.88</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>411.76</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000368</CtractNo>
+<SPortfolio>
+<Number>IN000002LS002</Number>
+<Key>0000000016</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000015</Key>
+<Desc>Short Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>14/02/2011 10:00:00</OrderDate>
+<EffDate>14/02/2011 10:00:00</EffDate>
+<PricedDate>14/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>94.700000</Price>
+<NoUnit>57.972300</NoUnit>
+<SGross>10,000.00</SGross>
+<SNet>10,220.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>200.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>200.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>400.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000369</CtractNo>
+<SPortfolio>
+<Number>IN000002LS002</Number>
+<Key>0000000016</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000003</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>14/02/2011 10:00:00</OrderDate>
+<EffDate>14/02/2011 10:00:00</EffDate>
+<PricedDate>14/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>3.300000</Price>
+<NoUnit>3,297.391800</NoUnit>
+<SGross>20,000.00</SGross>
+<SNet>20,466.66</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>424.24</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>424.24</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>848.48</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000370</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000015</Key>
+<Desc>Short Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>15/02/2011 10:00:00</OrderDate>
+<EffDate>15/02/2011 10:00:00</EffDate>
+<PricedDate>15/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>93.700000</Price>
+<NoUnit>117.182100</NoUnit>
+<SGross>20,000.00</SGross>
+<SNet>20,440.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>400.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>400.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>800.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000371</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000003</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>15/02/2011 10:00:00</OrderDate>
+<EffDate>15/02/2011 10:00:00</EffDate>
+<PricedDate>15/02/2011 23:59:00</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>3.400000</Price>
+<NoUnit>4,800.614500</NoUnit>
+<SGross>30,000.00</SGross>
+<SNet>30,679.42</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>617.65</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>617.65</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>1,235.30</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000456</CtractNo>
+<SPortfolio>
+<Number>IN000002LS001</Number>
+<Key>0000000013</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000015</Key>
+<Desc>Short Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>14/03/2011 10:00:00</OrderDate>
+<EffDate>14/03/2011 10:00:00</EffDate>
+<PricedDate>
+</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>
+</Price>
+<NoUnit>
+</NoUnit>
+<SGross>30,000.00</SGross>
+<SNet>30,660.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>600.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>600.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>false</Settled>
+<CtStatus>
+<Desc>Authorised</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Pending</RptStatusDesc>
+<TotalFees>1,200.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000457</CtractNo>
+<SPortfolio>
+<Number>IN000002LS001</Number>
+<Key>0000000013</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000003</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>14/03/2011 10:00:00</OrderDate>
+<EffDate>14/03/2011 10:00:00</EffDate>
+<PricedDate>
+</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>
+</Price>
+<NoUnit>
+</NoUnit>
+<SGross>30,000.00</SGross>
+<SNet>63,000.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>30,000.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>false</Settled>
+<CtStatus>
+<Desc>Authorised</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Pending</RptStatusDesc>
+<TotalFees>30,000.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000458</CtractNo>
+<SPortfolio>
+<Number>IN000002LS002</Number>
+<Key>0000000016</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000015</Key>
+<Desc>Short Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>14/03/2011 10:00:00</OrderDate>
+<EffDate>14/03/2011 10:00:00</EffDate>
+<PricedDate>
+</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>
+</Price>
+<NoUnit>
+</NoUnit>
+<SGross>30,000.00</SGross>
+<SNet>30,660.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>600.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>600.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>false</Settled>
+<CtStatus>
+<Desc>Authorised</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Pending</RptStatusDesc>
+<TotalFees>1,200.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000459</CtractNo>
+<SPortfolio>
+<Number>IN000002LS002</Number>
+<Key>0000000016</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000003</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>14/03/2011 10:00:00</OrderDate>
+<EffDate>14/03/2011 10:00:00</EffDate>
+<PricedDate>
+</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>
+</Price>
+<NoUnit>
+</NoUnit>
+<SGross>30,000.00</SGross>
+<SNet>63,000.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>30,000.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>false</Settled>
+<CtStatus>
+<Desc>Authorised</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Pending</RptStatusDesc>
+<TotalFees>30,000.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000460</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000015</Key>
+<Desc>Short Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>14/03/2011 10:00:00</OrderDate>
+<EffDate>14/03/2011 10:00:00</EffDate>
+<PricedDate>
+</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>
+</Price>
+<NoUnit>
+</NoUnit>
+<SGross>30,000.00</SGross>
+<SNet>30,660.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>600.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>600.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>false</Settled>
+<CtStatus>
+<Desc>Authorised</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Pending</RptStatusDesc>
+<TotalFees>1,200.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000461</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000003</Key>
+<Desc>Standard</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>14/03/2011 10:00:00</OrderDate>
+<EffDate>14/03/2011 10:00:00</EffDate>
+<PricedDate>
+</PricedDate>
+<SFund>
+<Key>0000000003</Key>
+<Desc>Balanced - USA</Desc>
+</SFund>
+<Price>
+</Price>
+<NoUnit>
+</NoUnit>
+<SGross>30,000.00</SGross>
+<SNet>63,000.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>0.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>30,000.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>0.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>false</Settled>
+<CtStatus>
+<Desc>Authorised</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Pending</RptStatusDesc>
+<TotalFees>30,000.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000488</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000014</Key>
+<Desc>Long Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>15/03/2011 23:59:08</OrderDate>
+<EffDate>15/03/2011 23:59:08</EffDate>
+<PricedDate>16/03/2011 00:09:27</PricedDate>
+<SFund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+</SFund>
+<Price>5.000000</Price>
+<NoUnit>10,000.000000</NoUnit>
+<SGross>50,000.00</SGross>
+<SNet>50,550.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>500.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>500.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>1,000.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000489</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000014</Key>
+<Desc>Long Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Subscription</Desc>
+</Type>
+<OrderDate>16/03/2011 00:32:49</OrderDate>
+<EffDate>16/03/2011 00:32:49</EffDate>
+<PricedDate>16/03/2011 00:38:59</PricedDate>
+<SFund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+</SFund>
+<Price>6.000000</Price>
+<NoUnit>2,000.000000</NoUnit>
+<SGross>12,000.00</SGross>
+<SNet>12,132.00</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>120.00</SLoadAmt>
+<SLoadDiscount>0.00</SLoadDiscount>
+<SFundManagerFee>0.00</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>0.00</STax>
+<SCommission>120.00</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>true</Settled>
+<CtStatus>
+<Desc>Settled</Desc>
+</CtStatus>
+<RptTranCodeDesc>Subscription</RptTranCodeDesc>
+<RptStatusDesc>Confirmed</RptStatusDesc>
+<TotalFees>240.00</TotalFees>
+<TotalFeeDiscount>0.00</TotalFeeDiscount>
+</List>
+<List>
+<CtractNo>00000490</CtractNo>
+<SPortfolio>
+<Number>IN000002RP001</Number>
+<Key>0000000008</Key>
+</SPortfolio>
+<SUnitClass>
+<Key>0000000014</Key>
+<Desc>Long Term</Desc>
+</SUnitClass>
+<Type>
+<Desc>Redemption</Desc>
+</Type>
+<OrderDate>16/03/2011 03:21:16</OrderDate>
+<EffDate>16/03/2011 03:21:16</EffDate>
+<PricedDate>
+</PricedDate>
+<SFund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+</SFund>
+<Price>
+</Price>
+<NoUnit>2,000.000000</NoUnit>
+<SGross>
+</SGross>
+<SNet>
+</SNet>
+<SettleNetFmFee>false</SettleNetFmFee>
+<SLoadAmt>
+</SLoadAmt>
+<SLoadDiscount>
+</SLoadDiscount>
+<SFundManagerFee>
+</SFundManagerFee>
+<SFundMgrDiscount>
+</SFundMgrDiscount>
+<STax>
+</STax>
+<SCommission>
+</SCommission>
+<TotCommPercent>100.00</TotCommPercent>
+<Settled>false</Settled>
+<CtStatus>
+<Desc>Authorised</Desc>
+</CtStatus>
+<RptTranCodeDesc>Redemption</RptTranCodeDesc>
+<RptStatusDesc>Pending</RptStatusDesc>
+<TotalFees>
+</TotalFees>
+<TotalFeeDiscount>
+</TotalFeeDiscount>
+</List>
+</response>
+</DST>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 

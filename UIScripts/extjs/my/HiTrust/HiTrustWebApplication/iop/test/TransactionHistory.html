@@ -1,0 +1,296 @@
+<script type="text/javascript">
+Ext.onReady
+(
+	function()
+	{
+		var transactionForm = new Ext.FormPanel
+	(
+		{
+			frame: true,
+			//title: 'Transaction History Search',
+			bodyStyle:'padding:5px 5px 0',
+			waitMsgTarget: true,
+			width: 650,
+			labelWidth: 125,
+			border: false,
+		
+			
+			reader: new Ext.data.XmlReader
+			(
+				{
+					record: 'List'
+				},
+				
+				
+				[
+				
+					{
+						name: 'portfolioNumber',
+						width:120,
+						mapping: 'blah'
+					},
+					{
+						name: 'fundName',
+						width:120,
+						mapping: 'blah'
+					},
+					{
+						name: 'transactionType',
+						width:120,
+						mapping: 'blah'
+					},
+					{
+						name: 'dateFrom',
+						width:120,
+						mapping: 'blah'
+					},
+					{
+						name: 'portfolioName',
+						width:120,
+						mapping: 'blah'
+					},
+					{
+						name: 'unitClass',
+						width:120,
+						mapping: 'blah'
+					},
+					{
+						name: 'contractNo',
+						width:120,
+						mapping: 'blah'
+					},
+					{
+						name: 'dateTo',
+						width:120,
+						mapping: 'blah'
+					}
+				]
+			),
+				renderTo: 'transactionHistorySearch',
+				
+				items:
+				[
+					{
+						layout: 'column',
+						items:
+						[
+							{	
+								columnWidth:.5,
+								layout: 'form',
+									items:
+									[
+											new Ext.form.ComboBox
+											(
+												{
+													
+													name: 'portfolioNumber',
+													fieldLabel: 'Portfolio Number',
+													anchor:'95%',
+													typeAhead: true,
+													mode: 'local',
+													triggerAction: 'all',
+													emptyText:'Select a Portfolio...',
+													selectOnFocus:true,
+													width:120
+												}
+											),
+											new Ext.form.ComboBox
+											(
+												{
+													name: 'fundName',
+													fieldLabel: 'Fund Name',
+													anchor:'95%',																				
+													typeAhead: true,
+													mode: 'local',
+													triggerAction: 'all',
+													emptyText:'Select a Fund Name...',
+													selectOnFocus:true,
+													width:120
+												}
+											),
+											new Ext.form.ComboBox
+											(
+												{
+													name: 'transactionType',
+													fieldLabel: 'Transaction Type',
+													anchor:'95%',
+													typeAhead: true,
+													mode: 'local',
+													triggerAction: 'all',
+													emptyText:'Select a Transaction Type...',
+													selectOnFocus:true,
+													width:120
+												}
+											),
+											new Ext.form.DateField
+											(
+												{
+													name: 'dateFrom',
+													fieldLabel: 'Date From',
+													anchor:'95%',
+													name: 'dateFrom',
+													width:120,
+													allowBlank:false
+												}
+											)
+									]
+							},
+							{	
+								columnWidth:.5,
+								layout: 'form',
+								items: 
+								[
+									new Ext.form.ComboBox
+									(
+										{
+											name: 'portfolioName',
+											fieldLabel: 'Portfolio Name',
+											anchor:'95%',
+											typeAhead: true,
+											mode: 'local',
+											triggerAction: 'all',
+											emptyText:'Select a Portfolio Name...',
+											selectOnFocus:true,
+											width:120
+										}
+									),
+									new Ext.form.ComboBox
+									(
+										{
+											name: 'unitClass',
+											fieldLabel: 'Unit Class',
+											anchor:'95%',
+											typeAhead: true,
+											mode: 'local',
+											triggerAction: 'all',
+											emptyText:'Select a Unit Class...',
+											selectOnFocus:true,
+											width:120
+										}
+									),
+									
+									
+										{
+											xtype:'textfield',
+											fieldLabel: 'Contract Number',
+											name: 'contractNo',
+											anchor:'95%',
+											width:120
+										},
+									
+									new Ext.form.DateField
+									(
+										{
+											fieldLabel: 'Date To',
+											name: 'dateTo',
+											anchor:'95%',
+											name: 'dateTo',
+											width:120,
+											allowBlank:false
+										}
+									)
+								]
+							}
+						]
+					}					
+				],
+
+					buttons: 
+					[
+						{
+							text: 'Go'
+						}
+					]
+		}
+	);
+	
+	    var transactionSummaryResultsStore = new Ext.data.Store
+		({
+	        proxy : new Ext.data.HttpProxy
+			(
+				{																
+					method: 'GET',
+					prettyUrls: false,
+					//url: '/XMLDataLoader.aspx?action=BaCtracts&user=001IN000001&pass=Passw0rd'
+				    url: 'http://AppServer:8080/hitrust3/t-hitrust-portfolioList.xml',
+				}
+			),
+	        
+	        reader: new Ext.data.XmlReader
+			(
+				{
+	               // records will have an "Item" tag
+	               record: 'List',
+	               id: 'Key',
+	               totalProperty: 'totalRecords'
+	            }, 
+					[
+						{name: 'contractNo', mapping: 'CtractNo'},
+						{name : 'transactionDate', mapping: 'OrderDate'},
+						{name : 'valueDate', mapping: 'EffDate'},
+						{name : 'fundName', mapping: 'SFund>Desc'},
+						{name : 'units', mapping: 'NoUnit'},
+						{name : 'unitPrice', mapping: 'Price'},
+						{name : 'amount', mapping: 'SGross'},
+						{name : 'transType', mapping: 'Type>Desc'},
+						{name : 'status', mapping: 'CtStatus>Desc'}
+					]
+			)
+	    });
+		
+		    var transactionSummaryResultsGrid = new Ext.grid.GridPanel
+			({
+	
+				store: transactionSummaryResultsStore,
+				columns: 
+				[
+							{id: 'contractNo', header: 'Contract No', dataIndex : 'contractNo', width : 100, sortable : true, align: 'left'},
+							{header: 'Transaction Type', dataIndex : 'transactionDate', width : 125, sortable : true, align: 'left'},
+							{header: 'Value Date', dataIndex : 'valueDate', width : 125, sortable : true, align: 'left'},
+							{id: 'fundName', header: 'Fund Name', dataIndex : 'fundName', width : 100, sortable : true, align: 'left'},
+							{header: 'Units', dataIndex : 'units', width : 125, sortable : true, align: 'left'},
+							{header: 'Unit Price', dataIndex : 'unitPrice', width : 125, sortable : true, align: 'left'},
+							{header: 'Amount ($)', dataIndex : 'amount', width : 100, sortable : true, align: 'left'},
+							{header: 'Transaction Type', dataIndex : 'transType', width : 125, sortable : true, align: 'left'},
+							{header: 'Status', dataIndex : 'status', width : 70, sortable : true, align: 'left'}
+							
+							
+				],
+				autoExpandColumn: 'fundName',
+			   renderTo:'transactionSummaryResultsGrid',
+			   autoWidth: true,
+						height: 300,
+						bbar: new Ext.PagingToolbar
+						({
+							  id : 'pBar',
+							pageSize: 10,
+							store: transactionSummaryResultsStore,
+							displayInfo: true,
+							displayMsg: 'Displaying {0} - {1} of {2}',
+							emptyMsg: "No items to display"
+				 }
+				 )
+			});
+			
+			
+			
+	transactionSummaryResultsGrid.getBottomToolbar().refresh.hide();							
+	transactionSummaryResultsStore.load({params:{start:0, limit:10}}); 
+	transactionForm.load();
+
+	
+});
+</script>
+
+
+
+<table border="0" cellpadding="0" cellspacing="10">
+<tbody>
+<tr>
+<td colspan="4" valign="top">
+<h2>Transaction History Search</h2>
+<p>To obtain your transaction history, please specify one or more search criteria.</p></td></tr>
+
+</tbody></table>
+
+<div id="transactionHistorySearch"> </div>

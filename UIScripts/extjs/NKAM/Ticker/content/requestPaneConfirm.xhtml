@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom">
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.nsamRequestPane_Title}
+    </ui:define>
+    <ui:define name="workArea">
+        <h:form>
+            <table class="acTable">
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        <ac:pkDataTable id="allRequest" binding="#{RequestPane.nsamData}"
+                                        primaryKey="id"
+                                        var="requestPane"
+                                        value="#{RequestPane.allNSAMs}"
+                                        headerClass="table-header"
+                                        footerClass="table-footer"
+                                        styleClass="acTable"
+                                        cellpadding="0" cellspacing="0">
+
+                        <h:column id="PTOColumn" >
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.nsamRequestPane_PTO}"/>
+                            </f:facet>
+                            <h:outputText id="PTOValue" value="#{requestPane.ptoTLA}"/>
+                        </h:column>
+                        <h:column id="DeviceColumn">
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.nsamRequestPane_Device}"/>
+                            </f:facet>
+                            <h:outputText id="DeviceValue" value="#{requestPane.deviceTLA}"/>
+                        </h:column>
+						<h:column id="NCRSColumn">
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.nsamRequestPane_NCRS}"/>
+                            </f:facet>
+                            <h:outputText id="NCRSValue" value="#{requestPane.ncrsId}"/>
+                        </h:column>
+                        <h:column id="EquipColumn">
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.nsamRequestPane_Equip}"/>
+                            </f:facet>
+                            <h:outputText id="EquipValue" value="#{requestPane.equipVendor}"/>
+                        </h:column>
+                        <h:column id="ReadColumn">
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.nsamRequestPane_Read}"/>
+                            </f:facet>
+                            <h:outputText id="ReadValue" value="#{requestPane.readerVendor}"/>
+                        </h:column>
+                        <h:column id="DeviceIDColumn">
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.nsamRequestPane_DeviceID}"/>
+                            </f:facet>
+                            <h:outputText id="DeviceIDValue" value="#{requestPane.hexDevice}"/>
+                        </h:column>
+                        <h:column id="KeyTypeColumn">
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.nsamRequestPane_KeyType}"/>
+                            </f:facet>
+                            <h:outputText id="KeyTypeValue" value="#{requestPane.fulfilKeysUsed}"/>
+                        </h:column>
+                        <h:column id="OrderNoColumn">
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.nsamRequestPane_OrderNo}"/>
+                            </f:facet>
+                            <h:outputText id="OrderNoValue" value="#{requestPane.orderNo}"/>
+                        </h:column>
+
+                    </ac:pkDataTable>
+                    </td>
+                </tr>
+            </table>
+            <h:commandLink onclick="return cursorChange()" action="#{RequestPane.processNSAM}" >#{msg.confirm}</h:commandLink>
+            &#160;
+            <a href="javascript:history.back();"><font face="Arial" >Cancel</font></a>
+        </h:form>
+            <h:messages globalOnly="true" layout="table" styleClass="warn"
+            infoClass="info" warnClass="warn"
+            errorClass="warn"
+            fatalClass="warn"/>
+
+            <br/>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

@@ -1,0 +1,113 @@
+/* Product name in header */
+.text-header-productName {
+    color: #233e7a;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 32px;
+    letter-spacing: -1;
+    text-decoration: none;
+}
+
+/* Main page title */
+.text-title {
+    color: #000033;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Main page title subject matter */
+.text-title-subject {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Disables text wrapping across lines */
+.text-nowrap {
+    white-space: nowrap;
+}
+
+/* Data table column header */
+.text-table-header {
+    color: black;
+    font-weight: bold;
+}
+
+/* Data table cell text content for the DEBUG logging level */
+.text-table-column-loggingLevel-DEBUG {
+    color: blue;
+}
+
+/* Data table cell text content for the VERSION logging level */
+.text-table-column-loggingLevel-VERSION {
+    color: #7fffd4;
+}
+
+/* Data table cell text content for the ENTER logging level */
+.text-table-column-loggingLevel-ENTER {
+    color: #7cfc00;
+}
+
+/* Data table cell text content for the EXIT logging level */
+.text-table-column-loggingLevel-EXIT {
+    color: #7fff00;
+}
+
+/* Data table cell text content for the INFO logging level */
+.text-table-column-loggingLevel-INFO {
+    color: #9932cc;
+}
+
+/* Data table cell text content for the WARN logging level */
+.text-table-column-loggingLevel-WARN {
+    color: #8b008b;
+}
+
+/* Data table cell text content for the ERROR logging level */
+.text-table-column-loggingLevel-ERROR {
+    color: red;
+}
+
+/* Data table cell text content for the FATAL logging level */
+.text-table-column-loggingLevel-FATAL {
+    color: #8b0000;
+}
+
+/* Form field emphasised text content */
+.text-form-field-emphasised {
+    font-weight: bold;
+}
+
+/* Form button label text */
+.text-form-button {
+    font-family: arial, helvetica, sans-serif;
+}
+
+/* Log file file name */
+.text-logFile-fileName {
+    color: #556b2f;
+    font-weight: bold;
+}
+
+/* General - for uncleared */
+.text-uncleared {
+    color: orange;
+}
+
+/* General - for cleared */
+.text-cleared {
+    color: green;
+}
+
+/* Tooltip handling */
+#tooltip {
+    position: absolute;
+    visibility: hidden;
+    font-size: 8pt;
+}
+
+#tooltip div {
+    background: #ffffcc;
+    border: 1px solid #666;
+    padding: 4px;
+}
+
+

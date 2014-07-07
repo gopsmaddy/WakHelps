@@ -1,0 +1,114 @@
+<!--
+	Target:      ppvm-core.jar
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>com.aconitesolutions</groupId>
+		<artifactId>aconite</artifactId>
+		<version>4.1.0</version>
+	    <relativePath>../../../aconite/pom.xml</relativePath>
+	</parent>
+	<!--
+	<parent>
+		<groupId>net.aconite.affina</groupId>
+		<artifactId>affina-parent</artifactId>
+		<version>2.6.2</version>
+		<relativePath>../../Affina/affina-parent/pom.xml</relativePath>
+    </parent>
+	-->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.aconitesolutions</groupId>
+	<artifactId>aconite-nsam-core</artifactId>
+	<packaging>jar</packaging>
+	<name>NSAM Core</name>
+	<url>http://www.aconite.net</url>
+	
+	
+	<build>
+		<plugins>       
+			<plugin>
+				<groupId>com.atlassian.maven.plugins</groupId>
+				<artifactId>maven-clover2-plugin</artifactId>
+				<version>3.1.4</version>
+			</plugin>        
+		</plugins>
+	</build>
+	
+	
+	<dependencies>
+        <dependency>
+            <groupId>javax.j2ee</groupId>
+            <artifactId>j2ee</artifactId>
+            <scope>provided</scope> <!-- This jar won't added to final output-->
+        </dependency>
+    	<dependency>
+            <groupId>com.aconitesolutions</groupId>
+            <artifactId>aconite-data-dictionary</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+    	<dependency>
+            <groupId>com.aconitesolutions</groupId>
+            <artifactId>aconite-utils</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aconitesolutions</groupId>
+            <artifactId>test-common</artifactId>
+            <scope>test</scope>
+            <version>4.1.0</version>
+        </dependency>
+       
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.jtds</groupId>
+            <artifactId>jtds</artifactId>
+            <version>1.2</version>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+			<groupId>com.aconitesolutions</groupId>
+			<artifactId>aconite-dao-common</artifactId>	
+			<version>4.1.0</version>
+		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm</groupId>
+            <artifactId>mqjms</artifactId>
+            <version>6.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm</groupId>
+            <artifactId>mq</artifactId>
+            <version>6.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.2.4</version>
+        </dependency>
+        <!--<dependency>-->
+          <!--<groupId>br.com.caelum.stella</groupId>-->
+          <!--<artifactId>hibernate-persistence-example</artifactId>-->
+          <!--<version>1.2</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate</artifactId>
+            <version>3.2.5.ga</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.3.166</version>
+        </dependency>
+    </dependencies>
+</project>

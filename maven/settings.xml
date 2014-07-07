@@ -1,0 +1,125 @@
+<settings>
+    <localRepository>${MAVEN_HOME}/../../repos/local</localRepository>
+    <proxies/>
+  <servers>
+    <server>
+      <id>releases</id>
+      <username>deployment</username>
+      <password>deployment123</password>
+    </server>  
+    <server>
+      <id>snapshots</id>
+      <username>deployment</username>
+      <password>deployment123</password>
+    </server>  
+    <server>
+      <id>thirdparty</id>
+      <username>deployment</username>
+      <password>deployment123</password>
+    </server> 
+  </servers>
+	<mirrors>
+	<!--
+		<mirror>
+			Our own internal mirror of maven central (hosted using Proximity)
+			<id>AconiteMirror</id>
+			<mirrorOf>central</mirrorOf>
+			<url>http://fileserver1:8080/px-webapp-default-1.0.0-RC8/repository/public</url>
+		</mirror>
+	-->
+
+	</mirrors>
+	<profiles>
+		<profile>
+			<id>default-repositories</id>
+			<repositories>
+				<!-- This has been disabled for now because we have replaced buildmachine
+				with buildcontroller. But we need this and hence we need to figure out how 
+				to get it to work on buildcontroller. JIRA AF-519 has been raised to fix this.
+				-->
+				<!--
+				<repository>
+				    <id>releases</id>
+				    <name>Internal Releases</name>
+				    <url>http://buildmachine:8081/nexus/content/repositories/releases</url>
+				</repository>
+				-->
+				<repository>
+					<id>installed</id>
+					<name>Installed Repository</name>
+					<url>file:///${MAVEN_HOME}/repos/installed</url>
+				</repository>
+				<repository>
+				    <id>codehaus</id>
+				    <name>Maven Codehaus repository</name>
+				    <url>http://repository.codehaus.org</url>
+				</repository>
+				<repository>
+				    <id>Java</id>
+				    <name>Java repository</name>
+				    <url>http://download.java.net</url>
+				</repository>
+				<repository>
+				    <id>maven</id>
+				    <name>Maven repository</name>
+				    <url>http://repo1.maven.org/maven2</url>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<!--
+				<pluginRepository>
+				    <id>releases</id>
+				    <name>Internal Releases</name>
+				    <url>http://buildmachine:8081/nexus/content/repositories/releases</url>
+				</pluginRepository>
+				-->
+				<pluginRepository>
+					<id>installed</id>
+					<name>Installed Repository</name>
+					<url>file:///${MAVEN_HOME}/repos/installed</url>
+				</pluginRepository>
+				<pluginRepository>
+				    <id>java.net</id>
+				    <name>java.net Maven Repository</name>
+					<url>http://download.java.net/nonav/repository</url>
+				    <layout>legacy</layout>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+        <profile>
+            <id>jetty-logging</id>
+            <properties>
+                <slf4j>false</slf4j>
+                <log4j.configuration>file:./target/classes/log4j.properties</log4j.configuration>
+            </properties>
+        </profile>
+		<!-- clover server license required to enable this section  2012-04-24 -->
+		<!--
+		<profile>
+		  <id>clover-license</id>
+		  <activation>
+			<activeByDefault>true</activeByDefault>
+		  </activation>		 
+		  <properties>
+			<maven.clover.licenseLocation>file:///${MAVEN_HOME}/license/clover.license</maven.clover.licenseLocation>
+		  </properties>      
+		</profile>
+		-->
+		<profile>
+            <id>source-encoding</id>
+			<properties>
+				<project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
+			</properties>
+		</profile>
+	</profiles>
+	<activeProfiles>
+		<activeProfile>default-repositories</activeProfile>
+		<activeProfile>jetty-logging</activeProfile>
+		<!--<activeProfile>clover-license</activeProfile>-->
+		<activeProfile>source-encoding</activeProfile>
+	</activeProfiles>
+  <pluginGroups>
+    <pluginGroup>com.aconitesolutions</pluginGroup>
+    <pluginGroup>org.mortbay.jetty</pluginGroup>
+  </pluginGroups>	
+</settings>

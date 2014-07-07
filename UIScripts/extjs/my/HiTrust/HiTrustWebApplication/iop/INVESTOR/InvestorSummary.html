@@ -1,0 +1,755 @@
+<html>
+	<head>
+		<link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+            <!--<script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base.js" type="text/javascript"></script>
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all.js" type="text/javascript"></script>-->
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all-debug.js" type="text/javascript"></script>
+      
+      <link href="http://modules.eurouwins.com/iop/styles/jquery-ui-1.8.4.custom.css" type="text/css" rel="stylesheet" media="screen">			
+			
+      <script src="http://modules.eurouwins.com/iop/scripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/jquery.uniform.min.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/jquery-ui-1.8.4.custom.min.js" type="text/javascript"></script>
+			
+      <link href="http://modules.eurouwins.com/iop/styles/flexigrid.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/iop_screen.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/uniform.default.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/web_fonts.css" type="text/css" rel="stylesheet" media="screen">
+			
+			<script src="http://modules.eurouwins.com/iop/scripts/flexigrid.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/iop_functions.js" type="text/javascript"></script>
+			
+			<script src="../js/tools.js" type="text/javascript"></script>
+			<script src="../js/myExternalURL.js" type="text/javascript"></script>
+			<script src="../js/pagesizeplugin.js" type="text/javascript"></script>
+			
+			
+	   <body>
+	   	
+<script type="text/javascript">
+	   		
+
+		//$('#auto').val(getUrlVars()["auto"]); 
+	  //$('#sessionid').val(getUrlVars()["sessionid"]); 
+	  
+	  
+	
+
+Ext.Ajax.timeout = 60000;
+Ext.onReady
+(
+	function()
+	{
+		//alert(getUrlVars()["auto"]);
+		//alert('>'+varBaProfilesURL);
+		
+			
+			////////////////////////jquery calls/////////////////////////////////////   		
+			
+
+		// Tabs
+  $('#tabs').bind('tabsselect', function (event, ui) {
+        if(ui.tab.text=='Investment Summary')
+        {
+        	if(!myInvestorSummaryStore.loaded)
+        	{
+            myInvestorSummaryStore.load({params:{start:0, limit:Ext.getCmp('pInvestorSummaryBar').pageSize}});
+            myInvestorSummaryMask.show();	
+          }
+         		
+         		//alert("Funds Under Management");
+            return true;
+         }
+        
+        if(ui.tab.text=='Taxation Details')
+        {
+        	if(!myProfilerForm.loaded)
+            myProfilerForm.load
+            (
+            	{
+            		method: 'GET', 
+            		url: varBaProfilesURL            		
+            	}
+            );
+          	
+          	// alert("Taxation Details");
+            return true;
+         }
+            
+        if(ui.tab.text=='Contact Details')
+        {
+        	if(!myContactStore.loaded)
+        	{
+          	myContactStore.load({params:{start:0, limit:10}});
+           	myContactMask.show();	
+          }           
+          
+          	//alert("Contact Details");
+            return true;
+        }
+            
+       if(ui.tab.text=='Bank Accounts')
+       {
+       		if(!myBankStore.loaded)
+       		{
+          	myBankStore.load({params:{start:0, limit:10}});
+          	myBankMask.show();	
+        	}
+        	
+        	//alert("Bank Accounts");
+          return true;
+       }
+    });
+
+		///////////////////Investor Details ///////////////////////////////////////////	
+		/*
+		var myProfilerForm = new Ext.FormPanel
+    (
+    	{
+            reader: new Ext.data.XmlReader
+            (
+              {
+                record: 'List',
+                id: 'Key',
+                totalRecords: 'totalRecords'
+              }, 
+              [
+								//----meta----
+							  {name : 'RelNo'			, mapping: 'RelNo'},
+							  {name : 'User_Key'	, mapping: 'User>Key'},
+							  {name : 'Type_Desc'	, mapping: 'Type>Desc'},
+							  {name : 'Type_Key'	, mapping: 'Type>Key'},
+							  {name : 'Type_Code'	, mapping: 'Type>Code'},
+							  //----profiler----
+								{name : 'Salutation', mapping: 'Salutation'},
+			          {name : 'name', mapping: 'GivenName'},
+			          {name : 'surname', mapping: 'Name'},
+			          {name : 'status', mapping: 'Status>Desc'},
+			          //----Tax----
+								{name: 'tfn', mapping: 'TFN'},
+								{name: 'tfnType', mapping: 'TaxCode>Desc'},
+								{name: 'taxDomcile', mapping: 'Domicile>Desc'},
+								{name: 'abnAcn', mapping: 'CorporateID'}
+						 ]
+           ),
+          labelWidth: 75, // label settings here cascade unless overridden
+          border: false,
+          height: 350,
+          defaults: {width: 150},
+          defaultType: 'textfield',
+          id:'idprofileForm',
+				   listeners: 
+				   {
+				   	actioncomplete: function()
+				   	{
+				   		//alert('efdf');
+				   		this.loaded = true;					   		
+				   		Ext.getCmp('idtaxationForm').getForm().setValues
+				   		(
+					   		{
+					   			id1tfn: Ext.getCmp('idtfn').getValue(), 
+					   			id1tfnType: Ext.getCmp('idtfnType').getValue(),
+					   			id1taxDomcile: Ext.getCmp('idtaxDomcile').getValue(), 
+					   			id1abnAcn: Ext.getCmp('idabnAcn').getValue() 
+					   		}
+				   		);
+				   	}
+				  },
+            
+            items: 
+            [
+              {xtype: 'panel',border: false,html: '<h2>Investor Details</h2><br>'},              	
+              {fieldLabel: 'Title',name: 'Salutation',readOnly: true},
+              {fieldLabel: 'Name',name: 'name',readOnly: true},
+              {fieldLabel: 'Surname', name: 'surname',readOnly: true},
+              {fieldLabel: 'Status',name: 'status',readOnly: true},   
+              {							      	
+				        xtype: 'textfield',
+				        id: 'idtfn',
+				        name: 'tfn',	
+				        listeners: 
+								{
+              		'render': function(p) 
+              		{                        
+                  	this.hide()
+              		}
+			        	}					        
+			      	},
+			      	{							      	
+				        xtype: 'textfield',
+				        id: 'idtfnType',
+				        name: 'tfnType',							        						       
+								listeners: 
+								{
+              		'render': function(p) 
+              		{                        
+                  	this.hide()
+              		}
+			        	}				        					        
+			      	}	,
+			      	{							      	
+				        xtype: 'textfield',
+				        id: 'idtaxDomcile',	
+				        name: 'taxDomcile',							        						       
+								listeners: 
+								{
+              		'render': function(p) 
+              		{                        
+                  	this.hide()
+              		}
+			        	}				        					        
+			      	}	,
+			      	{							      	
+				        xtype: 'textfield',
+				        id: 'idabnAcn',
+				        name: 'abnAcn',								        						       
+								listeners: 
+								{
+              		'render': function(p) 
+              		{                        
+                  	this.hide()
+              		}
+			        	}				        					        
+			      	}	
+            ]
+    	}
+    );
+    
+  
+    var panel = new Ext.Panel
+    (
+	    {
+	          //ctCls: 'pane panerightSummary',
+	          border: false,
+	          width: 250,
+	          height: 160,
+	          layout: 'fit',
+	          renderTo: 'formDiv',
+	          items: [myProfilerForm]
+	     }
+     );
+     */
+	
+		////////////////////taxation//////////////////////////////////////////		
+		
+		//taxationForm = new Ext.FormPanel
+		myProfilerForm= new Ext.FormPanel
+			(
+				{		
+					reader: new Ext.data.XmlReader
+            (
+              {
+                record: 'List',
+                id: '>Key',
+                totalRecords: 'totalRecords'
+              }, 
+              [
+								//----meta----
+							  {name : 'RelNo'			, mapping: '>RelNo'},
+							  {name : 'User_Key'	, mapping: '>User>Key'},
+							  {name : 'Type_Desc'	, mapping: '>Type>Desc'},
+							  {name : 'Type_Key'	, mapping: '>Type>Key'},
+							  {name : 'Type_Code'	, mapping: '>Type>Code'},
+							  //----profiler----              
+								{name : 'Salutation', mapping: '>Salutation'},
+                {name : 'name'			, mapping: '>GivenName'},
+                {name : 'surname'		, mapping: '>Name'},
+                {name : 'status'		, mapping: '>Status>Desc'},
+                //----Tax----                   
+								{name : 'tfn'				, mapping: '>TFN'},
+								{name : 'tfnType'		, mapping: '>TaxCode>Desc'},
+								{name : 'taxDomcile', mapping: '>Domicile>Desc'},
+								{name : 'abnAcn'		, mapping: '>CorporateID'}
+						 ]
+           ),			
+					renderTo: 'taxation',
+					labelWidth: 150, // label settings here cascade unless overridden
+					border: false,
+					height: 200,
+					defaults: {width: 150},
+					defaultType: 'textfield',
+					id:'idtaxationForm',
+					listeners: 
+				   {
+				   	actioncomplete: function()
+				   	{
+				   		this.loaded = true;	
+				   	}
+				  },
+					items: 
+					[
+						{							      	
+			        xtype: 'textfield',
+			        id: 'id1tfn',
+			        fieldLabel: "TFN/EXEMPTION QUOTED",							        
+			        name: 'tfn',			        
+							readOnly: true					        
+		      	},
+		      	{							      	
+			        xtype: 'textfield',
+			        id: 'id1tfnType',
+			        fieldLabel: "TFN TYPE",							        
+			        name: 'tfnType',													
+							readOnly: true					        
+		      	},
+		      	{							      	
+			        xtype: 'textfield',
+			        id: 'id1taxDomcile',
+			        fieldLabel: "TAX DOMCILE",							        
+			        name: 'taxDomcile',													
+							readOnly: true					        
+		      	},
+		      	{							      	
+			        xtype: 'textfield',
+			        id: 'id1abnAcn',
+			        fieldLabel: "ABN/ACN QUOTED",							        
+			        name: 'abnAcn',													
+							readOnly: true					        
+		      	}	,
+		       	{							      	
+			        xtype: 'textfield',
+			        id: 'ValidTFN',
+			        fieldLabel: "TFN Valid",							        
+			        name: 'ValidTFN',													
+							readOnly: true					        
+		      	},
+		      	{							      	
+			        xtype: 'textfield',
+			        id: 'ValidCorporateID',
+			        fieldLabel: "ABN/ACN Valid",							        
+			        name: 'ValidCorporateID',													
+							readOnly: true					        
+		      	}	      	
+				
+					]
+		    }
+		  );
+		  			  			
+	
+		////////////////////////InvestorSummary///////////////////////////////////////////
+	
+		// create the Data Store
+		 myInvestorSummaryStore = new Ext.data.Store
+		 (
+		 	{
+			// load using HTTP
+				proxy : new Ext.data.HttpProxy
+				(
+					{																
+						method: 'GET',
+						prettyUrls: false,
+						url: varBaPortSummaryDatasURL
+						
+					}
+				),
+				remoteSort:true,
+				sortInfo: { field: "Fund_Desc", direction: "ASC" }, 
+				// the return will be XML, so lets set up a reader
+				reader: new Ext.data.XmlReader
+				(
+					{
+					   // records will have an "Item" tag
+					   record: 'List',
+					   //id: 'Portfolio>Key',
+					   id: '>Account>Number',
+					   totalProperty: 'totalRecords'
+				   }, 
+				   [
+					   // set up the fields mapping into the xml doc
+					   // The first needs mapping, the others are very basic
+									{name:  'Fund_Desc'					, mapping: '>Fund>Desc'},
+									{name : 'Fund_Code'					, mapping: '>Fund>Code'},
+									{name : 'BalanceInCurrency'	, mapping: '>BalanceInCurrency'},
+									{name : 'BalanceInUnits'		, mapping: '>BalanceInUnits'},
+									{name : 'UnitClass_Desc'		, mapping: '>UnitClass>Desc'}
+				   ]
+			   ),
+			   listeners: 
+			   {
+			   	load: function()
+			   	{
+			   		this.loaded = true;
+			   	}
+			  }
+			   
+			}
+		);
+	
+		// create the grid
+		var myInvestorSummaryGrid = new Ext.grid.GridPanel
+		(
+			{
+				//title: 'Search Results',
+				store: myInvestorSummaryStore,
+				columns: 
+				[
+					{id: 'Fund_Desc'				,header: 'Fund Name'		      , dataIndex : 'Fund_Desc'			    , width : 250, sortable : true, align: 'left'},
+					{id: 'Fund_Code'				,header: 'Fund Code'	        , dataIndex : 'Fund_Code'			    , width : 150, sortable : true, align: 'left'},
+					{id: 'UnitClass_Desc'		,header: 'Unit Class'			    , dataIndex : 'UnitClass_Desc'		, width : 100, sortable : true, align: 'left'},
+					{id: 'BalanceInUnits'	  ,header: 'Balance in Units'		, dataIndex : 'BalanceInUnits'		, width : 100, sortable : true, align: 'right'},
+					{id: 'BalanceInCurrency',header: 'Balance in Dollars'	, dataIndex : 'BalanceInCurrency'	, width : 100, sortable : true, align: 'right'}
+					
+					
+				],
+				
+			  
+		    renderTo:'flexme2',
+		    autoExpandColumn: 'Fund_Desc',
+		   	autoWidth: true,
+		   	autoHeight:true,
+		   	stripeRows: true,
+		    sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
+				viewConfig: {emptyText: 'No records to display.'},
+				bbar: new Ext.PagingToolbar
+					(
+						{
+							id : 'pInvestorSummaryBar',								
+							displayInfo: true,
+							pageSize:10,	
+							displayMsg: 'Displaying {0} - {1} of {2}',
+							emptyMsg: "No items to display",
+							store: myInvestorSummaryStore,
+							plugins: [new Ext.ux.PageSizePlugin()]
+						}
+					)			
+						
+			}
+		);
+		
+						   
+
+	
+///////////////////contact grid///////////////////////////////////////////	
+	
+	myContactStore = new Ext.data.Store
+	(
+		{
+			
+			proxy : new Ext.data.HttpProxy
+			(
+				{																
+					method: 'GET',
+					prettyUrls: false,
+					url: varBaSProfileAddrsURL					
+				}
+			),
+			remoteSort:true,
+			sortInfo: { field: "Address1", direction: "ASC" }, 
+			reader: new Ext.data.XmlReader
+			(
+				{
+					record: 'List',
+					id: '>Key',
+					totalRecords: 'totalRecords'
+				},				
+				[				
+					{name: 'Key'						,mapping: '>Key'},	
+					{name: 'DefaultAddr'	  ,mapping: '>DefaultAddr'},
+					{name: 'Address1'				,mapping: '>Address1'},					
+					{name: 'Address2'				,mapping: '>Address2'},
+					{name: 'Address3'				,mapping: '>Address3'},	
+					{name: 'Address4'				,mapping: '>Address4'},
+					{name: 'State'					,mapping: '>State'},					
+					{name: 'ZipCode'				,mapping: '>ZipCode'},					
+					{name: 'StartDate'		  ,mapping: '>StartDate'},													
+					{name: 'Country_Desc'	  ,mapping: '>Country>Desc'},
+					{name: 'TelNo'					,mapping: '>TelNo'},					
+					{name: 'TelNo2'					,mapping: '>TelNo2'},				
+					{name: 'MobileNo'				,mapping: '>MobileNo'},				
+					{name: 'FaxNo'					,mapping: '>FaxNo'},
+					{name: 'Email'					,mapping: '>EMail'},
+					{name: 'Deleted'				,mapping: '>Deleted'},
+					{name: 'PrefCommMethod'	,mapping: '>Client>PrefCommMethod>Desc'}			
+
+				]
+			),
+	    listeners: 
+	    {
+		   	load: function()
+		   	{
+		   		this.loaded = true;
+		   	}
+		  }
+		}
+	);
+		
+		
+	myContactGrid = new Ext.grid.GridPanel
+	(
+		{
+			store: myContactStore,			
+			columns:
+			[
+				{id: 'Address1'				,header: 'Address'					,dataIndex: 'Address1'		,width: 102,sortable: true,align: 'left'},					
+				{id: 'Address3'				,header: 'Suburb'						,dataIndex: 'Address3'		,width: 102,sortable: true,	align: 'left'},	
+				{id: 'State'					,header: 'State'						,dataIndex: 'State'				,width: 102,sortable: true,align: 'left'},
+				{id: 'ZipCode'				,header: 'Postcode'					,dataIndex: 'ZipCode'			,width: 102,sortable: true,align: 'left'},
+				//{id: 'Status'				,header: 'Status'						,dataIndex: 'Status'			,width: 102,sortable: true,align: 'left'},	
+				{id: 'DefaultAddr'		,header: 'Default Address'  ,dataIndex: 'DefaultAddr'	,width: 102,sortable: true,align: 'left'}
+				
+			],				
+			renderTo:'contacts',
+			autoExpandColumn: 'Address1',
+   	  autoWidth: true,
+	   	autoHeight:true,
+	   	stripeRows: true,
+	    sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
+			viewConfig: {emptyText: 'No records to display.'},
+			bbar: new Ext.PagingToolbar
+			(
+				{
+				  id : 'pContactBar',
+					pageSize: 10,
+					store: myContactStore,
+					displayInfo: true,
+					displayMsg: 'Displaying {0} - {1} of {2}',
+					emptyMsg: "No items to display"
+				}
+	    )
+		}
+	);
+		
+	/////////////////contact form/////////////////////////////////////////////
+		
+	contactForm = new Ext.FormPanel
+	(
+		{			
+			renderTo: 'contactDetailsBelow',
+			labelWidth: 220, // label settings here cascade unless overridden
+			border: false,
+			defaults: {width: 150},
+			autoWidth: true,
+			defaultType: 'textfield',
+			id:'idcontactForm',			
+			listeners: 
+			{
+		   	actioncomplete: function()
+		   	{		   		
+		   		this.loaded = true;	
+		   	}
+		  },	
+				
+			items: 
+			[
+				{id:'idAddress1'			,fieldLabel: 'Address Line 1'			,name: 'Address1'				,readOnly: true,width: 200},
+				{id:'idAddress2'			,fieldLabel: 'Address Line 2'			,name: 'Address2'				,readOnly: true,width: 200},
+				{id:'idAddress3'			,fieldLabel: 'Surburb'						,name: 'Surburb'				,readOnly: true,width: 200},
+				{id:'idState'					,fieldLabel: 'State'			    		,name: 'State'					,readOnly: true,width: 200},
+				{id:'idZipCode'				,fieldLabel: 'Postcode'						,name: 'ZipCode'				,readOnly: true,width: 200},
+			//	{id:'Status'				,fieldLabel: 'Status'				,name: 'Status'		   	    		,readOnly: true,width: 200},
+				{id:'idCountry_Desc'	,fieldLabel: 'Country'						,name: 'Country_Desc'		,readOnly: true,width: 200},
+				{id:'idTelNo'					,fieldLabel: 'Home Tel'			    	,name: 'TelNo'					,readOnly: true,width: 200},
+				{id:'idTelNo2'				,fieldLabel: 'Work Tel'						,name: 'TelNo2'					,readOnly: true,width: 200},
+				{id:'idMobileNo'			,fieldLabel: 'Mobile'							,name: 'Mobile'					,readOnly: true,width: 200},
+				{id:'idFaxNo'					,fieldLabel: 'Fax'				    		,name: 'Fax'						,readOnly: true,width: 200},
+				{id:'idEMail'					,fieldLabel: 'Email'			    		,name: 'Email'					,readOnly: true,width: 200},
+				{id:'idDefaultAddr'		,fieldLabel:  'Default Address'	  ,name: 'DefaultAddr'	  ,readOnly: true,width: 200},
+				{id:'idPrefCommMethod',fieldLabel:  'Communication mode',name: 'PrefCommMethod'	,readOnly: true,width: 200}
+				
+				
+				
+			]
+		}
+	);
+		
+
+	/////////////////Contact Grid event setup////////////////////////
+	
+			
+					    
+			myContactGrid.getSelectionModel().on
+			(
+				'rowselect', function(sm, rowIdx, r) 
+				{
+					Ext.getCmp('idcontactForm').getForm().setValues
+				   		(
+					   		{
+					   			idAddress1			: r.data.Address1, 
+					   			idAddress2			: r.data.Address2,
+					   			idAddress3			: r.data.Address3, 
+					   			idState					: r.data.State,
+					   			idZipCode				: r.data.ZipCode,
+					   		//	idStatus			: r.data.State,
+					   			idCountry_Desc	: r.data.Country_Desc,
+					   			idTelNo					: r.data.TelNo,
+					   			idTelNo2				: r.data.TelNo2,
+					   			idMobileNo			: r.data.MobileNo,
+					   			idFaxNo					: r.data.FaxNo,
+					   			idEMail					: r.data.Email,
+					   			idDefaultAddr		: r.data.DefaultAddr,	
+					   			idPrefCommMethod		: r.data.PrefCommMethod 			   			
+					   			
+					   		}
+				   		);				
+				}
+		  );
+							
+		
+	
+		
+		
+	//////////////////bank account////////////////////////////////////////////
+	
+		myBankStore = new Ext.data.Store
+		(
+			{
+				
+				proxy : new Ext.data.HttpProxy
+				(
+					{																
+						method: 'GET',
+						prettyUrls: false,
+						url: varBaSSBankAccountsURL					
+					}
+				),
+				remoteSort:true,
+				sortInfo: { field: "Name", direction: "ASC" }, 
+				reader: new Ext.data.XmlReader
+				(
+					{
+						record: 'List',
+						id: '>Number',
+						totalRecords: 'totalRecords'
+					},					
+					[
+						{name: 'Number'							,mapping: '>Number'},
+						{name: 'SortCode_BSBCode'	  ,mapping: '>SortCode>BSBCode'},
+						{name: 'Name'								,mapping: '>Name'},
+						{name: 'SortCode_Bankname'  ,mapping: '>SortCode>Bankname'}
+					]
+			 ),
+		   listeners: 
+		   {
+		   	load: function()
+		   	{
+		   		this.loaded = true;
+		   	}
+		   }
+		 }
+	 );		
+		
+		
+		var myBankGrid = new Ext.grid.GridPanel
+		(
+			{
+				store: myBankStore,
+				
+				columns:
+				[
+					{id: 'Number'						,header: 'Account Number',dataIndex:'Number'						,width: 150,sortable: true,align: 'left'},
+					{id: 'SortCode_BSBCode'	,header: 'BSB Code'			 ,dataIndex:'SortCode_BSBCode'	,width: 150,sortable: true,align: 'left'},	
+					{id: 'Name'							,header: 'Account Name'	 ,dataIndex:'Name'							,width: 150,sortable: true,align: 'left'},
+					{id: 'SortCode_Bankname',header: 'Bank Name'		 ,dataIndex:'SortCode_Bankname'	,width: 150,sortable: true,align: 'left'}
+				],					
+				renderTo:'bankAccounts',
+				autoExpandColumn: 'Number',
+		   	autoWidth: true,
+		   	autoHeight:true,
+		   	stripeRows: true,
+		    sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
+				viewConfig: {emptyText: 'No records to display.'},
+				bbar: new Ext.PagingToolbar
+				(
+					{
+					  id : 'pBankBar',
+						pageSize: 10,
+						store: myBankStore,
+						displayInfo: true,
+						displayMsg: 'Displaying {0} - {1} of {2}',
+						emptyMsg: "No items to display"
+					}
+		    )
+				}
+		);
+		
+	
+	///////////////////////masking///////////////////////////////////////
+		
+	
+	myInvestorSummaryMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Please wait...",	
+				removeMask:true,			
+				store:myInvestorSummaryStore
+		}
+	);
+	
+	myContactMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Please wait...",	
+				removeMask:true,			
+				store:myContactStore
+		}
+	);
+	
+	myBankMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Please wait...",	
+				removeMask:true,			
+				store:myBankStore
+		}
+	);
+	
+	/////////////////////default setup/////////////////////////////////////////
+	
+		myInvestorSummaryGrid.getBottomToolbar().refresh.hide();			
+		
+		
+  			
+		if(!myInvestorSummaryStore.loaded)	
+    {
+    	myInvestorSummaryMask.show();			
+			myInvestorSummaryStore.load({params:{start:0, limit:Ext.getCmp('pInvestorSummaryBar').pageSize}});
+		} 
+		
+		//-------------Test--------------------------
+		if(!myContactStore.loaded)
+  	{
+    	myContactStore.load({params:{start:0, limit:10}});
+     	myContactMask.show();	
+    }	
+	
+	}
+);
+
+
+</script>
+
+
+<div id="tabs">
+	<ul>
+	<li><a href="#tabs-1"><strong>Investment Summary</strong></a></li>
+	<li><a href="#tabs-2"><strong>Taxation Details</strong></a></li>
+	<li><a href="#tabs-3"><strong>Contact Details</strong></a></li>
+	<li><a href="#tabs-4"><strong>Bank Accounts</strong></a></li></ul>
+	<div id="myHidden"></div>
+	<div id="tabs-1">
+		<div id="flexme2"></div>	
+	</div>
+	<div id="tabs-2">
+		<div id="taxation"></div>
+	</div>
+	<div id="tabs-3">
+		<div id="contacts"></div>
+		<div id="paneAddress">
+			<h2>Address</h2>
+			<div id="contactDetailsBelow"></div>
+		</div>
+	</div>
+	<div id="tabs-4">
+		<div id="bankAccounts"></div>	
+	</div>
+</div>
+
+
+
+
+</body>
+</html>

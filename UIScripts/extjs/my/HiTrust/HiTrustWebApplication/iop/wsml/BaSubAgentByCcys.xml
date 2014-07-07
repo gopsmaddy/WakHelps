@@ -1,0 +1,26 @@
+
+<DST>
+  <HiTrust>
+    <businessObject>BaSubAgentByCcys</businessObject>
+    <operation>SEARCH</operation>
+  <user>@@user@</user>
+   <password>@@pass@</password>
+<request> 
+ <data>
+   <Agent.Key>@@profileAgentKey@</Agent.Key>
+   <MaxRows>@@maxRecords@</MaxRows>
+  <SubAgent.Key>@@subAgentKey@</SubAgent.Key>
+ </data>
+</request>  
+<response>
+ <SubAgent.Key/>
+ <SubSubAgent.Key/>
+ <SubSubAgent.Number/>
+ <SubSubAgent.Name/>
+ <SubSubAgent.AgentType.Desc/>
+ <Currency.ISOCode/>
+ <TotalInCurrency/>
+</response>
+</HiTrust>
+</DST> 
+

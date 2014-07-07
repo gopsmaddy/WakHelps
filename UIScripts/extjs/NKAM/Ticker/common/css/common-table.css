@@ -1,0 +1,45 @@
+/*
+ * Re-factored stylings for version 4.0
+ */
+.acTable {
+    border-collapse: collapse;
+    background: white;
+}
+
+.acTable td, th {
+    border: 1px solid #aaaaaa;
+}
+
+.acTable th {
+        padding: 0.7em;
+        text-align: center;
+        background-image: url( '../img/table/dimensionDropShadow.gif' );
+        background-repeat: repeat-x;
+}
+
+.acTable td {
+    padding: 0.4em 0.7em;
+}
+
+/* Sortable column headers */
+.sortableHeader {
+    margin-right: 1.5em;
+    margin-left: 1.5em;
+    padding-right: 1.5em;
+}
+
+.sortedDesc {
+    background-image: url(../img/table/sortDecreasing.gif);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.sortedAsc {
+    background-image: url(../img/table/sortIncreasing.gif);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.sortedNone {
+    /* required - referenced in code */
+}

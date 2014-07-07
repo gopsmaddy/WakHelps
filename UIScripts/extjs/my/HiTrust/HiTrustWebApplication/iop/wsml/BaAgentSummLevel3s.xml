@@ -1,0 +1,25 @@
+<DST>
+ <HiTrust>
+<businessObject>BaAgentSummLevel3s</businessObject>
+  <operation>SEARCH</operation>
+  <user>@@user@</user>
+   <password>@@pass@</password>
+  <request>
+  <data>
+   <Agent.Key>@@profileAgentKey@</Agent.Key>
+   <MaxRows>@@maxRecords@</MaxRows>
+   <UnitClass.Key></UnitClass.Key>
+   <SubAgent.Key></SubAgent.Key>
+  </data></request>
+  <response>
+  <SubSubAgent.Number/>
+  <SubSubAgent.Name/>
+  <UnitClass.Fund.Ccy.ISOCode/>
+  <TotalInUnits/>
+  <TotalInCurrency/>
+	<UnitClass.Key/>
+	<SubAgent.Key/>
+ </response>
+</HiTrust>
+</DST>
+

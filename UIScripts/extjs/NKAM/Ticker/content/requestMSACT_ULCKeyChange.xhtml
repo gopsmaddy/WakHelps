@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom"
+      xmlns:t="http://myfaces.apache.org/tomahawk" >
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.reqKeychange_MSACT_ULCKey}
+    </ui:define>
+    <ui:define name="workArea">
+        <f:view>
+            <h:form id="CT_ULCKeys" enctype="multipart/form-data" onsubmit="document.body.style.cursor='wait';">
+                <h:panelGrid columns="3" border="0" cellspacing="5">
+                    <h:outputLabel for="CT_ULCKey" value="#{msg.msaCTULC_Key}: "/>
+                    <t:inputFileUpload id="CT_ULCKey" value="#{CT_ULCKeyPane.ct_ULCKey}"
+                                       storage="file" onchange="checkFileSize(this)"
+                                       required="true" dir="rtl" label="CT_ULCKey" >
+                    </t:inputFileUpload>
+                    <h:message for="CT_ULCKey" styleClass="warn" />
+
+                    <h:outputText value=" "/>
+
+                </h:panelGrid>
+
+		<table class="acTable">
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.msaCTULC_Generation}</td>
+                        <td class="panel-feature-form-enhanced-field-value">#{CT_ULCKeyPane.currentGeneration}</td>
+                        <h:inputHidden id="currentGen" value="#{CT_ULCKeyPane.currentGeneration}" />
+                    </tr>
+		</table>
+                <br/>
+                <br/>
+                <h:commandButton value="Submit"
+                                 action="#{CT_ULCKeyPane.processKeys}"
+                                 onclick="if (!confirm('Are you sure you want to import this MSA CT_ULC Key Change?')) return false"/>
+                <h:outputText value=" "/>
+                <br/><br/>
+                <h:commandLink id="backLink"  action="reqKeychange_MSACT_ULCKeyGen"  immediate="true">
+                    #{msg.backLink}
+                </h:commandLink>
+            </h:form>
+            <br/>
+            <span id="idUIErrorLogger" style="color: red;"></span>
+		<span id="idGlobalMessage">
+        <h:messages globalOnly="true" layout="table" styleClass="warn"
+                    infoClass="info" warnClass="warn"
+                    errorClass="warn"
+                    fatalClass="warn"/>
+	    </span>
+
+            <br/>
+        </f:view>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

@@ -1,0 +1,30 @@
+
+<DST>
+	<HiTrust>
+		<businessObject>BaReportSettleInss</businessObject>
+		<operation>SEARCH</operation>
+		<user>@@user@</user>
+		<password>@@pass@</password>
+		<request>
+			<data>
+			    <Account.Key>@@accountKey@</Account.Key>				
+			</data>
+		</request>
+		<response>
+			
+			<SettleInsType />			
+			<SettleInsType.Desc />
+			<SettleCurrency.Desc/>
+			<SettleCurrency.ISOCode/>				
+			<SettleAccount>
+			<Key />
+			<Name />
+			<Number />
+			<SortCode>
+			<BSBCode />
+			<Bankname />
+			</SortCode>
+			</SettleAccount>
+		</response>
+	</HiTrust>
+</DST>

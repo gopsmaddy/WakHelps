@@ -1,0 +1,22 @@
+<DST>
+  <HiTrust>
+    <businessObject>BaAgentInvestors</businessObject>
+    <operation>SEARCH</operation>
+    <user>@@user@</user>
+    <password>@@pass@</password>
+<request> 
+ <data>
+  <Agent.Key>@@profileAgentKey@</Agent.Key>
+  <MaxRows>@@maxRecords@</MaxRows>
+ </data>
+</request>  
+<response>
+<PortOwner.Key/>
+ <PortOwner.RelNo/>
+<PortOwner.Name/>
+<PortOwner.GivenName/>
+<PortOwner.Company.Key/>
+<ActiveProfile/>
+</response>
+</HiTrust>
+</DST>

@@ -1,0 +1,14 @@
+	//////////////////////////////////////////////////////////////////////////////////
+	//http://www.mysamplecode.com/2012/05/extjs-card-layout-grid-example3.html
+	//http://www.robertplank.com/cron/
+	//http://jaspreetchahal.org/get-put-post-delete-requests-with-extjs-and-jquery-ajax/
+	//http://www.openjs.com/scripts/jslibrary/demos/crontab.php
+	//http://regexlib.com/Contributors.aspx
+	//http://docs.sencha.com/ext-js/4-0/#!/example/writer/writer.html
+	//http://www.robertplank.com/cron/
+	//http://localhost:8080/testgui/extjs-4.1.0/docs/index.html#/guide/class_system
+	//http://docs.sencha.com/ext-js/4-1/#!/api/Ext.app.Controller
+	//http://localhost:8080/testgui/extjs-4.1.0/docs/index.html#!/api/Ext.data.proxy.Ajax
+
+	//http://stackoverflow.com/questions/1395551/convert-a-json-string-to-object-in-java
+	//http://code.google.com/p/json-simple/

@@ -1,0 +1,19 @@
+<DST>
+ <HiTrust>
+<businessObject>BaAgentFunds</businessObject>
+  <operation>SEARCH</operation>
+    <user>@@user@</user>
+    <password>@@pass@</password>
+  <request>
+  <data>
+   <Agent.Key>@@profileAgentKey@</Agent.Key>
+   <MaxRows>@@maxRecords@</MaxRows>
+  </data>
+ </request>
+  <response>
+  <Fund.Key/>
+  <Fund.Code/>
+  <Fund.Desc/>
+ </response>
+</HiTrust>
+</DST>        

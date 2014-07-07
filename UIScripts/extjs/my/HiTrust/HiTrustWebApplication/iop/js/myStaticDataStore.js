@@ -1,0 +1,8 @@
+///////////////////////////////////////////////////////////////////////////////////
+var varInvestor=1;
+var varAdvisor=2;
+var varFundManager=3;
+var varDealer=4;
+var varDealerGroup=5;
+
+var varFeeType='U';

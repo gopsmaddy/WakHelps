@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom"
+      xmlns:t="http://myfaces.apache.org/tomahawk" >
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.reqKeychange_MSAKeyLoadingKeys}
+    </ui:define>
+    <ui:define name="workArea">
+        <f:view>
+            <h:form id="KeyLoadingKeys" enctype="multipart/form-data" onsubmit="document.body.style.cursor='wait';">
+                <table class="acTable">
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.msaKeyLoadingKey_currentGen}</td>
+                        <td class="panel-feature-form-enhanced-field-value">#{KeyLoadingKeysPane.currentGeneration}</td>
+                        <h:inputHidden id="currentGen" value="#{KeyLoadingKeysPane.currentGeneration}" />
+                    </tr>
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.msaKeyLoadingKey_NewGen}</td>
+                        <td class="panel-feature-form-enhanced-field-value">
+                            <h:inputText id="newgeneration" value="#{KeyLoadingKeysPane.newGeneration}"
+                                         maxlength="02"
+                                         size="2"
+                                         required="true"
+                                         validator="#{Validators.validateHexadecimalLimit}"
+                                         onblur="this.value=this.value.toUpperCase();" 
+                                         autocomplete="off" label="#{msg.msaKeyLoadingKey_NewGen}" >
+                                <f:validateLength maximum="02" minimum="02"/>
+                            </h:inputText>
+                            <br/><h:message for="newgeneration" styleClass="warn"/>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <br/>
+                <h:commandButton value="Next"  action="#{KeyLoadingKeysPane.processGeneration}"/>
+                <h:outputText value=" "/>
+                <br/><br/>
+                <h:commandLink id="backLink"  action="requestKeyChange"  immediate="true">
+                    #{msg.backLink}
+                </h:commandLink>
+                <br/>
+            </h:form>
+            <span id="idUIErrorLogger" style="color: red;"></span>
+            <span id="idGlobalMessage">
+            <h:messages globalOnly="true"  styleClass="warn"
+                        infoClass="info" warnClass="warn"
+                        errorClass="warn"
+                        fatalClass="warn"/>
+            </span>
+            <br/>
+        </f:view>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

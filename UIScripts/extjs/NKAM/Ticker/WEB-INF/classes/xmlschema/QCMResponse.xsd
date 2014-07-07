@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Steve Nichols (Datacard Platform Seven Limited) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xs:include schemaLocation="IFSData.xsd"/>
+	<xs:element name="QCMResponse">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="Rejection" type="RejectionType">
+					<xs:annotation>
+						<xs:documentation>Identifies why the query has been rejected</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Card" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CardIdentifier" type="BasicCardType"/>
+							<xs:element name="PlatformType" type="xs:string" minOccurs="0"/>
+							<xs:element name="CardAvailableMemory" type="CardAvailableMemoryType">
+								<xs:annotation>
+									<xs:documentation>Amount of free EPROM available on the card</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="IssuingSystem" type="IssuingSystemType">
+								<xs:annotation>
+									<xs:documentation>Identifies the name of the card issuing system</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="TextualName" type="TextualNameType">
+								<xs:annotation>
+									<xs:documentation>Cardholder name, which is used as by Affina as display data</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="PlasticNumber" type="PlasticNumberType">
+								<xs:annotation>
+									<xs:documentation>An identifier for a card (or set of cards)</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="PANSequenceNumber" type="PSNType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>An identifier for a card (or set of cards)</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="TextualValidityPeriod" type="TextualValidityPeriodType"/>
+							<xs:element name="Product" type="VersionReportType"/>
+							<xs:element name="BusinessApplication" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>Business applications that are on the card (excludes those that are awaiting delivery)</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="BAIdentification" type="VersionReportType"/>
+										<xs:element name="BALoadState" type="BALoadStateType">
+											<xs:annotation>
+												<xs:documentation>Identifies if the business application is mandatory or optional</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="BAValidity" type="ValidityDatesType">
+											<xs:annotation>
+												<xs:documentation>Business application validity period</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="PersonalisationData" type="NVPType" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

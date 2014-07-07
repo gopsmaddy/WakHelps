@@ -1,0 +1,24 @@
+<webappbnd:WebAppBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:webappbnd="webappbnd.xmi" xmlns:webapplication="webapplication.xmi" xmlns:commonbnd="commonbnd.xmi" xmlns:common="common.xmi" xmi:id="WebApp_1_Bnd" virtualHostName="default_host">
+  <webapp href="WEB-INF/web.xml#WebApp_1"/>
+  <resRefBindings xmi:id="ResourceRefBinding_1" jndiName="NSAMStoreDataSource">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1"/>
+  </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_2" jndiName="NSAMStoreDataSource">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_2"/>
+  </resRefBindings>
+    <resRefBindings xmi:id="ResourceRefBinding_3" jndiName="NSAMStoreDataSource">
+      <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_3"/>
+    </resRefBindings>
+    <resRefBindings xmi:id="ResourceRefBinding_4" jndiName="NSAMStoreDataSource">
+      <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_4"/>
+    </resRefBindings>
+	<resRefBindings xmi:id="ResourceRefBinding_5" jndiName="NSAMStoreDataSource">
+		<bindingResourceRef href="WEB-INF/web.xml#ResourceRef_5"/>
+	</resRefBindings>
+	<resRefBindings xmi:id="ResourceRefBinding_6" jndiName="NSAMStoreDataSource">
+		<bindingResourceRef href="WEB-INF/web.xml#ResourceRef_6"/>
+	</resRefBindings>
+  <!--ejbRefBindings xmi:id="EjbRefBinding_1214570347486" jndiName="STPStartup">
+    <bindingEjbRef href="WEB-INF/web.xml#EjbRef_1"/>
+  </ejbRefBindings-->    
+</webappbnd:WebAppBinding>

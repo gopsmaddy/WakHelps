@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <context-param>
+    <description>HiTrust End-Point address</description>
+    <param-name>hitrust.address</param-name>
+    <param-value>213.121.63.103:81</param-value>
+  </context-param>
+  <context-param>
+    <description>HiTrust connection timeout - 20 seconds</description>
+    <param-name>hitrust.server.connection.timeout</param-name>
+    <param-value>20000</param-value>
+  </context-param>
+      <context-param>
+    <description>HiTrust timeout when waiting for data - 20 seconds</description>
+    <param-name>hitrust.server.data.timeout</param-name>
+    <param-value>20000</param-value>
+  </context-param>
+  <display-name>HiTrustWebApplication</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description>Web Service Client app</description>
+    <display-name>HiTrust</display-name>
+    <servlet-name>HiTrust</servlet-name>
+    <servlet-class>com.kurtosys.iop.client.HiTrustEJBDirect</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HiTrust</servlet-name>
+    <url-pattern>/hitrust</url-pattern>
+  </servlet-mapping>
+  <listener>
+    <listener-class>com.kurtosys.iop.client.HiTrustSessionListener</listener-class>
+  </listener>
+  <servlet>
+    <description></description>
+    <display-name>Ping</display-name>
+    <servlet-name>Ping</servlet-name>
+    <servlet-class>com.kurtosys.iop.client.Ping</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Ping</servlet-name>
+    <url-pattern>/ping</url-pattern>
+  </servlet-mapping>
+  <listener>
+    <listener-class>com.kurtosys.iop.client.HiTrustContextListener</listener-class>
+  </listener>
+  <session-config>
+  	<!-- 15 minutes -->
+	<session-timeout>15</session-timeout>
+  </session-config>
+</web-app>

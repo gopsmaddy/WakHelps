@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link media="screen" type="text/css" href="css/layout.css" rel="stylesheet">
+		<link href="css/redmond/jquery-ui-1.8.21.custom.css" rel="stylesheet" type="text/css"/>
+	  	<script src="js/libs/jquery-1.7.2.min.js"></script>
+		<script src="js/libs/jquery.validate.min.js" type="text/javascript"></script>
+	  	<script src="js/libs/jquery-ui-1.8.21.custom.min.js"></script>
+		<script type="text/javascript" src="js/libs/ext-4.1.0-gpl/extjs-4.1.0/ext-all.js"></script> 
+		<script type="text/javascript" language="JavaScript" src="js/libs/jquery.i18n.properties-min-1.0.9.js"></script>
+	  	<script type="text/javascript" src="js/pages/query/query.js"></script>		
+		<link rel="stylesheet" type="text/css" href="js/libs/ext-4.1.0-gpl/extjs-4.1.0/resources/css/ext-all-gray.css" />
+		<script type="text/javascript" src="js/pages/query/array-grid.js"></script>
+		<script type="text/javascript" src="js/pages/menu/menu.js"></script>
+	</head>
+	<body>	
+	<header id="header"><a href="index.html">Aconite PIN Manager</a></header>
+		<section id="secondary_bar">			
+			<nav id="nav"></nav>
+			<div class="breadcrumbs_container">
+				<article><h4>Transactions &raquo; Transaction Query</h4></article>
+			</div>
+		</section>		
+		<section style="height: 80%;" id="main">				
+			<article class="ui-widget-content">
+			<header class="ui-widget-header"><h3>Selection Criteria</h3></header>
+				<div class="module_content">
+						<fieldset style="width:48%; float:left; margin-right: 3%;"> <!-- to make two field float next to one another, adjust values accordingly -->
+							<label id="startDate">Date From</label>
+							<input id="datepicker" type="text" style="width:60%;"> 
+						</fieldset>
+						<fieldset style="width:48%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
+							<label id="endDate">Date To</label>	
+							<input id="datepicker2" type="text" style="width:60%;">	
+						</fieldset><div class="clear"></div>				
+						<fieldset style="width:48%; float:left; margin-right: 3%;"> <!-- to make two field float next to one another, adjust values accordingly -->
+							<label id="tokenProducts">Token Products</label>
+							<select id="tokenProduct">
+								<option value="tt1">Token Product 1</option>
+								<option value="tt2">Token Product 2</option>
+								<option value="tt3">Token Product 3</option>
+								<option value="tt4">Token Product 4</option>
+							</select> 
+						</fieldset>
+						<fieldset style="width:48%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
+							<label id="transTypes">Transaction Types</label>
+							<select name="transactionTypes" id="transactionTypes" size="4" multiple="multiple" class="multiSelect">
+								<option value="1">Transaction Type 1</option>
+								<option value="2">Transaction Type 2</option>
+							</select>	
+						</fieldset><div class="clear"></div>
+				</div>
+			<footer>
+				<div class="submit_link">					
+					<input type="submit" value="Search" onclick="submitTheForm();"/>
+					<input value="clear" type="submit">
+				</div>
+			</footer>
+		</article><!-- end of post new article -->		
+		<article>
+			<div id="grid-example" class="divContent"></div>
+		</article>		
+		<div id="dialog-modal" title="Transaction Detail" style="display:none;">
+			<p>The details of the item that was clicked</p>
+		</div>
+	</section>
+			<footer id="footer">
+				Aconite Copyright 2012
+			</footer>
+	</body>
+</html>
+

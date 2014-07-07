@@ -1,0 +1,47 @@
+<DST>
+	<HiTrust>
+		<businessObject>InIncomeSummarys</businessObject>
+		<operation>SEARCH</operation>
+		<user>@@user@</user>
+		<password>@@pass@</password>
+		<request>
+			<data>
+				<MaxRows>@@maxRecords@</MaxRows>
+				<Profile.RelNo>@@profileRelNo@</Profile.RelNo>
+				<Profile.Key>@@profileKey@</Profile.Key>
+				<Fund.Key></Fund.Key>
+				<Fund.Code></Fund.Code>
+				<UnitClass.Code></UnitClass.Code>
+				<Income.Key></Income.Key>
+				<PaymentDate></PaymentDate>		
+				<ExDate></ExDate>		
+			</data>
+		</request>
+		<response>
+			<Profile.RelNo/>
+		  <Profile.Key/>			
+			<Portfolio.Name />
+			<Portfolio.Number />
+			<Income.Key />
+			<Fund.Key />
+			<Fund.Desc />
+			<Fund.Code />
+			<UnitClass.Key />
+			<UnitClass.Code />
+			<UnitClass.Desc />
+			<PaymentDate />
+			<ExDate />
+			<ReinvestSplit/>
+			<IncomeSched.Key />
+			<Income.IncomeGross />
+			<Income.Income />
+			<Income.WithHeldTax />			
+			<Income.IncMethod.Desc />
+			<IncomeSched.TotalReinvest />
+			<Income.Units />
+			<Income.Date />
+			<DollarPerUnit/>
+		</response>
+	</HiTrust>
+</DST>
+

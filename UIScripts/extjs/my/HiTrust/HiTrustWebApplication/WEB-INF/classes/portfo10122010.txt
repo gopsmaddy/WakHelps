@@ -1,0 +1,122 @@
+<H2>Further details on your portfolio in the tabs below.</H2>
+<TABLE class=flexme2>
+<THEAD>
+<TR>
+<TH width=140>Portfolio Number</TH>
+<TH width=160>Portfolio Name</TH>
+<TH width=140>Financial Planner</TH>
+<TH width=140>Status</TH></TR></THEAD>
+<TBODY>
+<TR>
+<TD><A class=hiddenlink href="#">IN0001998238192</A></TD>
+<TD>Alpha Portfolio</TD>
+<TD>HiTrust (Unknown)</TD>
+<TD>Active</TD></TR></TBODY></TABLE>
+<SCRIPT type=text/javascript>
+$('.flexme1').flexigrid();
+$('.flexme2').flexigrid({height:'auto'});
+</SCRIPT>
+
+<P>&nbsp;</P>
+<DIV id=tabs>
+<UL>
+<LI><A href="#tabs-1"><STRONG>Holdings</STRONG></A></LI>
+<LI><A href="#tabs-2"><STRONG>Other Details</STRONG></A></LI>
+<LI><A href="#tabs-3"><STRONG>Contact Details</STRONG></A></LI>
+<LI><A href="#tabs-4"><STRONG>Owners</STRONG></A></LI></UL><BR>
+<DIV id=tabs-1>
+<H3>Portfolio Name: Alpha Portfolio - IN0001998238192</H3><BR>
+<TABLE class=flexme2>
+<THEAD>
+<TR>
+<TH width=250>Fund Code / Fund Name</TH>
+<TH width=100 align=right>Balance in Units</TH>
+<TH width=100 align=right>Balance in Dollars</TH>
+<TH width=80 align=middle>Status</TH></TR></THEAD>
+<TBODY>
+<TR>
+<TD>MPFB/MIRVAC PFA Diversified Property Trust</TD>
+<TD align=right>9.918</TD>
+<TD align=right>$9,759.23</TD>
+<TD align=middle>Active</TD></TR></TBODY></TABLE><BR></DIV>
+<DIV id=tabs-2>
+<FORM>
+<TABLE border=0 cellSpacing=10 cellPadding=0>
+<TBODY>
+<TR>
+<TD noWrap><LABEL>Advisor Number</LABEL></TD>
+<TD><INPUT class=input220 value=AD0003010001></TD></TR>
+<TR>
+<TD noWrap><LABEL>Advisor Name</LABEL></TD>
+<TD><INPUT class=input220 value="(Unknown Mirvac)"></TD></TR>
+<TR>
+<TD noWrap><LABEL>Portfolio Type</LABEL></TD>
+<TD><INPUT class=input220 value=Individual></TD></TR>
+<TR>
+<TD noWrap><LABEL>Unit Holder Number</LABEL></TD>
+<TD><INPUT class=input220 value=PFD005401></TD></TR>
+<TR>
+<TD noWrap><LABEL>Super Fund/Trust TFN</LABEL></TD>
+<TD><INPUT class=input220 value=YES></TD></TR></TBODY></TABLE></FORM></DIV>
+<DIV id=tabs-3>
+<FORM>
+<TABLE border=0 cellSpacing=10 cellPadding=0>
+<TBODY>
+<TR>
+<TD noWrap><LABEL>Type</LABEL></TD>
+<TD><INPUT class=input220 value=Postal></TD></TR>
+<TR>
+<TD noWrap><LABEL>address line 1</LABEL></TD>
+<TD><INPUT class=input220 value="372 Rowan Drive"></TD></TR>
+<TR>
+<TD noWrap><LABEL>address line 2</LABEL></TD>
+<TD><INPUT class=input220 value="George Road"></TD></TR>
+<TR>
+<TD noWrap><LABEL>suburb</LABEL></TD>
+<TD><INPUT class=input220 value=Lambeth></TD></TR>
+<TR>
+<TD noWrap><LABEL>state</LABEL></TD>
+<TD><INPUT class=input220 value=London></TD></TR>
+<TR>
+<TD noWrap><LABEL>postcode</LABEL></TD>
+<TD><INPUT class=input220 value=SW26GH></TD></TR>
+<TR>
+<TD noWrap><LABEL>country</LABEL></TD>
+<TD><INPUT class=input220 value=England></TD></TR>
+<TR>
+<TD noWrap><LABEL>home tel</LABEL></TD>
+<TD><INPUT class=input220></TD></TR>
+<TR>
+<TD noWrap><LABEL>work tel</LABEL></TD>
+<TD><INPUT class=input220></TD></TR>
+<TR>
+<TD noWrap><LABEL>mobile</LABEL></TD>
+<TD><INPUT class=input220></TD></TR>
+<TR>
+<TD noWrap><LABEL>fax</LABEL></TD>
+<TD><INPUT class=input220></TD></TR>
+<TR>
+<TD noWrap><LABEL>email</LABEL></TD>
+<TD><INPUT class=input220 value=sales@kurtosys.com></TD></TR>
+<TR>
+<TD noWrap><LABEL>default address</LABEL></TD>
+<TD><INPUT CHECKED type=checkbox></TD></TR></TBODY></TABLE></FORM></DIV>
+<DIV id=tabs-4>
+<TABLE class=flexme2>
+<THEAD>
+<TR>
+<TH width=60>Title</TH>
+<TH width=120>First Name</TH>
+<TH width=120>Last / Entity Name</TH>
+<TH width=250>TFN / Exemption Quoted</TH></TR></THEAD>
+<TBODY>
+<TR>
+<TD>Mrs</TD>
+<TD>Cheryl</TD>
+<TD>Kaye</TD>
+<TD>Quoted</TD></TR></TBODY></TABLE>
+<SCRIPT type=text/javascript>
+    $('.flexme1').flexigrid();
+    $('.flexme2').flexigrid({height:'auto'});
+</SCRIPT>
+</DIV></DIV>

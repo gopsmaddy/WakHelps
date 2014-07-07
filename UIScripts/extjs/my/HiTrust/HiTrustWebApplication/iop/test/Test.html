@@ -1,0 +1,224 @@
+<html>
+	<head>
+		<link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+            <!--<script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base.js" type="text/javascript"></script>
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all.js" type="text/javascript"></script>-->
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/ext-all-debug.js" type="text/javascript"></script>
+	   <body>
+	   	
+	   	<!-- http://extjs.wima.co.uk/ -->
+
+<script type="text/javascript">
+	// To play in Firebug uncomment next line
+// Ext.get(document.body).update('<div id="ext-test"></div>');
+ 
+// reference local blank image
+Ext.BLANK_IMAGE_URL = 'http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/resources/images/default/s.gif';
+ 
+
+ 
+	Ext.onReady(function(){
+	
+
+	
+	var nameAndCompany = { columnWidth: .5,
+		layout: 'form',
+		items: [
+			{ xtype: 'textfield',
+				fieldLabel: 'First Name',
+				name: 'firstName',
+				anchor: '95%'
+			},
+			{
+				xtype: 'textfield',
+				fieldLabel: 'Last Name',
+				name: 'lastName',
+				anchor: '95%'
+			},
+			{
+				xtype: 'textfield',
+				fieldLabel: 'Company',
+				name: 'company',
+				anchor: '95%'
+			},
+			{
+				xtype: 'textfield',
+				fieldLabel: 'Title',
+				name: 'title',
+				anchor: '95%'
+			}
+		]
+	}
+var picBox = {
+		columnWidth: .5,
+		bodyStyle: 'padding:0px 0px 0px 40px',
+		items: [
+			{ xtype: 'box',
+				autoEl: { tag: 'div', style: 'padding-bottom:20px', html: '<img id="pic"	src="' + Ext.BLANK_IMAGE_URL + '"	class="img-contact" />'
+				}
+			}, { xtype: 'button', text: 'Change Picture' }
+		]
+	}
+
+var internet = { columnWidth: .5,
+		layout: 'form',
+		items: [
+			{ xtype: 'fieldset',
+				title: 'Internet',
+				autoHeight: true,
+				defaultType: 'textfield',
+				items: [{
+					fieldLabel: 'Email',
+					name: 'email',
+					vtype: 'email',
+					anchor: '95%'
+				},
+				{ fieldLabel: 'Web page',
+					name: 'webPage',
+					vtype: 'url',
+					anchor: '95%'
+				},
+				{ fieldLabel: 'IM',
+					name: 'imAddress',
+					anchor: '95%'
+				}]
+			}]
+		}
+
+var phones = { columnWidth: .5,
+		layout: 'form',
+		items: [{ xtype: 'fieldset',
+			title: 'Phone Numbers',
+			autoHeight: true,
+			defaultType: 'textfield',
+			items: [{
+				fieldLabel: 'Home',
+				name: 'homePhone',
+				anchor: '95%'
+			},
+			{
+				fieldLabel: 'Business',
+				name: 'busPhone',
+				anchor: '95%'
+			},
+			{
+				fieldLabel: 'Mobile',
+				name: 'mobPhone',
+				anchor: '95%'
+			},
+			{
+				fieldLabel: 'Fax',
+				name: 'fax',
+				anchor: '95%'
+			}]
+		}]
+	}
+
+
+var busAddress = { columnWidth: .5,
+		layout: 'form',
+		labelAlign: 'top',
+		defaultType: 'textarea',
+		items: [{
+			fieldLabel: 'Business',
+			labelSeparator:'',
+			name: 'bAddress',
+			anchor: '95%'
+		},
+		{
+			xtype: 'radio',
+			boxLabel: 'Mailing Address',
+			hideLabel: true,
+			name: 'mailingAddress',
+			value:'bAddress',
+			id:'mailToBAddress'
+		}]
+	}
+
+var homeAddress = { columnWidth: .5,
+		layout: 'form',
+		labelAlign: 'top',
+		defaultType: 'textarea',
+		items: [{
+			fieldLabel: 'Home',
+			labelSeparator:'',
+			name: 'hAddress',
+			anchor: '95%'
+		},
+		{
+			xtype: 'radio',
+			boxLabel: 'Mailing Address',
+			hideLabel: true,
+			name: 'mailingAddress',
+			value:'hAddress',
+			id:'mailToHAddress'
+		}]
+	}
+
+var contactForm = new Ext.FormPanel({
+		frame: true,
+		title: 'TODO: Load title dynamically',
+		bodyStyle: 'padding:5px',
+		width: 650,
+		items: [{
+			bodyStyle: {
+				margin: '0px 0px 15px 0px'
+			},
+			items: [{
+				layout: 'column',
+				items: [nameAndCompany, picBox]
+			}]
+		},
+		{
+			items: [{
+				layout: 'column',
+				items: [phones, internet]
+			}]
+		},
+		{
+			xtype: 'fieldset',
+			title: 'Addresses',
+			autoHeight: true,
+			hideBorders: true,
+			layout: 'column',
+			items: [busAddress, homeAddress]
+		}],
+		buttons: [{
+			text: 'Save'
+		},
+		{
+			text: 'Cancel'
+		}]
+	});
+
+
+contactForm.on({
+		actioncomplete: function(form, action){
+			if(action.type == 'load'){
+				var contact = action.result.data;
+				Ext.getCmp(contact.mailingAddress).setValue(true);
+				contactForm.setTitle(contact.firstName + ' ' +
+					contact.lastName);
+				Ext.getDom('pic').src = contact.pic;
+			}
+		}
+	});
+
+contactForm.render(document.body);
+
+contactForm.getForm().load({ url: 'contact.php',
+	params:{id:'contact1'},waitMsg: 'Loading'});
+
+					
+	   
+ 
+});
+
+</script>  
+
+<div id="transactionHistorySearch"></div><br>
+<div id="transactionSummaryResultsGrid"></div>
+
+</body>
+</html>

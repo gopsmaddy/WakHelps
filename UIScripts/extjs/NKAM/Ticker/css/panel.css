@@ -1,0 +1,454 @@
+/* Default layout table surround */
+.panel-features-surround {
+    padding: 0;
+}
+
+/* Layout table surround that extends the full width of its enclosing element */
+.panel-features-surround-justified {
+    padding: 0;
+    width: 100%;
+}
+
+/* Default layout table cell */
+.panel-feature {
+    padding: 0;
+}
+
+/* Layout table cell with a 150px width */
+.panel-feature-justified-150px {
+    padding: 0;
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+}
+
+/* Layout table cell with a 0% width */
+.panel-feature-justified-0pc {
+    padding: 0;
+    width: 0;
+}
+
+/* Layout table cell with a 10% width */
+.panel-feature-justified-10pc {
+    padding: 0;
+    width: 10%;
+}
+
+/* Layout table cell with a 20% width */
+.panel-feature-justified-20pc {
+    padding: 0;
+    width: 20%;
+}
+
+/* Layout table cell with a 30% width */
+.panel-feature-justified-30pc {
+    padding: 0;
+    width: 30%;
+}
+
+/* Layout table cell with a 40% width */
+.panel-feature-justified-40pc {
+    padding: 0;
+    width: 40%;
+}
+
+/* Layout table cell with a 50% width */
+.panel-feature-justified-50pc {
+    padding: 0;
+    width: 50%;
+}
+
+/* Layout table cell with a 60% width */
+.panel-feature-justified-60pc {
+    padding: 0;
+    width: 60%;
+}
+
+/* Layout table cell with a 70% width */
+.panel-feature-justified-70pc {
+    padding: 0;
+    width: 70%;
+}
+
+/* Layout table cell with a 80% width */
+.panel-feature-justified-80pc {
+    padding: 0;
+    width: 80%;
+}
+
+/* Layout table cell with a 90% width */
+.panel-feature-justified-90pc {
+    padding: 0;
+    width: 90%;
+}
+
+/* Layout table cell that extends the full width of the enclosing element */
+.panel-feature-justified {
+    padding: 0;
+    width: 100%;
+}
+
+/* Layout table cell that aligns its content to the top */
+.panel-feature-aligned-top {
+    vertical-align: top;
+}
+
+/* Layout table cell that aligns its content to the centre */
+.panel-feature-aligned-center {
+    text-align: center;
+}
+
+/* Layout table cell that aligns its content to the far right */
+.panel-feature-aligned-right {
+    text-align: right;
+}
+
+/* Layout table cell that aligns its content to the far left */
+.panel-feature-aligned-left {
+    text-align: left;
+}
+
+/* Layout table cell for a login page banner */
+.panel-feature-login-banner {
+    padding: 5px;
+}
+
+/* Layout table cell for a login page banner sideline */
+.panel-feature-login-banner-sideline {
+    padding: 1px;
+    width: 500px;
+    border: solid;
+    border-width: 1px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-color: #aaaaaa;
+}
+
+/* Layout table cell for a login page sideline */
+.panel-feature-login-sideline {
+    border: solid;
+    border-width: 0;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-color: #aaaaaa;
+}
+
+/* Layout table cell for the login page form */
+.panel-feature-login-form {
+    padding: 15px;
+}
+
+/* Layout table cell for the header */
+.panel-feature-header {
+    padding: 10px;
+}
+
+/* Layout table cell for the header bar */
+.panel-feature-header-bar {
+    padding: 0;
+    padding-top: 2px;
+    padding-left: 5px;
+    padding-bottom: 2px;
+    height: 20px;
+    max-height: 20px;
+    min-height: 20px;
+    background-color: #e6f2fb;
+}
+
+/* Layout table cell for the menu */
+.panel-feature-menu {
+    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 0;
+}
+
+/* Layout table surround for menu groups */
+.panel-features-menu-group-surround {
+    padding: 0;
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+/* Layout table cell for a menu group header */
+.panel-feature-menu-group-header {
+    padding: 5px;
+    border: solid;
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-color: black;
+    background-image: url( '../img/menu/headerDropShadow.gif' );
+    background-repeat: repeat-x;
+}
+
+/* Layout table cell for a menu group option */
+.panel-feature-menu-group-option {
+    padding: 6px;
+    padding-right: 0;
+    padding-bottom: 0;
+    vertical-align: top;
+}
+
+/* Layout table cell for a sub-menu group option */
+.panel-feature-menu-group-option-sub {
+    padding: 0;
+    padding-right: 6px;
+    vertical-align: top;
+}
+
+/* Layout table cell for the work area */
+.panel-feature-workarea {
+    padding: 15px;
+}
+
+/* Layout table cell for a work area element */
+.panel-feature-workarea-element {
+    padding: 0;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+/* Layout table cell for the main page title */
+.panel-feature-title {
+    padding: 0;
+    padding-right: 5px;
+    padding-bottom: 10px;
+}
+
+/* Layout table cell for the subsidiary page title */
+.panel-feature-title-subsidiary {
+    padding: 10px;
+    padding-right: 0;
+}
+
+/* Layout table cell for the subsidiary page title subject */
+.panel-feature-title-subsidiary-subject {
+    padding: 0;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-bottom: 10px;
+}
+
+/* Layout table cell for spacing out data table actions */
+.panel-feature-table-action-spacing {
+    padding: 5px;
+}
+
+/* Layout table cell for spacing out table footer elements */
+.panel-feature-table-footer-spacing {
+    padding: 2px;
+}
+
+/* Layout table cell for a header that is displayed inside a tab */
+.panel-feature-tab-header {
+    padding: 0;
+    padding-bottom: 10px;
+}
+
+/* Layout table cell that is displayed inside a tab */
+.panel-feature-tab {
+    padding: 0;
+}
+
+/* Layout table surround for form content */
+.panel-features-form {
+    padding: 0;
+    background-color: white;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+}
+
+/* Layout table cell for a form field name */
+.panel-feature-form-field-name {
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* Layout table cell for a form field value */
+.panel-feature-form-field-value {
+    padding: 0;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* Layout table cell for a radio group form field */
+.panel-feature-form-field-radio-group {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Layout table cell for horizontal form content */
+.panel-feature-form-horizontal {
+    padding: 10px;
+    background-color: white;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+}
+
+/* Layout table cell for a horizontal form field name */
+.panel-feature-form-horizontal-field-name {
+    padding: 0;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* Layout table cell for a horizontal form field value */
+.panel-feature-form-horizontal-field-value {
+    padding: 0;
+    padding-left: 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* Layout table cell for large spacing between form field elements */
+.panel-feature-form-field-spacing-large {
+    padding: 5px;
+}
+
+/* Layout table cell for small spacing between form field elements */
+.panel-feature-form-field-spacing-small {
+    padding: 2px;
+}
+
+/* Layout table cell for spacing out form buttons */
+.panel-feature-form-button-spacing {
+    padding: 2px;
+}
+
+/* Layout table surround for enhanced form content */
+.panel-features-form-enhanced {
+    padding: 0;
+    background-color: white;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+}
+
+/* Layout table surround for the form fields that comprise enhanced form content */
+.panel-features-form-enhanced-fields-surround {
+    empty-cells: show;
+    border-collapse: collapse;
+}
+
+/* Layout table cell for an enhanced form field name */
+.panel-feature-form-enhanced-field-name {
+    padding: 7px;
+    background-color: #e6f2fb;
+    border: solid;
+    border-width: 0;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-color: #aaaaaa;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* Layout table cell for an enhanced form field value */
+.panel-feature-form-enhanced-field-value {
+    padding: 7px;
+    border: solid;
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-color: #aaaaaa;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* Layout table cell for an enhanced form field value */
+.panel-feature-form-enhanced-field-warn-value {
+    padding: 7px;
+    border: solid;
+    border-width: 0;
+    border-bottom-width: 1px;
+    color:red;
+    border-color: #aaaaaa;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* Layout table cell for an enhanced form button */
+.panel-feature-form-enhanced-button {
+    padding: 7px;
+    padding-left: 0;
+}
+
+/* Layout table cell for a page reference for data that is paginated */
+.panel-feature-pagination-page {
+    padding: 0;
+    padding-left: 5px;
+}
+
+/* Layout table cell for spacing between pagination icons for data that is paginated */
+.panel-feature-pagination-icon-spacing {
+    padding: 4px;
+}
+
+/* Layout table cell for the spacing above the main page footer rule */
+.panel-feature-footer-rule-spacing-above {
+    padding: 15px;
+}
+
+/* Layout table cell for the main page footer rule */
+.panel-feature-footer-rule {
+    height: 1px;
+    background-color: #000077;
+}
+
+/* Layout table cell for the spacing below the main page footer rule */
+.panel-feature-footer-rule-spacing-below {
+    padding: 2px;
+}
+
+/* Layout table surround for the main page footer */
+.panel-feature-footer-surround {
+    padding: 2px;
+}
+
+/* Layout table cell for a main page footer */
+.panel-feature-footer {
+    text-align: center;
+}
+
+/* Layout table cell for spacing out elements in the main page footer */
+.panel-feature-footer-spacing {
+    padding: 2px;
+}
+
+/* Layout For Grey Box Surrounding No Lines Input*/
+.panel-feature-number-of-lines {
+    padding: 7px;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+    vertical-align: middle;
+    margin-bottom:10px;
+    width:400px;
+
+
+}
+/* Layout For Info Text*/
+.panel-feature-info {
+    padding-top:2em;
+    padding-bottom:2em;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+/* Layout For Search Buttons Text*/
+.panel-feature-buttons {
+    padding :10px;
+    margin-top:10px;
+    margin-bottom:10px;
+    border-width:0;
+    vertical-align: middle;
+    text-align:right;
+}

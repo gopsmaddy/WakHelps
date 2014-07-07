@@ -1,0 +1,114 @@
+/* Text input field */
+.form-input-text {
+    width: 135px;
+    height: 20px;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+}
+
+/* Small text input field */
+.form-input-text-small {
+    width: 40px;
+    height: 20px;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+}
+
+/* Large text input field */
+.form-input-text-large {
+    width: 250px;
+    height: 20px;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+}
+
+/* Extra large text input field */
+.form-input-text-large-extra {
+    width: 420px;
+    height: 20px;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+}
+
+/* Select input field */
+.form-input-select {
+    min-width: 100px;
+    height: 20px;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+}
+
+/* Small select input field */
+.form-input-select-small {
+    width: 60px;
+    height: 20px;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+}
+
+/* Select input field for selecting the type for a date */
+.form-input-select-date-type {
+    width: 60px;
+    height: 20px;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+}
+
+/* Select input field for selecting the day for a date */
+.form-input-select-date-day {
+    width: 45px;
+    height: 20px;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+}
+
+/* Select input field for selecting the month for a date */
+.form-input-select-date-month {
+    width: 85px;
+    height: 20px;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+}
+
+/* Select input field for selecting the year for a date */
+.form-input-select-date-year {
+    width: 60px;
+    height: 20px;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+}
+
+/* Checkbox input field */
+.form-input-checkbox {
+    width: 15px;
+    height: 15px;
+}
+
+/* Submit button */
+.form-button {
+    background-color: #dedede;
+    width: auto;
+    height: 20px;
+    border-style: solid;
+    border-color: #aaaaaa;
+    border-width: 1px;
+}
+
+/* Submit button that does not appear on the page and that does not affect the page layout */
+.form-button-hidden {
+    width: 0px;
+    height: 0px;
+    max-height: 0px;
+    border-width: 0px;
+    visibility: hidden;
+}

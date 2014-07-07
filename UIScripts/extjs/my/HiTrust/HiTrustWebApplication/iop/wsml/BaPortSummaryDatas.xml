@@ -1,0 +1,52 @@
+<DST>
+	<HiTrust>
+		<businessObject>BaPortSummaryDatas</businessObject>
+		<operation>SEARCH</operation>
+		<user>@@user@</user>
+		<password>@@pass@</password>
+		<request>
+			<data>
+				<MaxRows>@@maxRecords@</MaxRows>
+				<Profile.RelNo>@@profileRelNo@</Profile.RelNo>
+				<Fund.Code></Fund.Code>
+				<Fund.Key></Fund.Key>
+				<Portfolio.Key></Portfolio.Key>				
+			</data>
+		</request>
+		<response>
+			<Profile.RelNo />
+			<Portfolio.Key />
+			<Portfolio.SSNo />
+			<Portfolio.Number />
+			<Portfolio.Name />
+			<Portfolio.Agent.Number />
+			<Portfolio.Agent.Name />
+			<Portfolio.Status.Desc />
+			<Portfolio.ReinvestSplit />
+			<Portfolio.Type.Desc />
+			<Account.Key />
+			<Account.Number />
+			<Status.Desc />		
+			<IncomeMethod.Desc />
+			<Fund.Key />
+			<Fund.Desc />
+			<Fund.Code />
+			<UnitPrice />
+			<BalanceInUnits />
+			<BalanceInCurrency />
+			<Fund.NoDecUnits />
+			<Fund.UnitDecNo />			
+			<ReinvestSplit />
+			<Account.WHTApplicable />			
+			<UnitClass.Code />
+			<UnitClass.Desc />
+			<UnitClass.Key />	
+			
+			<Account.DefPrefComm.Desc/>
+			<Account.DefAnnRepDispatch.Desc/>
+			<Account.DefAnnRepElect.Desc/>
+			
+			
+		</response>
+	</HiTrust>
+</DST>

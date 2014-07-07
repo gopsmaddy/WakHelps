@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>APM-TokenProducts</title>
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache">
+    <link href="../../lib/jquery/css/redmond/jquery-ui-1.8.21.custom.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="../../lib/etc/restful.css"/>
+	<link rel="stylesheet" type="text/css" href="../../lib/etc/writer.css" />
+	<link rel="stylesheet" type="text/css" href="../../lib/extjs/ux/statusbar/css/statusbar.css" />
+    <link rel="stylesheet" type="text/css" href="../../lib/extjs/shared/example.css" />
+	<link rel="stylesheet" type="text/css" href="../../lib/extjs/ux/css/CheckHeader.css"/>
+
+
+    <script src="../../lib/jquery/jquery-1.7.2.min.js"></script>
+    <script src="../../lib/jquery/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="../../lib/jquery/jquery-ui-1.8.21.custom.min.js"></script>
+    <script type="text/javascript" src="../../lib/extjs/ext.js"></script>
+    <script type="text/javascript" src="../../lib/extjs/all-classes.js"></script>
+
+  <!--  <script type="text/javascript" language="JavaScript" src="../../lib/jquery/jquery.i18n.properties-min-1.0.9.js"></script>  -->
+    <link rel="stylesheet" type="text/css" href="../../lib/extjs/resources/css/ext-all-gray.css">
+    <link media="screen" type="text/css" href="../../layout/css/layout.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../../lib/extjs/ux/form/checkboxlistcombo.css"/>
+        <script type="text/javascript" src="../../lib/extjs/ux/form/checkboxlistcombo.js"></script>
+
+    <script type="text/javascript" src="../../config/apmProperty.js"></script>
+    <script type="text/javascript" src="../../config/apmExternalURL.js"></script>
+    <script type="text/javascript" src="../../lib/common/utils.js"></script>
+    <script type="text/javascript" src="../../lib/common/apmCustomField.js"></script>
+    <script type="text/javascript" src="../../pages/menu/menu.js"></script> <!--Menu.js will need to be called on all pages that require the menu -->
+    <script type="text/javascript" src="tokenproducts.js"></script>
+
+</head>
+<body>
+        <input type="hidden" name="pageId" id="pageId" value="11" />
+        <input type="hidden" name="pageCode" id="pageCode" value="TokenProducts" />
+		<input type="hidden" id="pageName" value="Administration >> Token Products" />
+    
+	<div class="spacer header">
+		<div class="apmtitle_container">
+			<h1>&nbsp;&nbsp;Aconite Pin Manager</h1>
+		</div>	
+	</div>
+<div id="wrapper">
+    <!-- content here -->
+    <div class="spacer">
+        <section id="secondary_bar">
+            <nav id="nav"></nav>
+            <!--This area is where we will need to add the user details and system-->
+            <div id="divCurrentUser"></div>
+
+            <!--This area is path to your current page if you were to go via the menu e.g top level Transaction then sub menu transaction query-->
+            <div class="breadcrumbs_container">
+                <h4>Administration &raquo; Token Products</h4>
+            </div>
+        </section>
+        <br/><br/>
+        <!-- a section to display the error messages of a form submit-->
+        <section id="errorMessages">
+            <div class="errorBox" style="display:none;">
+                <span></span>
+            </div>
+        </section>		
+      <section id="empty"/>
+        <!--This is a div that would render a grid-->
+        <div id="gridPlaceHolder" >
+		<div class="clear"></div>
+			<div id="divTokenProductsSearch"></div>
+			<section id="empty"/>
+            <div id="divTokenProductsList"></div>
+            <div id="divTokenAppProfilesResults"></div>
+            <div id="divBINRangeResults"></div>
+        </div>
+
+        <div class="clear"></div>
+        <!--This is a div that would render a modal window-->
+        <div id="divTokenProductsEdit" title="Token Products Detail"></div>
+        <section id="empty"/>
+        <div id="divTokenAppProfilesEdit" title="Token App Profiles Detail"></div>
+        <section id="empty"/>
+        <div id="divBINRangeEdit" title="BIN Range Detail"></div>
+
+    </div>
+
+</div>
+<!-- <div class="spacer edge">Aconite Copyright 2012</div>-->
+</body>
+</html>

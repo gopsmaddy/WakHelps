@@ -1,0 +1,525 @@
+<html>
+	<head>
+		<link href="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/resources/css/ext-all.css" type="text/css" rel="stylesheet" media="screen" />
+            <!--<script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/adapter/ext/ext-base.js" type="text/javascript"></script>
+            <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/ext-all.js" type="text/javascript"></script>-->
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+      <script src="http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/ext-all-debug.js" type="text/javascript"></script>
+      
+       <link href="http://modules.eurouwins.com/iop/styles/jquery-ui-1.8.4.custom.css" type="text/css" rel="stylesheet" media="screen">			
+			
+      <script src="http://modules.eurouwins.com/iop/scripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/jquery.uniform.min.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/jquery-ui-1.8.4.custom.min.js" type="text/javascript"></script>
+			
+      <link href="http://modules.eurouwins.com/iop/styles/flexigrid.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/iop_screen.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/uniform.default.css" type="text/css" rel="stylesheet" media="screen">
+			<link href="http://modules.eurouwins.com/iop/styles/web_fonts.css" type="text/css" rel="stylesheet" media="screen">
+			
+			<script src="http://modules.eurouwins.com/iop/scripts/flexigrid.js" type="text/javascript"></script>
+			<script src="http://modules.eurouwins.com/iop/scripts/iop_functions.js" type="text/javascript"></script>
+			
+			<script src="../js/myExternalURL.js" type="text/javascript"></script>
+			<script src="../js/vtypes.js" type="text/javascript"></script>
+			<script src="../js/pagesizeplugin.js" type="text/javascript"></script>
+			
+	   <body>
+	   	
+	   	<!-- http://extjs.wima.co.uk/ -->
+	<script type="text/javascript">
+	// To play in Firebug uncomment next line
+// Ext.get(document.body).update('<div id="ext-test"></div>');
+ 
+// reference local blank image
+Ext.BLANK_IMAGE_URL = 'http://extjs-public.googlecode.com/svn/tags/extjs-3.3.0/release/resources/images/default/s.gif';
+ 
+
+ 
+	Ext.onReady(function(){
+	
+	//////////////myFundStore////////////////////	
+	
+	var myFundStore = new Ext.data.Store
+  (
+  	{   
+        // load using HTTP
+				proxy : new Ext.data.HttpProxy
+				(
+					{																
+						method: 'GET',
+						prettyUrls: false,
+						// load using HTTP
+		        url: varBaInvestorPortFundsURL		       
+					}
+				),
+				remoteSort:true,		
+				sortInfo: {field: "Fund_Desc", direction: "ASC" },	
+        // the return will be XML, so lets set up a reader
+        reader: new Ext.data.XmlReader
+        (
+        	{
+               // records will have an "Item" tag
+               record: 'List',
+               id: '>Fund>Key',
+               totalRecords: 'totalRecords'
+           }, 
+           [
+               {name:'Fund_Desc', mapping: '>Fund>Desc'},
+               {name:'Fund_Code', mapping: '>Fund>Code' },
+               {name:'Fund_Key', mapping: '>Fund>Key' }
+           ]
+         ),
+         listeners: 
+         {
+				   	load: function()
+				   	{
+				   		this.loaded = true;		 		   		  		
+				   	}
+				  }
+    	}
+   );	
+  
+  //////////////myUnitClassStore////////////////////
+	
+	
+  var myUnitClassStore = new Ext.data.Store
+  (
+  	{       
+        // load using HTTP
+				proxy : new Ext.data.HttpProxy
+				(
+					{																
+						method: 'GET',
+						prettyUrls: false,
+						// load using HTTP
+		        url: varBaSUnitClasssURL		       
+					}
+				),
+				remoteSort:true,		
+				sortInfo: {field: "Desc", direction: "ASC" },	
+        // the return will be XML, so lets set up a reader
+        reader: new Ext.data.XmlReader
+        (
+        	{
+               // records will have an "Item" tag
+               record: 'List',
+               id: '>Key',
+               totalRecords: 'totalRecords'
+           }, 
+           [
+               // set up the fields mapping into the xml doc
+               // The first needs mapping, the others are very basic
+               {name:'Desc', mapping: '>Desc'},
+               {name:'Code', mapping: '>Code' },
+               {name:'Key', mapping: '>Key' }                  
+           ]
+         )
+    	}
+   );		
+   
+  
+  
+   //////////////FormPanel////////////////////
+
+  
+  myFundPricesSearchPanel  = new Ext.FormPanel
+  (
+  	{
+  		labelWidth: 100, // label settings here cascade unless overridden
+      frame:true,
+      renderTo: 'fundPricesForm',      
+      bodyStyle:'padding:5px 5px 0',      
+      width: 650,			
+      
+      items:
+				[
+					{
+						layout: 'column',
+						items:
+						[
+							{	
+								columnWidth:.5,
+								layout: 'form',
+								items:
+								[
+									{      			
+						        xtype: 'combo',
+						        id: 'fundname',
+						        fieldLabel: 'Fund Name',
+						        hiddenName: 'ddi_fund',
+						        emptyText: 'Select a Fund...',
+						        store:myFundStore,		       
+						        displayField: 'Fund_Desc',
+						        valueField: 'Fund_Key',
+						        selectOnFocus: true,
+						        mode: 'local',
+						        typeAhead: true,
+						        editable: false,
+						        triggerAction: 'all',
+						        //value: 'GROASIA',
+						        listeners: 
+						          { select: 
+						          		{ fn:function(combo, record, index)
+						                {
+						                  Ext.getCmp('unitclass').clearValue();
+						                  //alert('Value>'+this.value);
+						                  myUnitClassStore.load({params:{fundKey: this.value}});
+						                  //myUnitClassStore.load();
+						                  //myUnitClassStore.load({params:{ddi_country: 'GB'}});
+						                  //Ext.getCmp('fundcode').clearValue();
+						                  Ext.getCmp('fundcode').setValue(record.get('Fund_Key'));
+						                  myUnitClassMask.show();
+						                }
+						          		}  
+						          }
+						      },
+						      {						      	
+						        xtype: 'combo',
+						        id: 'fundcode',
+						        fieldLabel: 'Fund Code',
+						        hiddenName: 'ddi_fundCode',
+						        emptyText: 'Select a Fund Code...',
+						        store:myFundStore,		       
+						        displayField: 'Fund_Code',
+						        valueField: 'Fund_Key',
+						        selectOnFocus: true,
+						        mode: 'local',
+						        typeAhead: true,
+						        editable: false,
+						        triggerAction: 'all',
+						        //value: 'GROASIA',
+						        listeners: 
+						          { select: 
+						          		{ fn:function(combo, record, index)
+						                {
+						                  Ext.getCmp('unitclass').clearValue();
+						                  //alert('Value>'+this.value);
+						                  myUnitClassStore.load({params:{fundKey: this.value}});
+						                  //myUnitClassStore.load();
+						                  //myUnitClassStore.load({params:{ddi_country: 'GB'}});
+						                  //Ext.getCmp('fundname').clearValue();
+						                   Ext.getCmp('fundname').setValue(record.get('Fund_Key'));
+						                  myUnitClassMask.show();	
+						                }
+						          }  }
+						      },
+									{							      	
+						        xtype: 'combo',
+						        id: 'unitclass',
+						        fieldLabel: "Unit Class",
+						        hiddenName: 'ddi_unitclass',
+						        name: "name",
+						        triggerAction: "all",
+						        loadingText: "Loading...",
+						        emptyText: "Select Fund/Code first...",
+						        selectOnFocus:true,
+						        store: myUnitClassStore,
+						        mode:'local',
+						        displayField: "Desc",
+						        valueField: "Key",
+						        forceSelection: true,
+						        editable: false
+					      	}										
+								]
+							},							
+							{	
+								columnWidth:.5,
+								layout: 'form',
+								items: 
+								[									
+									{
+						      	xtype: 'datefield',
+						      	id: 'datefrom',
+										fieldLabel: 'Date From',
+										name: 'dateFrom',					        
+						        vtype: 'daterange',
+						        endDateField: 'dateto', // id of the end date field
+						        emptyText: "DD/MM/YYYY",
+						        anchor:'95%',
+										width:100,
+										format:'d-M-Y',
+										allowBlank:true,
+										editable: false
+						      },
+						      {
+						      	xtype: 'datefield',
+						      	id: 'dateto',
+										fieldLabel: 'Date To',
+										name: 'dateTo',						        
+						        vtype: 'daterange',
+						        startDateField: 'datefrom', // id of the start date field
+						        emptyText: "DD/MM/YYYY",
+						        anchor:'95%',
+										width:100,
+										format:'d-M-Y',
+										allowBlank:true,
+										editable: false
+						      }	
+								]
+							}
+						]
+					}					
+				], //items
+		    buttons: 
+		    [
+		    	{
+            text: 'Filter',
+            handler: function()
+            {
+                if(myFundPricesSearchPanel.getForm().isValid())
+                {
+                	//waitMsg: 'Loading fund prices...',
+                	//var mykey='';
+                	//if(Ext.getCmp('fundname').value!=null)
+                	//	mykey=Ext.getCmp('fundname').value;
+                	
+                	//if(Ext.getCmp('fundcode').value!=null)
+                	//	mykey=Ext.getCmp('fundcode').value;
+                	//alert('df>'+Ext.getCmp('fundname').value);
+                	//mykey = (Ext.getCmp('fundname').value!=null) ? Ext.getCmp('fundname').value : Ext.getCmp('fundcode').value;
+                	
+                	myFundPriceStore.load
+                	(
+                		{
+                				params:
+                				{
+                						start:0, 
+                						limit:Ext.getCmp('pFundPriceBar').pageSize,
+                						fundKey: Ext.getCmp('fundname').value,
+		                        fundCode: Ext.getCmp('fundcode').value,
+		                        unitClassKey: Ext.getCmp('unitclass').value,
+		                        sEffDateFrom: Ext.getCmp('datefrom').value,
+		                        sEffDateTo: Ext.getCmp('dateto').value	                        
+
+                				}
+                		}
+                	);	
+                	myFundPriceMask.show();	
+                	
+                	/*
+	                myFundPricesSearchPanel.getForm().submit
+	                (
+	                	{
+	                    //url: 'file-upload.php',
+	                    url: varbafundsURL,	
+	                    
+	                    waitMsg: 'Loading fund prices...',
+	                    success: function(myFundPricesSearchPanel , o)
+	                    {
+	                        //msg('Success', 'Processed file "'+o.result.file+'" on the server');
+	                        //myFundStore.load();
+	                        //alert('Value>'+Ext.getCmp('fundCombo').value);
+	                        //alert('Value>'+Ext.getCmp('fundCodeCombo').value);
+	                        //alert('Value>'+Ext.getCmp('unitclassCombo').value);
+	                        myFundPriceStore.load
+	                        (
+		                        {
+		                        	params:
+		                        	{	start:0, limit:10,
+		                        		//ddi_fund: Ext.getCmp('fundCombo').value,
+		                        		//ddi_fundcode: Ext.getCmp('fundCodeCombo').value,
+		                        		//ddi_unitclass: Ext.getCmp('unitclassCombo').value
+		                        	}
+		                        }
+	                        );
+	                    }	                    
+	                	}
+	                );
+	                */
+                }
+            }
+        	},
+        	{
+            text: 'Reset',
+            handler: function()
+            {
+                Ext.getCmp('dateto').setValue('31/12/2100');
+                Ext.getCmp('datefrom').setValue('01/01/1900');
+                myFundPricesSearchPanel.getForm().reset();
+            }
+        	}
+        ]
+
+
+    }
+  ); // end of Ext.FormPanel
+    
+    
+    // not sure if it is the right place for this?
+    //myUnitClassStore.load({params:{ddi_country: 'GB'}});
+    
+    //////////////myFundPriceStore////////////////////////////////////////////////////
+    
+    	// create the Data Store
+	 myFundPriceStore = new Ext.data.Store
+	 (
+	 	{
+			// load using HTTP
+			proxy : new Ext.data.HttpProxy
+			(
+				{																
+					method: 'GET',
+					prettyUrls: false,									
+					url: varBaPricesURL							
+				}
+			),
+			remoteSort:true,	
+			sortInfo: { field: "PriceDate", direction: "DESC" }, 
+			
+			// the return will be XML, so lets set up a reader
+			reader: new Ext.data.XmlReader
+			(
+				{
+				   // records will have an "Item" tag
+				   record: 'List',
+				   id: '>Key',
+				   totalProperty: 'totalRecords'
+			   }, 
+			   [
+				   // set up the fields mapping into the xml doc
+				   // The first needs mapping, the others are very basic
+								{name: 'PriceDate'			, mapping: '>PriceDate'},
+								{name: 'Fund_Desc' 			, mapping: '>Fund>Desc'},
+								{name: 'Fund_Code'			, mapping: '>Fund>Code'},
+								{name: 'UnitClass_Code'	, mapping: '>UnitClass>Code'},
+								{name: 'UnitClass_Desc'	, mapping: '>UnitClass>Desc'},
+								{name: 'OfferPrice'			, mapping: '>OfferPrice'},
+								{name: 'NAVPrice'				, mapping: '>NAVPrice'},
+								{name: 'BidPrice'			  , mapping: '>BidPrice'}
+								
+			   ]
+		   ),
+		   listeners: 
+		   {
+		   	load: function()
+		   	{
+		   		this.loaded = true;		 		   		  		
+		   	}
+		  }		   
+		}
+	);
+	
+ //////////////myFundPriceGrid////////////////////////////////////////////////////
+    
+	// create the myFundPriceGrid
+	var myFundPriceGrid = new Ext.grid.GridPanel
+	(
+		{
+			//title: 'Search Results',
+			store: myFundPriceStore,
+			columns: 
+							[
+								{id: 'PriceDate'			,header: 'Date'						, dataIndex : 'PriceDate'			, width : 100, sortable : true, align: 'left'},
+								{id: 'Fund_Desc'			,header: 'Fund Name'			, dataIndex : 'Fund_Desc'			, width : 100, sortable : true, align: 'left'},
+								{id: 'Fund_Code'			,header: 'Fund Code'			, dataIndex : 'Fund_Code'			, width : 100, sortable : true, align: 'left'},								
+								{id: 'UnitClass_Desc'	,header: 'Unit Class'			, dataIndex : 'UnitClass_Desc', width : 100, sortable : true, align: 'left'},
+								{id: 'OfferPrice'			,header: 'Entry Price($)' , dataIndex : 'OfferPrice'		, width : 100, sortable : true, align: 'right'},
+								{id: 'NAVPrice'				,header: 'NAV Price($)'		, dataIndex : 'NAVPrice'			, width : 100, sortable : true, align: 'right'},
+								{id: 'BidPrice'				,header: 'Exit Price($)'	, dataIndex : 'BidPrice'			, width : 100, sortable : true, align: 'right'}	//,renderer: 'usMoney'
+							],
+						
+	   	renderTo:'fundPricesResultsForm',
+	   	autoExpandColumn: 'Fund_Desc',
+	   	autoWidth: true,
+	   	autoHeight:true,
+	   	stripeRows: true,
+	    sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
+			viewConfig: {emptyText: 'No records to display.'},
+			bbar: new Ext.PagingToolbar
+					(
+						{
+							id : 'pFundPriceBar',								
+							displayInfo: true,
+							pageSize:10,	
+							displayMsg: 'Displaying {0} - {1} of {2}',
+							emptyMsg: "No items to display",
+							store: myFundPriceStore,
+							plugins: [new Ext.ux.PageSizePlugin()]
+						}
+					)				
+				 
+				
+		}
+	);
+  myFundPriceStore.on
+  ('beforeload', function(store)
+	 	{
+			store.baseParams = 
+			{					
+				fundKey: Ext.getCmp('fundname').value,
+        fundCode: Ext.getCmp('fundcode').value,
+        unitClassKey: Ext.getCmp('unitclass').value,
+        sEffDateFrom: Ext.getCmp('datefrom').value,
+        sEffDateTo: Ext.getCmp('dateto').value	                       
+
+			};
+    }
+ );
+  myFundPriceGrid.getBottomToolbar().refresh.hide();	
+  
+  ////////////////////masking///////////////////////////////////////////
+  
+	
+	myFundMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Loading Funds...",	
+				removeMask:true,			
+				store:myFundStore
+		}
+	);
+	
+	myUnitClassMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Loading Unit Classes...",	
+				removeMask:true,			
+				store:myUnitClassStore
+		}
+	);
+		
+	myFundPriceMask = new Ext.LoadMask
+	(
+		Ext.getBody(), 
+		{
+				msg:"Please wait...",	
+				removeMask:true,			
+				store:myFundPriceStore
+		}
+	);
+	/////////////////Default setup///////////////////////////////////////
+	
+	if(!myFundStore.loaded)
+  {
+  	myFundMask.show();
+    myFundStore.load();	    	
+  }
+  
+ 
+	
+	/////////////////Test///////////////////////////////////////
+	/*
+	if(!myFundPriceStore.loaded)
+  {
+  	myFundPriceMask.show();
+    myFundPriceStore.load();	    	
+  }
+	*/
+	//if(!myFundPriceStore.loaded)
+	//myFundPriceStore.load({params:{start:0, limit:Ext.getCmp('pFundPriceBar').pageSize}});	
+		
+	   
+ 
+});
+
+</script> 
+ 
+
+<div id="fundPricesForm"></div><br>
+<div id="fundPricesResultsForm"></div>
+
+</body>
+</html>

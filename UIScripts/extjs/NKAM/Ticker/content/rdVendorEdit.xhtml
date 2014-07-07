@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ac="http://aconitesolutions.com/jsf-custom">
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.rdVendor_EditTitle}
+    </ui:define>
+    <ui:define name="workArea">
+        <h:form onsubmit="document.body.style.cursor='wait';">
+            <table class="acTable">
+				<tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.rdVendor_ID}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:outputText id="typeColumn" value="#{RdVendor.vendor.vendorId}"/>
+                        <h:inputHidden id="typeColumn2" value="#{RdVendor.vendor.vendorId}"/>
+                                    <!--validator="#{Validators.validateUniqueDeviceType}"/>-->
+                        <br/> <h:message for="typeColumn" styleClass="warn"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="panel-feature-form-enhanced-field-name">#{msg.rdVendor_Name}</td>
+                    <td class="panel-feature-form-enhanced-field-value">
+                        <h:inputText id="nameColumn" value="#{RdVendor.vendor.name}"
+                                     maxlength="40"
+                                     styleClass="form-input-text"
+                                     required="true" />
+                        <br/><h:message for="nameColumn" styleClass="warn"/>
+                        <h:inputHidden id="IdColumn" value="#{RdVendor.vendor.id}"/>
+						<h:inputHidden id="StatusColumn" value="#{RdVendor.vendor.status}"/>
+						<h:inputHidden id="VersionColumn" value="#{RdVendor.vendor.version}"/>
+                    </td>
+                </tr>
+
+
+            </table>
+            <h:commandLink id="updateDevice" action="#{RdVendor.updateAction}"
+                    onclick="if (!confirm('Are you sure you want to update this Reader Vendor?')) return false">
+                #{msg.saveLink}</h:commandLink>
+             &#160;
+            <h:commandLink action="#{Menus.selectRdVendors}" immediate="true">#{msg.cancelLink}</h:commandLink>
+        </h:form>
+            <h:messages globalOnly="true" layout="table" styleClass="warn"
+            infoClass="info" warnClass="warn"
+            errorClass="warn"
+            fatalClass="warn"/>
+
+            <br/>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

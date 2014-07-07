@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk">
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.reqKeychange_MSACeilingValueMasterKey}
+    </ui:define>
+    <ui:define name="workArea">
+        <f:view>
+            <h:form id="CVMKey" enctype="multipart/form-data" onsubmit="document.body.style.cursor='wait';">
+                <table  border="0">
+                    <tr>
+                        <td>
+                            <table class="acTable">
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">
+                                        #{msg.msaCVMK_BE}:
+                                    </td>
+                                    <td class="panel-feature-form-enhanced-field-value">
+                                        #{CVMKChange.beName}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="panel-feature-form-enhanced-field-name">
+                                        #{msg.msaCVMK_generation}:
+                                    </td>
+                                    <td class="panel-feature-form-enhanced-field-value">
+                                        <h:inputText id="generation" value="#{CVMKChange.generation}"
+                                                     maxlength="02"
+                                                     size="2"
+                                                     required="true"
+                                                     validator="#{Validators.validateHexadecimalLimit}"
+                                                     onblur="this.value=this.value.toUpperCase();" 
+                                                     autocomplete="off" label="#{msg.msaCVMK_generation}" >
+                                            <f:validateLength maximum="02" minimum="02"/>
+                                        </h:inputText>
+                                        <h:inputHidden id="beid" value="#{CVMKChange.beID}"/>
+                                        <h:inputHidden id="beName1" value="#{CVMKChange.beName}"/>                                        
+                                        <br/><h:message for="generation" styleClass="warn"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>	                        
+                        <td>
+                            <table class="acTable">
+                               <ui:fragment id="chk" rendered="#{CVMKChange.allGenerations!=null}">
+                                    <tr>
+                                        <td class="panel-feature-form-enhanced-field-name">#{msg.msaCVMK_generation}</td>
+                                    </tr>
+                                    <ui:repeat id="cvmkGen" value="#{CVMKChange.allGenerations}" var="cvmkGeneration">
+                                        <tr>
+                                            <td>#{cvmkGeneration}</td>
+                                        </tr>
+                                    </ui:repeat>
+                               </ui:fragment>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <br/><br/>
+                <h:commandButton value="Submit"
+                                 action="#{CVMKChange.processGeneration}" />
+                <h:outputText value=" "/>
+                <br/><br/>
+                <h:commandLink id="backLink"  action="requestMSACVMKChangeHome"  immediate="true">
+                    #{msg.backLink}
+                </h:commandLink>                
+                <br/>
+            </h:form>
+            <span id="idUIErrorLogger" style="color: red;"></span>
+            <span id="idGlobalMessage">
+                <h:messages globalOnly="true" layout="table" styleClass="warn"
+                            infoClass="info" warnClass="warn"
+                            errorClass="warn"
+                            fatalClass="warn"/>
+	        </span>
+
+            <br/>
+        </f:view>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

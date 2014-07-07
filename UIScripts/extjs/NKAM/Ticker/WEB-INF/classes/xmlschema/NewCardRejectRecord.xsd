@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Steve Nichols (Datacard Platform Seven Limited) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xs:include schemaLocation="IFSData.xsd"/>
+	<xs:element name="NewCardRejectRecord">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="TrackingReference" type="TrackingReferenceType">
+					<xs:annotation>
+						<xs:documentation>Identifies the scope and tracking reference (a unique identifier) of the request being rejected</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="RecordRejection" type="RejectionType">
+					<xs:annotation>
+						<xs:documentation>Identifies why the record was rejected</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

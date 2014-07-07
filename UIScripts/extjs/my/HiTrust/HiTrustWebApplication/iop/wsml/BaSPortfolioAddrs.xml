@@ -1,0 +1,39 @@
+<DST>
+	<HiTrust>
+		<businessObject>BaSPortfolioAddrs</businessObject>
+		<operation>SEARCH</operation>
+		<user>@@user@</user>
+		<password>@@pass@</password>
+		<request>
+			<data>
+				<Portfolio>
+					<Number>@@portfolioNumber@</Number>
+				</Portfolio>
+
+                           <Deleted>false</Deleted>                      
+			</data>
+		</request>
+		<response>
+			<AddrType.Desc />
+			<Address.Key />
+			<Address.DefaultAddr />
+			<Address.Address1 />
+			<Address.Address2 />
+			<Address.Address3 />
+			<Address.Address4 />
+			<Address.State />
+			<Address.ZipCode />
+			<Address.Country.ISOCode />
+			<Address.Country.Desc />
+			<Address.TelNo />
+			<Address.TelNo2 />
+			<Address.MobileNo />
+			<Address.FaxNo />
+			<Address.FaxNo2 />
+			<Address.EMail />
+			<Address.EMail2 />
+			<Deleted />
+			<StartDate />
+		</response>
+	</HiTrust>
+</DST>

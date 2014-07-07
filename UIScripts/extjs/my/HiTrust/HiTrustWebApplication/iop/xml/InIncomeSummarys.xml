@@ -1,0 +1,1440 @@
+<?xml version="1.0" ?>
+<DST>
+<user>001IN000002</user>
+<password>Passw0rd</password>
+<response>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>Dawson (Aus) Super Fund</Name>
+<Number>IN000007RS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000001</Key>
+</Income>
+<Fund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+<Code>GROASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Retail</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000001</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>50,985.22</IncomeGross>
+<Income>43,637.11</Income>
+<WithHeldTax>4,499.15</WithHeldTax>
+<IncMethod>
+<Desc>Split</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>334,023.37</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>7,399.883300</Units>
+<Date>16-Mar-2002 00:07:10</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>John Smith Lump Sum</Name>
+<Number>IN000001LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000002</Key>
+</Income>
+<Fund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+<Code>GROASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Retail</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000001</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>186,813.80</IncomeGross>
+<Income>159,889.80</Income>
+<WithHeldTax>16,485.19</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>334,023.37</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>27,113.758300</Units>
+<Date>16-Mar-2002 00:07:10</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>John Smith Lump Sum</Name>
+<Number>IN000001LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000002</Key>
+</Income>
+<Fund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+<Code>GROASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Retail</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000001</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>186,813.80</IncomeGross>
+<Income>159,889.80</Income>
+<WithHeldTax>16,485.19</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>334,023.37</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>27,113.758300</Units>
+<Date>16-Mar-2002 00:07:10</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name> Davies Super Fund</Name>
+<Number>IN000006LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000003</Key>
+</Income>
+<Fund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+<Code>GROASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Retail</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000001</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>54,574.53</IncomeGross>
+<Income>51,525.01</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Split</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>334,023.37</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>7,920.833300</Units>
+<Date>16-Mar-2002 00:07:11</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>Beddeley Super Fund</Name>
+<Number>IN000004LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000004</Key>
+</Income>
+<Fund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+<Code>GROASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Retail</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000001</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>30,591.09</IncomeGross>
+<Income>15,789.25</Income>
+<WithHeldTax>13,092.46</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>334,023.37</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>4,439.925000</Units>
+<Date>16-Mar-2002 00:07:11</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>Taylor Retirement</Name>
+<Number>IN000002RP001</Number>
+</Portfolio>
+<Income>
+<Key>0000000005</Key>
+</Income>
+<Fund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+<Code>GROASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Retail</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000001</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>40,788.16</IncomeGross>
+<Income>38,508.99</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>334,023.37</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>5,919.908300</Units>
+<Date>16-Mar-2002 00:07:12</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>Custodian Service Nominees Super</Name>
+<Number>NM000001LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000006</Key>
+</Income>
+<Fund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+<Code>GROASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Retail</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000001</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>61,536.25</IncomeGross>
+<Income>58,097.72</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Split</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>334,023.37</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>8,931.241700</Units>
+<Date>16-Mar-2002 00:07:12</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>Singh Super Fund</Name>
+<Number>IN000008LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000007</Key>
+</Income>
+<Fund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+<Code>GROASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Retail</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000001</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>32,088.59</IncomeGross>
+<Income>30,295.54</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Split</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>334,023.37</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>4,657.266700</Units>
+<Date>16-Mar-2002 00:07:13</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>Taylor (USA) Pension Plan</Name>
+<Number>IN000002LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000008</Key>
+</Income>
+<Fund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+<Code>GROASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Retail</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000001</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>29,718.23</IncomeGross>
+<Income>28,057.63</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>334,023.37</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>4,313.241700</Units>
+<Date>16-Mar-2002 00:07:13</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>Taylor (USA) Pension Plan</Name>
+<Number>IN000002LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000008</Key>
+</Income>
+<Fund>
+<Key>0000000001</Key>
+<Desc>Australasian Equity Fund</Desc>
+<Code>GROASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Retail</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000001</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>29,718.23</IncomeGross>
+<Income>28,057.63</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>334,023.37</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>4,313.241700</Units>
+<Date>16-Mar-2002 00:07:13</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>Taylor Retirement</Name>
+<Number>IN000002RP001</Number>
+</Portfolio>
+<Income>
+<Key>0000000009</Key>
+</Income>
+<Fund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+<Code>BALAUS</Code>
+</Fund>
+<UnitClass>
+<Desc>Short Term</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000002</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>2,963.48</IncomeGross>
+<Income>2,963.48</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>3,828.83</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>
+</Units>
+<Date>16-Mar-2002 00:25:42</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>Dawson (Aus) Super Fund</Name>
+<Number>IN000007RS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000010</Key>
+</Income>
+<Fund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+<Code>BALAUS</Code>
+</Fund>
+<UnitClass>
+<Desc>Short Term</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000002</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>90.17</IncomeGross>
+<Income>90.17</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Split</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>3,828.83</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>
+</Units>
+<Date>16-Mar-2002 00:25:44</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>John Smith Lump Sum</Name>
+<Number>IN000001LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000011</Key>
+</Income>
+<Fund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+<Code>BALAUS</Code>
+</Fund>
+<UnitClass>
+<Desc>Short Term</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000002</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>493.45</IncomeGross>
+<Income>493.45</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>3,828.83</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>
+</Units>
+<Date>16-Mar-2002 00:25:47</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>John Smith Lump Sum</Name>
+<Number>IN000001LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000011</Key>
+</Income>
+<Fund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+<Code>BALAUS</Code>
+</Fund>
+<UnitClass>
+<Desc>Short Term</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000002</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>493.45</IncomeGross>
+<Income>493.45</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>3,828.83</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>
+</Units>
+<Date>16-Mar-2002 00:25:47</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name> Davies Super Fund</Name>
+<Number>IN000006LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000012</Key>
+</Income>
+<Fund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+<Code>BALAUS</Code>
+</Fund>
+<UnitClass>
+<Desc>Short Term</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000002</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>966.58</IncomeGross>
+<Income>966.58</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Split</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>3,828.83</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>
+</Units>
+<Date>16-Mar-2002 00:25:49</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>Beddeley Super Fund</Name>
+<Number>IN000004LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000013</Key>
+</Income>
+<Fund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+<Code>BALAUS</Code>
+</Fund>
+<UnitClass>
+<Desc>Short Term</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000002</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>8.95</IncomeGross>
+<Income>8.95</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>3,828.83</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>
+</Units>
+<Date>16-Mar-2002 00:25:51</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>AFL Corporation</Name>
+<Number>CI001021LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000014</Key>
+</Income>
+<Fund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+<Code>BALAUS</Code>
+</Fund>
+<UnitClass>
+<Desc>Short Term</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000002</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>338.31</IncomeGross>
+<Income>338.31</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>3,828.83</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>
+</Units>
+<Date>16-Mar-2002 00:25:54</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>Custodian Service Nominees Super</Name>
+<Number>NM000001LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000015</Key>
+</Income>
+<Fund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+<Code>BALAUS</Code>
+</Fund>
+<UnitClass>
+<Desc>Short Term</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000002</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>31.56</IncomeGross>
+<Income>31.56</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Split</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>3,828.83</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>
+</Units>
+<Date>16-Mar-2002 00:25:56</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>Singh Super Fund</Name>
+<Number>IN000008LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000016</Key>
+</Income>
+<Fund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+<Code>BALAUS</Code>
+</Fund>
+<UnitClass>
+<Desc>Short Term</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000002</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>18.78</IncomeGross>
+<Income>18.78</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Split</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>3,828.83</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>
+</Units>
+<Date>16-Mar-2002 00:25:58</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>Taylor (USA) Pension Plan</Name>
+<Number>IN000002LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000017</Key>
+</Income>
+<Fund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+<Code>BALAUS</Code>
+</Fund>
+<UnitClass>
+<Desc>Short Term</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000002</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>24.64</IncomeGross>
+<Income>24.64</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>3,828.83</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>
+</Units>
+<Date>16-Mar-2002 00:26:00</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>Taylor (USA) Pension Plan</Name>
+<Number>IN000002LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000017</Key>
+</Income>
+<Fund>
+<Key>0000000002</Key>
+<Desc>Australian Balanced</Desc>
+<Code>BALAUS</Code>
+</Fund>
+<UnitClass>
+<Desc>Short Term</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>29-Jun-2001 04:31:42</ExDate>
+<IncomeSched>
+<Key>0000000002</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>24.64</IncomeGross>
+<Income>24.64</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>3,828.83</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>
+</Units>
+<Date>16-Mar-2002 00:26:00</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>DST Lump Sum</Name>
+<Number>CI001025LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000018</Key>
+</Income>
+<Fund>
+<Key>0000000009</Key>
+<Desc>Equities - Asia</Desc>
+<Code>EQTASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Standard</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>10-Jan-2011 00:00:00</ExDate>
+<IncomeSched>
+<Key>0000000003</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>21,321.37</IncomeGross>
+<Income>21,321.37</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>21,321.37</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>21,321.366100</Units>
+<Date>11-Jan-2011 05:07:38</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>DST Lump Sum</Name>
+<Number>CI001025LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000019</Key>
+</Income>
+<Fund>
+<Key>0000000009</Key>
+<Desc>Equities - Asia</Desc>
+<Code>EQTASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Standard</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>21-Jan-2011 03:53:00</ExDate>
+<IncomeSched>
+<Key>0000000005</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>42,927.02</IncomeGross>
+<Income>42,927.02</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Paid</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>
+</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>21,463.508600</Units>
+<Date>21-Jan-2011 03:58:16</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>Delby Fixed Deposit</Name>
+<Number>NM000005FI001</Number>
+</Portfolio>
+<Income>
+<Key>0000000020</Key>
+</Income>
+<Fund>
+<Key>0000000009</Key>
+<Desc>Equities - Asia</Desc>
+<Code>EQTASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Standard</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>21-Jan-2011 03:53:00</ExDate>
+<IncomeSched>
+<Key>0000000005</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>100,000.00</IncomeGross>
+<Income>100,000.00</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Paid</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>
+</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>50,000.000000</Units>
+<Date>21-Jan-2011 03:58:18</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>
+</PaymentDate>
+<Portfolio>
+<Name>Hastings Lump Sum</Name>
+<Number>FM000003LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000021</Key>
+</Income>
+<Fund>
+<Key>0000000009</Key>
+<Desc>Equities - Asia</Desc>
+<Code>EQTASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Standard</Desc>
+</UnitClass>
+<PaymentDate>
+</PaymentDate>
+<ExDate>21-Jan-2011 03:53:00</ExDate>
+<IncomeSched>
+<Key>0000000005</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>60,000.00</IncomeGross>
+<Income>60,000.00</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Paid</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>
+</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>30,000.000000</Units>
+<Date>21-Jan-2011 03:58:20</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>17-Feb-2011 23:00:00</PaymentDate>
+<Portfolio>
+<Name>John Smith Lump Sum</Name>
+<Number>IN000001LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000035</Key>
+</Income>
+<Fund>
+<Key>0000000008</Key>
+<Desc>Balanced Fund - USA</Desc>
+<Code>EQTUSA</Code>
+</Fund>
+<UnitClass>
+<Desc>Basic</Desc>
+</UnitClass>
+<PaymentDate>17-Feb-2011 23:00:00</PaymentDate>
+<ExDate>16-Feb-2011 23:59:00</ExDate>
+<IncomeSched>
+<Key>0000000011</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>9,832.95</IncomeGross>
+<Income>9,832.95</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Split</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>8,883.07</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>98,329.456000</Units>
+<Date>17-Feb-2011 23:03:40</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>17-Feb-2011 23:00:00</PaymentDate>
+<Portfolio>
+<Name>John Smith Lump Sum</Name>
+<Number>IN000001LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000035</Key>
+</Income>
+<Fund>
+<Key>0000000008</Key>
+<Desc>Balanced Fund - USA</Desc>
+<Code>EQTUSA</Code>
+</Fund>
+<UnitClass>
+<Desc>Basic</Desc>
+</UnitClass>
+<PaymentDate>17-Feb-2011 23:00:00</PaymentDate>
+<ExDate>16-Feb-2011 23:59:00</ExDate>
+<IncomeSched>
+<Key>0000000011</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>9,832.95</IncomeGross>
+<Income>9,832.95</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Split</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>8,883.07</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>98,329.456000</Units>
+<Date>17-Feb-2011 23:03:40</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>17-Feb-2011 23:00:00</PaymentDate>
+<Portfolio>
+<Name>Ricky Lloyd Regular Saver</Name>
+<Number>IN000012RS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000036</Key>
+</Income>
+<Fund>
+<Key>0000000008</Key>
+<Desc>Balanced Fund - USA</Desc>
+<Code>EQTUSA</Code>
+</Fund>
+<UnitClass>
+<Desc>Basic</Desc>
+</UnitClass>
+<PaymentDate>17-Feb-2011 23:00:00</PaymentDate>
+<ExDate>16-Feb-2011 23:59:00</ExDate>
+<IncomeSched>
+<Key>0000000011</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>8,000.00</IncomeGross>
+<Income>4,120.00</Income>
+<WithHeldTax>3,880.00</WithHeldTax>
+<IncMethod>
+<Desc>Paid</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>8,883.07</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>80,000.000000</Units>
+<Date>17-Feb-2011 23:03:43</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>17-Feb-2011 23:00:00</PaymentDate>
+<Portfolio>
+<Name>Australian Trust Fixed Deposit</Name>
+<Number>RG000055FI001</Number>
+</Portfolio>
+<Income>
+<Key>0000000037</Key>
+</Income>
+<Fund>
+<Key>0000000008</Key>
+<Desc>Balanced Fund - USA</Desc>
+<Code>EQTUSA</Code>
+</Fund>
+<UnitClass>
+<Desc>Basic</Desc>
+</UnitClass>
+<PaymentDate>17-Feb-2011 23:00:00</PaymentDate>
+<ExDate>16-Feb-2011 23:59:00</ExDate>
+<IncomeSched>
+<Key>0000000011</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>4,000.00</IncomeGross>
+<Income>4,000.00</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Paid</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>8,883.07</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>40,000.000000</Units>
+<Date>17-Feb-2011 23:03:46</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>17-Feb-2011 23:00:00</PaymentDate>
+<Portfolio>
+<Name>John Smith Lump Sum</Name>
+<Number>IN000001LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000038</Key>
+</Income>
+<Fund>
+<Key>0000000008</Key>
+<Desc>Balanced Fund - USA</Desc>
+<Code>EQTUSA</Code>
+</Fund>
+<UnitClass>
+<Desc>Standard</Desc>
+</UnitClass>
+<PaymentDate>17-Feb-2011 23:00:00</PaymentDate>
+<ExDate>16-Feb-2011 23:59:00</ExDate>
+<IncomeSched>
+<Key>0000000011</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>2,000.00</IncomeGross>
+<Income>2,000.00</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>8,883.07</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>20,000.000000</Units>
+<Date>17-Feb-2011 23:03:47</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>17-Feb-2011 23:00:00</PaymentDate>
+<Portfolio>
+<Name>John Smith Lump Sum</Name>
+<Number>IN000001LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000038</Key>
+</Income>
+<Fund>
+<Key>0000000008</Key>
+<Desc>Balanced Fund - USA</Desc>
+<Code>EQTUSA</Code>
+</Fund>
+<UnitClass>
+<Desc>Standard</Desc>
+</UnitClass>
+<PaymentDate>17-Feb-2011 23:00:00</PaymentDate>
+<ExDate>16-Feb-2011 23:59:00</ExDate>
+<IncomeSched>
+<Key>0000000011</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>2,000.00</IncomeGross>
+<Income>2,000.00</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>8,883.07</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>20,000.000000</Units>
+<Date>17-Feb-2011 23:03:47</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>18-Feb-2011 00:00:00</PaymentDate>
+<Portfolio>
+<Name>Singh Super Fund</Name>
+<Number>IN000008LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000039</Key>
+</Income>
+<Fund>
+<Key>0000000004</Key>
+<Desc>Balanced Fund - Asia</Desc>
+<Code>BALASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Basic</Desc>
+</UnitClass>
+<PaymentDate>18-Feb-2011 00:00:00</PaymentDate>
+<ExDate>16-Feb-2011 23:59:00</ExDate>
+<IncomeSched>
+<Key>0000000012</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>307.94</IncomeGross>
+<Income>307.94</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>2,411.46</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>3,079.365200</Units>
+<Date>17-Feb-2011 23:32:18</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>18-Feb-2011 00:00:00</PaymentDate>
+<Portfolio>
+<Name>DST Reinvestment</Name>
+<Number>CI001025S001</Number>
+</Portfolio>
+<Income>
+<Key>0000000040</Key>
+</Income>
+<Fund>
+<Key>0000000004</Key>
+<Desc>Balanced Fund - Asia</Desc>
+<Code>BALASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Basic</Desc>
+</UnitClass>
+<PaymentDate>18-Feb-2011 00:00:00</PaymentDate>
+<ExDate>16-Feb-2011 23:59:00</ExDate>
+<IncomeSched>
+<Key>0000000012</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>103.52</IncomeGross>
+<Income>103.52</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>2,411.46</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>1,035.150000</Units>
+<Date>17-Feb-2011 23:32:20</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>18-Feb-2011 00:00:00</PaymentDate>
+<Portfolio>
+<Name>Asset Union Lump Sum</Name>
+<Number>CI001022LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000041</Key>
+</Income>
+<Fund>
+<Key>0000000004</Key>
+<Desc>Balanced Fund - Asia</Desc>
+<Code>BALASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Basic</Desc>
+</UnitClass>
+<PaymentDate>18-Feb-2011 00:00:00</PaymentDate>
+<ExDate>16-Feb-2011 23:59:00</ExDate>
+<IncomeSched>
+<Key>0000000012</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>56.27</IncomeGross>
+<Income>56.27</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Paid</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>2,411.46</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>562.740700</Units>
+<Date>17-Feb-2011 23:32:23</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>18-Feb-2011 00:00:00</PaymentDate>
+<Portfolio>
+<Name>John Smith Lump Sum</Name>
+<Number>IN000001LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000042</Key>
+</Income>
+<Fund>
+<Key>0000000004</Key>
+<Desc>Balanced Fund - Asia</Desc>
+<Code>BALASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Basic</Desc>
+</UnitClass>
+<PaymentDate>18-Feb-2011 00:00:00</PaymentDate>
+<ExDate>16-Feb-2011 23:59:00</ExDate>
+<IncomeSched>
+<Key>0000000012</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>2,000.00</IncomeGross>
+<Income>2,000.00</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>2,411.46</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>20,000.000000</Units>
+<Date>17-Feb-2011 23:32:25</Date>
+</Income>
+</List>
+<List>
+<PaymentDate>18-Feb-2011 00:00:00</PaymentDate>
+<Portfolio>
+<Name>John Smith Lump Sum</Name>
+<Number>IN000001LS001</Number>
+</Portfolio>
+<Income>
+<Key>0000000042</Key>
+</Income>
+<Fund>
+<Key>0000000004</Key>
+<Desc>Balanced Fund - Asia</Desc>
+<Code>BALASIA</Code>
+</Fund>
+<UnitClass>
+<Desc>Basic</Desc>
+</UnitClass>
+<PaymentDate>18-Feb-2011 00:00:00</PaymentDate>
+<ExDate>16-Feb-2011 23:59:00</ExDate>
+<IncomeSched>
+<Key>0000000012</Key>
+</IncomeSched>
+<Income>
+<IncomeGross>2,000.00</IncomeGross>
+<Income>2,000.00</Income>
+<WithHeldTax>0.00</WithHeldTax>
+<IncMethod>
+<Desc>Reinvest</Desc>
+</IncMethod>
+</Income>
+<IncomeSched>
+<TotalReinvest>2,411.46</TotalReinvest>
+</IncomeSched>
+<Income>
+<Units>20,000.000000</Units>
+<Date>17-Feb-2011 23:32:25</Date>
+</Income>
+</List>
+</response>
+</DST>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         

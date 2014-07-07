@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by Rajesh (Datacard) -->
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Steve Nichols (Datacard Platform Seven Limited) -->
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="IFSData.xsd"/>
+	<xs:element name="SetChipStatusRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="User" type="UserType"/>
+				<xs:element name="DataContext" type="DataContextType">
+					<xs:annotation>
+						<xs:documentation>Identifies the scope and name of the data context</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="TrackingRef" type="ShortTrackingRefType">
+					<xs:annotation>
+						<xs:documentation>Provides a unique identifier for the request</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="CardId" type="CardIdType">
+					<xs:annotation>
+						<xs:documentation>Identifies the card to which the status is to be applied</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ChipStatus" type="ChipStatusRequestType">
+					<xs:annotation>
+						<xs:documentation>Provides the new status</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Reason" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>A description of the purpose of this Request</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

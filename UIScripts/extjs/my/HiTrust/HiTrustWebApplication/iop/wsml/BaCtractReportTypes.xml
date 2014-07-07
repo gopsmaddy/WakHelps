@@ -1,0 +1,19 @@
+<DST>
+  <HiTrust>
+    <businessObject>BaCtractReportTypes</businessObject>
+    <operation>SEARCH</operation>
+    <user>@@user@</user>
+    <password>@@pass@</password>
+    <request>
+      <data>
+        <Company.Key>
+        </Company.Key>
+      </data>
+    </request>
+    <response>
+    	<Company.Key/>
+    	<Company.Desc/>
+      <Desc/>
+    </response>
+  </HiTrust>
+</DST>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk">
+<body>
+
+<ui:composition template="../content/main.xhtml">
+    <ui:define name="workAreaTitle">
+        #{msg.reqKeychange_MSAPrivacyKey}
+    </ui:define>
+    <ui:define name="workArea">
+        <f:view>
+            <h:form id="msaPrivacyKeys" onsubmit="document.body.style.cursor='wait';">
+                <table class="acTable">
+                    <tr>
+                        <td class="panel-feature-form-enhanced-field-name">#{msg.msaPrivacyKeyGenerations}</td>
+                        <td class="panel-feature-form-enhanced-field-name">
+                        <ui:fragment id="genExceeds" rendered="#{PrivacyKeyPane.slotsAvail}">
+                            <h:commandLink action="requestMSAPrivacyKeyChangeGen">#{msg.reqKeyChange_ADDKEY}</h:commandLink>
+                        </ui:fragment>
+                        </td>
+                    </tr>
+                    <ui:repeat id="cardPersoDataUI" value="#{PrivacyKeyPane.generations}" var="cardPersoData">
+                        <tr>
+                            <ui:fragment id="cardPersoData1" rendered="#{cardPersoData=='FF'}">
+                                <td class="panel-feature-form-enhanced-field-value">
+                                    #{msg.reqKeyChange_NoKeySet}
+                                </td>
+                                <td> </td>
+                            </ui:fragment>
+                            <ui:fragment id="cardPersoData2" rendered="#{cardPersoData!='FF'}">
+                                <td class="panel-feature-form-enhanced-field-value">
+                                    #{cardPersoData}
+                                </td>
+                                <td class="panel-feature-form-enhanced-field-value">
+                                    <h:commandLink action="#{PrivacyKeyPane.deletePrivacyKeyGeneration}"
+                                                   onclick="return assignValuetoBean('#{cardPersoData}')">#{msg.reqKeyChange_DELETEKEY}</h:commandLink>
+                                </td>
+                            </ui:fragment>
+                        </tr>
+                    </ui:repeat>
+                </table>
+
+                <h:inputHidden id="deleteGen" name="deleteGen" value="#{PrivacyKeyPane.deleteGeneration}"/>
+                <br/><br/>
+                <h:commandLink id="backLink"  action="requestKeyChange">
+                    #{msg.backLink}
+                </h:commandLink>
+                <br/>
+            </h:form>
+            <span id="idUIErrorLogger" style="color: red;"></span>
+            <span id="idGlobalMessage">
+            <h:messages globalOnly="true" layout="table" styleClass="warn"
+                        infoClass="info" warnClass="warn"
+                        errorClass="warn"
+                        fatalClass="warn"/>
+            </span>
+            <br/>
+        </f:view>
+        <SCRIPT LANGUAGE="JavaScript" src="../../js/validations.js"></SCRIPT>
+        <SCRIPT LANGUAGE="JavaScript">
+            function assignValuetoBean(var1)
+            {
+                setSingleInputValue(document.getElementById("msaPrivacyKeys:deleteGen"),var1);
+                if (!confirm('Delete MSA Privacy Key Set Generation '+var1+': are you sure?'))
+                {
+                    return false;
+                }
+                else
+                {
+                    cursorChange();
+                    return true;
+                }
+            }
+
+            function cursorChange()
+            {
+                document.body.style.cursor="wait";
+            }
+        </SCRIPT>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

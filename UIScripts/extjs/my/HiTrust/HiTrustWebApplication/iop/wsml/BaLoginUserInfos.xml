@@ -1,0 +1,20 @@
+<DST>
+  <HiTrust>
+    <businessObject>BaLoginUserInfos</businessObject>
+    <operation>SEARCH</operation>
+    <user>@@user@</user>
+    <password>@@pass@</password>
+		 <request>
+		  <data>
+		    <User.Login>@@user@</User.Login>
+		    <MaxRows>1</MaxRows>
+		 </data>
+		</request>
+		<response>
+		       <SLoginType/>
+		       <User.AssociatedClient.Key/>
+		       <User.AssociatedClient.RelNo/>
+		       <User.AssociatedClient.Company.Key/>
+		</response>
+  </HiTrust>
+</DST>
