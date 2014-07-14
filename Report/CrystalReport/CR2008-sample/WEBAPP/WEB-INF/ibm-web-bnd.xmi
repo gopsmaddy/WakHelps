@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ejs.models.base.bindings.webappbnd:WebAppBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ejs.models.base.bindings.webappbnd="webappbnd.xmi" xmi:id="WebAppBinding_1226331113121" virtualHostName="default_host">
+  <webapp href="WEB-INF/web.xml#WebApp"/>
+  <resRefBindings xmi:id="ResourceRefBinding_1226331113121" jndiName="AffinaDataSource_pma">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_AffinaDataSource_pma"/>
+  </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_1226331113122" jndiName="AffinaDataSource_sds">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_AffinaDataSource_sds"/>
+  </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_1226331113123" jndiName="AffinaDataSource_rep">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_AffinaDataSource_rep"/>
+  </resRefBindings>
+</com.ibm.ejs.models.base.bindings.webappbnd:WebAppBinding>

@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4" id="WebApp">
+
+	<display-name>Affina Operations War</display-name>
+
+
+	<context-param>
+		<param-name>DatabaseConnection</param-name>
+		<param-value>DATABASEURL</param-value>
+	</context-param>
+	<context-param>
+		<param-name>Service1</param-name>
+		<param-value>NSAM</param-value>
+	</context-param>
+	<context-param>
+		<param-name>CACHE_IDLE_INTERVAL_MS</param-name>
+		<param-value>0</param-value>
+	</context-param>
+	<context-param>
+		<param-name>Service2</param-name>
+		<param-value>SERVICE2.NAME</param-value>
+	</context-param>
+	<context-param>
+		<param-name>Service3</param-name>
+		<param-value>SERVICE3.NAME</param-value>
+	</context-param>
+	<context-param>
+		<param-name>PMAUserName</param-name>
+		<param-value>pma</param-value>
+	</context-param>
+	<context-param>
+		<param-name>PMAPassword</param-name>
+		<param-value>XXX</param-value>
+	</context-param>
+	<context-param>
+		<param-name>SDSUserName</param-name>
+		<param-value>sds</param-value>
+	</context-param>
+	<context-param>
+		<param-name>SDSPassword</param-name>
+		<param-value>XXX</param-value>
+	</context-param>
+	<context-param>
+		<param-name>SDSProject</param-name>
+		<param-value>com.platform7.sds.databaseproject.toplinkproject</param-value>
+	</context-param>
+	<context-param>
+		<param-name>PMAProject</param-name>
+		<param-value>com.platform7.stdpma.databaseproject.toplinkproject</param-value>
+	</context-param>
+	<context-param>
+		<param-name>PMAQueue1</param-name>
+		<param-value>PMA.WORK.PMA.NSAM</param-value>
+	</context-param>
+	<context-param>
+		<param-name>PmaUploadQueue</param-name>
+		<param-value>PMA.WORKUPLOAD.PMA.NSAM</param-value>
+	</context-param>
+	<context-param>
+		<param-name>PmaAccountDeletionQueue</param-name>
+		<param-value>PMA.WORKACCOUNTDELETION.PMA.NSAM</param-value>
+	</context-param>
+	<context-param>
+		<param-name>PMAQueue2</param-name>
+		<param-value>SERVICE2.PMA.QUEUE.WORKFLOW</param-value>
+	</context-param>
+	<context-param>
+		<param-name>PMAQueue3</param-name>
+		<param-value>SERVICE3.PMA.QUEUE.WORKFLOW</param-value>
+	</context-param>
+	<context-param>
+		<param-name>SDSQueue1</param-name>
+		<param-value>SDS.WORK.SDS.NSAM</param-value>
+	</context-param>
+	<context-param>
+		<param-name>SDSQueue2</param-name>
+		<param-value>SERVICE2.SDS.QUEUE.WORKFLOW</param-value>
+	</context-param>
+	<context-param>
+		<param-name>SDSQueue3</param-name>
+		<param-value>SERVICE3.SDS.QUEUE.WORKFLOW</param-value>
+	</context-param>
+	<context-param>
+		<param-name>RejectRequestsQueue</param-name>
+		<param-value>SDS.DP.PMA.NSAM</param-value>
+	</context-param>		
+	<context-param>
+		<param-name>message_connection_factory</param-name>
+		<param-value>ivtQCF</param-value>
+	</context-param>
+	<context-param>
+		<param-name>ibmjms_hostname</param-name>
+		<param-value>ACO212</param-value>
+	</context-param>
+	<context-param>
+		<param-name>ibmjms_channel</param-name>
+		<param-value>JAVA.CHANNEL</param-value>
+	</context-param>
+	<context-param>
+		<param-name>ibmjms_queuemanager</param-name>
+		<param-value>QM_ACO212</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>QueueManager</param-name>
+		<param-value>QM_ACO212</param-value>
+	</context-param>
+	<context-param>
+		<param-name>JmsChannel</param-name>
+		<param-value>JAVA.CHANNEL</param-value>
+	</context-param>
+	<context-param>
+		<param-name>JmsHostName</param-name>
+		<param-value>ACO212</param-value>
+	</context-param>
+	<context-param>
+		<param-name>JmsPort</param-name>
+		<param-value>1414</param-value>
+	</context-param>
+	<context-param>
+		<param-name>SDSQueue4</param-name>
+		<param-value>SDS.DP.PMA.NSAM</param-value>
+	</context-param>
+	<context-param>
+		<param-name>AffinaRoot</param-name>
+		<param-value>C:/affina</param-value>
+	</context-param>
+	<context-param>
+		<param-name>extensionNames</param-name>
+		<param-value></param-value>
+	</context-param>
+	<context-param>
+		<param-name>ClientConfigFolder</param-name>
+		<param-value>C:/affina/localFiles/ClientConfig</param-value>
+	</context-param>
+	<context-param>
+		<param-name>TopLinkDeploymentKey</param-name>
+		<param-value>mNkm981ljff*9F8eKqdj51he3KlgeD1g15lF41d1#$hj0Qlgf7</param-value>
+	</context-param>
+	<context-param>
+		<param-name>PrimaryHostName</param-name>
+		<param-value>ACO212Node01</param-value>
+	</context-param>
+	<context-param>
+		<param-name>PrimaryDestinationPort</param-name>
+		<param-value>12012</param-value>
+	</context-param>
+	<context-param>
+		<param-name>logger1</param-name>
+		<param-value>og_alarm_NSAM_1,alarm,QUEUE,ACO212,QM_ACO212,1414,JAVA.CHANNEL,Affina/Messages/Alarms,com.platform7.standardinfrastructure.ejb.messagebeans.mqproviders.IbmMessageQueueProvider,ivtQCF,5</param-value>
+	</context-param>
+	<context-param>
+		<param-name>logger2</param-name>
+		<param-value>og_progress_NSAM_1,progress,QUEUE,ACO212,QM_ACO212,1414,JAVA.CHANNEL,Affina/Messages/Progress,com.platform7.standardinfrastructure.ejb.messagebeans.mqproviders.IbmMessageQueueProvider,ivtQCF,5</param-value>
+	</context-param>
+	<context-param>
+		<param-name>logger3</param-name>
+		<param-value>og_file_NSAM_1,all,file,C:/affina/gui/logs/opr_gui_NSAM_1.log</param-value>
+	</context-param>
+	<context-param>
+		<param-name>logger4</param-name>
+		<param-value>og_console_NSAM_1,all,console</param-value>
+	</context-param>
+	<context-param>
+		<param-name>TempDir</param-name>
+		<param-value>C:/affina/localFiles</param-value>
+	</context-param>
+	<context-param>
+		<param-name>enableLogin</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>SessionTimeout</param-name>
+		<param-value>1000</param-value>
+	</context-param>
+	<context-param>
+		<param-name>WAS_HOME</param-name>
+		<param-value>C:/WebSphere/AppServer</param-value>
+	</context-param>
+	<context-param>
+		<param-name>ND_WAS_HOST</param-name>
+		<param-value>ACO212</param-value>
+	</context-param>
+	<context-param>
+		<param-name>WAS_PORT</param-name>
+		<param-value>8879</param-value>
+	</context-param>
+    	<context-param>
+        	<param-name>queryProviderURL</param-name>
+        	<param-value>iiop://ACO212:15012</param-value>
+    	</context-param>
+    	<context-param>
+		<param-name>QueryQueue</param-name>
+		<param-value>NPF.QUERY.AFF</param-value>
+	</context-param>
+	<context-param>
+		<param-name>EncodingType</param-name>
+		<param-value>UTF-8</param-value>
+	</context-param>
+<!--
+	<context-param>
+   		<param-name>crystal_image_uri</param-name>
+   		<param-value>../Operations/crystalreportviewers11</param-value>
+	</context-param>
+-->	
+	<context-param>
+        <param-name>crystal_image_uri</param-name>
+        <param-value>crystalreportviewers12</param-value>
+	</context-param>
+
+	<context-param>
+			<param-name>crystal_image_use_relative</param-name>
+			<param-value>webapp</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>ReportCardRecordsToMQ</param-name>
+		<param-value>XXX</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>ReportRejectsToMQ</param-name>
+		<param-value>XXX</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>ReportBureauRejectsToMQ</param-name>
+		<param-value>XXX</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>ESP_SCRIPT_DIRECTORY</param-name>
+		<param-value>ESP.SCRIPT.DIRECTORY</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>TEMP_ESPSCRIPT_LOCATION</param-name>
+		<param-value>TEMP.ESPSCRIPT.LOCATION</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>FTPSERVERNAME</param-name>
+		<param-value>localhost</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>FTPSERVERLOGIN</param-name>
+		<param-value>affina</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>FTPSERVERPASSWORD</param-name>
+		<param-value>affina</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>USE_FTP</param-name>
+		<param-value>LOCAL</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>QUEUE</param-name>
+		<param-value>ISS.EMVSCRIPT.AFF.NSAM</param-value>
+	</context-param>
+
+
+
+    
+	<!--Tejesh : CR AF-12 Start -->
+	<context-param>
+		<param-name>MQConnChannel</param-name>
+		<param-value>MQTCPIP</param-value>
+	</context-param>
+	<!--Tejesh : CR AF-12 End -->
+
+
+    <context-param>
+        <param-name>PrepareServersFLAG</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+
+    <context-param>
+        <param-name>AffinaHostIsWindows</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+
+
+    <!-- Load Spring configuration when webapp loads -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+   <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <servlet>
+		<servlet-name>ContainerExtensionServlet</servlet-name>
+		<!--<display-name>ContainerExtensionServlet</display-name>-->
+		<servlet-class>com.platform7.standardinfrastructure.websphere.ContainerExtensionServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+    <!-- This servlet exists to initialize the server info -->
+    <servlet>
+		<servlet-name>OperationsBootstrapServlet</servlet-name>
+		<!--<display-name>OperationsBootstrapServlet</display-name>-->
+		<servlet-class>com.platform7.affina.operations.servlet.OperationsBootstrapServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+    </servlet>
+
+
+
+
+    <!-- Role based Access  - JIRA - 86-->
+	
+
+    <!-- ROLES -->
+
+    <security-role>
+        <role-name>Operator</role-name>
+    </security-role>
+    <security-role>
+        <role-name>Auditor</role-name>
+    </security-role>
+    <security-role>
+        <role-name>ConfigurationInstaller</role-name>
+    </security-role>
+    <security-role>
+        <role-name>ConfigurationValidator</role-name>
+    </security-role>
+    <security-role>
+        <role-name>Reporter</role-name>
+    </security-role>
+
+    <!-- Authentication -->
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/login.jsp</form-login-page>
+            <form-error-page>/login-error.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Controller Main Servlet</web-resource-name>
+            <url-pattern>/home.jsp</url-pattern>
+            <url-pattern>/controllerMain</url-pattern>
+			<url-pattern>/CrystalReportViewerHandler</url-pattern>
+            <url-pattern>/parseConfig</url-pattern>
+            <url-pattern>/exportConfigController</url-pattern>
+            <url-pattern>/saveQueryReponse</url-pattern>
+            <url-pattern>/reportController</url-pattern>
+            <url-pattern>/saveExportConfigController</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>Operator</role-name>
+            <role-name>Auditor</role-name>
+            <role-name>Reporter</role-name>
+            <role-name>ConfigurationInstaller</role-name>
+            <role-name>ConfigurationValidator</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+
+    <servlet>
+		<servlet-name>servletMain</servlet-name>
+		<servlet-class>com.platform7.affina.operations.servlet.ControllerMain</servlet-class>
+		<load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>servletMain</servlet-name>
+        <url-pattern>/controllerMain</url-pattern>
+    </servlet-mapping>
+
+	<servlet>
+		<servlet-name>CrystalReportViewerServlet</servlet-name>
+		<servlet-class>com.crystaldecisions.report.web.viewer.CrystalReportViewerServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>CrystalReportViewerServlet</servlet-name>
+		<url-pattern>/CrystalReportViewerHandler</url-pattern>
+	</servlet-mapping>
+	
+    <servlet>
+		<servlet-name>parseConfig</servlet-name>
+		<servlet-class>com.platform7.affina.operations.view.productconfiguration.ParseConfigFile</servlet-class>
+		<load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>parseConfig</servlet-name>
+        <url-pattern>/parseConfig</url-pattern>
+    </servlet-mapping>
+
+     <servlet>
+		<servlet-name>saveQueryReponse</servlet-name>
+		<servlet-class>com.platform7.affina.operations.utils.SaveQueryResponse</servlet-class>
+		<load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>saveQueryReponse</servlet-name>
+        <url-pattern>/saveQueryReponse</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+		<servlet-name>reportController</servlet-name>
+		<servlet-class>com.platform7.affina.operations.servlet.ReportController</servlet-class>
+		<load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>reportController</servlet-name>
+        <url-pattern>/reportController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+		<servlet-name>exportConfigController</servlet-name>
+		<servlet-class>com.platform7.affina.operations.view.productconfiguration.ExportedConfigurationList</servlet-class>
+		<load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>exportConfigController</servlet-name>
+        <url-pattern>/exportConfigController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+		<servlet-name>saveExportConfigController</servlet-name>
+		<servlet-class>com.platform7.affina.operations.view.productconfiguration.SaveExportedConfiguration</servlet-class>
+		<load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>saveExportConfigController</servlet-name>
+        <url-pattern>/saveExportConfigController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+		<servlet-name>jobScheduler</servlet-name>
+		<servlet-class>com.platform7.affina.operations.servlet.SchedulerController</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jobScheduler</servlet-name>
+		<url-pattern>/job</url-pattern>
+	</servlet-mapping>
+
+
+	 <servlet>
+		<servlet-name>bureauSchedulerHome</servlet-name>
+		<servlet-class>com.platform7.affina.operations.view.scheduler.JobScheduleHome</servlet-class>		
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>bureauSchedulerHome</servlet-name>
+		<url-pattern>/bureauSchedule</url-pattern>
+	</servlet-mapping>
+
+	<!-- StageScript Search begin -->
+     <!--  Search -->
+	<servlet>
+		<servlet-name>searchCard</servlet-name>
+		<servlet-class>com.platform7.affina.operations.servlet.SearchStageRequestController</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>searchCard</servlet-name>
+		<url-pattern>/searchCard</url-pattern>
+	</servlet-mapping>
+
+	<!--  Stage Request-->
+	<servlet>
+		<servlet-name>stageRequest</servlet-name>
+		<servlet-class>com.platform7.affina.operations.servlet.SearchResultsStageRequestController</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>stageRequest</servlet-name>
+		<url-pattern>/stageRequest</url-pattern>
+	</servlet-mapping>
+
+	<!--  Schedule Stagescript request -->
+
+	 <servlet>
+		<servlet-name>scheduleStageRequest</servlet-name>
+		<servlet-class>com.platform7.affina.operations.servlet.StageScriptSchedulerController</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>scheduleStageRequest</servlet-name>
+		<url-pattern>/scheduleStageRequest</url-pattern>
+	</servlet-mapping>
+
+    <!--  StageScript Search end-->
+
+    <resource-ref id="ResourceRef_AffinaDataSource_pma">
+        <description>The Affina DataSource</description>
+        <res-ref-name>AffinaDataSourceAlias_pma</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+    <resource-ref id="ResourceRef_AffinaDataSource_sds">
+        <description>The Affina DataSource</description>
+        <res-ref-name>AffinaDataSourceAlias_sds</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>	
+    <!-- Error page for Authorization Failure - Logged in user is not mapped to any role -->
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>/errorAuthorization.jsp</location>
+    </error-page>
+</web-app>
+
+
+

@@ -1,0 +1,14 @@
+Sample codes : 
+http://www.sdn.sap.com/irj/boc/index?rid=/webcontent/uuid/d0d7fd6f-5d84-2b10-5dad-a3d432285bff
+
+http://stackoverflow.com/questions/12175016/crystal-report-keep-group-header-and-details-on-the-same-page
+
+http://stackoverflow.com/questions/5018321/crystal-reports-adding-a-parameter-to-a-command-query
+
+http://irfansworld.wordpress.com/2011/04/23/crystal-reports-2008-failed-to-open-the-connection-test_oracle-details-database-vendor-code-12154-resolved/
+http://blog.able-ventures.com/using-oracle-11g-client-with-crystal-reports-xi-r2/
+http://thetendjee.wordpress.com/2006/08/11/oracle-10g-instant-client-hard-to-make-it-work/
+http://www.codeproject.com/Articles/205398/Crystal-Report-Filtering-Using-Selection-Parameter
+http://edn.embarcadero.com/article/33621
+http://www.dekho.com.au/help/32/default.htm?turl=Documents%2Faddasubreporttothereport.htm
+http://resources.businessobjects.com/support/communitycs/TechnicalPapers/scr%5Foracle%5Fstored%5Fprocedures.pdf

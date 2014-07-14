@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+    <!-- Loads property placeholders from the specified properties files -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:common.properties</value>
+                <value>classpath:operations.properties</value>
+                <value>classpath:bureauReturn.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- This Config bean is given access to the Spring ApplicationContext at bootstrap time -->
+    <bean id="contextApplicationContextProvider" class="com.platform7.standardinfrastructure.appconfig.AppConfig"/>
+
+    <!-- Datasource for PMA -->
+    <bean id="dataSource_pma" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/AffinaDataSourceAlias_pma"/>
+    </bean>
+
+
+    <!-- Datasource for SDS -->
+    <bean id="dataSource_sds" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/AffinaDataSourceAlias_sds"/>
+    </bean>
+
+    
+
+    <!-- Session Manager for PMA -->
+    <bean id="sessionManager_pma"
+          class="com.platform7.standardinfrastructure.database.AffinaTOPLinkSessionManager"
+          init-method="initialize">
+        <property name="user" value="pma"/>
+        <property name="password" value="pma"/>
+        <property name="topLinkMappingClassName" value="com.platform7.stdpma.databaseproject.toplinkproject"/>
+        <property name="dataSource" ref="dataSource_pma"/>
+        <property name="showSQL" value="${database.showSQL}"/>
+    </bean>
+
+    <!-- Session Manager for SDS -->
+    <bean id="sessionManager_sds"
+          class="com.platform7.standardinfrastructure.database.AffinaTOPLinkSessionManager"
+          init-method="initialize">
+        <property name="user" value="sds"/>
+        <property name="password" value="sds"/>
+        <property name="topLinkMappingClassName" value="com.platform7.sds.databaseproject.toplinkproject"/>
+        <property name="dataSource" ref="dataSource_sds"/>
+        <property name="showSQL" value="${database.showSQL}"/>
+    </bean>
+
+    <!-- The default Session Manager (defaults to PMA in operations container) -->
+    <alias name="sessionManager_pma" alias="sessionManager_default"/>
+
+    <!-- MQ Connection factory and common destinations -->
+    <bean id="connectionFactory" class="com.ibm.mq.jms.MQTopicConnectionFactory">
+        <property name="hostName" value="${jms.hostName}"/>
+        <property name="queueManager" value="${jms.queueManager}"/>
+        <property name="transportType" value="${jms.transportType}"/>
+        <property name="port" value="${jms.port}"/>
+        <property name="channel" value="${jms.channel}"/>
+        <property name="useConnectionPooling" value="true"/>
+    </bean>
+
+    <bean id="net.aconite.affina.progress" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="defaultDestinationName" value="${destName.progress}"/>
+        <property name="pubSubDomain" value="true"/>
+    </bean>
+
+    <bean id="net.aconite.affina.alarms" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="defaultDestinationName" value="${destName.alarms}"/>
+        <property name="pubSubDomain" value="true"/>
+
+    </bean>
+
+    <bean id="brfSender" class="net.aconite.common.util.MessageSenderServiceImpl">
+		<property name="jmsTemplate">
+			<ref bean="jmsTemplate"/>
+		</property>
+	</bean>
+
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="queueConnectionFactory" />
+		<property name="defaultDestinationName" value="${SERVICE_SDS_QUEUE_DELIVERY_AFFINA_DC}"/>
+	</bean>
+
+    <bean id="queueConnectionFactory" class="com.ibm.mq.jms.MQQueueConnectionFactory">
+        <property name="hostName" value="${jms.hostName}"/>
+        <property name="queueManager" value="${jms.queueManager}"/>
+        <property name="transportType" value="${jms.transportType}"/>
+        <property name="port" value="${jms.port}"/>
+        <property name="channel" value="${jms.channel}"/>
+        <property name="useConnectionPooling" value="true"/>
+    </bean>
+
+    <!--  Message sender - Stagescript request -->
+    <bean id="stgReqSender" class="net.aconite.common.util.MessageSenderServiceImpl">
+           <property name="jmsTemplate">
+               <ref bean="stgReqTemplate"/>
+           </property>
+       </bean>
+
+       <bean id="stgReqTemplate" class="org.springframework.jms.core.JmsTemplate">
+           <property name="connectionFactory" ref="queueConnectionFactory" />
+           <property name="defaultDestinationName" value="${SERVICE_EMV_QUEUE_SCRIPT_AFFINA_OUT}"/>
+       </bean>
+
+
+
+
+
+
+    <!--  Populate  Bureau Return details from a property file -->
+    <bean id="dummyBureauReturnDtls" class="net.aconite.schedule.job.DummyBureauReturn">
+		<property name="details">
+			<map>
+				<entry key="${KEY1}">
+					<value>${VALUE1}</value>
+				</entry>
+				<entry key="${KEY2}">
+					<value>${VALUE2}</value>
+				</entry>
+				<entry key="${KEY3}">
+					<value>${VALUE3}</value>
+				</entry>
+				<entry key="${KEY4}">
+					<value>${VALUE4}</value>
+				</entry>
+				<entry key="${KEY5}">
+					<value>${VALUE5}</value>
+				</entry>
+				<entry key="${KEY6}">
+					<value>${VALUE6}</value>
+				</entry>
+				<entry key="${KEY7}">
+					<value>${VALUE7}</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+</beans>

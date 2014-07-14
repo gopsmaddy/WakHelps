@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?><CrystalReportEngine-configuration>
+    <reportlocation>../..</reportlocation>
+    <timeout>10</timeout>
+    
+    <ExternalFunctionLibraryClassNames> 
+		<classname> </classname>
+		<classname> </classname>
+    </ExternalFunctionLibraryClassNames>
+    
+<keycode>B6W60-01CS200-000H830-0A90</keycode>
+<Javaserver-configuration>
+<DataDriverCommon>
+	<JavaDir>C:\WebSphere\AppServer\java\bin</JavaDir>
+    <Classpath>C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/crlovmanifest.jar;C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/CRLOVExternal.jar;C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/CRDBJavaServerCommon.jar;C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/CRDBJavaServer.jar;C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/CRDBJDBCServer.jar;C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/CRDBXMLServer.jar;C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/CRDBJavaBeansServer.jar;C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/external/CRDBXMLExternal.jar;C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/external/log4j.jar;C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/cecore.jar;C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/celib.jar;C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/ebus405.jar;C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/corbaidl.jar;C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/external/freessl201.jar;C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/external/asn1.jar;C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/external/certj.jar;C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/external/jsafe.jar;C:\WebSphere\AppServer\profiles\AppSrv01\installedApps\newtonCell01\operations_1.ear\OperationsWeb.war\WEB-INF\lib/external/sslj.jar;${CLASSPATH}</Classpath>
+	<IORFileLocation>${TEMP}</IORFileLocation>
+	<JavaServerTimeout>1800</JavaServerTimeout>
+	<JVMMaxHeap>64000000</JVMMaxHeap>
+	<JVMMinHeap>32000000</JVMMinHeap>
+	<NumberOfThreads>100</NumberOfThreads>
+</DataDriverCommon>
+<JDBC>
+	<CacheRowSetSize>100</CacheRowSetSize>
+	<!--JDBCURL>jdbc:oracle:thin:@localhost:1521/AffinaDB</JDBCURL-->
+	<JDBCURL></JDBCURL>
+	<JDBCClassName>oracle.jdbc.pool.OracleConnectionPoolDataSource</JDBCClassName>
+	<JDBCUserName>pma</JDBCUserName>
+	<JNDIURL></JNDIURL>
+	<!--JNDIURL>java:comp/env/AffinaDataSourceAlias_pma</JNDIURL-->
+	<!--JNDIURL>AFFINADB</JNDIURL-->
+	<JNDIConnectionFactory>com.ibm.websphere.naming.WsnInitialContextFactory</JNDIConnectionFactory>
+	<JNDIInitContext>/</JNDIInitContext>
+	<JNDIUserName>websphere</JNDIUserName>
+	<GenericJDBCDriver>
+		<Option>No</Option>
+		<DatabaseStructure>catalogs,tables</DatabaseStructure>
+		<StoredProcType>Standard</StoredProcType>
+		<LogonStyle>Oracle</LogonStyle>
+	</GenericJDBCDriver>
+</JDBC>
+<XML>
+	<CacheRowSetSize>100</CacheRowSetSize>
+	<PreReadNBytes>4096</PreReadNBytes>
+	<XMLLocalURL></XMLLocalURL>
+	<SchemaLocalURL></SchemaLocalURL>
+	<XMLHttpURL></XMLHttpURL>
+	<SchemaHttpURL></SchemaHttpURL>
+</XML>
+<JavaBeans>
+    <CacheRowSetSize>100</CacheRowSetSize>
+	<JavaBeansClassPath></JavaBeansClassPath>
+</JavaBeans>
+</Javaserver-configuration>
+</CrystalReportEngine-configuration>
