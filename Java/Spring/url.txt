@@ -11,3 +11,6 @@ http://forum.spring.io/forum/spring-projects/integration/jms/114352-issue-with-s
 
 Object Relational Mapping (ORM) Data Access
 http://docs.spring.io/spring/docs/current/spring-framework-reference/html/orm.html
+
+Spring 4.0 Framework Reference Documentation
+http://docs.spring.io/spring/docs/current/spring-framework-reference/html/
