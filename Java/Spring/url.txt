@@ -8,3 +8,9 @@ http://xpadro.blogspot.co.uk/2013/11/how-error-handling-works-in-spring.html
 
 Issue with sending binary data as JMS messages using Spring Integration 
 http://forum.spring.io/forum/spring-projects/integration/jms/114352-issue-with-sending-binary-data-as-jms-messages-using-spring-integration
+
+Object Relational Mapping (ORM) Data Access
+http://docs.spring.io/spring/docs/current/spring-framework-reference/html/orm.html
+
+Spring 4.0 Framework Reference Documentation
+http://docs.spring.io/spring/docs/current/spring-framework-reference/html/
