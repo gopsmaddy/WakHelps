@@ -1,0 +1,850 @@
+----------------------------------START FFST------------------------------------
+C:\.hermes\FFDC\JMSCC0004.FDC PID:689212
+
+                                    FDCTitle
+                                            
+
+Product          :- IBM WebSphere MQ classes for JMS
+Date/Time        :- Thu Dec 19 15:50:53 GMT 2013
+System time      :- 1387468253363
+Operating System :- Windows 7
+UserID           :- wakkir.muzammil
+Java Vendor      :- Sun Microsystems Inc.
+Java Version     :- 19.1-b02
+
+Source Class     :- com.ibm.mq.jmqi.remote.internal.RemoteFAP
+Source Method    :- jmqiGetMessage(Hconn,Hobj,MQMD,MQGMO,int,ByteBuffer,Pint,Pint,Pint)
+ProbeID          :- JO568001
+Thread           :- name=Hermes ThreadPool-1 priority=1 group=main ccl=DebugClassLoader: file:/C:/WebSphere/MQ/java/lib/com.ibm.mq.headers.jar, file:/C:/WebSphere/MQ/java/lib/com.ibm.mq.jar, file:/C:/WebSphere/MQ/java/lib/com.ibm.mq.jmqi.jar, file:/C:/WebSphere/MQ/java/lib/com.ibm.mqjms.jar, file:/C:/WebSphere/MQ/java/lib/connector.jar, file:/C:/WebSphere/MQ/java/lib/dhbcore.jar, file:/C:/WebSphere/MQ/java/lib/fscontext.jar, file:/C:/WebSphere/MQ/java/lib/com.ibm.mq.pcf.jar, file:/C:/WebSphere/MQ/java/lib/com.ibm.mq.commonservices.jar, file:/C:/ProgramFiles/HermesJMS/lib/ext/hermes-imq.jar, file:/C:/ProgramFiles/HermesJMS/lib/ext/hermes-aq.jar, file:/C:/ProgramFiles/HermesJMS/lib/ext/hermes-ems.jar, file:/C:/ProgramFiles/HermesJMS/lib/ext/hermes-webspheremq.jar, file:/C:/ProgramFiles/HermesJMS/lib/ext/hermes-jbossmq.jar, file:/C:/ProgramFiles/HermesJMS/lib/ext/hermes-hornetq.jar, file:/C:/ProgramFiles/HermesJMS/lib/ext/hermes-arjuna.jar, file:/C:/ProgramFiles/HermesJMS/lib/ext/hermes-weblogic.jar, file:/C:/ProgramFiles/HermesJMS/lib/ext/hermes-joram.jar, file:/C:/ProgramFiles/HermesJMS/lib/ext/hermes-wme.jar, file:/C:/ProgramFiles/HermesJMS/lib/ext/hermes-openjms.jar, file:/C:/ProgramFiles/HermesJMS/lib/ext/hermes-fiorano.jar, file:/C:/ProgramFiles/HermesJMS/lib/ext/hermes-sonicmq.jar, file:/C:/ProgramFiles/HermesJMS/lib/ext/hermes-activemq.jar, file:/C:/ProgramFiles/HermesJMS/lib/ext/hermes-seebeyond.jar, file:/C:/ProgramFiles/HermesJMS/lib/ext/hermes-seebeyond.jar, file:/C:/ProgramFiles/HermesJMS/lib/ext/hermes-qpid.jar
+
+                                      Data
+                                      ----
+
+|   INSERT1     :-  0
+|   INSERT2     :-  0
+|   INSERT3     :-  com.ibm.mq.jmqi.JmqiException[CC=2;RC=2195]
+|   RETURNCODE  :-  2195
+|   THROWABLE   :-  ExceptionDepth is 2
+|   THROWABLE   :-  
+|   |   Cause:1       :-  com.ibm.mq.jmqi.JmqiException: CC=2;RC=2195
+|   |   Message:1     :-  CC=2;RC=2195
+|   |   StackTrace:1  :-  com.ibm.mq.jmqi.JmqiException: CC=2;RC=2195
+|   |   	at com.ibm.mq.jmqi.remote.internal.RemoteHconn.exchangeTSH(RemoteHconn.java:1488)
+|   |   	at com.ibm.mq.jmqi.remote.internal.system.RemoteProxyQueue.requestMessages(RemoteProxyQueue.java:1039)
+|   |   	at com.ibm.mq.jmqi.remote.internal.system.RemoteProxyQueue.flushQueue(RemoteProxyQueue.java:1872)
+|   |   	at com.ibm.mq.jmqi.remote.internal.system.RemoteProxyQueue.proxyMQGET(RemoteProxyQueue.java:2656)
+|   |   	at com.ibm.mq.jmqi.remote.internal.RemoteFAP.jmqiGetMessage(RemoteFAP.java:5556)
+|   |   	at com.ibm.mq.jmqi.internal.JmqiTools.getMessage(JmqiTools.java:1049)
+|   |   	at com.ibm.mq.jmqi.remote.internal.RemoteFAP.jmqiGet(RemoteFAP.java:5493)
+|   |   	at com.ibm.msg.client.wmq.internal.WMQConsumerShadow.getMsg(WMQConsumerShadow.java:1169)
+|   |   	at com.ibm.msg.client.wmq.internal.WMQSyncConsumerShadow.receiveInternal(WMQSyncConsumerShadow.java:233)
+|   |   	at com.ibm.msg.client.wmq.internal.WMQConsumerShadow.receive(WMQConsumerShadow.java:922)
+|   |   	at com.ibm.msg.client.wmq.internal.WMQQueueEnumeration.retrieveMessage(WMQQueueEnumeration.java:347)
+|   |   	at com.ibm.msg.client.wmq.internal.WMQQueueEnumeration.hasMoreElements(WMQQueueEnumeration.java:269)
+|   |   	at com.ibm.msg.client.jms.internal.JmsQueueBrowserImpl$JmsEnumImpl.hasMoreElements(JmsQueueBrowserImpl.java:361)
+|   |   	at com.ibm.mq.jms.MQQueueEnumeration.hasMoreElements(MQQueueEnumeration.java:92)
+|   |   	at hermes.browser.tasks.BrowseDestinationTask.invoke(BrowseDestinationTask.java:127)
+|   |   	at hermes.browser.tasks.TaskSupport.run(TaskSupport.java:175)
+|   |   	at hermes.browser.tasks.ThreadPool.run(ThreadPool.java:170)
+|   |   	at java.lang.Thread.run(Thread.java:662)
+|   |   
+
+                              Version information
+                              -------------------
+
+Java Message Service Client
+7.0.1.0
+k000-L090724
+Production
+
+WebSphere MQ classes for Java Message Service
+7.0.1.0
+k000-L090724
+Production
+
+IBM WebSphere MQ
+7.0.1.0
+k000-L090724
+Production
+
+Common Services for Java Platform, Standard Edition
+7.0.1.0
+k000-L090724
+Production
+
+
+
+                                  Stack trace
+                                  -----------
+
+Stack trace to show the location of the FFST call
+|   FFST Location  :-  java.lang.Exception
+|   	at com.ibm.msg.client.commonservices.trace.Trace.getCurrentPosition(Trace.java:1705)
+|   	at com.ibm.msg.client.commonservices.trace.Trace.createFFSTString(Trace.java:1644)
+|   	at com.ibm.msg.client.commonservices.trace.Trace.ffstInternal(Trace.java:1527)
+|   	at com.ibm.msg.client.commonservices.trace.Trace.ffst(Trace.java:1386)
+|   	at com.ibm.msg.client.wmq.common.internal.WMQTraceHandler.ffst(WMQTraceHandler.java:700)
+|   	at com.ibm.mq.jmqi.remote.internal.RemoteFAP.jmqiGetMessage(RemoteFAP.java:5633)
+|   	at com.ibm.mq.jmqi.internal.JmqiTools.getMessage(JmqiTools.java:1049)
+|   	at com.ibm.mq.jmqi.remote.internal.RemoteFAP.jmqiGet(RemoteFAP.java:5493)
+|   	at com.ibm.msg.client.wmq.internal.WMQConsumerShadow.getMsg(WMQConsumerShadow.java:1169)
+|   	at com.ibm.msg.client.wmq.internal.WMQSyncConsumerShadow.receiveInternal(WMQSyncConsumerShadow.java:233)
+|   	at com.ibm.msg.client.wmq.internal.WMQConsumerShadow.receive(WMQConsumerShadow.java:922)
+|   	at com.ibm.msg.client.wmq.internal.WMQQueueEnumeration.retrieveMessage(WMQQueueEnumeration.java:347)
+|   	at com.ibm.msg.client.wmq.internal.WMQQueueEnumeration.hasMoreElements(WMQQueueEnumeration.java:269)
+|   	at com.ibm.msg.client.jms.internal.JmsQueueBrowserImpl$JmsEnumImpl.hasMoreElements(JmsQueueBrowserImpl.java:361)
+|   	at com.ibm.mq.jms.MQQueueEnumeration.hasMoreElements(MQQueueEnumeration.java:92)
+|   	at hermes.browser.tasks.BrowseDestinationTask.invoke(BrowseDestinationTask.java:127)
+|   	at hermes.browser.tasks.TaskSupport.run(TaskSupport.java:175)
+|   	at hermes.browser.tasks.ThreadPool.run(ThreadPool.java:170)
+|   	at java.lang.Thread.run(Thread.java:662)
+|   
+
+                            Property Store Contents
+                            -----------------------
+
+All currently set properties
+|   awt.toolkit                    :-  sun.awt.windows.WToolkit
+|   file.encoding                  :-  Cp1252
+|   file.encoding.pkg              :-  sun.io
+|   file.separator                 :-  \
+|   hermes                         :-  C:\.hermes\hermes-config.xml
+|   hermes.home                    :-  C:\ProgramFiles\HermesJMS
+|   hermes.libs                    :-  C:\ProgramFiles\HermesJMS\lib\ext
+|   java.awt.graphicsenv           :-  sun.awt.Win32GraphicsEnvironment
+|   java.awt.printerjob            :-  sun.awt.windows.WPrinterJob
+|   java.class.path                :-  C:\ProgramFiles\HermesJMS\lib\activation.jar;C:\ProgramFiles\HermesJMS\lib\ant.jar;C:\ProgramFiles\HermesJMS\lib\ArtTk.jar;C:\ProgramFiles\HermesJMS\lib\asm-all-4.0_RC1.jar;C:\ProgramFiles\HermesJMS\lib\backport-util-concurrent.jar;C:\ProgramFiles\HermesJMS\lib\batik-awt-util.jar;C:\ProgramFiles\HermesJMS\lib\cglib-nodep-2.2.2.jar;C:\ProgramFiles\HermesJMS\lib\commons-beanutils.jar;C:\ProgramFiles\HermesJMS\lib\commons-codec-1.1.jar;C:\ProgramFiles\HermesJMS\lib\commons-collections-2.1.1.jar;C:\ProgramFiles\HermesJMS\lib\commons-collections.jar;C:\ProgramFiles\HermesJMS\lib\commons-dbutils-1.0.jar;C:\ProgramFiles\HermesJMS\lib\commons-digester.jar;C:\ProgramFiles\HermesJMS\lib\commons-lang-2.1.jar;C:\ProgramFiles\HermesJMS\lib\commons-logging.jar;C:\ProgramFiles\HermesJMS\lib\commons-math-1.2.jar;C:\ProgramFiles\HermesJMS\lib\datatips.jar;C:\ProgramFiles\HermesJMS\lib\db2jcc.jar;C:\ProgramFiles\HermesJMS\lib\derby.jar;C:\ProgramFiles\HermesJMS\lib\displaytag-1.0-b2.jar;C:\ProgramFiles\HermesJMS\lib\dom4j-1.6.1.jar;C:\ProgramFiles\HermesJMS\lib\forms-1.3.0.jar;C:\ProgramFiles\HermesJMS\lib\hermes-sapjms.jar;C:\ProgramFiles\HermesJMS\lib\hermes.jar;C:\ProgramFiles\HermesJMS\lib\hibernate3.jar;C:\ProgramFiles\HermesJMS\lib\hsqldb.jar;C:\ProgramFiles\HermesJMS\lib\hssf.jar;C:\ProgramFiles\HermesJMS\lib\informa.jar;C:\ProgramFiles\HermesJMS\lib\jaas.jar;C:\ProgramFiles\HermesJMS\lib\jarjar-0.6.jar;C:\ProgramFiles\HermesJMS\lib\jasper-compiler.jar;C:\ProgramFiles\HermesJMS\lib\jasper-runtime.jar;C:\ProgramFiles\HermesJMS\lib\javax.jms.jar;C:\ProgramFiles\HermesJMS\lib\jax-qname.jar;C:\ProgramFiles\HermesJMS\lib\jaxb-api.jar;C:\ProgramFiles\HermesJMS\lib\jaxb-impl.jar;C:\ProgramFiles\HermesJMS\lib\jaxp-api.jar;C:\ProgramFiles\HermesJMS\lib\jaxp-ri.jar;C:\ProgramFiles\HermesJMS\lib\jdom.jar;C:\ProgramFiles\HermesJMS\lib\jide-action.jar;C:\ProgramFiles\HermesJMS\lib\jide-beaninfo.jar;C:\ProgramFiles\HermesJMS\lib\jide-charts.jar;C:\ProgramFiles\HermesJMS\lib\jide-common.jar;C:\ProgramFiles\HermesJMS\lib\jide-components.jar;C:\ProgramFiles\HermesJMS\lib\jide-dashboard.jar;C:\ProgramFiles\HermesJMS\lib\jide-data.jar;C:\ProgramFiles\HermesJMS\lib\jide-designer.jar;C:\ProgramFiles\HermesJMS\lib\jide-dialogs.jar;C:\ProgramFiles\HermesJMS\lib\jide-dock.jar;C:\ProgramFiles\HermesJMS\lib\jide-editor.jar;C:\ProgramFiles\HermesJMS\lib\jide-grids.jar;C:\ProgramFiles\HermesJMS\lib\jide-pivot.jar;C:\ProgramFiles\HermesJMS\lib\jide-properties.jar;C:\ProgramFiles\HermesJMS\lib\jide-rss.jar;C:\ProgramFiles\HermesJMS\lib\jide-shortcut.jar;C:\ProgramFiles\HermesJMS\lib\jide-synthetica.jar;C:\ProgramFiles\HermesJMS\lib\jlfgr-1_0.jar;C:\ProgramFiles\HermesJMS\lib\jms-jmx.jar;C:\ProgramFiles\HermesJMS\lib\jms.jar;C:\ProgramFiles\HermesJMS\lib\jmx.jar;C:\ProgramFiles\HermesJMS\lib\jsp-api.jar;C:\ProgramFiles\HermesJMS\lib\jsr173_1.0_api.jar;C:\ProgramFiles\HermesJMS\lib\jsyntaxpane-0.9.5-b29.jar;C:\ProgramFiles\HermesJMS\lib\jta-spec1_0_1.jar;C:\ProgramFiles\HermesJMS\lib\jta.jar;C:\ProgramFiles\HermesJMS\lib\JyConsole.jar;C:\ProgramFiles\HermesJMS\lib\jython.jar;C:\ProgramFiles\HermesJMS\lib\log4j-1.2.15.jar;C:\ProgramFiles\HermesJMS\lib\lucene-core-2.4.1.jar;C:\ProgramFiles\HermesJMS\lib\mail.jar;C:\ProgramFiles\HermesJMS\lib\mina-core-1.1.7.jar;C:\ProgramFiles\HermesJMS\lib\namespace.jar;C:\ProgramFiles\HermesJMS\lib\naming-common.jar;C:\ProgramFiles\HermesJMS\lib\naming-factory.jar;C:\ProgramFiles\HermesJMS\lib\naming-java.jar;C:\ProgramFiles\HermesJMS\lib\naming-resources.jar;C:\ProgramFiles\HermesJMS\lib\quickfixj-all-1.5.0.jar;C:\ProgramFiles\HermesJMS\lib\relaxngDatatype.jar;C:\ProgramFiles\HermesJMS\lib\retrotranslator-runtime-1.0.7.jar;C:\ProgramFiles\HermesJMS\lib\selector-1.1.jar;C:\ProgramFiles\HermesJMS\lib\servlet-api.jar;C:\ProgramFiles\HermesJMS\lib\slf4j-api-1.6.1.jar;C:\ProgramFiles\HermesJMS\lib\slf4j-jdk14-1.6.1.jar;C:\ProgramFiles\HermesJMS\lib\tools.jar;C:\ProgramFiles\HermesJMS\lib\velocity-dep-1.4.jar;C:\ProgramFiles\HermesJMS\lib\xerces.jar;C:\ProgramFiles\HermesJMS\lib\xercesImpl.jar;C:\ProgramFiles\HermesJMS\lib\xml-apis.jar;C:\ProgramFiles\HermesJMS\lib\xsdlib.jar;
+|   java.class.version             :-  50.0
+|   java.endorsed.dirs             :-  C:\jdk1.6.0_24\jre\lib\endorsed
+|   java.ext.dirs                  :-  C:\jdk1.6.0_24\jre\lib\ext;C:\Windows\Sun\Java\lib\ext
+|   java.home                      :-  C:\jdk1.6.0_24\jre
+|   java.io.tmpdir                 :-  C:\Users\WAKKIR~1.ACO\AppData\Local\Temp\
+|   java.library.path              :-  C:\jdk1.6.0_24\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows
+|   java.runtime.name              :-  Java(TM) SE Runtime Environment
+|   java.runtime.version           :-  1.6.0_24-b07
+|   java.specification.name        :-  Java Platform API Specification
+|   java.specification.vendor      :-  Sun Microsystems Inc.
+|   java.specification.version     :-  1.6
+|   java.vendor                    :-  Sun Microsystems Inc.
+|   java.vendor.url                :-  http://java.sun.com/
+|   java.vendor.url.bug            :-  http://java.sun.com/cgi-bin/bugreport.cgi
+|   java.version                   :-  1.6.0_24
+|   java.vm.info                   :-  mixed mode
+|   java.vm.name                   :-  Java HotSpot(TM) 64-Bit Server VM
+|   java.vm.specification.name     :-  Java Virtual Machine Specification
+|   java.vm.specification.vendor   :-  Sun Microsystems Inc.
+|   java.vm.specification.version  :-  1.0
+|   java.vm.vendor                 :-  Sun Microsystems Inc.
+|   java.vm.version                :-  19.1-b02
+|   line.separator                 :-  
+|   
+|   log4j.configuration            :-  file:C:\ProgramFiles\HermesJMS\bin\log4j.props
+|   os.arch                        :-  amd64
+|   os.name                        :-  Windows 7
+|   os.version                     :-  6.1
+|   path.separator                 :-  ;
+|   sun.arch.data.model            :-  64
+|   sun.boot.class.path            :-  C:\jdk1.6.0_24\jre\lib\resources.jar;C:\jdk1.6.0_24\jre\lib\rt.jar;C:\jdk1.6.0_24\jre\lib\sunrsasign.jar;C:\jdk1.6.0_24\jre\lib\jsse.jar;C:\jdk1.6.0_24\jre\lib\jce.jar;C:\jdk1.6.0_24\jre\lib\charsets.jar;C:\jdk1.6.0_24\jre\lib\modules\jdk.boot.jar;C:\jdk1.6.0_24\jre\classes
+|   sun.boot.library.path          :-  C:\jdk1.6.0_24\jre\bin
+|   sun.cpu.endian                 :-  little
+|   sun.cpu.isalist                :-  amd64
+|   sun.desktop                    :-  windows
+|   sun.io.unicode.encoding        :-  UnicodeLittle
+|   sun.java.launcher              :-  SUN_STANDARD
+|   sun.java2d.noddraw             :-  true
+|   sun.jnu.encoding               :-  Cp1252
+|   sun.management.compiler        :-  HotSpot 64-Bit Server Compiler
+|   sun.os.patch.level             :-  
+|   user.country                   :-  GB
+|   user.dir                       :-  C:\.hermes
+|   user.home                      :-  C:\Users\Wakkir.Muzammil.ACONITE-TECH
+|   user.language                  :-  en
+|   user.name                      :-  wakkir.muzammil
+|   user.timezone                  :-  Europe/London
+|   user.variant                   :-  
+
+                           WorkQueueMananger Contents
+                           --------------------------
+
+|   Current ThreadPool size      :-  1
+|   Maintain ThreadPool size     :-  false
+|   Maximum ThreadPool size      :-  -1
+|   ThreadPool inactive timeout  :-  0
+
+                               Runtime properties
+                               ------------------
+
+|   Available processors         :-  8
+|   Free memory in bytes (now)   :-  59063288
+|   Max memory in bytes          :-  954466304
+|   Total memory in bytes (now)  :-  350683136
+
+                           Component Manager Contents
+                           --------------------------
+
+Common Services Components:
+|   CMVC               :-  k000-L090724
+|   Class Name         :-  class com.ibm.msg.client.commonservices.j2se.J2SEComponent
+|   Component Name     :-  com.ibm.msg.client.commonservices.j2se
+|   Component Title    :-  Common Services for Java Platform, Standard Edition
+|   Factory Class      :-  class com.ibm.msg.client.commonservices.j2se.CommonServicesImplementation
+|   Version            :-  7.0.1.0
+|   inPreferenceTo[0]  :-  com.ibm.msg.client.commonservices.j2me
+
+Messaging Provider Components:
+|   CMVC             :-  k000-L090724
+|   Class Name       :-  class com.ibm.msg.client.wmq.factories.WMQComponent
+|   Component Name   :-  com.ibm.msg.client.wmq
+|   Component Title  :-  IBM WebSphere MQ
+|   Factory Class    :-  class com.ibm.msg.client.wmq.factories.WMQFactoryFactory
+|   Version          :-  7.0.1.0
+|   mqjbnd level     :-  CC=2;RC=2495;AMQ8568: The native JNI library 'mqjbnd' was not found. [3=mqjbnd]::no mqjbnd in java.library.path
+
+
+
+
+                         Provider Specific Information
+                         -----------------------------
+
+Overview of JMS System
+Num. Connections : 1
+Num. Sessions    : 2
+Num. Consumers   : 0
+Num. Producers   : 0
+
+Detailed JMS System Information
+Connections      : 
+|   Instance                    :-  com.ibm.msg.client.wmq.internal.WMQConnection@119f68bb
+|   connectOptions              :-  version:5 options:64 clientConn:[channelName:'JAVA.CHANNEL' version:6 channelType:6 transportType:2 desc:'<null>' qMgrName:'<null>' xmitQName:'<null>' connectionName:'ACO212(1414)' mcaName:'<null>' modeName:'<null>' tpName:'<null>' batchSize:50 discInterval:6000 shortRetryCount:10 shortRetryInterval:60 longRetryCount:999999999 longRetryInterval:1200 seqNumberWrap:99999999 maxMsgLength:104857600 putAuthority:1 dataConversion:0 userIdentifier:'<null>' password:'<null>' mcaUserIdentifier:'<null>' mcaType:1 remoteUserIdentifier:'wakkir.muzammil' msgRetryExit:'<null>' msgRetryUserData:'<null>' msgRetryCount:10 heartbeatInterval:1 batchInterval:0 nonPersistentMsgSpeed:2 clustersDefined:0 networkPriority:0 mcaSecurityId:00000000000000000000000000000000000000000000000000000000000000000000000000000000 remoteSecurityId:00000000000000000000000000000000000000000000000000000000000000000000000000000000 sslCipherSpec:'<null>' sslPeerName:'<null>' sslClientAuth:0 keepAliveInterval:-1 localAddress:'<null>' batchHeartbeat:0 hdrCompList:(0,-1)msgCompList:(0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1)clwlChannelRank:0 clwlChannelPriority:0 clwlChannelWeight:50 channelMonitoring:0 channelStatistics:0 exitNameLength:128 exitDataLength:32 sendExitsDefined:0 sendExit:'<null>' sendUserData:0000000000000000000000000000000000000000000000000000000000000000 sendExitPtr:<null> sendUserDataPtr:<null> receiveExitsDefined:0 receiveExit:'<null>' receiveUserData:0000000000000000000000000000000000000000000000000000000000000000 receiveExitPtr:<null> ReceiveUserDataPtr:<null> SharingConversations:999999999 propertyControl:0 maxInstances:999999999 maxInstancesPerClient:999999999 clientChannelWeight:0 connectionAffinity:1 ] connTag:0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 sslConfig:[version:1 keyRepository:'<null>' cryptoHardware:'<null>' authInfoRecCount:0 keyResetCount:0 fipsRequired:0 ] connectionId:414D5143514D5F41434F323132202020E638B0522038CC0B securityParms:[<null>] 
+|   exceptionListener           :-  <null>
+|   helper                      :-  com.ibm.msg.client.wmq.internal.WMQConsumerOwnerShadow@3d642a36
+|   queueManagerName            :-  QM_ACO212
+|   tempQPrefix                 :-  <null>
+|   temporaryDestinationNumber  :-  1
+|   temporaryModelQ             :-  <null>
+|   XMSC_ACKNOWLEDGE_MODE               :-  0
+|   XMSC_ADMIN_OBJECT_TYPE              :-  17
+|   XMSC_ASYNC_EXCEPTIONS               :-  -1
+|   XMSC_CLIENT_ID                      :-  <null>
+|   XMSC_CONNECTION_TYPE                :-  1
+|   XMSC_CONNECTION_TYPE_NAME           :-  com.ibm.msg.client.wmq
+|   XMSC_PASSWORD                       :-  
+|   XMSC_RTT_DIRECT_AUTH                :-  0
+|   XMSC_RTT_PROXY_HOSTNAME             :-  <null>
+|   XMSC_RTT_PROXY_PORT                 :-  443
+|   XMSC_TRANSACTED                     :-  true
+|   XMSC_USERID                         :-  wakkir.muzammil
+|   XMSC_WMQ_BROKER_CC_SUBQ             :-  SYSTEM.JMS.ND.CC.SUBSCRIBER.QUEUE
+|   XMSC_WMQ_BROKER_CONTROLQ            :-  SYSTEM.BROKER.CONTROL.QUEUE
+|   XMSC_WMQ_BROKER_PUBQ                :-  SYSTEM.BROKER.DEFAULT.STREAM
+|   XMSC_WMQ_BROKER_QMGR                :-  
+|   XMSC_WMQ_BROKER_SUBQ                :-  SYSTEM.JMS.ND.SUBSCRIBER.QUEUE
+|   XMSC_WMQ_CCDTURL                    :-  <null>
+|   XMSC_WMQ_CF_DESCRIPTION             :-  <null>
+|   XMSC_WMQ_CHANNEL                    :-  JAVA.CHANNEL
+|   XMSC_WMQ_CLEANUP_INTERVAL           :-  3600000
+|   XMSC_WMQ_CLEANUP_LEVEL              :-  1
+|   XMSC_WMQ_CLIENT_RECONNECT_OPTIONS   :-  0
+|   XMSC_WMQ_CLIENT_RECONNECT_TIMEOUT   :-  1800
+|   XMSC_WMQ_CLONE_SUPPORT              :-  0
+|   XMSC_WMQ_CONNECTION_MODE            :-  1
+|   XMSC_WMQ_CONNECTION_NAME_LIST       :-  ACO212(1414)
+|   XMSC_WMQ_CONNECTION_TAG             :-  [B@44e66afc
+|   XMSC_WMQ_CONNECT_OPTIONS            :-  0
+|   XMSC_WMQ_HEADER_COMP                :-  [0]
+|   XMSC_WMQ_HOST_NAME                  :-  ACO212
+|   XMSC_WMQ_LOCAL_ADDRESS              :-  
+|   XMSC_WMQ_MAP_NAME_STYLE             :-  true
+|   XMSC_WMQ_MAX_BUFFER_SIZE            :-  1000
+|   XMSC_WMQ_MESSAGE_RETENTION          :-  1
+|   XMSC_WMQ_MESSAGE_SELECTION          :-  0
+|   XMSC_WMQ_MSG_BATCH_SIZE             :-  10
+|   XMSC_WMQ_MSG_COMP                   :-  [0]
+|   XMSC_WMQ_OPT_PUB                    :-  false
+|   XMSC_WMQ_OUTCOME_NOTIFICATION       :-  true
+|   XMSC_WMQ_POLLING_INTERVAL           :-  5000
+|   XMSC_WMQ_PORT                       :-  1414
+|   XMSC_WMQ_PROCESS_DURATION           :-  0
+|   XMSC_WMQ_PROVIDER_VERSION           :-  unspecified
+|   XMSC_WMQ_PUB_ACK_INTERVAL           :-  25
+|   XMSC_WMQ_QMGR_CCSID                 :-  819
+|   XMSC_WMQ_QUEUE_MANAGER              :-  QM_ACO212
+|   XMSC_WMQ_RECEIVE_EXIT               :-  <null>
+|   XMSC_WMQ_RECEIVE_EXIT_INIT          :-  <null>
+|   XMSC_WMQ_RECEIVE_ISOLATION          :-  0
+|   XMSC_WMQ_RESCAN_INTERVAL            :-  5000
+|   XMSC_WMQ_RESOLVED_QUEUE_MANAGER     :-  QM_ACO212
+|   XMSC_WMQ_RESOLVED_QUEUE_MANAGER_ID  :-  QM_ACO212_2012-02-01_11.12.13                   
+|   XMSC_WMQ_SECURITY_EXIT              :-  <null>
+|   XMSC_WMQ_SECURITY_EXIT_INIT         :-  <null>
+|   XMSC_WMQ_SEND_CHECK_COUNT           :-  0
+|   XMSC_WMQ_SEND_EXIT                  :-  <null>
+|   XMSC_WMQ_SEND_EXIT_INIT             :-  <null>
+|   XMSC_WMQ_SHARE_CONV_ALLOWED         :-  1
+|   XMSC_WMQ_SPARSE_SUBSCRIPTIONS       :-  false
+|   XMSC_WMQ_SSL_CERT_STORES_COL        :-  <null>
+|   XMSC_WMQ_SSL_CERT_STORES_STR        :-  <null>
+|   XMSC_WMQ_SSL_CIPHER_SUITE           :-  <null>
+|   XMSC_WMQ_SSL_FIPS_REQUIRED          :-  false
+|   XMSC_WMQ_SSL_KEY_RESETCOUNT         :-  0
+|   XMSC_WMQ_SSL_PEER_NAME              :-  <null>
+|   XMSC_WMQ_SSL_SOCKET_FACTORY         :-  <null>
+|   XMSC_WMQ_STATUS_REFRESH_INTERVAL    :-  60000
+|   XMSC_WMQ_SUBSCRIPTION_STORE         :-  1
+|   XMSC_WMQ_SYNCPOINT_ALL_GETS         :-  false
+|   XMSC_WMQ_TARGET_CLIENT_MATCHING     :-  true
+|   XMSC_WMQ_TEMPORARY_MODEL            :-  SYSTEM.DEFAULT.MODEL.QUEUE
+|   XMSC_WMQ_TEMP_Q_PREFIX              :-  
+|   XMSC_WMQ_TEMP_TOPIC_PREFIX          :-  
+|   XMSC_WMQ_USE_CONNECTION_POOLING     :-  true
+|   brokerVersion                       :-  -1
+|   failIfQuiesce                       :-  1
+|   multicast                           :-  0
+|   version                             :-  7
+|   wildcardFormat                      :-  0
+
+Sessions         : 
+|   Instance           :-  com.ibm.msg.client.wmq.internal.WMQSession@27ff63e3
+|   Parent Connection  :-  com.ibm.msg.client.wmq.internal.WMQConnection@119f68bb
+|   ackMode            :-  0
+|   asfConsumer        :-  <null>
+|   asfDestination     :-  <null>
+|   asfSubName         :-  <null>
+|   asyncPutCounter    :-  com.ibm.msg.client.wmq.internal.WMQSession$AsyncPutCounter@7b0f5eb6
+|   didRecovAsyncPut   :-  false
+|   helper             :-  com.ibm.msg.client.wmq.internal.WMQConsumerOwnerShadow@2e133dd8
+|   inSyncpoint        :-  false
+|   queueManagerName   :-  QM_ACO212
+|   XMSC_ACKNOWLEDGE_MODE               :-  0
+|   XMSC_ADMIN_OBJECT_TYPE              :-  17
+|   XMSC_ASYNC_EXCEPTIONS               :-  -1
+|   XMSC_CLIENT_ID                      :-  <null>
+|   XMSC_CONNECTION_TYPE                :-  1
+|   XMSC_CONNECTION_TYPE_NAME           :-  com.ibm.msg.client.wmq
+|   XMSC_PASSWORD                       :-  
+|   XMSC_RTT_DIRECT_AUTH                :-  0
+|   XMSC_RTT_PROXY_HOSTNAME             :-  <null>
+|   XMSC_RTT_PROXY_PORT                 :-  443
+|   XMSC_TRANSACTED                     :-  true
+|   XMSC_USERID                         :-  wakkir.muzammil
+|   XMSC_WMQ_BROKER_CC_SUBQ             :-  SYSTEM.JMS.ND.CC.SUBSCRIBER.QUEUE
+|   XMSC_WMQ_BROKER_CONTROLQ            :-  SYSTEM.BROKER.CONTROL.QUEUE
+|   XMSC_WMQ_BROKER_PUBQ                :-  SYSTEM.BROKER.DEFAULT.STREAM
+|   XMSC_WMQ_BROKER_QMGR                :-  
+|   XMSC_WMQ_BROKER_SUBQ                :-  SYSTEM.JMS.ND.SUBSCRIBER.QUEUE
+|   XMSC_WMQ_CCDTURL                    :-  <null>
+|   XMSC_WMQ_CF_DESCRIPTION             :-  <null>
+|   XMSC_WMQ_CHANNEL                    :-  JAVA.CHANNEL
+|   XMSC_WMQ_CLEANUP_INTERVAL           :-  3600000
+|   XMSC_WMQ_CLEANUP_LEVEL              :-  1
+|   XMSC_WMQ_CLIENT_RECONNECT_OPTIONS   :-  0
+|   XMSC_WMQ_CLIENT_RECONNECT_TIMEOUT   :-  1800
+|   XMSC_WMQ_CLONE_SUPPORT              :-  0
+|   XMSC_WMQ_CONNECTION_MODE            :-  1
+|   XMSC_WMQ_CONNECTION_NAME_LIST       :-  ACO212(1414)
+|   XMSC_WMQ_CONNECTION_TAG             :-  [B@44e66afc
+|   XMSC_WMQ_CONNECT_OPTIONS            :-  0
+|   XMSC_WMQ_HEADER_COMP                :-  [0]
+|   XMSC_WMQ_HOST_NAME                  :-  ACO212
+|   XMSC_WMQ_LOCAL_ADDRESS              :-  
+|   XMSC_WMQ_MAP_NAME_STYLE             :-  true
+|   XMSC_WMQ_MAX_BUFFER_SIZE            :-  1000
+|   XMSC_WMQ_MESSAGE_RETENTION          :-  1
+|   XMSC_WMQ_MESSAGE_SELECTION          :-  0
+|   XMSC_WMQ_MSG_BATCH_SIZE             :-  10
+|   XMSC_WMQ_MSG_COMP                   :-  [0]
+|   XMSC_WMQ_OPT_PUB                    :-  false
+|   XMSC_WMQ_OUTCOME_NOTIFICATION       :-  true
+|   XMSC_WMQ_POLLING_INTERVAL           :-  5000
+|   XMSC_WMQ_PORT                       :-  1414
+|   XMSC_WMQ_PROCESS_DURATION           :-  0
+|   XMSC_WMQ_PROVIDER_VERSION           :-  unspecified
+|   XMSC_WMQ_PUB_ACK_INTERVAL           :-  25
+|   XMSC_WMQ_QMGR_CCSID                 :-  819
+|   XMSC_WMQ_QUEUE_MANAGER              :-  QM_ACO212
+|   XMSC_WMQ_RECEIVE_EXIT               :-  <null>
+|   XMSC_WMQ_RECEIVE_EXIT_INIT          :-  <null>
+|   XMSC_WMQ_RECEIVE_ISOLATION          :-  0
+|   XMSC_WMQ_RESCAN_INTERVAL            :-  5000
+|   XMSC_WMQ_RESOLVED_QUEUE_MANAGER     :-  QM_ACO212
+|   XMSC_WMQ_RESOLVED_QUEUE_MANAGER_ID  :-  QM_ACO212_2012-02-01_11.12.13                   
+|   XMSC_WMQ_SECURITY_EXIT              :-  <null>
+|   XMSC_WMQ_SECURITY_EXIT_INIT         :-  <null>
+|   XMSC_WMQ_SEND_CHECK_COUNT           :-  0
+|   XMSC_WMQ_SEND_EXIT                  :-  <null>
+|   XMSC_WMQ_SEND_EXIT_INIT             :-  <null>
+|   XMSC_WMQ_SHARE_CONV_ALLOWED         :-  1
+|   XMSC_WMQ_SPARSE_SUBSCRIPTIONS       :-  false
+|   XMSC_WMQ_SSL_CERT_STORES_COL        :-  <null>
+|   XMSC_WMQ_SSL_CERT_STORES_STR        :-  <null>
+|   XMSC_WMQ_SSL_CIPHER_SUITE           :-  <null>
+|   XMSC_WMQ_SSL_FIPS_REQUIRED          :-  false
+|   XMSC_WMQ_SSL_KEY_RESETCOUNT         :-  0
+|   XMSC_WMQ_SSL_PEER_NAME              :-  <null>
+|   XMSC_WMQ_SSL_SOCKET_FACTORY         :-  <null>
+|   XMSC_WMQ_STATUS_REFRESH_INTERVAL    :-  60000
+|   XMSC_WMQ_SUBSCRIPTION_STORE         :-  1
+|   XMSC_WMQ_SYNCPOINT_ALL_GETS         :-  false
+|   XMSC_WMQ_TARGET_CLIENT_MATCHING     :-  true
+|   XMSC_WMQ_TEMPORARY_MODEL            :-  SYSTEM.DEFAULT.MODEL.QUEUE
+|   XMSC_WMQ_TEMP_Q_PREFIX              :-  
+|   XMSC_WMQ_TEMP_TOPIC_PREFIX          :-  
+|   XMSC_WMQ_USE_CONNECTION_POOLING     :-  true
+|   brokerVersion                       :-  -1
+|   failIfQuiesce                       :-  1
+|   multicast                           :-  0
+|   version                             :-  7
+|   wildcardFormat                      :-  0
+
+|   Instance           :-  com.ibm.msg.client.wmq.internal.WMQSession@7894d606
+|   Parent Connection  :-  com.ibm.msg.client.wmq.internal.WMQConnection@119f68bb
+|   ackMode            :-  0
+|   asfConsumer        :-  <null>
+|   asfDestination     :-  <null>
+|   asfSubName         :-  <null>
+|   asyncPutCounter    :-  com.ibm.msg.client.wmq.internal.WMQSession$AsyncPutCounter@71414789
+|   didRecovAsyncPut   :-  false
+|   helper             :-  com.ibm.msg.client.wmq.internal.WMQConsumerOwnerShadow@74bfad75
+|   inSyncpoint        :-  false
+|   queueManagerName   :-  QM_ACO212
+|   XMSC_ACKNOWLEDGE_MODE               :-  0
+|   XMSC_ADMIN_OBJECT_TYPE              :-  17
+|   XMSC_ASYNC_EXCEPTIONS               :-  -1
+|   XMSC_CLIENT_ID                      :-  <null>
+|   XMSC_CONNECTION_TYPE                :-  1
+|   XMSC_CONNECTION_TYPE_NAME           :-  com.ibm.msg.client.wmq
+|   XMSC_PASSWORD                       :-  
+|   XMSC_RTT_DIRECT_AUTH                :-  0
+|   XMSC_RTT_PROXY_HOSTNAME             :-  <null>
+|   XMSC_RTT_PROXY_PORT                 :-  443
+|   XMSC_TRANSACTED                     :-  true
+|   XMSC_USERID                         :-  wakkir.muzammil
+|   XMSC_WMQ_BROKER_CC_SUBQ             :-  SYSTEM.JMS.ND.CC.SUBSCRIBER.QUEUE
+|   XMSC_WMQ_BROKER_CONTROLQ            :-  SYSTEM.BROKER.CONTROL.QUEUE
+|   XMSC_WMQ_BROKER_PUBQ                :-  SYSTEM.BROKER.DEFAULT.STREAM
+|   XMSC_WMQ_BROKER_QMGR                :-  
+|   XMSC_WMQ_BROKER_SUBQ                :-  SYSTEM.JMS.ND.SUBSCRIBER.QUEUE
+|   XMSC_WMQ_CCDTURL                    :-  <null>
+|   XMSC_WMQ_CF_DESCRIPTION             :-  <null>
+|   XMSC_WMQ_CHANNEL                    :-  JAVA.CHANNEL
+|   XMSC_WMQ_CLEANUP_INTERVAL           :-  3600000
+|   XMSC_WMQ_CLEANUP_LEVEL              :-  1
+|   XMSC_WMQ_CLIENT_RECONNECT_OPTIONS   :-  0
+|   XMSC_WMQ_CLIENT_RECONNECT_TIMEOUT   :-  1800
+|   XMSC_WMQ_CLONE_SUPPORT              :-  0
+|   XMSC_WMQ_CONNECTION_MODE            :-  1
+|   XMSC_WMQ_CONNECTION_NAME_LIST       :-  ACO212(1414)
+|   XMSC_WMQ_CONNECTION_TAG             :-  [B@44e66afc
+|   XMSC_WMQ_CONNECT_OPTIONS            :-  0
+|   XMSC_WMQ_HEADER_COMP                :-  [0]
+|   XMSC_WMQ_HOST_NAME                  :-  ACO212
+|   XMSC_WMQ_LOCAL_ADDRESS              :-  
+|   XMSC_WMQ_MAP_NAME_STYLE             :-  true
+|   XMSC_WMQ_MAX_BUFFER_SIZE            :-  1000
+|   XMSC_WMQ_MESSAGE_RETENTION          :-  1
+|   XMSC_WMQ_MESSAGE_SELECTION          :-  0
+|   XMSC_WMQ_MSG_BATCH_SIZE             :-  10
+|   XMSC_WMQ_MSG_COMP                   :-  [0]
+|   XMSC_WMQ_OPT_PUB                    :-  false
+|   XMSC_WMQ_OUTCOME_NOTIFICATION       :-  true
+|   XMSC_WMQ_POLLING_INTERVAL           :-  5000
+|   XMSC_WMQ_PORT                       :-  1414
+|   XMSC_WMQ_PROCESS_DURATION           :-  0
+|   XMSC_WMQ_PROVIDER_VERSION           :-  unspecified
+|   XMSC_WMQ_PUB_ACK_INTERVAL           :-  25
+|   XMSC_WMQ_QMGR_CCSID                 :-  819
+|   XMSC_WMQ_QUEUE_MANAGER              :-  QM_ACO212
+|   XMSC_WMQ_RECEIVE_EXIT               :-  <null>
+|   XMSC_WMQ_RECEIVE_EXIT_INIT          :-  <null>
+|   XMSC_WMQ_RECEIVE_ISOLATION          :-  0
+|   XMSC_WMQ_RESCAN_INTERVAL            :-  5000
+|   XMSC_WMQ_RESOLVED_QUEUE_MANAGER     :-  QM_ACO212
+|   XMSC_WMQ_RESOLVED_QUEUE_MANAGER_ID  :-  QM_ACO212_2012-02-01_11.12.13                   
+|   XMSC_WMQ_SECURITY_EXIT              :-  <null>
+|   XMSC_WMQ_SECURITY_EXIT_INIT         :-  <null>
+|   XMSC_WMQ_SEND_CHECK_COUNT           :-  0
+|   XMSC_WMQ_SEND_EXIT                  :-  <null>
+|   XMSC_WMQ_SEND_EXIT_INIT             :-  <null>
+|   XMSC_WMQ_SHARE_CONV_ALLOWED         :-  1
+|   XMSC_WMQ_SPARSE_SUBSCRIPTIONS       :-  false
+|   XMSC_WMQ_SSL_CERT_STORES_COL        :-  <null>
+|   XMSC_WMQ_SSL_CERT_STORES_STR        :-  <null>
+|   XMSC_WMQ_SSL_CIPHER_SUITE           :-  <null>
+|   XMSC_WMQ_SSL_FIPS_REQUIRED          :-  false
+|   XMSC_WMQ_SSL_KEY_RESETCOUNT         :-  0
+|   XMSC_WMQ_SSL_PEER_NAME              :-  <null>
+|   XMSC_WMQ_SSL_SOCKET_FACTORY         :-  <null>
+|   XMSC_WMQ_STATUS_REFRESH_INTERVAL    :-  60000
+|   XMSC_WMQ_SUBSCRIPTION_STORE         :-  1
+|   XMSC_WMQ_SYNCPOINT_ALL_GETS         :-  false
+|   XMSC_WMQ_TARGET_CLIENT_MATCHING     :-  true
+|   XMSC_WMQ_TEMPORARY_MODEL            :-  SYSTEM.DEFAULT.MODEL.QUEUE
+|   XMSC_WMQ_TEMP_Q_PREFIX              :-  
+|   XMSC_WMQ_TEMP_TOPIC_PREFIX          :-  
+|   XMSC_WMQ_USE_CONNECTION_POOLING     :-  true
+|   brokerVersion                       :-  -1
+|   failIfQuiesce                       :-  1
+|   multicast                           :-  0
+|   version                             :-  7
+|   wildcardFormat                      :-  0
+
+Consumers        : 
+Producers        : 
+
+All Thread Information
+
+                          Name : Hermes ThreadPool-2
+                      Priority : 1
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 22
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.Object.wait(Object.java:485)
+                               : hermes.browser.tasks.ThreadPool.run(ThreadPool.java:145)
+                               : java.lang.Thread.run(Thread.java:662)
+
+                          Name : Hermes ThreadPool-1
+                      Priority : 1
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 21
+                         State : RUNNABLE
+                         Stack : java.lang.Thread.dumpThreads(Thread.java:-2)
+                               : java.lang.Thread.getAllStackTraces(Thread.java:1530)
+                               : sun.reflect.NativeMethodAccessorImpl.invoke0(NativeMethodAccessorImpl.java:-2)
+                               : sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+                               : sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+                               : java.lang.reflect.Method.invoke(Method.java:597)
+                               : com.ibm.msg.client.commonservices.j2se.trace.DefaultTracer.getAllThreads(DefaultTracer.java:1410)
+                               : com.ibm.msg.client.commonservices.j2se.trace.DefaultTracer.generateThreadInfo(DefaultTracer.java:1231)
+                               : com.ibm.msg.client.commonservices.j2se.trace.DefaultTracer.access$1200(DefaultTracer.java:136)
+                               : com.ibm.msg.client.commonservices.j2se.trace.DefaultTracer$7.run(DefaultTracer.java:1184)
+                               : java.security.AccessController.doPrivileged(AccessController.java:-2)
+                               : com.ibm.msg.client.commonservices.j2se.trace.DefaultTracer.ffst(DefaultTracer.java:1121)
+                               : com.ibm.msg.client.commonservices.trace.Trace.ffstInternal(Trace.java:1532)
+                               : com.ibm.msg.client.commonservices.trace.Trace.ffst(Trace.java:1386)
+                               : com.ibm.msg.client.wmq.common.internal.WMQTraceHandler.ffst(WMQTraceHandler.java:700)
+                               : com.ibm.mq.jmqi.remote.internal.RemoteFAP.jmqiGetMessage(RemoteFAP.java:5633)
+                               : com.ibm.mq.jmqi.internal.JmqiTools.getMessage(JmqiTools.java:1049)
+                               : com.ibm.mq.jmqi.remote.internal.RemoteFAP.jmqiGet(RemoteFAP.java:5493)
+                               : com.ibm.msg.client.wmq.internal.WMQConsumerShadow.getMsg(WMQConsumerShadow.java:1169)
+                               : com.ibm.msg.client.wmq.internal.WMQSyncConsumerShadow.receiveInternal(WMQSyncConsumerShadow.java:233)
+                               : com.ibm.msg.client.wmq.internal.WMQConsumerShadow.receive(WMQConsumerShadow.java:922)
+                               : com.ibm.msg.client.wmq.internal.WMQQueueEnumeration.retrieveMessage(WMQQueueEnumeration.java:347)
+                               : com.ibm.msg.client.wmq.internal.WMQQueueEnumeration.hasMoreElements(WMQQueueEnumeration.java:269)
+                               : com.ibm.msg.client.jms.internal.JmsQueueBrowserImpl$JmsEnumImpl.hasMoreElements(JmsQueueBrowserImpl.java:361)
+                               : com.ibm.mq.jms.MQQueueEnumeration.hasMoreElements(MQQueueEnumeration.java:92)
+                               : hermes.browser.tasks.BrowseDestinationTask.invoke(BrowseDestinationTask.java:127)
+                               : hermes.browser.tasks.TaskSupport.run(TaskSupport.java:175)
+                               : hermes.browser.tasks.ThreadPool.run(ThreadPool.java:170)
+                               : java.lang.Thread.run(Thread.java:662)
+
+                          Name : Reference Handler
+                      Priority : 10
+                   ThreadGroup : java.lang.ThreadGroup[name=system,maxpri=10]
+                            ID : 2
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.Object.wait(Object.java:485)
+                               : java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+
+                          Name : Java2D Disposer
+                      Priority : 10
+                   ThreadGroup : java.lang.ThreadGroup[name=system,maxpri=10]
+                            ID : 12
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:118)
+                               : java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:134)
+                               : sun.java2d.Disposer.run(Disposer.java:127)
+                               : java.lang.Thread.run(Thread.java:662)
+
+                          Name : AWT-EventQueue-0
+                      Priority : 10
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 17
+                         State : RUNNABLE
+                         Stack : java.lang.Object.getClass(Object.java:-2)
+                               : javax.swing.UIDefaults.getUI(UIDefaults.java:736)
+                               : javax.swing.UIManager.getUI(UIManager.java:989)
+                               : javax.swing.JButton.updateUI(JButton.java:128)
+                               : com.jidesoft.plaf.basic.BasicJideTabbedPaneUI$TabCloseButton.updateUI(null:-1)
+                               : javax.swing.AbstractButton.init(AbstractButton.java:2149)
+                               : javax.swing.JButton.<init>(JButton.java:118)
+                               : javax.swing.JButton.<init>(JButton.java:73)
+                               : com.jidesoft.plaf.basic.BasicJideTabbedPaneUI$TabCloseButton.<init>(null:-1)
+                               : com.jidesoft.plaf.basic.BasicJideTabbedPaneUI.createNoFocusButton(null:-1)
+                               : com.jidesoft.plaf.basic.BasicJideTabbedPaneUI$ScrollableTabSupport.<init>(null:-1)
+                               : com.jidesoft.plaf.basic.BasicJideTabbedPaneUI.installComponents(null:-1)
+                               : com.jidesoft.plaf.basic.BasicJideTabbedPaneUI.installUI(null:-1)
+                               : javax.swing.JComponent.setUI(JComponent.java:662)
+                               : javax.swing.JTabbedPane.setUI(JTabbedPane.java:214)
+                               : com.jidesoft.swing.JideTabbedPane.setUI(null:-1)
+                               : com.jidesoft.swing.JideTabbedPane.updateUI(null:-1)
+                               : com.jidesoft.swing.JideTabbedPane.removeTabAt(null:-1)
+                               : javax.swing.JTabbedPane.removeAll(JTabbedPane.java:1047)
+                               : hermes.browser.components.MessagePayloadPanel.setMessage(MessagePayloadPanel.java:86)
+                               : hermes.browser.actions.BrowserAction.updatePayloadPanel(BrowserAction.java:771)
+                               : hermes.browser.actions.BrowserAction.valueChanged(BrowserAction.java:755)
+                               : hermes.browser.actions.BrowserAction$2.run(BrowserAction.java:505)
+                               : java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+                               : java.awt.EventQueue.dispatchEventImpl(EventQueue.java:642)
+                               : java.awt.EventQueue.access$000(EventQueue.java:85)
+                               : java.awt.EventQueue$1.run(EventQueue.java:603)
+                               : java.awt.EventQueue$1.run(EventQueue.java:601)
+                               : java.security.AccessController.doPrivileged(AccessController.java:-2)
+                               : java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:87)
+                               : java.awt.EventQueue.dispatchEvent(EventQueue.java:612)
+                               : java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:269)
+                               : java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:184)
+                               : java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:174)
+                               : java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:169)
+                               : java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:161)
+                               : java.awt.EventDispatchThread.run(EventDispatchThread.java:122)
+
+                          Name : AWT-Shutdown
+                      Priority : 5
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 13
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.Object.wait(Object.java:485)
+                               : sun.awt.AWTAutoShutdown.run(AWTAutoShutdown.java:265)
+                               : java.lang.Thread.run(Thread.java:662)
+
+                          Name : TimerQueue
+                      Priority : 5
+                   ThreadGroup : java.lang.ThreadGroup[name=system,maxpri=10]
+                            ID : 20
+                         State : TIMED_WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : javax.swing.TimerQueue.run(TimerQueue.java:232)
+                               : java.lang.Thread.run(Thread.java:662)
+
+                          Name : derby.rawStoreDaemon
+                      Priority : 1
+                   ThreadGroup : java.lang.ThreadGroup[name=derby.daemons,maxpri=10]
+                            ID : 33
+                         State : TIMED_WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : org.apache.derby.impl.services.daemon.BasicDaemon.rest(null:-1)
+                               : org.apache.derby.impl.services.daemon.BasicDaemon.run(null:-1)
+                               : java.lang.Thread.run(Thread.java:662)
+
+                          Name : Hermes ThreadPool-4
+                      Priority : 1
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 24
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.Object.wait(Object.java:485)
+                               : hermes.browser.tasks.ThreadPool.run(ThreadPool.java:145)
+                               : java.lang.Thread.run(Thread.java:662)
+
+                          Name : WebSphere MQ Trace Monitor
+                      Priority : 10
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 60
+                         State : TIMED_WAITING
+                         Stack : java.lang.Thread.sleep(Thread.java:-2)
+                               : com.ibm.mq.commonservices.internal.monitor.TraceMonitor.run(TraceMonitor.java:134)
+
+                          Name : Signal Dispatcher
+                      Priority : 9
+                   ThreadGroup : java.lang.ThreadGroup[name=system,maxpri=10]
+                            ID : 4
+                         State : RUNNABLE
+
+                          Name : Timer-4
+                      Priority : 6
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 32
+                         State : TIMED_WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.util.TimerThread.mainLoop(Timer.java:509)
+                               : java.util.TimerThread.run(Timer.java:462)
+
+                          Name : JyConsole-1387376805618
+                      Priority : 6
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 27
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.Object.wait(Object.java:485)
+                               : com.artenum.jyconsole.command.SingleThreadCommandRunner.run(null:-1)
+                               : java.lang.Thread.run(Thread.java:662)
+
+                          Name : Hermes ThreadPool-0
+                      Priority : 1
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 11
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.Object.wait(Object.java:485)
+                               : hermes.browser.tasks.ThreadPool.run(ThreadPool.java:145)
+                               : java.lang.Thread.run(Thread.java:662)
+
+                          Name : Timer-1
+                      Priority : 6
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 28
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.Object.wait(Object.java:485)
+                               : java.util.TimerThread.mainLoop(Timer.java:483)
+                               : java.util.TimerThread.run(Timer.java:462)
+
+                          Name : Timer-3
+                      Priority : 1
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 31
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.Object.wait(Object.java:485)
+                               : java.util.TimerThread.mainLoop(Timer.java:483)
+                               : java.util.TimerThread.run(Timer.java:462)
+
+                          Name : WebSphere MQ Trace Monitor
+                      Priority : 10
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 64
+                         State : TIMED_WAITING
+                         Stack : java.lang.Thread.sleep(Thread.java:-2)
+                               : com.ibm.mq.commonservices.internal.monitor.TraceMonitor.run(TraceMonitor.java:134)
+
+                          Name : RcvThread: com.ibm.mq.jmqi.remote.internal.RemoteTCPConnection[qmid=QM_ACO212_2012-02-01_11.12.13                   ,fap=10,peer=ACO212/192.168.0.27,localport=52074,ssl=no]
+                      Priority : 1
+                   ThreadGroup : java.lang.ThreadGroup[name=JMSCCThreadPool,maxpri=10]
+                            ID : 29336
+                         State : RUNNABLE
+                         Stack : java.net.SocketInputStream.socketRead0(SocketInputStream.java:-2)
+                               : java.net.SocketInputStream.read(SocketInputStream.java:129)
+                               : com.ibm.mq.jmqi.remote.internal.RemoteTCPConnection.receive(RemoteTCPConnection.java:1324)
+                               : com.ibm.mq.jmqi.remote.internal.RemoteRcvThread.receiveBuffer(RemoteRcvThread.java:674)
+                               : com.ibm.mq.jmqi.remote.internal.RemoteRcvThread.receiveOneTSH(RemoteRcvThread.java:638)
+                               : com.ibm.mq.jmqi.remote.internal.RemoteRcvThread.run(RemoteRcvThread.java:136)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueItem.runTask(WorkQueueItem.java:209)
+                               : com.ibm.msg.client.commonservices.workqueue.SimpleWorkQueueItem.runItem(SimpleWorkQueueItem.java:100)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueItem.run(WorkQueueItem.java:224)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueManager.runWorkQueueItem(WorkQueueManager.java:298)
+                               : com.ibm.msg.client.commonservices.j2se.workqueue.WorkQueueManagerImplementation$ThreadPoolWorker.run(WorkQueueManagerImplementation.java:1220)
+
+                          Name : Timer-0
+                      Priority : 6
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 25
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.Object.wait(Object.java:485)
+                               : java.util.TimerThread.mainLoop(Timer.java:483)
+                               : java.util.TimerThread.run(Timer.java:462)
+
+                          Name : Timer-2
+                      Priority : 6
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 30
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.Object.wait(Object.java:485)
+                               : java.util.TimerThread.mainLoop(Timer.java:483)
+                               : java.util.TimerThread.run(Timer.java:462)
+
+                          Name : Finalizer
+                      Priority : 8
+                   ThreadGroup : java.lang.ThreadGroup[name=system,maxpri=10]
+                            ID : 3
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:118)
+                               : java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:134)
+                               : java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+                          Name : Attach Listener
+                      Priority : 5
+                   ThreadGroup : java.lang.ThreadGroup[name=system,maxpri=10]
+                            ID : 5
+                         State : RUNNABLE
+
+                          Name : Swing-Shell
+                      Priority : 10
+                   ThreadGroup : java.lang.ThreadGroup[name=system,maxpri=10]
+                            ID : 38
+                         State : WAITING
+                         Stack : sun.misc.Unsafe.park(Unsafe.java:-2)
+                               : java.util.concurrent.locks.LockSupport.park(LockSupport.java:158)
+                               : java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+                               : java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+                               : java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+                               : java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+                               : sun.awt.shell.Win32ShellFolderManager2$ComInvoker$3.run(Win32ShellFolderManager2.java:492)
+                               : java.lang.Thread.run(Thread.java:662)
+
+                          Name : AWT-Windows
+                      Priority : 6
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 14
+                         State : RUNNABLE
+                         Stack : sun.awt.windows.WToolkit.eventLoop(WToolkit.java:-2)
+                               : sun.awt.windows.WToolkit.run(WToolkit.java:293)
+                               : java.lang.Thread.run(Thread.java:662)
+
+                          Name : WebSphere MQ Trace Monitor
+                      Priority : 10
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 62
+                         State : TIMED_WAITING
+                         Stack : java.lang.Thread.sleep(Thread.java:-2)
+                               : com.ibm.mq.commonservices.internal.monitor.TraceMonitor.run(TraceMonitor.java:134)
+
+                          Name : JMSCCThreadPoolMaster
+                      Priority : 1
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 69
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.Object.wait(Object.java:485)
+                               : com.ibm.msg.client.commonservices.j2se.workqueue.WorkQueueManagerImplementation$WorkQueueManagerThread.waitForNotification(WorkQueueManagerImplementation.java:651)
+                               : com.ibm.msg.client.commonservices.j2se.workqueue.WorkQueueManagerImplementation$WorkQueueManagerThread.waitForNotification(WorkQueueManagerImplementation.java:621)
+                               : com.ibm.msg.client.commonservices.j2se.workqueue.WorkQueueManagerImplementation$WorkQueueManagerThread.run(WorkQueueManagerImplementation.java:887)
+
+                          Name : DestroyJavaVM
+                      Priority : 5
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 18
+                         State : RUNNABLE
+
+                          Name : Timer-5
+                      Priority : 10
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 68
+                         State : BLOCKED
+                         Stack : com.ibm.msg.client.jms.internal.JmsQueueBrowserImpl.close(JmsQueueBrowserImpl.java:137)
+                               : com.ibm.msg.client.jms.internal.JmsQueueBrowserImpl.close(JmsQueueBrowserImpl.java:119)
+                               : com.ibm.mq.jms.MQQueueBrowser.close(MQQueueBrowser.java:89)
+                               : hermes.browser.tasks.BrowseDestinationTask.stop(BrowseDestinationTask.java:106)
+                               : hermes.browser.actions.BrowserAction.refresh(BrowserAction.java:575)
+                               : hermes.browser.actions.BrowserAction$3.run(BrowserAction.java:514)
+                               : java.util.TimerThread.mainLoop(Timer.java:512)
+                               : java.util.TimerThread.run(Timer.java:462)
+
+                          Name : Hermes ThreadPool-3
+                      Priority : 1
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 23
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.Object.wait(Object.java:485)
+                               : hermes.browser.tasks.ThreadPool.run(ThreadPool.java:145)
+                               : java.lang.Thread.run(Thread.java:662)
+
+                          Name : Hermes ThreadPool-0
+                      Priority : 1
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 10
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.Object.wait(Object.java:485)
+                               : hermes.browser.tasks.ThreadPool.run(ThreadPool.java:145)
+                               : java.lang.Thread.run(Thread.java:662)
+
+First Failure Symptom Report completed at Thu Dec 19 15:50:53 GMT 2013
+------------------------------------END FFST------------------------------------

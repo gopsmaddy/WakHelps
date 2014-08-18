@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<config lastEditedByUser="wakkir.muzammil" lastEditedByHermesVersion="v1.15 build 030413" maxThreadPoolSize="5" auditDirectory="C:\temp" messageFilesDir="C:\.hermes\.\messages" maxMessagesInBrowserPane="1000" copyJMSProviderProperties="true" copyJMSCorrelationID="true" copyJMSType="true" copyJMSExpiration="true" copyJMSReplyTo="true" copyJMSPriority="true" displayFactoryAdmin="true" maxColumnsInStatisticsTable="10" autoBrowseRefreshRate="10" correctDropSemantics="false" selectorImpl="hermes.selector.JAMSELMessageSelectorFactory" queueBrowseConsumerTimeout="0" enableJython="true" lookAndFeel="com.sun.java.swing.plaf.windows.WindowsLookAndFeel" scrollMessagesDuringBrowse="true" base64EncodeMessages="true" showDestinationsInMessageStore="false">
+    <classpathGroup id="WebSphereMQ">
+        <library jar="C:\WebSphere\MQ\java\lib\com.ibm.mq.headers.jar" noFactories="true"/>
+        <library jar="C:\WebSphere\MQ\java\lib\com.ibm.mq.jar" noFactories="true"/>
+        <library jar="C:\WebSphere\MQ\java\lib\com.ibm.mq.jmqi.jar" noFactories="true"/>
+        <library jar="C:\WebSphere\MQ\java\lib\com.ibm.mqjms.jar" noFactories="false" factories="com.ibm.mq.jms.Cleanup,com.ibm.mq.jms.MQConnectionFactory,com.ibm.mq.jms.MQQueueConnectionFactory,com.ibm.mq.jms.MQRRSConnectionFactory,com.ibm.mq.jms.MQRRSQueueConnectionFactory,com.ibm.mq.jms.MQRRSTopicConnectionFactory,com.ibm.mq.jms.MQTopicConnectionFactory,com.ibm.mq.jms.MQXAConnectionFactory,com.ibm.mq.jms.MQXAQueueConnectionFactory,com.ibm.mq.jms.MQXATopicConnectionFactory,com.ibm.msg.client.jms.admin.JmsConnectionFactoryImpl,com.ibm.msg.client.jms.admin.JmsJndiConnectionFactoryImpl,com.ibm.msg.client.jms.admin.JmsJndiXAConnectionFactoryImpl,com.ibm.msg.client.jms.admin.JmsXAConnectionFactoryImpl"/>
+        <library jar="C:\WebSphere\MQ\java\lib\connector.jar" noFactories="true"/>
+        <library jar="C:\WebSphere\MQ\java\lib\dhbcore.jar" noFactories="false" factories="com.ibm.disthub2.impl.jms.TopicConnectionFactoryImpl"/>
+        <library jar="C:\WebSphere\MQ\java\lib\fscontext.jar" noFactories="true"/>
+        <library jar="C:\WebSphere\MQ\java\lib\com.ibm.mq.pcf.jar" noFactories="true"/>
+        <library jar="C:\WebSphere\MQ\java\lib\com.ibm.mq.commonservices.jar" noFactories="true"/>
+    </classpathGroup>
+    <classpathGroup id="ActiveMQ">
+        <library jar="C:\ProgramFiles\apache-activemq-5.7.0\lib\activemq-console-5.7.0.jar" noFactories="true"/>
+        <library jar="C:\ProgramFiles\apache-activemq-5.7.0\lib\activemq-core-5.7.0.jar" noFactories="false" factories="org.apache.activemq.ActiveMQConnectionFactory,org.apache.activemq.ActiveMQSslConnectionFactory,org.apache.activemq.ActiveMQXAConnectionFactory"/>
+        <library jar="C:\ProgramFiles\apache-activemq-5.7.0\lib\activemq-jaas-5.7.0.jar" noFactories="true"/>
+        <library jar="C:\ProgramFiles\apache-activemq-5.7.0\lib\activemq-protobuf-1.1.jar" noFactories="true"/>
+        <library jar="C:\ProgramFiles\apache-activemq-5.7.0\lib\activemq-rar.txt" noFactories="true"/>
+        <library jar="C:\ProgramFiles\apache-activemq-5.7.0\lib\activemq-web-5.7.0.jar" noFactories="true"/>
+        <library jar="C:\ProgramFiles\apache-activemq-5.7.0\lib\geronimo-j2ee-management_1.1_spec-1.0.1.jar" noFactories="true"/>
+        <library jar="C:\ProgramFiles\apache-activemq-5.7.0\lib\geronimo-jms_1.1_spec-1.1.1.jar" noFactories="true"/>
+        <library jar="C:\ProgramFiles\apache-activemq-5.7.0\lib\geronimo-jta_1.0.1B_spec-1.0.1.jar" noFactories="true"/>
+        <library jar="C:\ProgramFiles\apache-activemq-5.7.0\lib\jcl-over-slf4j-1.6.6.jar" noFactories="true"/>
+        <library jar="C:\ProgramFiles\apache-activemq-5.7.0\lib\kahadb-5.7.0.jar" noFactories="true"/>
+        <library jar="C:\ProgramFiles\apache-activemq-5.7.0\lib\slf4j-api-1.6.6.jar" noFactories="true"/>
+    </classpathGroup>
+    <renderer className="hermes.renderers.DefaultMessageRenderer">
+        <properties>
+            <property name="bytesIsString" value="false"/>
+            <property name="bytesIsObject" value="false"/>
+            <property name="active" value="true"/>
+            <property name="messageCache" value="100"/>
+            <property name="bytesIsObjectBufferSize" value="65536"/>
+            <property name="bytesEncoding" value="windows-1252"/>
+            <property name="toStringOnObjectMessage" value="false"/>
+        </properties>
+    </renderer>
+    <renderer className="hermes.renderers.DefaultMessageHeaderRenderer">
+        <properties>
+            <property name="active" value="true"/>
+        </properties>
+    </renderer>
+    <renderer className="hermes.renderers.ToStringMessageRenderer">
+        <properties>
+            <property name="active" value="true"/>
+        </properties>
+    </renderer>
+    <renderer className="hermes.renderers.HexMessageRenderer">
+        <properties>
+            <property name="active" value="true"/>
+        </properties>
+    </renderer>
+    <renderer className="hermes.renderers.XMLMessageRenderer">
+        <properties>
+            <property name="encoding" value="windows-1252"/>
+            <property name="active" value="true"/>
+        </properties>
+    </renderer>
+    <renderer className="hermes.renderers.fix.FIXMessageRenderer">
+        <properties>
+            <property name="displayValueWithEnum" value="true"/>
+            <property name="active" value="true"/>
+            <property name="messageCache" value="100"/>
+            <property name="displayHeaderAndTrailer" value="true"/>
+        </properties>
+    </renderer>
+    <renderer className="hermes.renderers.EBCDICMessageRenderer">
+        <properties>
+            <property name="rowLength" value="16"/>
+            <property name="undisplayableChar" value="."/>
+            <property name="active" value="true"/>
+            <property name="maxMessageSize" value="5242880"/>
+        </properties>
+    </renderer>
+    <factory classpathId="WebSphereMQ">
+        <provider className="com.ibm.mq.jms.MQQueueConnectionFactory">
+            <properties>
+                <property name="channel" value="JAVA.CHANNEL"/>
+                <property name="hostName" value="ACO212"/>
+                <property name="port" value="1414"/>
+                <property name="queueManager" value="QM_ACO212"/>
+                <property name="transportType" value="1"/>
+            </properties>
+        </provider>
+        <connection clientID="" connectionPerThread="false">
+            <session id="MQ Wakkir" reconnects="0" transacted="true" audit="false" checkSize="false" checkSizePeriod="1000" useConsumerForQueueBrowse="false"/>
+        </connection>
+        <destination name="AFF.ACCOUNTDELETION.ISS.CBO" domain="1"/>
+        <destination name="AFF.ACCOUNTDELETION.ISS.DT" domain="1"/>
+        <destination name="AFF.ACCOUNTDELETION.ISS.ICBC" domain="1"/>
+        <destination name="AFF.ACCOUNTDELETION.ISS.ICS" domain="1"/>
+        <destination name="AFF.ACCOUNTDELETION.ISS.NORM" domain="1"/>
+        <destination name="AFF.ACCOUNTDELETION.ISS.NSAM" domain="1"/>
+        <destination name="AFF.CUST.CBO" domain="1"/>
+        <destination name="AFF.CUST.DT" domain="1"/>
+        <destination name="AFF.CUST.ICBC" domain="1"/>
+        <destination name="AFF.CUST.ICS" domain="1"/>
+        <destination name="AFF.CUST.NORM" domain="1"/>
+        <destination name="AFF.CUST.NSAM" domain="1"/>
+        <destination name="AFF.DELIVERY.BAT" domain="1"/>
+        <destination name="AFF.DELIVERY.CPS" domain="1"/>
+        <destination name="AFF.DELIVERY.CPSBATCH" domain="1"/>
+        <destination name="AFF.DELIVERY.CPSDIRECT" domain="1"/>
+        <destination name="AFF.DELIVERY.DC" domain="1"/>
+        <destination name="AFF.DELIVERY.DP" domain="1"/>
+        <destination name="AFF.DELIVERY.DPP" domain="1"/>
+        <destination name="AFF.DELIVERY.GANDD" domain="1"/>
+        <destination name="AFF.DELIVERY.GTO" domain="1"/>
+        <destination name="AFF.DELIVERY.OCS" domain="1"/>
+        <destination name="AFF.DELIVERY.ONE" domain="1"/>
+        <destination name="AFF.DELIVERY.SEG.NORM" domain="1"/>
+        <destination name="AFF.DELIVERY.SET.NORM" domain="1"/>
+        <destination name="AFF.DELIVERY.THREE" domain="1"/>
+        <destination name="AFF.DELIVERY.TWO" domain="1"/>
+        <destination name="AFF.EMVSCRIPT.ISS.CBO" domain="1"/>
+        <destination name="AFF.EMVSCRIPT.ISS.DT" domain="1"/>
+        <destination name="AFF.EMVSCRIPT.ISS.ICBC" domain="1"/>
+        <destination name="AFF.EMVSCRIPT.ISS.ICS" domain="1"/>
+        <destination name="AFF.EMVSCRIPT.ISS.NORM" domain="1"/>
+        <destination name="AFF.EVENT.NAKM" domain="1"/>
+        <destination name="AFF.MOBILE.ISS.CBO" domain="1"/>
+        <destination name="AFF.MOBILE.ISS.DT" domain="1"/>
+        <destination name="AFF.MOBILE.ISS.ICBC" domain="1"/>
+        <destination name="AFF.MOBILE.ISS.ICS" domain="1"/>
+        <destination name="AFF.MOBILE.ISS.NORM" domain="1"/>
+        <destination name="AFF.MOBILE.ISS.NSAM" domain="1"/>
+        <destination name="AFF.NEWCARD.CBO.OMS" domain="1"/>
+        <destination name="AFF.NEWCARD.DT.OMS" domain="1"/>
+        <destination name="AFF.NEWCARD.ICBC" domain="1"/>
+        <destination name="AFF.NEWCARD.ICS" domain="1"/>
+        <destination name="AFF.NEWCARD.ISS.NORM" domain="1"/>
+        <destination name="AFF.NEWCARD.NORM.OMS" domain="1"/>
+        <destination name="AFF.NEWCARD.NPF" domain="1"/>
+        <destination name="AFF.QUERY.CBO.OMS" domain="1"/>
+        <destination name="AFF.QUERY.DT.OMS" domain="1"/>
+        <destination name="AFF.QUERY.ICBC" domain="1"/>
+        <destination name="AFF.QUERY.ICS" domain="1"/>
+        <destination name="AFF.QUERY.ISS" domain="1"/>
+        <destination name="AFF.QUERY.NORM.OMS" domain="1"/>
+        <destination name="AFF.QUERY.NPF" domain="1"/>
+        <destination name="AFF.SCRIPTING.SEM" domain="1"/>
+        <destination name="AFF.SCRIPTING.SEM.NIMC" domain="1"/>
+        <destination name="AFF.SCRIPTING.SEM.RB" domain="1"/>
+        <destination name="AFF.SCRIPTREQUEST.ISS" domain="1"/>
+        <destination name="AFF.UPDATECARD.CBO.OMS" domain="1"/>
+        <destination name="AFF.UPDATECARD.DT.OMS" domain="1"/>
+        <destination name="AFF.UPDATECARD.ICBC" domain="1"/>
+        <destination name="AFF.UPDATECARD.ICS" domain="1"/>
+        <destination name="AFF.UPDATECARD.ISS.NORM" domain="1"/>
+        <destination name="AFF.UPDATECARD.NORM.OMS" domain="1"/>
+        <destination name="AFF.UPDATECARD.NSAM" domain="1"/>
+        <destination name="AFF.UPLOAD.CBO.OMS" domain="1"/>
+        <destination name="AFF.UPLOAD.DT.OMS" domain="1"/>
+        <destination name="AFF.UPLOAD.ICS" domain="1"/>
+        <destination name="AFF.UPLOAD.ISS.ICBC" domain="1"/>
+        <destination name="AFF.UPLOAD.ISS.NORM" domain="1"/>
+        <destination name="AFF.UPLOAD.NORM.OMS" domain="1"/>
+        <destination name="AFF.UPLOAD.NPF" domain="1"/>
+        <destination name="AMQ.52DCF9FE02747725" domain="1"/>
+        <destination name="AMQ.MQEXPLORER.1906209182" domain="1"/>
+        <destination name="BAT.DELIVERY.AFF" domain="1"/>
+        <destination name="CBO.CUST.AFF" domain="1"/>
+        <destination name="CBO.OMS.NEWCARD.AFF" domain="1"/>
+        <destination name="CBO.OMS.QUERY.AFF" domain="1"/>
+        <destination name="CBO.OMS.UPDATECARD.AFF" domain="1"/>
+        <destination name="CBO.OMS.UPLOAD.AFF" domain="1"/>
+        <destination name="CONV.ICSMOBILE.TSM" domain="1"/>
+        <destination name="CPS.DELIVERY.AFF" domain="1"/>
+        <destination name="CPS.DELIVERY.AFFBATCH" domain="1"/>
+        <destination name="CPS.DELIVERY.AFFDIRECT" domain="1"/>
+        <destination name="DC.DELIVERY.AFF" domain="1"/>
+        <destination name="DP.DELIVERY.AFF" domain="1"/>
+        <destination name="DPP.DELIVERY.AFF" domain="1"/>
+        <destination name="DT.CUST.AFF" domain="1"/>
+        <destination name="DT.OMS.NEWCARD.AFF" domain="1"/>
+        <destination name="DT.OMS.QUERY.AFF" domain="1"/>
+        <destination name="DT.OMS.UPDATECARD.AFF" domain="1"/>
+        <destination name="DT.OMS.UPLOAD.AFF" domain="1"/>
+        <destination name="ESP.WORKESP.PMA.ICBC" domain="1"/>
+        <destination name="GANDD.DELIVERY.AFF" domain="1"/>
+        <destination name="GTO.DELIVERY.AFF" domain="1"/>
+        <destination name="ICBC.CUST.AFF" domain="1"/>
+        <destination name="ICBC.NEWCARD.AFF" domain="1"/>
+        <destination name="ICBC.QUERY.AFF" domain="1"/>
+        <destination name="ICBC.UPDATECARD.AFF" domain="1"/>
+        <destination name="ICS.CUST.AFF" domain="1"/>
+        <destination name="ICS.NEWCARD.AFF" domain="1"/>
+        <destination name="ICS.QUERY.AFF" domain="1"/>
+        <destination name="ICS.UPDATECARD.AFF" domain="1"/>
+        <destination name="ICS.UPLOAD.AFF" domain="1"/>
+        <destination name="ISS.ACCOUNTDELETION.AFF.CBO" domain="1"/>
+        <destination name="ISS.ACCOUNTDELETION.AFF.DT" domain="1"/>
+        <destination name="ISS.ACCOUNTDELETION.AFF.ICBC" domain="1"/>
+        <destination name="ISS.ACCOUNTDELETION.AFF.ICS" domain="1"/>
+        <destination name="ISS.ACCOUNTDELETION.AFF.NORM" domain="1"/>
+        <destination name="ISS.ACCOUNTDELETION.AFF.NSAM" domain="1"/>
+        <destination name="ISS.EMVSCRIPT.AFF.CBO" domain="1"/>
+        <destination name="ISS.EMVSCRIPT.AFF.DT" domain="1"/>
+        <destination name="ISS.EMVSCRIPT.AFF.ICBC" domain="1"/>
+        <destination name="ISS.EMVSCRIPT.AFF.ICS" domain="1"/>
+        <destination name="ISS.EMVSCRIPT.AFF.NORM" domain="1"/>
+        <destination name="ISS.EMVSCRIPT.AFF.NSAM" domain="1"/>
+        <destination name="ISS.MOBILE.AFF.CBO" domain="1"/>
+        <destination name="ISS.MOBILE.AFF.DT" domain="1"/>
+        <destination name="ISS.MOBILE.AFF.ICBC" domain="1"/>
+        <destination name="ISS.MOBILE.AFF.ICS" domain="1"/>
+        <destination name="ISS.MOBILE.AFF.NORM" domain="1"/>
+        <destination name="ISS.MOBILE.AFF.NSAM" domain="1"/>
+        <destination name="ISS.NEWCARD.AFF.NORM" domain="1"/>
+        <destination name="ISS.QUERY.AFF" domain="1"/>
+        <destination name="ISS.SCRIPTREQUEST.AFF" domain="1"/>
+        <destination name="ISS.UPDATECARD.AFF.NORM" domain="1"/>
+        <destination name="ISS.UPLOAD.AFF.ICBC" domain="1"/>
+        <destination name="ISS.UPLOAD.AFF.NORM" domain="1"/>
+        <destination name="NORM.CUST.AFF" domain="1"/>
+        <destination name="NORM.OMS.NEWCARD.AFF" domain="1"/>
+        <destination name="NORM.OMS.QUERY.AFF" domain="1"/>
+        <destination name="NORM.OMS.UPDATECARD.AFF" domain="1"/>
+        <destination name="NORM.OMS.UPLOAD.AFF" domain="1"/>
+        <destination name="NPF.NEWCARD.AFF" domain="1"/>
+        <destination name="NPF.QUERY.AFF" domain="1"/>
+        <destination name="NPF.UPLOAD.AFF" domain="1"/>
+        <destination name="NSAM.CUST.AFF" domain="1"/>
+        <destination name="NSAM.UPDATECARD.AFF" domain="1"/>
+        <destination name="OCS.DELIVERY.AFF" domain="1"/>
+        <destination name="ONE.DELIVERY.AFF" domain="1"/>
+        <destination name="PMA.DP.SDS.CBO" domain="1"/>
+        <destination name="PMA.DP.SDS.DT" domain="1"/>
+        <destination name="PMA.DP.SDS.ICBC" domain="1"/>
+        <destination name="PMA.DP.SDS.ICS" domain="1"/>
+        <destination name="PMA.DP.SDS.NORM" domain="1"/>
+        <destination name="PMA.DP.SDS.NSAM" domain="1"/>
+        <destination name="PMA.WORK.DPRETURN.CBO" domain="1"/>
+        <destination name="PMA.WORK.DPRETURN.DT" domain="1"/>
+        <destination name="PMA.WORK.DPRETURN.ICBC" domain="1"/>
+        <destination name="PMA.WORK.DPRETURN.ICS" domain="1"/>
+        <destination name="PMA.WORK.DPRETURN.NORM" domain="1"/>
+        <destination name="PMA.WORK.DPRETURN.NSAM" domain="1"/>
+        <destination name="PMA.WORK.PMA.CBO" domain="1"/>
+        <destination name="PMA.WORK.PMA.DT" domain="1"/>
+        <destination name="PMA.WORK.PMA.ICBC" domain="1"/>
+        <destination name="PMA.WORK.PMA.ICS" domain="1"/>
+        <destination name="PMA.WORK.PMA.NORM" domain="1"/>
+        <destination name="PMA.WORK.PMA.NSAM" domain="1"/>
+        <destination name="PMA.WORKACCOUNTDELETION.PMA.CBO" domain="1"/>
+        <destination name="PMA.WORKACCOUNTDELETION.PMA.DT" domain="1"/>
+        <destination name="PMA.WORKACCOUNTDELETION.PMA.ICBC" domain="1"/>
+        <destination name="PMA.WORKACCOUNTDELETION.PMA.ICS" domain="1"/>
+        <destination name="PMA.WORKACCOUNTDELETION.PMA.NORM" domain="1"/>
+        <destination name="PMA.WORKACCOUNTDELETION.PMA.NSAM" domain="1"/>
+        <destination name="PMA.WORKESP.ESP.ICBC" domain="1"/>
+        <destination name="PMA.WORKMOBILE.PMA.CBO" domain="1"/>
+        <destination name="PMA.WORKMOBILE.PMA.DT" domain="1"/>
+        <destination name="PMA.WORKMOBILE.PMA.ICBC" domain="1"/>
+        <destination name="PMA.WORKMOBILE.PMA.ICS" domain="1"/>
+        <destination name="PMA.WORKMOBILE.PMA.NORM" domain="1"/>
+        <destination name="PMA.WORKMOBILE.PMA.NSAM" domain="1"/>
+        <destination name="PMA.WORKUPDATE.PMA.CBO" domain="1"/>
+        <destination name="PMA.WORKUPDATE.PMA.DT" domain="1"/>
+        <destination name="PMA.WORKUPDATE.PMA.ICBC" domain="1"/>
+        <destination name="PMA.WORKUPDATE.PMA.ICS" domain="1"/>
+        <destination name="PMA.WORKUPDATE.PMA.NORM" domain="1"/>
+        <destination name="PMA.WORKUPDATE.PMA.NSAM" domain="1"/>
+        <destination name="PMA.WORKUPLOAD.PMA.CBO" domain="1"/>
+        <destination name="PMA.WORKUPLOAD.PMA.DT" domain="1"/>
+        <destination name="PMA.WORKUPLOAD.PMA.ICBC" domain="1"/>
+        <destination name="PMA.WORKUPLOAD.PMA.ICS" domain="1"/>
+        <destination name="PMA.WORKUPLOAD.PMA.NORM" domain="1"/>
+        <destination name="PMA.WORKUPLOAD.PMA.NSAM" domain="1"/>
+        <destination name="SDS.BRF.PMA.CBO" domain="1"/>
+        <destination name="SDS.BRF.PMA.DT" domain="1"/>
+        <destination name="SDS.BRF.PMA.ICBC" domain="1"/>
+        <destination name="SDS.BRF.PMA.ICS" domain="1"/>
+        <destination name="SDS.BRF.PMA.NORM" domain="1"/>
+        <destination name="SDS.BRF.PMA.NSAM" domain="1"/>
+        <destination name="SDS.DP.PMA.CBO" domain="1"/>
+        <destination name="SDS.DP.PMA.DT" domain="1"/>
+        <destination name="SDS.DP.PMA.ICBC" domain="1"/>
+        <destination name="SDS.DP.PMA.ICS" domain="1"/>
+        <destination name="SDS.DP.PMA.NORM" domain="1"/>
+        <destination name="SDS.DP.PMA.NSAM" domain="1"/>
+        <destination name="SDS.DPUPDATE.PMA.CBO" domain="1"/>
+        <destination name="SDS.DPUPDATE.PMA.DT" domain="1"/>
+        <destination name="SDS.DPUPDATE.PMA.ICBC" domain="1"/>
+        <destination name="SDS.DPUPDATE.PMA.ICS" domain="1"/>
+        <destination name="SDS.DPUPDATE.PMA.NORM" domain="1"/>
+        <destination name="SDS.DPUPDATE.PMA.NSAM" domain="1"/>
+        <destination name="SDS.WORK.SDS.CBO" domain="1"/>
+        <destination name="SDS.WORK.SDS.DT" domain="1"/>
+        <destination name="SDS.WORK.SDS.ICBC" domain="1"/>
+        <destination name="SDS.WORK.SDS.ICS" domain="1"/>
+        <destination name="SDS.WORK.SDS.NORM" domain="1"/>
+        <destination name="SDS.WORK.SDS.NSAM" domain="1"/>
+        <destination name="SEG.DELIVERY.AFF.NORM" domain="1"/>
+        <destination name="SEM.SCRIPTING.AFF" domain="1"/>
+        <destination name="SEM.SCRIPTING.AFF.NIMC" domain="1"/>
+        <destination name="SEM.SCRIPTING.AFF.RB" domain="1"/>
+        <destination name="SET.DELIVERY.AFF.NORM" domain="1"/>
+        <destination name="SYSTEM.ADMIN.ACCOUNTING.QUEUE" domain="1"/>
+        <destination name="SYSTEM.ADMIN.ACTIVITY.QUEUE" domain="1"/>
+        <destination name="SYSTEM.ADMIN.CHANNEL.EVENT" domain="1"/>
+        <destination name="SYSTEM.ADMIN.COMMAND.EVENT" domain="1"/>
+        <destination name="SYSTEM.ADMIN.COMMAND.QUEUE" domain="1"/>
+        <destination name="SYSTEM.ADMIN.CONFIG.EVENT" domain="1"/>
+        <destination name="SYSTEM.ADMIN.LOGGER.EVENT" domain="1"/>
+        <destination name="SYSTEM.ADMIN.PERFM.EVENT" domain="1"/>
+        <destination name="SYSTEM.ADMIN.QMGR.EVENT" domain="1"/>
+        <destination name="SYSTEM.ADMIN.STATISTICS.QUEUE" domain="1"/>
+        <destination name="SYSTEM.ADMIN.TRACE.ROUTE.QUEUE" domain="1"/>
+        <destination name="SYSTEM.BROKER.ADMIN.STREAM" domain="1"/>
+        <destination name="SYSTEM.BROKER.CONTROL.QUEUE" domain="1"/>
+        <destination name="SYSTEM.BROKER.DEFAULT.STREAM" domain="1"/>
+        <destination name="SYSTEM.BROKER.INTER.BROKER.COMMUNICATIONS" domain="1"/>
+        <destination name="SYSTEM.CHANNEL.INITQ" domain="1"/>
+        <destination name="SYSTEM.CHANNEL.SYNCQ" domain="1"/>
+        <destination name="SYSTEM.CICS.INITIATION.QUEUE" domain="1"/>
+        <destination name="SYSTEM.CLUSTER.COMMAND.QUEUE" domain="1"/>
+        <destination name="SYSTEM.CLUSTER.HISTORY.QUEUE" domain="1"/>
+        <destination name="SYSTEM.CLUSTER.REPOSITORY.QUEUE" domain="1"/>
+        <destination name="SYSTEM.CLUSTER.TRANSMIT.QUEUE" domain="1"/>
+        <destination name="SYSTEM.DEAD.LETTER.QUEUE" domain="1"/>
+        <destination name="SYSTEM.DEFAULT.INITIATION.QUEUE" domain="1"/>
+        <destination name="SYSTEM.DEFAULT.LOCAL.QUEUE" domain="1"/>
+        <destination name="SYSTEM.DURABLE.SUBSCRIBER.QUEUE" domain="1"/>
+        <destination name="SYSTEM.HIERARCHY.STATE" domain="1"/>
+        <destination name="SYSTEM.INTER.QMGR.CONTROL" domain="1"/>
+        <destination name="SYSTEM.INTER.QMGR.FANREQ" domain="1"/>
+        <destination name="SYSTEM.INTER.QMGR.PUBS" domain="1"/>
+        <destination name="SYSTEM.INTERNAL.REPLY.QUEUE" domain="1"/>
+        <destination name="SYSTEM.JMS.ADMIN.QUEUE" domain="1"/>
+        <destination name="SYSTEM.JMS.D.CC.SUBSCRIBER.QUEUE" domain="1"/>
+        <destination name="SYSTEM.JMS.D.SUBSCRIBER.QUEUE" domain="1"/>
+        <destination name="SYSTEM.JMS.ND.CC.SUBSCRIBER.QUEUE" domain="1"/>
+        <destination name="SYSTEM.JMS.ND.SUBSCRIBER.QUEUE" domain="1"/>
+        <destination name="SYSTEM.JMS.PS.STATUS.QUEUE" domain="1"/>
+        <destination name="SYSTEM.JMS.REPORT.QUEUE" domain="1"/>
+        <destination name="SYSTEM.PENDING.DATA.QUEUE" domain="1"/>
+        <destination name="SYSTEM.RETAINED.PUB.QUEUE" domain="1"/>
+        <destination name="SYSTEM.SELECTION.EVALUATION.QUEUE" domain="1"/>
+        <destination name="SYSTEM.SELECTION.VALIDATION.QUEUE" domain="1"/>
+        <destination name="THREE.DELIVERY.AFF" domain="1"/>
+        <destination name="TSM.ICSMOBILE.CONV" domain="1"/>
+        <destination name="TWO.DELIVERY.AFF" domain="1"/>
+        <destination name="X.AFFINAtoESP" domain="1"/>
+        <destination name="X.ESPtoAFFINA" domain="1"/>
+        <destination name="Y.ESPtoSEM" domain="1"/>
+        <destination name="Y.SEMtoESP" domain="1"/>
+        <destination name="Z.CStoESP" domain="1"/>
+        <destination name="Z.ESPtoCS" domain="1"/>
+        <destination name="false" domain="1"/>
+        <destination name="SYSTEM.DEFAULT.ALIAS.QUEUE" domain="1"/>
+        <extension className="hermes.ext.mq.MQSeriesAdminFactory">
+            <properties/>
+        </extension>
+    </factory>
+    <factory classpathId="System">
+        <provider className="hermes.NullConnectionFactory">
+            <properties/>
+        </provider>
+        <connection>
+            <session id="&lt;new&gt;" reconnects="0" transacted="true"/>
+        </connection>
+        <extension className="hermes.ext.DefaultHermesAdminFactory">
+            <properties/>
+        </extension>
+    </factory>
+    <quickFIX cacheSize="1024" filterSessionMsgTypes="false"/>
+</config>
