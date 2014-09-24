@@ -1,0 +1,77 @@
+<security-constraint id="SecurityConstraint_1">
+        <web-resource-collection id="WebResourceCollection_1">
+            <web-resource-name>Secure Pages</web-resource-name>
+            <!-- <url-pattern>/UIErrorLogger</url-pattern> -->
+            <url-pattern>/faces/content/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>NSAMOperator</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+	
+	<security-constraint>
+        	<web-resource-collection>
+            		<web-resource-name>Error Logger Servlet</web-resource-name>
+			<url-pattern>/UIErrorLogger</url-pattern>
+            		<http-method>POST</http-method>
+        	</web-resource-collection>
+		<!-- http://blog.mafr.de/2011/04/17/excluding-pages-from-auth/ -->
+		<!-- <auth-constraint /> -->  <!-- no user is allowed access -->
+        	<!-- 
+		<auth-constraint> 
+            		<role-name>*</role-name>   <!-- all roles allowed access -->         
+        	</auth-constraint> 
+		-->
+    </security-constraint>
+
+
+-----------------------
+
+<xsd:complexType name="auth-constraintType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+                The auth-constraintType indicates the user roles that
+                should be permitted access to this resource
+                collection. The role-name used here must either correspond
+                to the role-name of one of the security-role elements
+                defined for this web application, or be the specially
+                reserved role-name "*" that is a compact syntax for
+                indicating all roles in the web application. If both "*"
+                and rolenames appear, the container interprets this as all
+                roles.  If no roles are defined, no user is allowed access
+                to the portion of the web application described by the
+                containing security-constraint.  The container matches
+                role names case sensitively when determining access.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="description"
+                                   type="j2ee:descriptionType"
+                                   minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="role-name"
+                                   type="j2ee:role-nameType"
+                                   minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+
+-------------------------
+
+<filter>
+        <filter-name>XSS</filter-name>
+        <filter-class>com.aconitesolutions.nsam.jsfmanager.filter.SecurityFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>XSS</filter-name>
+		<url-pattern>/*</url-pattern>
+         <!-- <url-pattern>/faces/content/home.xhtml</url-pattern> -->
+    </filter-mapping>
+	
+--------------------
