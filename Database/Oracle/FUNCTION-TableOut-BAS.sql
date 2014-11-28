@@ -127,12 +127,38 @@ FUNCTION         GET_NKAM_BAS_QAO
       ) tkf ON tkf.SOFTCARD_OID=sfcd.OID
      LEFT OUTER JOIN
       (
+	  /*
         SELECT icrq.SOFTCARD_OID AS SOFTCARD_OID,
         pdse.String_Value       AS MYVALUE
         FROM 
         pma.ISSUER_CARD_REQUESTS icrq INNER JOIN 
         pma.PERSONAL_DATA_STORE_ELEMENTS pdse ON pdse.PERSONAL_DATA_STORE_OID= icrq.CARD_PERSO_DATA_STORE_OID
         WHERE pdse.NAME= 'ISIN'
+		*/
+		
+		 SELECT 
+        a.SOFTCARD_OID as SOFTCARD_OID,
+        NVL2(a.MYVALUE1,a.MYVALUE1,b.MYVALUE2) as MYVALUE
+        FROM
+        (
+        SELECT 
+          mnf.SOFTCARD_OID AS SOFTCARD_OID,
+          bom.STRING_VALUE AS MYVALUE1
+        FROM 
+          MANIFEST_APPLICATIONS mnf inner join 
+          BOM_DATA_STORE_ELEMENTS bom on bom.bom_data_store_oid=mnf.bill_of_materials_oid
+        WHERE bom.NAME = 'MSA Update ISIN'
+        ) a inner join 
+        (
+        SELECT 
+          mnf.SOFTCARD_OID AS SOFTCARD_OID,
+          bom.STRING_VALUE AS MYVALUE2
+        FROM 
+          MANIFEST_APPLICATIONS mnf inner join 
+          BOM_DATA_STORE_ELEMENTS bom on bom.bom_data_store_oid=mnf.bill_of_materials_oid
+        WHERE bom.NAME='MSAISIN'
+        ) b on a.SOFTCARD_OID=b.SOFTCARD_OID
+		
       ) isin ON isin.SOFTCARD_OID    =sfcd.OID
     WHERE 1                          =1
     AND sfcd.CARD_ID                IS NOT NULL
@@ -271,12 +297,38 @@ FUNCTION         GET_NKAM_BAS_QCM
       ) tkf ON tkf.SOFTCARD_OID=sfcd.OID
      LEFT OUTER JOIN
       (
+	  /*
         SELECT icrq.SOFTCARD_OID AS SOFTCARD_OID,
         pdse.String_Value       AS MYVALUE
         FROM 
         pma.ISSUER_CARD_REQUESTS icrq INNER JOIN 
         pma.PERSONAL_DATA_STORE_ELEMENTS pdse ON pdse.PERSONAL_DATA_STORE_OID= icrq.CARD_PERSO_DATA_STORE_OID
         WHERE pdse.NAME= 'ISIN'
+		*/
+		
+		 SELECT 
+        a.SOFTCARD_OID as SOFTCARD_OID,
+        NVL2(a.MYVALUE1,a.MYVALUE1,b.MYVALUE2) as MYVALUE
+        FROM
+        (
+        SELECT 
+          mnf.SOFTCARD_OID AS SOFTCARD_OID,
+          bom.STRING_VALUE AS MYVALUE1
+        FROM 
+          MANIFEST_APPLICATIONS mnf inner join 
+          BOM_DATA_STORE_ELEMENTS bom on bom.bom_data_store_oid=mnf.bill_of_materials_oid
+        WHERE bom.NAME = 'MSA Update ISIN'
+        ) a inner join 
+        (
+        SELECT 
+          mnf.SOFTCARD_OID AS SOFTCARD_OID,
+          bom.STRING_VALUE AS MYVALUE2
+        FROM 
+          MANIFEST_APPLICATIONS mnf inner join 
+          BOM_DATA_STORE_ELEMENTS bom on bom.bom_data_store_oid=mnf.bill_of_materials_oid
+        WHERE bom.NAME='MSAISIN'
+        ) b on a.SOFTCARD_OID=b.SOFTCARD_OID
+		
       ) isin ON isin.SOFTCARD_OID    =sfcd.OID
     WHERE 1                          =1
     AND sfcd.CARD_ID                IS NOT NULL
