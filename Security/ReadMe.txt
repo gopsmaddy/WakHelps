@@ -5,3 +5,5 @@ http://blogs.msdn.com/b/kaushal/archive/2012/02/18/client-certificates-v-s-serve
 
 PAX-EXAM : OSGi Integration test framework
 CSRF 	 : Cross-Site Request Forgery
+
+How PGP works : http://www.pgpi.org/doc/pgpintro/
