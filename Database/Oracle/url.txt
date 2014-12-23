@@ -1,3 +1,10 @@
 http://stackoverflow.com/questions/1018822/inner-join-on-vs-where-clause
 
 http://www.techonthenet.com/oracle/functions/nvl.php
+
+
+
+Connect using a different port using a comma
+===============================================
+The connection dialog in the SQL Server Management Studio client is shown in the screenshot below. 
+Normally you would just type the server name into field but to specify a different port use a comma then the port number.
