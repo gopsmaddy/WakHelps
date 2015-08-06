@@ -1,0 +1,78 @@
+ [Hibernate] NonUniqueObjectException: a different object with the same identifier value was already associated with the session
+Problem
+
+When saveOrUpdate() is called on hibernate template, it gives the above exception.
+Solution
+
+    use merge() instead of saveOrUpdate()or
+    load and set the value before calling saveOrUpdate()
+
+Reason
+
+You have 2 objects: one in session and other you attempt to save both of which have the same identifier.
+
+sessionObject
+
+The object objX1 is already in the session, if you happened to load or find before calling saveOrUpdate().
+
+When saveOrUpdate() is called on objX2, there is already an object, objX1, associated in the session with the same identifier (id=1) and it throws an exception.
+1 – merge()
+
+The simples way to sort this out is call merge() instead of saveOrUpdate().
+
+The merge() method copy the state (value=b) of object objX2 to persistent instance, objX1. But it does not attach objX2 into session.
+2 – load and set the value()
+
+If you don’t want to or cannot use merge() , load and set the value to call saveOrUpdate().
+
+    MyObject objX2 = new MyObject(1);
+
+    objX2.setValue(b);
+
+    hibernateTemplate.saveOrUpdate(objX2);
+
+The above code may give the NonUniqueObjectException. So we load and set the value as following
+
+    MyObject objX2 = hibernateTemplate.get(objX2.class,new Integer(1));
+
+    if (objX2 == null){
+
+       objX2 = new MyObject(1);
+
+    }
+
+    objX2.setValue(b);
+
+    hibernateTemplate.saveOrUpdate(objX2);
+
+load() method will throw ObjectNotFoundException if no record found in database and thus get() method is used instead.
+
+For the above code, objX2 is actually pointing to objX1 if there is already an object associated with the session.
+Automatic State Detection
+
+According to “Automatic state detection”
+
+saveOrUpdate() does the following:
+
+    if the object is already persistent in this session, do nothing
+
+    if another object associated with the session has the same identifier, throw an exception
+
+    if the object has no identifier property, save() it
+
+    if the object's identifier has the value assigned to a newly instantiated object, save() it
+
+    if the object is versioned (by a <version> or <timestamp>), and the version property value is the same value assigned to a newly instantiated object, save() it
+
+    otherwise update() the object
+
+and merge() is very different:
+
+    if there is a persistent instance with the same identifier currently associated with the session, copy the state of the given object onto the persistent instance
+
+    if there is no persistent instance currently associated with the session, try to load it from the database, or create a new persistent instance
+
+    the persistent instance is returned
+
+    the given instance does not become associated with the session, it remains detached
+
