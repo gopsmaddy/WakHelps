@@ -1,0 +1,3 @@
+
+[Hibernate] NonUniqueObjectException: a different object with the same identifier value was already associated with the session 
+>>>http://pro-programmers.blogspot.co.uk/2009/03/hibernate-nonuniqueobjectexception.html
