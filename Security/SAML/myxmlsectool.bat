@@ -1,0 +1,4 @@
+set LOCATION=.
+
+java -Dedu.internet2.middleware.security.XmlSecTool.home=%LOCATION% -cp .;.\lib\endorsed\xalan-2.7.1.jar;.\lib\endorsed\xml-resolver-1.2.jar;.\lib\endorsed\serializer-2.10.0.jar;.\lib\endorsed\xercesImpl-2.10.0.jar;.\lib\endorsed\xml-apis-2.10.0.jar;.\lib\xmlsectool-1.2.0.jar;.\lib\jcip-annotations-1.0.jar;.\lib\logback-core-1.0.11.jar;.\lib\logback-classic-1.0.11.jar;.\lib\jargs-1.0.jar;.\lib\shibboleth-jce-1.1.0.jar;.\lib\log4j-over-slf4j-1.7.5.jar;.\lib\jul-to-slf4j-1.7.5.jar;.\lib\slf4j-api-1.7.5.jar;.\lib\jcl-over-slf4j-1.7.5.jar;.\lib\xmlsec-1.5.4.jar;.\lib\commons-httpclient-3.1.jar;.\lib\not-yet-commons-ssl-0.3.9.jar;.\lib\joda-time-2.2.jar;.\lib\commons-codec-1.7.jar;.\lib\bcprov-jdk15-1.46.jar;.\lib\xmltooling-1.4.0.jar;.\lib\openws-1.5.0.jar; edu.internet2.middleware.security.XmlSecTool %*
+
