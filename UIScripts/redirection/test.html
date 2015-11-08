@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>MY TEst</title>
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache">
+
+    <!-- define stylesheets here-->
+	<link rel="stylesheet" type="text/css" href="jquery/css/redmond/jquery-ui-1.8.21.custom.css" />		
+	
+	<!--////////// start: javascripts ///////////////// -->
+	<!-- define jquery related javascripts here-->
+	<script type="text/javascript" src="jquery/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="jquery/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="jquery/jquery-ui-1.8.21.custom.min.js"></script>
+	<script type="text/javascript" src="jquery/jquery.i18n.properties-min-1.0.9.js"></script>	
+	
+
+</head>
+<!-- <body onLoad="setTimeout(location.href='http://www.google.com', '0')"> -->
+<body>
+<!-- <script type="text/javascript">
+ 
+function Redirect()
+{
+ window.location="http://www.newpage.com";
+}
+document.write("You will be redirected to the login page shortly");
+setTimeout('Redirect()', 1000);
+ 
+</script> -->
+
+<script type="text/javascript">
+// This will initialize the plugin 
+// and show two dialog boxes: one with the text "Olá World"
+// and other with the text "Good morning John!" 
+jQuery.i18n.properties({
+    name:'Messages', 
+    path:'bundle/', 
+    mode:'both',
+    language:'en-GB', 
+    callback: function() {
+        // We specified mode: 'both' so translated values will be
+        // available as JS vars/functions and as a map
+		var enbl= jQuery.i18n.prop('redirection_enabled');
+		
+		document.write($('JAVA_HOME'));
+		
+		if(enbl==='true')
+		{
+			
+			
+
+			// Accessing a simple value through the map
+			
+			//alert('xxx>'+my1);
+			// Accessing a value with placeholders through the map
+			//jQuery.i18n.prop('msg_complex', 'John');
+
+			// Accessing a simple value through a JS variable
+			//alert(msg_hello +' '+ msg_world);
+			// Accessing a value with placeholders through a JS function
+			//alert(msg_complex('John'));
+			//alert('Hello');
+			//var url = 'http://www.w3schools.com/';
+			var msg=jQuery.i18n.prop('redirection_message');
+			var url=jQuery.i18n.prop('redirection_url');
+			if(url.length>0)
+			{
+				document.write(msg);
+				$(location).attr('href',url);
+			}
+			else
+			{
+				document.write('redirection url cannot be empty');
+			}
+		}
+		else
+		{
+			document.write('XSAXXSX');
+		}
+    }
+});
+</script>
+</body>
+</html>
